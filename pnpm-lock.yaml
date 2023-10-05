@@ -70,6 +70,9 @@ devDependencies:
   '@ianvs/prettier-plugin-sort-imports':
     specifier: ^4.1.0
     version: 4.1.0(prettier@3.0.3)
+  '@types/bcryptjs':
+    specifier: ^2.4.4
+    version: 2.4.4
   '@types/node':
     specifier: ^20
     version: 20.0.0
@@ -884,6 +887,10 @@ packages:
       react-dom: 18.0.0(react@18.0.0)
       use-sync-external-store: 1.2.0(react@18.0.0)
     dev: false
+
+  /@types/bcryptjs@2.4.4:
+    resolution: {integrity: sha512-9wlJI7k5gRyJEC4yrV7DubzNQFTPiykYxUA6lBtsk5NlOfW9oWLJ1HdIA4YtE+6C3i3mTpDQQEosJ2rVZfBWnw==}
+    dev: true
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
