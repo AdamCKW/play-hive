@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
+import { Toaster } from "@/components/ui/toaster";
+import Providers from "@/lib/providers";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -47,6 +49,11 @@ export const metadata: Metadata = {
         { media: "(prefers-color-scheme: light)", color: "white" },
         { media: "(prefers-color-scheme: dark)", color: "black" },
     ],
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon-16x16.png",
+        apple: "/apple-touch-icon.png",
+    },
 };
 
 const locales = ["en"];
@@ -86,9 +93,12 @@ export default async function RootLayout({
                     defaultTheme="system"
                     enableSystem
                 >
-                    <NextIntlClientProvider locale={locale}>
-                        {children}
-                    </NextIntlClientProvider>
+                    <Providers>
+                        <NextIntlClientProvider locale={locale}>
+                            {children}
+                        </NextIntlClientProvider>
+                    </Providers>
+                    <Toaster />
                 </ThemeProvider>
             </body>
         </html>
