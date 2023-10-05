@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-import 'server-only'
+import "server-only";
 
 declare global {
     // eslint-disable-next-line no-var, no-unused-vars
@@ -16,3 +16,5 @@ if (process.env.NODE_ENV === "production") {
     }
     prisma = global.cachedPrisma;
 }
+
+export const db = prisma;
