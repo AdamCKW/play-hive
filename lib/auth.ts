@@ -6,7 +6,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { z } from "zod";
 
-import { db } from "./db";
+import { db } from "@/lib/db";
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(db),
