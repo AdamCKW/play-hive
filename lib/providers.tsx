@@ -3,7 +3,6 @@
 import { FC, ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
-import { NextIntlClientProvider } from "next-intl";
 
 interface LayoutProps {
     children: ReactNode;
