@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
 
-const locales = ["en", "de"];
+const locales = ["en"];
 const publicPages = [
     "/sign-in",
     "/sign-up",
