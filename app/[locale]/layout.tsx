@@ -5,6 +5,8 @@ import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -47,13 +49,31 @@ export const metadata: Metadata = {
     ],
 };
 
+const locales = ["en"];
+
 interface RootLayoutProps {
     children: React.ReactNode;
+    params: {
+        locale: string;
+    };
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({
+    children,
+    params: { locale },
+}: RootLayoutProps) {
+    const isValidLocale = locales.some((cur) => cur === locale);
+    if (!isValidLocale) notFound();
+
+    let messages;
+    try {
+        messages = (await import(`../../config/lang/${locale}.json`)).default;
+    } catch (error) {
+        notFound();
+    }
+
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang={locale} suppressHydrationWarning>
             <body
                 className={cn(
                     "bg-background min-h-screen font-sans antialiased",
@@ -66,7 +86,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     defaultTheme="system"
                     enableSystem
                 >
-                    {children}
+                    <NextIntlClientProvider locale={locale}>
+                        {children}
+                    </NextIntlClientProvider>
                 </ThemeProvider>
             </body>
         </html>
