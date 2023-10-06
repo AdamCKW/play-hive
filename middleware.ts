@@ -9,6 +9,8 @@ const publicPages = [
     // (/secret requires auth)
 ];
 
+const privatePages = [];
+
 const intlMiddleware = createIntlMiddleware({
     locales,
     defaultLocale: "en",
@@ -35,6 +37,8 @@ export default function middleware(req: NextRequest) {
         "i",
     );
     const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
+
+    // console.log(req.nextauth);
 
     if (isPublicPage) {
         return intlMiddleware(req);
