@@ -70,6 +70,10 @@ export const authOptions: NextAuthOptions = {
                 if (!isPasswordValid)
                     throw new Error("error.invalidCredentials");
 
+                if (dbUser.verificationToken || !dbUser.emailVerified) {
+                    throw new Error("error.notVerified");
+                }
+
                 return dbUser;
             },
         }),

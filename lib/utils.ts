@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { formatDistanceToNowStrict } from "date-fns";
 import { twMerge } from "tailwind-merge";
 import locale from "date-fns/locale/en-US";
+import { randomBytes } from "crypto";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -60,6 +61,9 @@ export function formatTimeToNow(date: Date): string {
         },
     });
 }
+
+export const generateRandomToken = (length: number = 32) =>
+    randomBytes(length / 2).toString("hex");
 
 export const transformObject = (obj: any) => {
     const { likes, _count, ...rest } = obj;
