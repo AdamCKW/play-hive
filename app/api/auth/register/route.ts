@@ -1,15 +1,21 @@
+import brevoTransport from "nodemailer-brevo-transport";
+import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { Resend } from "resend";
 import { db } from "@/lib/db";
 import { RegisterValidation, RegisterRequest } from "@/lib/validators/sign-up";
 import { generateRandomToken, getBaseUrl } from "@/lib/utils";
 import VerifyEmail from "@/emails/verify";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { render } from "@react-email/render";
 
 export async function POST(req: NextRequest) {
+    const transporter = nodemailer.createTransport(
+        new brevoTransport({
+            apiKey: process.env.BREVO_API_KEY!,
+        }),
+    );
+
     try {
         const body = await req.json();
         const validate = RegisterValidation();
@@ -56,17 +62,17 @@ export async function POST(req: NextRequest) {
         });
 
         if (user) {
-            const data = await resend.emails.send({
-                // from: "onboarding@resend.dev",
-                // to: "adamkwchong@gmail.com",
-                // subject: "Hello World",
-                // html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
-                from: process.env.RESEND_EMAIL!,
-                to: user.email!,
-                subject: "Welcome to PlayHive",
-                react: VerifyEmail({
+            const emailHtml = render(
+                VerifyEmail({
                     verifyUrlLink: `${getBaseUrl}/verify/${verificationToken}`,
                 }),
+            );
+
+            const data = await transporter.sendMail({
+                from: process.env.BREVO_EMAIL!,
+                to: user.email!,
+                subject: "Welcome to PlayHive",
+                html: emailHtml,
             });
         }
 
