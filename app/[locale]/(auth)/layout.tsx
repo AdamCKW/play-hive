@@ -5,7 +5,7 @@ import "next/navigation";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-// import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { useTranslations } from "next-intl";
@@ -19,7 +19,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
     return (
         <div className="grid min-h-screen grid-cols-1 overflow-hidden md:grid-cols-3 lg:grid-cols-2">
-            {/* <AspectRatio ratio={16 / 9}>
+            <AspectRatio ratio={16 / 9}>
                 <Image
                     src={translate("imageSrc")}
                     alt={translate("imageAlt")}
@@ -45,7 +45,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
                         </footer>
                     </blockquote>
                 </div>
-            </AspectRatio> */}
+            </AspectRatio>
 
             <main className="container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center px-0 sm:px-8 md:static md:top-0 md:col-span-2 md:flex md:translate-y-0 lg:col-span-1">
                 {children}
