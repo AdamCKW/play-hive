@@ -30,22 +30,16 @@ export async function POST(req: NextRequest) {
         });
 
         if (dbUsername) {
-            return NextResponse.json(
-                {
-                    error: "Username already exist. Please use a different username.",
-                },
-                { status: 409 },
-            );
+            return new NextResponse("failedRegister.usernameExist", {
+                status: 409,
+            });
         }
 
         const dbEmail = await db.user.findUnique({ where: { email } });
         if (dbEmail) {
-            return NextResponse.json(
-                {
-                    error: "Email already in use. Please use a different email address.",
-                },
-                { status: 409 },
-            );
+            return new NextResponse("failedRegister.emailExist", {
+                status: 409,
+            });
         }
 
         const salt = await bcrypt.genSalt(12);
