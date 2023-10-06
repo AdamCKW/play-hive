@@ -17,7 +17,6 @@ import { UserLoginForm } from "@/components/auth/user-login-form";
 import { Icons } from "@/components/icons";
 import { getTranslator } from "next-intl/server";
 import { cn } from "@/lib/utils";
-import { Shell } from "@/components/shell";
 
 export const metadata: Metadata = {
     title: "Login",
