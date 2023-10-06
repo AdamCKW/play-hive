@@ -1,4 +1,11 @@
 {
+    "metadata": {
+        "reset-password": {
+            "title": "Forgot Password",
+            "description": "Enter your email to reset your password"
+        }
+    },
+
     "auth": {
         "layout": {
             "imageSrc": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80",
@@ -82,7 +89,20 @@
         "reset": {
             "page": {
                 "title": "Reset password",
-                "description": "Reset"
+                "description": "Enter your email address and we will send you a link"
+            },
+            "validation": {
+                "email_required": "Email is required",
+                "email_type_error": "Email must be a string",
+                "email_invalid": "Invalid email address",
+                "email_refine": "Email cannot contain spaces"
+            },
+            "form": {
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "reset": "Continue"
             }
         }
     },
@@ -118,7 +138,15 @@
             "description": "You have successfully registered. Please check your email to verify your account."
         },
         "failedRegister": {
-            "title": "Something went wrong"
+            "title": "Something went wrong",
+            "emailExist": "Email already exists. Please try again with a different email.",
+            "usernameExist": "Username already exists. Please try again with a different username."
+        },
+        "reset": {
+            "title_success": "Success",
+            "description_success": "An email has been sent to your email address. Please check your email to reset your password.",
+            "title_failed": "Something went wrong",
+            "emailNotExist": "Email does not exist. Please check your email."
         },
         "invalidCredentials": "Invalid credentials, Please check your username and password.",
         "emptyCredentials": "Please enter your credentials.",
