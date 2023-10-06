@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { nanoid } from "nanoid";
@@ -7,14 +8,16 @@ import GoogleProvider from "next-auth/providers/google";
 import { z } from "zod";
 
 import { db } from "@/lib/db";
+import { linksConfig } from "@/config/site";
 
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(db),
     session: {
         strategy: "jwt",
+        maxAge: 30 * 24 * 60 * 60, // 30 days
     },
     pages: {
-        signIn: "/sign-in",
+        signIn: linksConfig.signIn.href,
     },
     providers: [
         GoogleProvider({
@@ -45,7 +48,7 @@ export const authOptions: NextAuthOptions = {
                     !credentials.username ||
                     !credentials.password
                 )
-                    throw new Error("Credentials is empty");
+                    throw new Error("error.emptyCredentials");
 
                 const dbUser = await db.user.findFirst({
                     where: {
@@ -57,9 +60,7 @@ export const authOptions: NextAuthOptions = {
                 });
 
                 if (!dbUser || !dbUser?.password)
-                    throw new Error(
-                        "Invalid username or password. Please try again.",
-                    );
+                    throw new Error("error.invalidCredentials");
 
                 const isPasswordValid = await bcrypt.compare(
                     credentials.password,
@@ -67,9 +68,7 @@ export const authOptions: NextAuthOptions = {
                 );
 
                 if (!isPasswordValid)
-                    throw new Error(
-                        "Invalid username or password. Please try again.",
-                    );
+                    throw new Error("error.invalidCredentials");
 
                 return dbUser;
             },
