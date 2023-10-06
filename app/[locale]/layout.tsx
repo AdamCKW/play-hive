@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site";
-import "./globals.css";
+import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { Toaster } from "@/components/ui/toaster";
 import Providers from "@/lib/providers";
 
@@ -16,7 +17,7 @@ const fontSans = FontSans({
 });
 
 const fontHeading = localFont({
-    src: "../assets/fonts/CalSans-SemiBold.woff2",
+    src: "../../assets/fonts/CalSans-SemiBold.woff2",
     variable: "--font-heading",
 });
 
@@ -72,12 +73,7 @@ export default async function RootLayout({
     const isValidLocale = locales.some((cur) => cur === locale);
     if (!isValidLocale) notFound();
 
-    let messages;
-    try {
-        messages = (await import(`../../config/lang/${locale}.json`)).default;
-    } catch (error) {
-        notFound();
-    }
+    const messages = await getMessages(locale);
 
     return (
         <html lang={locale} suppressHydrationWarning>
@@ -94,7 +90,10 @@ export default async function RootLayout({
                     enableSystem
                 >
                     <Providers>
-                        <NextIntlClientProvider locale={locale}>
+                        <NextIntlClientProvider
+                            locale={locale}
+                            messages={messages}
+                        >
                             {children}
                         </NextIntlClientProvider>
                     </Providers>
