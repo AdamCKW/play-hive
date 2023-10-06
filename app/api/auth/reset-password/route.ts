@@ -26,7 +26,7 @@ export default async function POST(req: NextRequest) {
         });
 
         if (!user) {
-            return new NextResponse("error.userNotExist", { status: 404 });
+            return new NextResponse("error.emailNotExist", { status: 404 });
         }
 
         // Expire in 5 minutes
