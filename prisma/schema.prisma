@@ -60,6 +60,11 @@ model User {
   password      String?
   role          UserRole  @default(USER)
 
+  verificationToken String?
+
+  forgotPasswordToken  String?
+  forgotPasswordExpiry DateTime?
+
   image String?
   cover String?
 
