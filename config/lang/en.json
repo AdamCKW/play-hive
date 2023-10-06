@@ -1,0 +1,127 @@
+{
+    "auth": {
+        "layout": {
+            "imageSrc": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80",
+            "imageAlt": "Image of building",
+            "quoteText": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before. Highly recommended!",
+            "quoteAuthor": "Sofia Davis"
+        },
+        "login": {
+            "page": {
+                "heading": "Welcome back",
+                "subheading": "Enter your details below to sign in to your account",
+                "continueWith": "Or continue with",
+                "newTo": "New to {siteName}?",
+                "forgotPassword": "Forgot password?"
+            },
+            "validation": {
+                "username_required": "Username or email must be at least 2 characters longer",
+                "username_refine": "Username or email cannot contain spaces",
+                "password_required": "Password cannot be empty"
+            },
+            "form": {
+                "username": {
+                    "label": "Username or email",
+                    "placeholder": "Username or email"
+                },
+                "password": {
+                    "label": "Password",
+                    "placeholder": "Enter your password"
+                },
+                "srPassword": {
+                    "show": "Show password",
+                    "hide": "Hide password"
+                },
+                "signIn": "Sign in"
+            }
+        },
+        "register": {
+            "page": {
+                "heading": "Create an account",
+                "subheading": "Enter your details below to create your account",
+                "continueWith": "Or continue with",
+                "signIn": "Already have an account? Sign in",
+                "agreeing": "By signing up, you agree to our",
+                "terms": "Terms of Service",
+                "and": "and",
+                "privacy": "Privacy Policy"
+            },
+            "validation": {
+                "username_required": "Username is required",
+                "username_type_error": "Username must be a string",
+                "username_min": "Username must be at least 8 characters long",
+                "username_refine": "Username can only contain alphanumeric characters, underscores, and hyphens",
+                "email_required": "Email is required",
+                "email_type_error": "Email must be a string",
+                "email_invalid": "Invalid email address",
+                "email_refine": "Email cannot contain spaces",
+                "password_min": "Password must be at least 8 characters long",
+                "password_max": "Password cannot be longer than 20 characters",
+                "password_refine": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character (no space)"
+            },
+            "form": {
+                "username": {
+                    "label": "Username",
+                    "placeholder": "username_example "
+                },
+                "email": {
+                    "label": "Email",
+                    "placeholder": "Enter your email"
+                },
+                "password": {
+                    "label": "Password",
+                    "placeholder": "Enter your password"
+                },
+                "srPassword": {
+                    "show": "Show password",
+                    "hide": "Hide password"
+                },
+                "signUp": "Sign up"
+            }
+        },
+        "reset": {
+            "page": {
+                "title": "Reset password",
+                "description": "Reset"
+            }
+        }
+    },
+    "verification": {
+        "success": {
+            "title": "Success",
+            "description": "Your email has been verified.",
+            "loading": "Success....redirecting..."
+        }
+    },
+    "error": {
+        "heading": {
+            "404": "Page not found",
+            "500": "Something went wrong"
+        },
+        "subheading": {
+            "404": "The page you are looking for does not exist.",
+            "500": "Internal Server Error",
+            "common": "Oops! An error occurred. Please try again later."
+        },
+        "404": {
+            "heading": "Page not found",
+            "subheading": "The page you are looking for does not exist.",
+            "cta": "Go back home"
+        },
+        "500": {
+            "heading": "Something went wrong",
+            "subheading": "We are working on fixing this issue. Please try again later.",
+            "cta": "Go back home"
+        },
+        "successRegister": {
+            "title": "Registration successful",
+            "description": "You have successfully registered. Please check your email to verify your account."
+        },
+        "failedRegister": {
+            "title": "Something went wrong"
+        },
+        "invalidCredentials": "Invalid credentials, Please check your username and password.",
+        "emptyCredentials": "Please enter your credentials.",
+        "notVerified": "Your account is not verified. Please check your email to verify your account."
+    }
+}
