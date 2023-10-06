@@ -39,7 +39,7 @@ export default async function LoginPage({
     if (session?.user) redirect("/");
 
     return (
-        <section className="container grid items-center gap-8 pb-8 pt-6 md:py-8 max-w-lg">
+        <section className="container grid max-w-lg items-center gap-8 pb-8 pt-6 md:py-8">
             <Card className="md:border-none md:shadow-none">
                 <CardHeader className="space-y-1 text-center">
                     <Icons.command className="mx-auto h-6 w-6" />
