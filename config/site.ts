@@ -2,6 +2,8 @@ import { LinkConfig } from "@/types";
 
 export type SiteConfig = typeof siteConfig;
 
+export const LOCALES = ["en"];
+
 export const siteConfig = {
     name: "Play Hive",
     description:
@@ -24,37 +26,61 @@ export const siteConfig = {
 
 export const linksConfig: LinkConfig = {
     home: {
-        title: "Home",
+        title: "home",
         href: "/",
         icon: "home",
     },
     signIn: {
-        title: "Sign In",
+        title: "sign_in",
         href: "/sign-in",
     },
     signUp: {
-        title: "Sign Up",
+        title: "sign_up",
         href: "/sign-up",
     },
     forgotPassword: {
-        title: "Forgot Password",
+        title: "forgot_password",
         href: "/forgot-password",
         disabled: true,
     },
     terms: {
-        title: "Terms",
+        title: "terms",
         href: "/terms",
         disabled: true,
     },
     privacy: {
-        title: "Privacy",
+        title: "privacy",
         href: "/privacy",
         disabled: true,
     },
     messages: {
-        title: "Messages",
+        title: "messages",
         href: "/messages",
         disabled: true,
         icon: "mail",
+    },
+    profile: {
+        title: "profile",
+        href: "/p",
+        disabled: false,
+        icon: "user",
+    },
+    settings: {
+        title: "settings",
+        href: "/settings",
+        disabled: false,
+        icon: "settings",
+    },
+    reports: {
+        title: "reports",
+        href: "/dashboard/reports",
+        disabled: false,
+        // icon: "report",
+    },
+    manage: {
+        title: "manage_user",
+        href: "/dashboard/users",
+        disabled: false,
+        // icon: "manage",
     },
 };
