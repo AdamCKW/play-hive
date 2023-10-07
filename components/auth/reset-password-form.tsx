@@ -36,8 +36,8 @@ export function ResetPasswordForm({
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-    const tValidation = useTranslations("auth.reset-password.validation");
-    const tForm = useTranslations("auth.reset-password.validation-form");
+    const tValidation = useTranslations("auth.reset.validation");
+    const tForm = useTranslations("auth.reset.form");
     const tError = useTranslations("error");
 
     const validationMessages: Parameters<typeof EmailValidation> = [
