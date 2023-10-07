@@ -29,7 +29,7 @@ export async function generateMetadata({ params: { locale } }: ExtendMetadata) {
 }
 
 export default function ResetPasswordPage() {
-    const tPage = useTranslations("auth.reset-password.page");
+    const tPage = useTranslations("auth.reset.page");
 
     return (
         <section className="container grid max-w-lg items-center gap-8 pb-8 pt-6 md:py-8">
