@@ -1,3 +1,4 @@
+import TimerRedirect from "@/components/timer-redirect";
 import { toast } from "@/hooks/use-toast";
 import { db } from "@/lib/db";
 import { getTranslator } from "next-intl/server";
@@ -7,16 +8,21 @@ import { startTransition } from "react";
 interface VerificationPageProps {
     params: {
         locale: string;
-        token: string;
+    };
+    searchParams: {
+        [key: string]: string | undefined;
     };
 }
 
 export default async function VerificationPage({
-    params: { locale, token },
+    params: { locale },
+    searchParams: { token },
 }: VerificationPageProps) {
-    if (!token) notFound();
+    if (!token) {
+        notFound();
+    }
 
-    const tValidation = await getTranslator(locale, "validation");
+    const tVerification = await getTranslator(locale, "verification");
 
     const user = await db.user.findFirst({
         where: {
@@ -29,7 +35,7 @@ export default async function VerificationPage({
     });
 
     if (!user) {
-        notFound();
+        return notFound();
     }
 
     const response = await db.user.update({
@@ -42,17 +48,17 @@ export default async function VerificationPage({
         },
     });
 
-    if (response) {
-        startTransition(() => redirect("/sign-in"));
-        toast({
-            title: tValidation("success.title"),
-            description: tValidation("success.description"),
-        });
+    if (!response) {
+        return (
+            <div className="flex min-h-screen items-center justify-center">
+                <div className="">{tVerification("error.title")}</div>
+            </div>
+        );
     }
 
     return (
-        <div className="container">
-            <p>{tValidation("success.loading")}</p>
+        <div className="flex min-h-screen items-center justify-center">
+            <TimerRedirect />
         </div>
     );
 }
