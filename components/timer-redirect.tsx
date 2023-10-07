@@ -15,15 +15,6 @@ const TimerRedirect = () => {
     const [seconds, setSeconds] = useState(3);
     const interval = useInterval(() => setSeconds((s) => s - 1), 1000);
 
-    // useEffect(() => {
-    //     interval.start();
-
-    //     const timer = setTimeout(() => {
-    //         router.push("/");
-    //     }, 3000);
-
-    //     return () => clearTimeout(timer);
-    // }, []);
     useEffect(() => {
         interval.start();
 
