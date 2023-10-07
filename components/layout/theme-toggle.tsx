@@ -10,7 +10,7 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "../ui/dropdown-menu";
 import { CircleIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
