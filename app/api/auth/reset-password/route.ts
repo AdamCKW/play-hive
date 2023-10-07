@@ -26,7 +26,7 @@ export default async function POST(req: NextRequest) {
         });
 
         if (!user) {
-            return new NextResponse("error.emailNotExist", { status: 404 });
+            return new NextResponse("reset.emailNotExist", { status: 404 });
         }
 
         // Expire in 5 minutes
@@ -47,7 +47,7 @@ export default async function POST(req: NextRequest) {
         if (updatedUser) {
             const emailHtml = render(
                 ResetPassword({
-                    resetUrlLink: `${getBaseUrl}/reset-password/${resetToken}`,
+                    resetUrlLink: `${getBaseUrl()}/reset-password/${resetToken}`,
                 }),
             );
 
