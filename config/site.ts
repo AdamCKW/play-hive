@@ -53,10 +53,25 @@ export const linksConfig: LinkConfig = {
         href: "/privacy",
         disabled: true,
     },
+    discover: {
+        title: "discover",
+        href: "/discover",
+        icon: "compass",
+    },
+    news: {
+        title: "news",
+        href: "/news",
+        icon: "news",
+    },
+    communities: {
+        title: "communities",
+        href: "/c",
+        icon: "users",
+    },
     messages: {
         title: "messages",
         href: "/messages",
-        disabled: true,
+        disabled: false,
         icon: "mail",
     },
     profile: {
@@ -78,9 +93,29 @@ export const linksConfig: LinkConfig = {
         // icon: "report",
     },
     manage: {
-        title: "manage_user",
+        title: "manage",
         href: "/dashboard/users",
         disabled: false,
         // icon: "manage",
+    },
+    cookie: {
+        title: "cookie",
+        href: "/cookie",
+        disabled: true,
+    },
+    accessibility: {
+        title: "accessibility",
+        href: "/accessibility",
+        disabled: true,
+    },
+    ads: {
+        title: "ads",
+        href: "/ads",
+        disabled: true,
+    },
+    about: {
+        title: "about",
+        href: "/about",
+        disabled: true,
     },
 };
