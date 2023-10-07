@@ -104,13 +104,33 @@
                 },
                 "reset": "Continue"
             }
+        },
+        "newPassword": {
+            "page": {
+                "title": "Reset password",
+                "description": "Enter your new password"
+            },
+            "validation": {
+                "password_min": "Password must be at least 8 characters long",
+                "password_max": "Password cannot be longer than 20 characters",
+                "password_refine": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character (no space)"
+            },
+            "form": {
+                "email": {
+                    "label": "New Password",
+                    "placeholder": "Enter your new password"
+                },
+                "reset": "Reset password"
+            }
         }
     },
     "verification": {
         "success": {
-            "title": "Success",
-            "description": "Your email has been verified.",
-            "loading": "Success....redirecting..."
+            "title": "Success! Redirecting to login page in 3s...",
+            "loading": "Verifying your email..."
+        },
+        "error": {
+            "title": "Something went wrong"
         }
     },
     "error": {
@@ -145,8 +165,19 @@
         "reset": {
             "title_success": "Success",
             "description_success": "An email has been sent to your email address. Please check your email to reset your password.",
+            "reset_success": "Your password has been reset successfully. You can now login with your new password.",
             "title_failed": "Something went wrong",
-            "emailNotExist": "Email does not exist. Please check your email."
+            "emailNotExist": "Email does not exist. Please check your email.",
+            "params_empty": "Params cannot be empty. Please contact support.",
+            "user_not_found": "User not found.",
+            "invalid_token": "Invalid token. Please try again later."
+        },
+        "resend": {
+            "title_success": "Success",
+            "description_success": "An email has been sent to your email address. Please check your email to verify your account.",
+            "title_failed": "Something went wrong",
+            "not_found": "User not found. Please check your credentials.",
+            "verified": "Your account is already verified."
         },
         "invalidCredentials": "Invalid credentials, Please check your username and password.",
         "emptyCredentials": "Please enter your credentials.",
