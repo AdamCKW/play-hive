@@ -12,7 +12,7 @@ interface PostFeedProps {
     initialPosts: IPost[];
 }
 
-export default function IndexFeed({ initialPosts }: PostFeedProps) {
+export default function MainFeed({ initialPosts }: PostFeedProps) {
     const [noMore, setNoMore] = useState<boolean>(false);
     const lastPostRef = useRef<HTMLElement>(null);
 
@@ -47,13 +47,15 @@ export default function IndexFeed({ initialPosts }: PostFeedProps) {
                 if (index === posts.length - 1) {
                     return (
                         <div key={post.id} ref={ref}>
-                            <PostCard data={post} queryKey={queryKey} />
+                            Test
+                            {/* <PostCard data={post} queryKey={queryKey} /> */}
                         </div>
                     );
                 } else {
                     return (
                         <div key={post.id}>
-                            <PostCard data={post} queryKey={queryKey} />
+                            Test
+                            {/* <PostCard data={post} queryKey={queryKey} /> */}
                         </div>
                     );
                 }

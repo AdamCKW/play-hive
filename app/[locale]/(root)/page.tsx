@@ -87,16 +87,7 @@ export default async function Home() {
 
     return (
         <>
-            {/* {posts.length === 0 ? (
-                <div className="mt-4 text-center leading-loose text-neutral-600">
-                    No post yet.
-                </div>
-            ) : (
-                <div className="2xl:mx-4">
-                    <MainFeed initialPosts={posts} />
-                </div>
-            )} */}
-            <h1>Main Page</h1>
+            <h1 className="text-9xl">Main Page</h1>
         </>
     );
 }
