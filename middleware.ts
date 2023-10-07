@@ -1,15 +1,15 @@
-import { NextRequest } from "next/server";
 import { withAuth } from "next-auth/middleware";
 import createIntlMiddleware from "next-intl/middleware";
+import { NextRequest } from "next/server";
 
-const locales = ["en"];
+const locales = ["en", "de"];
 const publicPages = [
-    "/sign-in",
     "/sign-up",
-    // (/secret requires auth)
+    "/sign-in",
+    "/verify",
+    "/reset-password",
+    "/reset-password/(.*)",
 ];
-
-const privatePages = [];
 
 const intlMiddleware = createIntlMiddleware({
     locales,
@@ -20,7 +20,9 @@ const authMiddleware = withAuth(
     // Note that this callback is only invoked if
     // the `authorized` callback has returned `true`
     // and not for pages listed in `pages`.
-    (req) => intlMiddleware(req),
+    function onSuccess(req) {
+        return intlMiddleware(req);
+    },
     {
         callbacks: {
             authorized: ({ token }) => token != null,
@@ -36,9 +38,8 @@ export default function middleware(req: NextRequest) {
         `^(/(${locales.join("|")}))?(${publicPages.join("|")})?/?$`,
         "i",
     );
-    const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
 
-    // console.log(req.nextauth);
+    const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
 
     if (isPublicPage) {
         return intlMiddleware(req);
@@ -48,6 +49,5 @@ export default function middleware(req: NextRequest) {
 }
 
 export const config = {
-    // Skip all paths that should not be internationalized
     matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
