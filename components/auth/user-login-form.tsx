@@ -24,6 +24,8 @@ import { toast } from "@/hooks/use-toast";
 import { Icons } from "@/components/icons";
 import { useTranslations } from "next-intl";
 import { linksConfig } from "@/config/site";
+import { ToastAction } from "../ui/toast";
+import axios from "axios";
 
 interface UserLoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -53,7 +55,6 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
 
     async function onSubmit(values: LoginRequest) {
         setIsLoading(true);
-
         const signInResponse = await signIn("credentials", {
             username: values.username,
             password: values.password,
@@ -64,6 +65,48 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
         setIsLoading(false);
 
         if (signInResponse?.error) {
+            if (signInResponse?.error === "notVerified") {
+                return toast({
+                    title: tError("heading.500"),
+                    description: tError(signInResponse.error),
+                    action: (
+                        <ToastAction
+                            onClick={() => {
+                                axios
+                                    .patch("/api/auth/register", {
+                                        email: values.username,
+                                        username: values.username,
+                                        password: values.password,
+                                    })
+                                    .then((res) => {
+                                        toast({
+                                            title: tError(
+                                                "resend.title_success",
+                                            ),
+                                            description: tError(
+                                                "resend.description_success",
+                                            ),
+                                        });
+                                    })
+                                    .catch((err) => {
+                                        console.log(err.response.data);
+                                        toast({
+                                            title: tError(
+                                                "resend.title_failed",
+                                            ),
+                                            description: tError(
+                                                err.response.data,
+                                            ),
+                                        });
+                                    });
+                            }}
+                            altText="Try again"
+                        >
+                            Resend email
+                        </ToastAction>
+                    ),
+                });
+            }
             return toast({
                 title: tError("heading.500"),
                 description: tError(signInResponse.error),
