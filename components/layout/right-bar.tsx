@@ -53,9 +53,10 @@ function Items({
     return (
         <div className={cn("pb-12", className)} {...props}>
             <div className="space-y-4 py-4">
-                <footer key="rightbar-footer" className="space-x-2 px-8">
-                    {RightBarItems.map((item, i) => (
+                <footer className="space-x-2 px-8">
+                    {RightBarItems.map((item, index) => (
                         <Link
+                            key={`${item.title}-${index}`}
                             className={cn(
                                 item.disabled && "cursor-not-allowed",
                                 "text-muted-foreground text-sm hover:text-current hover:underline",
