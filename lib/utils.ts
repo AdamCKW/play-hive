@@ -62,6 +62,18 @@ export function formatTimeToNow(date: Date): string {
     });
 }
 
+export const getInitials = (name: string) => {
+    if (!name) return ""; // Return empty string if name is not provided
+    const words = name.trim().split(" ");
+    if (words.length === 1) {
+        // Single-word name, return initials based on the first character
+        return words[0].charAt(0).toUpperCase();
+    } else {
+        // Multi-word name, return initials based on the first character of each word
+        return words.map((word) => word.charAt(0).toUpperCase()).join("");
+    }
+};
+
 export const generateRandomToken = (length: number = 32) =>
     randomBytes(length / 2).toString("hex");
 
