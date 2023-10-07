@@ -60,7 +60,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
 
                 <DropdownMenuItem asChild>
                     <Link href={`/${user.username}`}>
-                        {tNav(linksConfig.reports.title)}
+                        {tNav(linksConfig.profile.title)}
                     </Link>
                 </DropdownMenuItem>
 
@@ -68,7 +68,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
                     <Link
                         href={`/${user.username}/${linksConfig.settings.href}`}
                     >
-                        {tNav(linksConfig.reports.title)}
+                        {tNav(linksConfig.settings.title)}
                     </Link>
                 </DropdownMenuItem>
 
@@ -84,7 +84,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
                 {user.role === UserRole.ADMIN && (
                     <DropdownMenuItem asChild>
                         <Link href={linksConfig.manage.href}>
-                            {tNav(linksConfig.reports.title)}
+                            {tNav(linksConfig.manage.title)}
                         </Link>
                     </DropdownMenuItem>
                 )}
