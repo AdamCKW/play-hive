@@ -7,8 +7,15 @@ export type LinkConfig = {
         title: string;
         href: string;
         disabled?: boolean;
-        icon?: string;
+        icon?: keyof typeof Icons;
     };
+};
+
+export type NavItem = {
+    title: string;
+    href: string;
+    disabled?: boolean;
+    icon?: keyof typeof Icons;
 };
 
 // export type FeedConfig = {
