@@ -4,7 +4,7 @@ import { NewPasswordValidation } from "@/lib/validators/reset-password";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
 
-export default async function PATCH(
+export async function PATCH(
     req: NextRequest,
     params: {
         id: string;
