@@ -201,7 +201,7 @@ export function UserRegisterForm({
                             />
                         </div>
 
-                        <Button
+                        {/* <Button
                             type="submit"
                             disabled={isLoading}
                             className="capitalize"
@@ -213,7 +213,8 @@ export function UserRegisterForm({
                                 </>
                             )}
                             {tForm("signUp")}
-                        </Button>
+                        </Button> */}
+                        <Button isLoading={isLoading}>{tForm("signUp")}</Button>
                     </div>
                 </form>
             </Form>
