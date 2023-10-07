@@ -5,6 +5,44 @@
             "description": "Enter your email to reset your password"
         }
     },
+    "intl": {
+        "en": {
+            "title": "English",
+            "flag": "🇺🇸"
+        }
+    },
+
+    "nav": {
+        "home": "Home",
+        "sign_in": "Sign In",
+        "sign_up": "Sign Up",
+        "forgot_password": "Forgot Password",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy",
+        "cookie": "Cookie Policy",
+        "accessibility": "Accessibility Info",
+        "ads": "Ads Info",
+        "about": "About",
+        "messages": "Messages",
+        "communities": "Communities",
+        "discover": "Discover New",
+        "news": "Gaming News",
+        "profile": "Profile",
+        "settings": "Settings",
+        "reports": "Manage Reports",
+        "manage": "Manage Users"
+    },
+
+    "theme": {
+        "light": "Light",
+        "dark": "Dark",
+        "blue": "Blue",
+        "green": "Neon Green",
+        "yellow": "Yellow",
+        "purple": "Purple",
+        "system": "System",
+        "toggle": "Toggle theme"
+    },
 
     "auth": {
         "layout": {
@@ -126,7 +164,7 @@
     },
     "verification": {
         "success": {
-            "title": "Success! Redirecting to login page in 3s...",
+            "title": "Success! Redirecting to login page in {count}s",
             "loading": "Verifying your email..."
         },
         "error": {
