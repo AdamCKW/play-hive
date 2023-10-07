@@ -88,6 +88,14 @@ export default async function RootLayout({
                     attribute="class"
                     defaultTheme="system"
                     enableSystem
+                    themes={[
+                        "light",
+                        "dark",
+                        "blue",
+                        "yellow",
+                        "neon-green",
+                        "purple",
+                    ]}
                 >
                     <Providers>
                         <NextIntlClientProvider
