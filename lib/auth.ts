@@ -48,7 +48,7 @@ export const authOptions: NextAuthOptions = {
                     !credentials.username ||
                     !credentials.password
                 )
-                    throw new Error("error.emptyCredentials");
+                    throw new Error("emptyCredentials");
 
                 const dbUser = await db.user.findFirst({
                     where: {
@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
                 });
 
                 if (!dbUser || !dbUser?.password)
-                    throw new Error("error.invalidCredentials");
+                    throw new Error("invalidCredentials");
 
                 const isPasswordValid = await bcrypt.compare(
                     credentials.password,
@@ -68,10 +68,10 @@ export const authOptions: NextAuthOptions = {
                 );
 
                 if (!isPasswordValid)
-                    throw new Error("error.invalidCredentials");
+                    throw new Error("invalidCredentials");
 
                 if (dbUser.verificationToken || !dbUser.emailVerified) {
-                    throw new Error("error.notVerified");
+                    throw new Error("notVerified");
                 }
 
                 return dbUser;
