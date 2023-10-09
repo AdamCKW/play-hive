@@ -1,0 +1,225 @@
+{
+    "metadata": {
+        "reset-password": {
+            "title": "Lupa kata laluan",
+            "description": "Masukkan e-mel anda untuk menetapkan semula kata laluan anda"
+        }
+    },
+    "intl": {
+        "en": {
+            "title": "Inggeris",
+            "flag": "🇺🇸"
+        },
+        "ms": {
+            "title": "Bahasa Melayu",
+            "flag": "🇲🇾"
+        }
+    },
+    "nav": {
+        "home": "Rumah",
+        "sign_in": "Log Masuk",
+        "sign_up": "Daftar",
+        "forgot_password": "Lupa kata laluan",
+        "terms": "Syarat Perkhidmatan",
+        "privacy": "Dasar Privasi",
+        "cookie": "Dasar Kuki",
+        "accessibility": "Maklumat Kebolehcapaian",
+        "ads": "Maklumat Iklan",
+        "about": "Tentang",
+        "messages": "Mesej",
+        "communities": "Komuniti",
+        "discover": "Temui Baharu",
+        "news": "Berita Permainan",
+        "profile": "Profil",
+        "settings": "tetapan",
+        "reports": "Urus Laporan",
+        "manage": "Urus Pengguna"
+    },
+    "theme": {
+        "light": "Cahaya",
+        "dark": "Gelap",
+        "blue": "Biru",
+        "green": "Hijau neon",
+        "yellow": "Kuning",
+        "purple": "Ungu",
+        "system": "Sistem",
+        "toggle": "Togol tema"
+    },
+    "auth": {
+        "layout": {
+            "imageSrc": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3",
+            "imageAlt": "Imej bangunan",
+            "quoteText": "Perpustakaan ini telah menjimatkan banyak jam kerja saya dan membantu saya menyampaikan reka bentuk yang menakjubkan kepada pelanggan saya dengan lebih pantas berbanding sebelum ini. ",
+            "quoteAuthor": "Sofia Davis"
+        },
+        "login": {
+            "page": {
+                "heading": "Selamat kembali",
+                "subheading": "Masukkan butiran anda di bawah untuk log masuk ke akaun anda",
+                "continueWith": "Atau teruskan dengan",
+                "newTo": "Baru kepada {siteName}?",
+                "forgotPassword": "lupa kata laluan?"
+            },
+            "validation": {
+                "username_required": "Nama pengguna atau e-mel mestilah sekurang-kurangnya 2 aksara lebih panjang",
+                "username_refine": "Nama pengguna atau e-mel tidak boleh mengandungi ruang",
+                "password_required": "Kata laluan tidak boleh kosong"
+            },
+            "form": {
+                "username": {
+                    "label": "Nama pengguna atau e-mel",
+                    "placeholder": "Nama pengguna atau e-mel"
+                },
+                "password": {
+                    "label": "Kata laluan",
+                    "placeholder": "Masukkan kata laluan anda"
+                },
+                "srPassword": {
+                    "show": "Tunjukkan kata laluan",
+                    "hide": "Sembunyikan kata laluan"
+                },
+                "signIn": "Log masuk"
+            }
+        },
+        "register": {
+            "page": {
+                "heading": "Buat akaun",
+                "subheading": "Masukkan butiran anda di bawah untuk membuat akaun anda",
+                "continueWith": "Atau teruskan dengan",
+                "signIn": "Sudah mempunyai akaun? ",
+                "agreeing": "Dengan mendaftar, anda bersetuju dengan kami",
+                "terms": "Syarat Perkhidmatan",
+                "and": "dan",
+                "privacy": "Dasar Privasi"
+            },
+            "validation": {
+                "username_required": "Nama pengguna diperlukan",
+                "username_type_error": "Nama pengguna mestilah rentetan",
+                "username_min": "Nama pengguna mestilah sekurang-kurangnya 8 aksara",
+                "username_refine": "Nama pengguna hanya boleh mengandungi aksara abjad angka, garis bawah dan sempang",
+                "email_required": "E-mel diperlukan",
+                "email_type_error": "E-mel mestilah rentetan",
+                "email_invalid": "alamat email tidak sah",
+                "email_refine": "E-mel tidak boleh mengandungi ruang",
+                "password_min": "Kata laluan mestilah sekurang-kurangnya 8 aksara panjang",
+                "password_max": "Kata laluan tidak boleh melebihi 20 aksara",
+                "password_refine": "Kata laluan mesti mengandungi sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan satu aksara khas (tiada ruang)"
+            },
+            "form": {
+                "username": {
+                    "label": "Nama pengguna",
+                    "placeholder": "nama_pengguna_contoh"
+                },
+                "email": {
+                    "label": "E-mel",
+                    "placeholder": "Masukkan emel anda"
+                },
+                "password": {
+                    "label": "Kata laluan",
+                    "placeholder": "Masukkan kata laluan anda"
+                },
+                "srPassword": {
+                    "show": "Tunjukkan kata laluan",
+                    "hide": "Sembunyikan kata laluan"
+                },
+                "signUp": "daftar"
+            }
+        },
+        "reset": {
+            "page": {
+                "title": "Menetapkan semula kata laluan",
+                "description": "Masukkan alamat e-mel anda dan kami akan menghantar pautan kepada anda"
+            },
+            "validation": {
+                "email_required": "E-mel diperlukan",
+                "email_type_error": "E-mel mestilah rentetan",
+                "email_invalid": "alamat email tidak sah",
+                "email_refine": "E-mel tidak boleh mengandungi ruang"
+            },
+            "form": {
+                "email": {
+                    "label": "E-mel",
+                    "placeholder": "Masukkan emel anda"
+                },
+                "reset": "teruskan"
+            }
+        },
+        "newPassword": {
+            "page": {
+                "title": "Menetapkan semula kata laluan",
+                "description": "Masukkan kata laluan baharu anda"
+            },
+            "validation": {
+                "password_min": "Kata laluan mestilah sekurang-kurangnya 8 aksara panjang",
+                "password_max": "Kata laluan tidak boleh melebihi 20 aksara",
+                "password_refine": "Kata laluan mesti mengandungi sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan satu aksara khas (tiada ruang)"
+            },
+            "form": {
+                "email": {
+                    "label": "Kata laluan baharu",
+                    "placeholder": "Masukkan kata laluan baharu anda"
+                },
+                "reset": "Menetapkan semula kata laluan"
+            }
+        }
+    },
+    "verification": {
+        "success": {
+            "title": "Berjaya! ",
+            "loading": "Mengesahkan e-mel anda..."
+        },
+        "error": {
+            "title": "Sesuatu telah berlaku"
+        }
+    },
+    "error": {
+        "404": {
+            "heading": "Laman tidak dijumpai",
+            "subheading": "Halaman yang anda cari tidak wujud.",
+            "cta": "Balik rumah"
+        },
+        "500": {
+            "heading": "Sesuatu telah berlaku",
+            "subheading": "Kami sedang berusaha untuk membetulkan isu ini. ",
+            "cta": "Balik rumah"
+        },
+        "heading": {
+            "404": "Laman tidak dijumpai",
+            "500": "Sesuatu telah berlaku"
+        },
+        "subheading": {
+            "404": "Halaman yang anda cari tidak wujud.",
+            "500": "Ralat Pelayan Dalaman",
+            "common": "Aduh! "
+        },
+        "successRegister": {
+            "title": "pendaftaran berjaya",
+            "description": "Anda telah berjaya mendaftar. "
+        },
+        "failedRegister": {
+            "title": "Sesuatu telah berlaku",
+            "emailExist": "E-mel sudah wujud. ",
+            "usernameExist": "Nama pengguna sudah wujud. "
+        },
+        "reset": {
+            "title_success": "Kejayaan",
+            "description_success": "E-mel telah dihantar ke alamat e-mel anda. ",
+            "reset_success": "Kata laluan anda telah berjaya ditetapkan semula. ",
+            "title_failed": "Sesuatu telah berlaku",
+            "emailNotExist": "E-mel tidak wujud. ",
+            "params_empty": "Params tidak boleh kosong. ",
+            "user_not_found": "Pengguna tidak dijumpai.",
+            "invalid_token": "Token tidak sah. "
+        },
+        "resend": {
+            "title_success": "Kejayaan",
+            "description_success": "E-mel telah dihantar ke alamat e-mel anda. ",
+            "title_failed": "Sesuatu telah berlaku",
+            "not_found": "Pengguna tidak dijumpai. ",
+            "verified": "Akaun anda telah pun disahkan."
+        },
+        "invalidCredentials": "Bukti kelayakan tidak sah, Sila semak nama pengguna dan kata laluan anda.",
+        "emptyCredentials": "Sila masukkan kelayakan anda.",
+        "notVerified": "Akaun anda tidak disahkan. "
+    }
+}

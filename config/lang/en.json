@@ -9,6 +9,10 @@
         "en": {
             "title": "English",
             "flag": "🇺🇸"
+        },
+        "ms": {
+            "title": "Malay",
+            "flag": "🇲🇾"
         }
     },
 
