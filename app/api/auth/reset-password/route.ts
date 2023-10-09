@@ -30,7 +30,8 @@ export async function POST(req: NextRequest) {
         }
 
         // Expire in 5 minutes
-        const expirationTimestamp = Math.floor(Date.now() / 1000) + 300;
+        const date = new Date();
+        const expirationTimestamp = date.setMinutes(date.getMinutes() + 5);
 
         const resetToken = generateRandomToken();
 
