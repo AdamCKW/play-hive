@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { LOCALES, siteConfig } from "@/config/site";
 import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
@@ -57,8 +57,6 @@ export const metadata: Metadata = {
     },
 };
 
-const locales = ["en"];
-
 interface RootLayoutProps {
     children: React.ReactNode;
     params: {
@@ -70,7 +68,7 @@ export default async function RootLayout({
     children,
     params: { locale },
 }: RootLayoutProps) {
-    const isValidLocale = locales.some((cur) => cur === locale);
+    const isValidLocale = LOCALES.some((cur) => cur === locale);
     if (!isValidLocale) notFound();
 
     const messages = await getMessages(locale);
