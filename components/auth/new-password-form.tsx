@@ -44,8 +44,8 @@ export function NewPasswordForm({
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-    const tValidation = useTranslations("auth.reset-password.validation");
-    const tForm = useTranslations("auth.reset-password.validation-form");
+    const tValidation = useTranslations("auth.newPassword.validation");
+    const tForm = useTranslations("auth.newPassword.form");
     const tError = useTranslations("error");
 
     const validationMessages: Parameters<typeof NewPasswordValidation> = [
@@ -65,6 +65,7 @@ export function NewPasswordForm({
         setIsLoading(true);
 
         try {
+            console.log(userId);
             axios
                 .patch(`/api/auth/reset-password/${userId}`, values)
                 .then((response) => {
