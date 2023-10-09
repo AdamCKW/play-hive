@@ -6,12 +6,11 @@ import z from "zod";
 
 export async function PATCH(
     req: NextRequest,
-    params: {
-        id: string;
-    },
+    { params }: { params: { id: string } },
 ) {
     try {
-        const id = params.id;
+        const { id } = params;
+
         const body = await req.json();
 
         if (!id) {
@@ -19,10 +18,13 @@ export async function PATCH(
         }
 
         const split = id.split("_");
+        const userId = split[0];
+        const token = split[1];
 
         const user = await db.user.findUnique({
             where: {
-                id: split[0],
+                id: userId,
+                forgotPasswordToken: token,
             },
         });
 
@@ -41,7 +43,7 @@ export async function PATCH(
 
         const updatedUser = await db.user.update({
             where: {
-                id,
+                id: userId,
             },
             data: {
                 password: hasedPassword,
