@@ -17,11 +17,18 @@ import { UserLoginForm } from "@/components/auth/user-login-form";
 import { Icons } from "@/components/icons";
 import { getTranslator } from "next-intl/server";
 import { cn } from "@/lib/utils";
+import { ExtendedMetadata } from "@/types";
 
-export const metadata: Metadata = {
-    title: "Login",
-    description: "Login Page",
-};
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.login");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
 
 interface LoginPageProps {
     params: {
@@ -57,7 +64,7 @@ export default async function LoginPage({
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
                             <span className="bg-background text-muted-foreground px-2">
-                                {translate("continueWith")}
+                                {translate("continue_with")}
                             </span>
                         </div>
                     </div>
@@ -72,7 +79,7 @@ export default async function LoginPage({
                         }
                         className="text-primary text-sm underline-offset-4 transition-colors hover:underline"
                     >
-                        {translate("newTo", { siteName: siteConfig.name })}
+                        {translate("new_to", { siteName: siteConfig.name })}
                     </Link>
 
                     <Link
@@ -83,7 +90,7 @@ export default async function LoginPage({
                         }
                         className="text-primary text-sm underline-offset-4 transition-colors hover:underline"
                     >
-                        {translate("forgotPassword")}
+                        {translate("forgot_password")}
                     </Link>
                 </CardFooter>
             </Card>

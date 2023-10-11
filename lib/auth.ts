@@ -26,10 +26,6 @@ export const authOptions: NextAuthOptions = {
         }),
         CredentialsProvider({
             name: "Credentials",
-            // `credentials` is used to generate a form on the sign in page.
-            // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-            // e.g. domain, username, password, 2FA token, etc.
-            // You can pass any HTML attribute to the <input> tag through the object.
             credentials: {
                 username: {
                     label: "Username or Email",
@@ -48,7 +44,7 @@ export const authOptions: NextAuthOptions = {
                     !credentials.username ||
                     !credentials.password
                 )
-                    throw new Error("emptyCredentials");
+                    throw new Error("login.failed.empty");
 
                 const dbUser = await db.user.findFirst({
                     where: {
@@ -60,18 +56,17 @@ export const authOptions: NextAuthOptions = {
                 });
 
                 if (!dbUser || !dbUser?.password)
-                    throw new Error("invalidCredentials");
+                    throw new Error("login.failed.invalid");
 
                 const isPasswordValid = await bcrypt.compare(
                     credentials.password,
                     dbUser.password!,
                 );
 
-                if (!isPasswordValid)
-                    throw new Error("invalidCredentials");
+                if (!isPasswordValid) throw new Error("login.failed.invalid");
 
                 if (dbUser.verificationToken || !dbUser.emailVerified) {
-                    throw new Error("notVerified");
+                    throw new Error("login.failed.unverified");
                 }
 
                 return dbUser;

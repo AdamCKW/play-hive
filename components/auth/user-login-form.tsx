@@ -37,7 +37,7 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
 
     const tValidation = useTranslations("auth.login.validation");
     const tForm = useTranslations("auth.login.form");
-    const tError = useTranslations("error");
+    const tToast = useTranslations("toast");
 
     const validationMessages: Parameters<typeof LoginValidation> = [
         tValidation("username_required"),
@@ -65,10 +65,10 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
         setIsLoading(false);
 
         if (signInResponse?.error) {
-            if (signInResponse?.error === "notVerified") {
+            if (signInResponse?.error === "login.failed.unverified") {
                 return toast({
-                    title: tError("heading.500"),
-                    description: tError(signInResponse.error),
+                    title: tToast("heading.500"),
+                    description: tToast(signInResponse.error),
                     action: (
                         <ToastAction
                             onClick={() => {
@@ -80,36 +80,36 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
                                     })
                                     .then((res) => {
                                         toast({
-                                            title: tError(
-                                                "resend.title_success",
+                                            title: tToast(
+                                                "resend.success.title",
                                             ),
-                                            description: tError(
-                                                "resend.description_success",
+                                            description: tToast(
+                                                "resend.success.description",
                                             ),
                                         });
                                     })
                                     .catch((err) => {
                                         console.log(err.response.data);
                                         toast({
-                                            title: tError(
-                                                "resend.title_failed",
+                                            title: tToast(
+                                                "resend.failed.title",
                                             ),
-                                            description: tError(
+                                            description: tToast(
                                                 err.response.data,
                                             ),
                                         });
                                     });
                             }}
-                            altText="Try again"
+                            altText={tToast("resend.alt_text")}
                         >
-                            Resend email
+                            {tToast("resend.text")}
                         </ToastAction>
                     ),
                 });
             }
             return toast({
-                title: tError("heading.500"),
-                description: tError(signInResponse.error),
+                title: tToast("heading.500"),
+                description: tToast(signInResponse.error),
             });
         }
 
@@ -224,12 +224,7 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
                             />
                         </div>
 
-                        <Button isLoading={isLoading} className="capitalize">
-                            {/* {isLoading && (
-                                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-                            )} */}
-                            {tForm("signIn")}
-                        </Button>
+                        <Button isLoading={isLoading}>{tForm("signIn")}</Button>
                     </div>
                 </form>
             </Form>
