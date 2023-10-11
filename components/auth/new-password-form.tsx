@@ -44,9 +44,9 @@ export function NewPasswordForm({
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-    const tValidation = useTranslations("auth.newPassword.validation");
-    const tForm = useTranslations("auth.newPassword.form");
-    const tError = useTranslations("error");
+    const tValidation = useTranslations("auth.new_password.validation");
+    const tForm = useTranslations("auth.new_password.form");
+    const tToast = useTranslations("toast");
 
     const validationMessages: Parameters<typeof NewPasswordValidation> = [
         tValidation("password_min"),
@@ -64,6 +64,7 @@ export function NewPasswordForm({
     async function onSubmit(values: NewPasswordRequest) {
         setIsLoading(true);
 
+        
         try {
             console.log(userId);
             axios
@@ -72,29 +73,27 @@ export function NewPasswordForm({
                     React.startTransition(() => {
                         router.push(linksConfig.signIn.href);
                     });
+                    setIsLoading(false);
                     toast({
-                        title: tError("reset.title_success"),
-                        description: tError("reset.reset_success"),
+                        title: tToast("reset.success.title"),
+                        description: tToast("reset.updated"),
                     });
                 })
                 .catch((error) => {
+                    setIsLoading(false);
                     toast({
-                        title: tError("reset.title_failed"),
-                        description: tError(error.response.data),
+                        title: tToast("reset.failed.title"),
+                        description: tToast(error.response.data),
                         variant: "destructive",
                     });
                 });
         } catch (error) {
             toast({
-                title: tError("heading.500"),
-                description: tError("subheading.common"),
+                title: tToast("500.heading"),
+                description: tToast("500.subheading"),
                 variant: "destructive",
             });
-        } finally {
-            setIsLoading(false);
         }
-
-        setIsLoading(false);
     }
 
     return (

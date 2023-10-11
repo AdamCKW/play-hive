@@ -1,5 +1,5 @@
 import { NewPasswordForm } from "@/components/auth/new-password-form";
-import { ResetPasswordForm } from "@/components/auth/reset-password-form";
+
 import {
     Card,
     CardContent,
@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { db } from "@/lib/db";
+import { encryptId } from "@/lib/utils";
+import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
-import { startTransition } from "react";
 
 interface ChangeNewPasswordPageProps {
     params: {
@@ -20,12 +21,23 @@ interface ChangeNewPasswordPageProps {
     };
 }
 
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.new_password");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
+
 export default async function ChangeNewPassword({
     params: { locale, token },
 }: ChangeNewPasswordPageProps) {
     if (!token) notFound();
 
-    const tPage = await getTranslator(locale, "auth.newPassword.page");
+    const tPage = await getTranslator(locale, "auth.new_password.page");
 
     const user = await db.user.findFirst({
         where: {
@@ -49,7 +61,7 @@ export default async function ChangeNewPassword({
         notFound();
     }
 
-    const userId = `${user.id}_${user.forgotPasswordToken}`;
+    const userId = encryptId(user.id);
 
     return (
         <section className="container grid max-w-lg items-center gap-8 pb-8 pt-6 md:py-8">

@@ -28,7 +28,7 @@ import axios from "axios";
 
 interface ResetPasswordFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function ResetPasswordForm({
+export function ForgotPasswordForm({
     className,
     ...props
 }: ResetPasswordFormProps) {
@@ -36,9 +36,9 @@ export function ResetPasswordForm({
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-    const tValidation = useTranslations("auth.reset.validation");
-    const tForm = useTranslations("auth.reset.form");
-    const tError = useTranslations("error");
+    const tValidation = useTranslations("auth.forgot_password.validation");
+    const tForm = useTranslations("auth.forgot_password.form");
+    const tError = useTranslations("toast");
 
     const validationMessages: Parameters<typeof EmailValidation> = [
         tValidation("email_required"),
@@ -59,27 +59,27 @@ export function ResetPasswordForm({
 
         try {
             axios
-                .post("/api/auth/reset-password", values)
+                .post("/api/auth/forgot-password", values)
                 .then((response) => {
                     React.startTransition(() => {
                         router.push(linksConfig.signIn.href);
                     });
                     toast({
-                        title: tError("reset.title_success"),
-                        description: tError("reset.description_success"),
+                        title: tError("reset.success.title"),
+                        description: tError("reset.success.description"),
                     });
                 })
                 .catch((error) => {
                     toast({
-                        title: tError("reset.title_failed"),
+                        title: tError("reset.failed.title"),
                         description: tError(error.response.data),
                         variant: "destructive",
                     });
                 });
         } catch (error) {
             toast({
-                title: tError("heading.500"),
-                description: tError("subheading.common"),
+                title: tError("500.heading"),
+                description: tError("500.subheading"),
                 variant: "destructive",
             });
         } finally {
