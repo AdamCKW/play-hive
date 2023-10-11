@@ -20,6 +20,10 @@ export type NavItem = {
 
 export type ExtendedMetadata = Metadata & { params: { locale: string } };
 
+export type TFile = File & {
+    preview: string;
+};
+
 // export type FeedConfig = {
 //     navLinks: NavItem[];
 //     userNav: NavItem[];
