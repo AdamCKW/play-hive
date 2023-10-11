@@ -40,7 +40,7 @@ export const linksConfig: LinkConfig = {
     },
     forgotPassword: {
         title: "forgot_password",
-        href: "/reset-password",
+        href: "/forgot-password",
         disabled: false,
     },
     terms: {
