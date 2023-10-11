@@ -1,5 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
-import { formatDistanceToNowStrict } from "date-fns";
+import { formatDistanceToNowStrict, format } from "date-fns";
 import { twMerge } from "tailwind-merge";
 import locale from "date-fns/locale/en-US";
 import crypto, { randomBytes } from "crypto";
@@ -54,6 +54,7 @@ function formatDistance(token: string, count: number, options?: any): string {
             return "in " + result;
         } else {
             if (result === "just now") return result;
+
             return result + " ago";
         }
     }
@@ -62,13 +63,21 @@ function formatDistance(token: string, count: number, options?: any): string {
 }
 
 export function formatTimeToNow(date: Date): string {
-    return formatDistanceToNowStrict(date, {
-        addSuffix: true,
-        locale: {
-            ...locale,
-            formatDistance,
-        },
-    });
+    const differenceInDays = Math.floor(
+        (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24),
+    );
+
+    if (differenceInDays > 3) {
+        return format(date, 'dd/MM/yyyy');
+    } else {
+        return formatDistanceToNowStrict(date, {
+            addSuffix: true,
+            locale: {
+                ...locale,
+                formatDistance,
+            },
+        });
+    }
 }
 
 export const getInitials = (name: string) => {
