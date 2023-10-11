@@ -7,6 +7,7 @@ import { Loader2 } from "lucide-react";
 import { IPost } from "@/types/db";
 import PostCard from "@/components/posts/post-card";
 import { useInfinitePostQuery } from "@/hooks/use-infinite-post-query";
+import { useTranslations } from "next-intl";
 
 interface PostFeedProps {
     initialPosts: IPost[];
@@ -14,6 +15,7 @@ interface PostFeedProps {
 
 export default function MainFeed({ initialPosts }: PostFeedProps) {
     const [noMore, setNoMore] = useState<boolean>(false);
+    const t = useTranslations("root.posts");
     const lastPostRef = useRef<HTMLElement>(null);
 
     const { ref, entry } = useIntersection({
@@ -23,15 +25,16 @@ export default function MainFeed({ initialPosts }: PostFeedProps) {
 
     const queryKey = ["posts"];
 
-    const { data, fetchNextPage, isFetchingNextPage } = useInfinitePostQuery({
-        queryKey,
-        apiUrl: "/api/posts",
-        initialData: {
-            pages: [initialPosts],
-            pageParams: [1],
-        },
-        setNoMore,
-    });
+    const { data, fetchNextPage, isFetchingNextPage, isError } =
+        useInfinitePostQuery({
+            queryKey,
+            apiUrl: "/api/posts",
+            initialData: {
+                pages: [initialPosts],
+                pageParams: [1],
+            },
+            setNoMore,
+        });
 
     useEffect(() => {
         if (entry?.isIntersecting) {
@@ -41,21 +44,21 @@ export default function MainFeed({ initialPosts }: PostFeedProps) {
 
     const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
+    if (isError) return <div>{t("error")}</div>;
+
     return (
         <>
             {posts.map((post, index) => {
                 if (index === posts.length - 1) {
                     return (
                         <div key={post.id} ref={ref}>
-                            Test
-                            {/* <PostCard data={post} queryKey={queryKey} /> */}
+                            <PostCard data={post} queryKey={queryKey} />
                         </div>
                     );
                 } else {
                     return (
                         <div key={post.id}>
-                            Test
-                            {/* <PostCard data={post} queryKey={queryKey} /> */}
+                            <PostCard data={post} queryKey={queryKey} />
                         </div>
                     );
                 }
@@ -64,7 +67,7 @@ export default function MainFeed({ initialPosts }: PostFeedProps) {
             <div className="flex w-full justify-center py-4">
                 {!isFetchingNextPage && noMore && (
                     <div className="mt-4 text-center leading-loose text-neutral-600">
-                        There are no more posts.
+                        {t("no_more")}
                     </div>
                 )}
 
