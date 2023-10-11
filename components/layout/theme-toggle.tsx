@@ -13,6 +13,7 @@ import {
 } from "../ui/dropdown-menu";
 import { CircleIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { themeOptions } from "@/config/site";
 
 export function ThemeToggle() {
     const { setTheme, theme } = useTheme();
@@ -44,7 +45,7 @@ export function ThemeToggle() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
+                {/* <DropdownMenuItem onClick={() => setTheme("light")}>
                     {tTheme("light")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("dark")}>
@@ -57,14 +58,23 @@ export function ThemeToggle() {
                     {tTheme("yellow")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("neon-green")}>
-                    {tTheme("green")}
+                    {tTheme("neon-green")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("purple")}>
                     {tTheme("purple")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("system")}>
                     {tTheme("system")}
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
+
+                {themeOptions.map((theme) => (
+                    <DropdownMenuItem
+                        key={theme}
+                        onClick={() => setTheme(theme)}
+                    >
+                        {tTheme(theme)}
+                    </DropdownMenuItem>
+                ))}
             </DropdownMenuContent>
         </DropdownMenu>
     );
