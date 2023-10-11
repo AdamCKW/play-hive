@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -30,6 +30,7 @@ import { uploadFiles } from "@/lib/uploadthing";
 import { TFile } from "@/types";
 import { useTranslations } from "next-intl";
 import { Post } from "@prisma/client";
+import { useRouter } from "next/navigation";
 
 interface CreatePostProps {
     setOpen: (open: boolean) => void;
@@ -41,7 +42,7 @@ interface User extends NextAuthUser {
 }
 
 export function CreatePost({ setOpen, user }: CreatePostProps) {
-    const session = useSession();
+    const router = useRouter();
     const [files, setFiles] = useState<TFile[]>([]);
 
     const tValidation = useTranslations("root.posts.create.validation");
@@ -167,6 +168,7 @@ export function CreatePost({ setOpen, user }: CreatePostProps) {
         },
         onSuccess: (content) => {
             queryClient.invalidateQueries(["posts"]);
+            startTransition(() => router.refresh());
             setOpen(false);
             return toast({
                 title: tToast("post.success.create.title"),
