@@ -1,5 +1,5 @@
-import { User } from "@prisma/client";
 import { create } from "zustand";
+import { User as NextAuthUser } from "next-auth";
 
 export type ModalType =
     | "users"
@@ -8,6 +8,10 @@ export type ModalType =
     | "deleteMessage"
     | "imageModal"
     | "createPost";
+
+interface User extends NextAuthUser {
+    username?: string | null;
+}
 
 interface ModalData {
     apiUrl?: string;
