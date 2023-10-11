@@ -224,10 +224,10 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
                             />
                         </div>
 
-                        <Button disabled={isLoading} className="capitalize">
-                            {isLoading && (
+                        <Button isLoading={isLoading} className="capitalize">
+                            {/* {isLoading && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-                            )}
+                            )} */}
                             {tForm("signIn")}
                         </Button>
                     </div>
