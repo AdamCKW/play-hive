@@ -2,20 +2,15 @@ import Link from "next/link";
 import { Prisma } from "@prisma/client";
 
 import { IPost } from "@/types/db";
-// import { getBaseUrl, nFormatter, rgbDataURL } from "@/lib/utils";
-// import { UserAvatar } from "@/components/user-avatar";
-
-// import Controls from "./controls";
-// import MoreMenu from "./more-menu";
-// import NameLink from "./name-link";
-// import Others from "./others";
-// import Timestamp from "./timestamp";
-// import Viewer from "../plate/viewer";
-// import { redirect, useSearchParams } from "next/navigation";
-// import { AspectRatio } from "../ui/aspect-ratio";
-// import Image from "next/image";
-// import ImageComponent from "./image-component";
-// import { ImageModal } from "../modals/image-modal";
+import { nFormatter } from "@/lib/utils";
+import { UserAvatar } from "../user-avatar";
+import NameLink from "./name-link";
+import Others from "./others";
+import MoreMenu from "./more-menu";
+import ImageComponent from "./image";
+import Controls from "./controls";
+import { redirect } from "next/navigation";
+import Timestamp from "./timestamp";
 
 interface PostCardProps {
     data: IPost;
@@ -42,146 +37,140 @@ export default function PostCard({
               noLink && "pointer-events-none"
           }`;
 
-    // const likesCount = nFormatter(data.likesCount, 1);
-    // const childrenCount = nFormatter(data.childrenCount, 1);
-    // const searchParams = useSearchParams();
-    // return (
-    //     <>
-    //         <Link href={`/p/${data.id}`} className={mainClass}>
-    //             <div className="flex flex-col items-center justify-between">
-    //                 <UserAvatar
-    //                     user={{
-    //                         name: data?.author.name!,
-    //                         image: data?.author.image!,
-    //                     }}
-    //                 />
-    //                 <div className="relative w-0.5 grow bg-neutral-800" />
-    //                 {comment || parent ? null : (
-    //                     <Others others={data.children} />
-    //                 )}
-    //             </div>
-
-    //             <div className="w-full space-y-1">
-    //                 <div className="flex w-full items-center justify-between">
-    //                     <NameLink author={data.author} />
-    //                     {comment ? null : (
-    //                         <div className="flex items-center space-x-2">
-    //                             <MoreMenu
-    //                                 name={data.author.name || "Deleted User"}
-    //                                 id={data.id}
-    //                                 author={data.author.id}
-    //                             />
-    //                         </div>
-    //                     )}
-    //                 </div>
-    //                 {!data.text && data.communityId ? (
-    //                     <div
-    //                         style={{ overflow: "clip" }}
-    //                         className={`relative max-h-40 text-sm ${
-    //                             comment ? "w-80" : "w-full"
-    //                         }`}
-    //                     >
-    //                         <Viewer content={data.content} />
-
-    //                         <div className="from-background absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t to-transparent" />
-    //                     </div>
-    //                 ) : (
-    //                     <div
-    //                         className={`text-left text-base/relaxed ${
-    //                             comment && "pb-3"
-    //                         }`}
-    //                     >
-    //                         {data.text}
-    //                     </div>
-    //                 )}
-
-    //                 {comment ? null : data.images?.length > 0 ? (
-    //                     <div
-    //                         className={`grid ${
-    //                             data.images.length >= 2 ? "grid-cols-2" : ""
-    //                         } gap-2 pt-4 `}
-    //                         onClick={(e) => {
-    //                             e.stopPropagation();
-    //                         }}
-    //                     >
-    //                         <ImageComponent images={data.images} />
-    //                     </div>
-    //                 ) : null}
-
-    //                 {comment ? null : (
-    //                     <>
-    //                         <Controls
-    //                             data={data}
-    //                             single={single}
-    //                             queryKey={queryKey}
-    //                         />
-
-    //                         <div className="flex items-center space-x-2 text-neutral-600">
-    //                             {data.childrenCount > 0 && (
-    //                                 <div className="text-neutral-600">
-    //                                     {childrenCount}{" "}
-    //                                     {data.childrenCount === 1
-    //                                         ? "reply"
-    //                                         : "replies"}
-    //                                 </div>
-    //                             )}
-
-    //                             {data.childrenCount > 0 &&
-    //                                 data.likesCount > 0 && (
-    //                                     <div className="h-1 w-1 rounded-full bg-neutral-600" />
-    //                                 )}
-
-    //                             {data.likesCount > 0 && (
-    //                                 <div className=" text-neutral-600">
-    //                                     {likesCount}{" "}
-    //                                     {data.likesCount === 1
-    //                                         ? "like"
-    //                                         : "likes"}
-    //                                 </div>
-    //                             )}
-
-    //                             {data.childrenCount > 0 ||
-    //                             (data.likesCount > 0 &&
-    //                                 data.communityId &&
-    //                                 data.community?.name) ? (
-    //                                 <div className="h-1 w-1 rounded-full bg-neutral-600" />
-    //                             ) : null}
-
-    //                             {!data.text &&
-    //                             data.communityId &&
-    //                             data.community?.name ? (
-    //                                 <>
-    //                                     <div
-    //                                         className="text-neutral-600 hover:text-neutral-500"
-    //                                         onClick={() => {
-    //                                             redirect(
-    //                                                 `/c/${data.community?.name}`,
-    //                                             );
-    //                                         }}
-    //                                     >
-    //                                         /c/{data.community?.name}
-    //                                     </div>
-    //                                 </>
-    //                             ) : null}
-
-    //                             {data.childrenCount > 0 ||
-    //                             data.likesCount > 0 ||
-    //                             (data.communityId && data.community?.name) ? (
-    //                                 <div className="h-1 w-1 rounded-full bg-neutral-600" />
-    //                             ) : null}
-
-    //                             <Timestamp time={data.createdAt} />
-    //                         </div>
-    //                     </>
-    //                 )}
-    //             </div>
-    //         </Link>
-    //     </>
-    // );
-
+    const likesCount = nFormatter(data.likesCount, 1);
+    const childrenCount = nFormatter(data.childrenCount, 1);
     return (
         <>
-            <div>hello</div>
+            <Link href={`/p/${data.id}`} className={mainClass}>
+                <div className="flex flex-col items-center justify-between">
+                    <UserAvatar
+                        user={{
+                            name: data.author.name!,
+                            image: data.author.image!,
+                        }}
+                    />
+
+                    <div className="relative w-0.5 grow bg-neutral-800" />
+                    {comment || parent ? null : (
+                        <Others others={data.children} />
+                    )}
+                </div>
+
+                <div className="w-full space-y-1">
+                    <div className="flex w-full items-center justify-between">
+                        <NameLink author={data.author} />
+                        {comment ? null : (
+                            <div className="flex items-center space-x-2">
+                                <MoreMenu
+                                    name={data.author.name!}
+                                    id={data.id}
+                                    author={data.author.id}
+                                />
+                            </div>
+                        )}
+                    </div>
+                    {!data.text && data.communityId ? (
+                        <div
+                            style={{ overflow: "clip" }}
+                            className={`relative max-h-40 text-sm ${
+                                comment ? "w-80" : "w-full"
+                            }`}
+                        >
+                            {/* <Viewer content={data.content} /> */}
+
+                            <div className="from-background absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t to-transparent" />
+                        </div>
+                    ) : (
+                        <div
+                            className={`text-left text-base/relaxed ${
+                                comment && "pb-3"
+                            }`}
+                        >
+                            {data.text}
+                        </div>
+                    )}
+
+                    {comment ? null : data.images?.length > 0 ? (
+                        <div
+                            className={`grid ${
+                                data.images.length >= 2 ? "grid-cols-2" : ""
+                            } gap-2 pt-4 `}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                            }}
+                        >
+                            <ImageComponent images={data.images} />
+                        </div>
+                    ) : null}
+
+                    {comment ? null : (
+                        <>
+                            <Controls
+                                data={data}
+                                single={single}
+                                queryKey={queryKey}
+                            />
+
+                            <div className="text-muted-foreground flex items-center space-x-2 ">
+                                {data.childrenCount > 0 && (
+                                    <div className="text-muted-foreground ">
+                                        {childrenCount}{" "}
+                                        {data.childrenCount === 1
+                                            ? "reply"
+                                            : "replies"}
+                                    </div>
+                                )}
+
+                                {data.childrenCount > 0 &&
+                                    data.likesCount > 0 && (
+                                        <div className="text-muted-foreground h-1 w-1 rounded-full " />
+                                    )}
+
+                                {data.likesCount > 0 && (
+                                    <div className=" text-muted-foreground ">
+                                        {likesCount}{" "}
+                                        {data.likesCount === 1
+                                            ? "like"
+                                            : "likes"}
+                                    </div>
+                                )}
+
+                                {data.childrenCount > 0 ||
+                                (data.likesCount > 0 &&
+                                    data.communityId &&
+                                    data.community?.name) ? (
+                                    <div className="text-muted-foreground h-1 w-1 rounded-full" />
+                                ) : null}
+
+                                {!data.text &&
+                                data.communityId &&
+                                data.community?.name ? (
+                                    <>
+                                        <div
+                                            className="text-muted-foreground hover:text-foreground"
+                                            onClick={() => {
+                                                redirect(
+                                                    `/c/${data.community?.name}`,
+                                                );
+                                            }}
+                                        >
+                                            /c/{data.community?.name}
+                                        </div>
+                                    </>
+                                ) : null}
+
+                                {data.childrenCount > 0 ||
+                                data.likesCount > 0 ||
+                                (data.communityId && data.community?.name) ? (
+                                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                                ) : null}
+
+                                <Timestamp time={data.createdAt} />
+                            </div>
+                        </>
+                    )}
+                </div>
+            </Link>
         </>
     );
 }
