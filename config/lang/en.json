@@ -204,6 +204,25 @@
                     "like": "Like Post",
                     "unlike": "Unlike Post"
                 }
+            },
+            "create": {
+                "modal": {
+                    "button": "Create Post",
+                    "title": "New Post"
+                },
+                "validation": {
+                    "content_min": "Comment must be at least 1 characters long",
+                    "content_max": "Comment cannot be longer than 250 characters"
+                },
+                "form": {
+                    "me": "Me",
+                    "textarea": {
+                        "label": "Post Content",
+                        "placeholder": "Start a post..."
+                    },
+                    "attach": "Attach Images",
+                    "post": "Post"
+                }
             }
         },
         "comments": {
@@ -219,7 +238,7 @@
                     "placeholder": "Reply to {author}..."
                 },
                 "attach": "Attach Images",
-                "post": "Post"
+                "post": "Reply"
             }
         }
     },
@@ -240,6 +259,7 @@
         "404": {
             "heading": "Page not found",
             "subheading": "The page you are looking for does not exist.",
+            "user_not_found": "User not found.",
             "cta": "Go back home"
         },
         "500": {
@@ -329,6 +349,9 @@
                 "reply": {
                     "description": "Your reply was not published. Please try again."
                 },
+                "create": {
+                    "description": "Your post was not published. Please try again."
+                },
                 "not_found": "Post not found",
                 "missing_id": "Post not found",
                 "reported": "You have already reported this post.",
@@ -336,7 +359,6 @@
                 "unlike": "You have not liked the post."
             }
         },
-
         "upload": {
             "file_size": {
                 "title": "File exceeded the size limit of 8MB",

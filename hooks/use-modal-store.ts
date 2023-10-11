@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import { create } from "zustand";
 
 export type ModalType =
@@ -5,12 +6,14 @@ export type ModalType =
     | "editProfile"
     | "messageFile"
     | "deleteMessage"
-    | "imageModal";
+    | "imageModal"
+    | "createPost";
 
 interface ModalData {
     apiUrl?: string;
     query?: Record<string, any>;
     imageUrl?: string;
+    user?: Pick<User, "name" | "image" | "email" | "username" | "id">;
 }
 
 interface ModalStore {

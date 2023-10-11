@@ -19,23 +19,27 @@ import {
 
 import { CreatePost } from "./create-post";
 import { useTranslations } from "next-intl";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface User extends NextAuthUser {
     username?: string | null;
 }
 
 interface PostModal {
-    user: Pick<User, "name" | "image" | "email" | "username" | "id">;
+    // user: Pick<User, "name" | "image" | "email" | "username" | "id">;
 }
 
-export function PostModal({ user }: PostModal) {
-    const [open, setOpen] = useState(false);
+export function PostModal({}: PostModal) {
+    const { isOpen, onClose, type, data } = useModal();
+    const isModalOpen = isOpen && type === "createPost";
+    const { user } = data;
+    const [open, setOpen] = useState<boolean>(isModalOpen);
 
     const t = useTranslations("root.posts.create.modal");
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
+            {/* <DialogTrigger asChild>
                 <div>
                     <Edit className="h-6 w-6 cursor-pointer text-neutral-600 hover:text-current md:hidden" />
                     <div className="hidden md:block">
@@ -48,13 +52,13 @@ export function PostModal({ user }: PostModal) {
                         </Button>
                     </div>
                 </div>
-            </DialogTrigger>
+            </DialogTrigger> */}
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-3">{t("title")}</DialogTitle>
                 </DialogHeader>
 
-                <CreatePost user={user} setOpen={setOpen} />
+                <CreatePost user={user!} setOpen={setOpen} />
             </DialogContent>
         </Dialog>
     );
