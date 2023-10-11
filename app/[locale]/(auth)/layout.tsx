@@ -21,8 +21,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         <div className="grid min-h-screen grid-cols-1 overflow-hidden md:grid-cols-3 lg:grid-cols-2">
             <AspectRatio ratio={16 / 9}>
                 <Image
-                    src={translate("imageSrc")}
-                    alt={translate("imageAlt")}
+                    src={translate("image_src")}
+                    alt={translate("image_alt")}
                     fill
                     className="absolute inset-0 object-cover"
                     priority
@@ -39,9 +39,9 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
                 <div className="absolute bottom-6 left-5 z-20 mt-auto hidden text-white sm:block">
                     <blockquote className="space-y-2 border-l-2 pl-6 italic">
-                        <p className="text-lg">{translate("quoteText")}</p>
-                        <footer key="quote-author-footer" className="text-sm">
-                            {translate("quoteAuthor")}
+                        <p className="text-lg">{translate("quote_text")}</p>
+                        <footer className="text-sm">
+                            {translate("quote_author")}
                         </footer>
                     </blockquote>
                 </div>
