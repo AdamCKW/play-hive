@@ -219,7 +219,9 @@ export function CreateComment({
                         <div className="mt-2 w-0.5 grow rounded-full bg-neutral-800" />
                     </div>
                     <div className="w-full">
-                        <div className="text-left font-semibold">Me</div>
+                        <div className="text-left font-semibold">
+                            {tForm("me")}
+                        </div>
                         <FormField
                             control={form.control}
                             name="content"
