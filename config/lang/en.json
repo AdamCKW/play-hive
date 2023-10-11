@@ -52,7 +52,7 @@
         "light": "Light",
         "dark": "Dark",
         "blue": "Dark: Blue",
-        "green": "Dark: Neon Green",
+        "neon-green": "Dark: Neon Green",
         "yellow": "Dark: Yellow",
         "purple": "Dark: Purple",
         "system": "System",
