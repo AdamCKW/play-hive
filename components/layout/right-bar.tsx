@@ -53,7 +53,7 @@ function Items({
     return (
         <div className={cn("pb-12", className)} {...props}>
             <div className="space-y-4 py-4">
-                <footer className="space-x-2 px-8">
+                {/* <footer className="space-x-2 px-8">
                     {RightBarItems.map((item, index) => (
                         <Link
                             key={`${item.title}-${index}`}
@@ -69,7 +69,7 @@ function Items({
                     <span className="text-muted-foreground text-sm">
                         {siteConfig.copyright}
                     </span>
-                </footer>
+                </footer> */}
             </div>
         </div>
     );
