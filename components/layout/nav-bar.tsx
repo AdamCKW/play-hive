@@ -25,13 +25,13 @@ export async function NavBar({ className }: NavBarProps) {
                 className,
             )}
         >
-            <div className="flex h-16 items-center space-x-4 px-12 sm:justify-between sm:space-x-0">
+            <div className="flex h-16 items-center justify-between space-x-4 px-5 sm:space-x-0 md:px-12">
                 <Link
                     href={linksConfig.home.href}
                     className="flex items-center space-x-2"
                 >
                     <Icons.logo className="h-8 w-8" />
-                    <span className="inline-block text-xl font-bold">
+                    <span className="inline-block text-base font-bold md:text-xl">
                         {siteConfig.name}
                     </span>
                 </Link>
