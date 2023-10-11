@@ -66,6 +66,8 @@ export function UserRegisterForm({
     async function onSubmit(values: RegisterRequest) {
         setIsLoading(true);
 
+        /* The commented code block is an asynchronous function that handles the form submission. It
+        makes a POST request to the "/api/auth/register" endpoint with the form values. */
         try {
             axios
                 .post("/api/auth/register", values)
@@ -73,6 +75,7 @@ export function UserRegisterForm({
                     React.startTransition(() => {
                         router.push(linksConfig.signIn.href);
                     });
+                    setIsLoading(false);
                     toast({
                         title: tError("successRegister.title"),
                         description: tError("successRegister.description"),
@@ -86,13 +89,12 @@ export function UserRegisterForm({
                     });
                 });
         } catch (error) {
+            setIsLoading(false);
             toast({
                 title: tError("heading.500"),
                 description: tError("subheading.common"),
                 variant: "destructive",
             });
-        } finally {
-            setIsLoading(false);
         }
     }
 
@@ -201,19 +203,6 @@ export function UserRegisterForm({
                             />
                         </div>
 
-                        {/* <Button
-                            type="submit"
-                            disabled={isLoading}
-                            className="capitalize"
-                        >
-                            {isLoading && (
-                                <>
-                                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-                                    <span className="sr-only">Loading</span>
-                                </>
-                            )}
-                            {tForm("signUp")}
-                        </Button> */}
                         <Button isLoading={isLoading}>{tForm("signUp")}</Button>
                     </div>
                 </form>
