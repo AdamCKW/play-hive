@@ -1,8 +1,20 @@
 {
     "metadata": {
-        "reset-password": {
+        "login": {
+            "title": "Login",
+            "description": "Enter your details below to sign in to your account"
+        },
+        "register": {
+            "title": "Register",
+            "description": "Enter your details below to create your account"
+        },
+        "forgot_password": {
             "title": "Forgot Password",
             "description": "Enter your email to reset your password"
+        },
+        "new_password": {
+            "title": "New Password",
+            "description": "Enter your new password"
         }
     },
     "intl": {
@@ -15,7 +27,6 @@
             "flag": "🇲🇾"
         }
     },
-
     "nav": {
         "home": "Home",
         "sign_in": "Sign In",
@@ -40,28 +51,27 @@
     "theme": {
         "light": "Light",
         "dark": "Dark",
-        "blue": "Blue",
-        "green": "Neon Green",
-        "yellow": "Yellow",
-        "purple": "Purple",
+        "blue": "Dark: Blue",
+        "green": "Dark: Neon Green",
+        "yellow": "Dark: Yellow",
+        "purple": "Dark: Purple",
         "system": "System",
         "toggle": "Toggle theme"
     },
-
     "auth": {
         "layout": {
-            "imageSrc": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80",
-            "imageAlt": "Image of building",
-            "quoteText": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before. Highly recommended!",
-            "quoteAuthor": "Sofia Davis"
+            "image_src": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80",
+            "image_alt": "Image of building",
+            "quote_text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before. Highly recommended!",
+            "quote_author": "Sofia Davis"
         },
         "login": {
             "page": {
                 "heading": "Welcome back",
                 "subheading": "Enter your details below to sign in to your account",
-                "continueWith": "Or continue with",
-                "newTo": "New to {siteName}?",
-                "forgotPassword": "Forgot password?"
+                "continue_with": "Or continue with",
+                "new_to": "New to {siteName}?",
+                "forgot_password": "Forgot password?"
             },
             "validation": {
                 "username_required": "Username or email must be at least 2 characters longer",
@@ -88,8 +98,9 @@
             "page": {
                 "heading": "Create an account",
                 "subheading": "Enter your details below to create your account",
-                "continueWith": "Or continue with",
-                "signIn": "Already have an account? Sign in",
+                "continue_with": "Or continue with",
+                "already_have": "Already have an account?",
+                "sign_in": "Sign in",
                 "agreeing": "By signing up, you agree to our",
                 "terms": "Terms of Service",
                 "and": "and",
@@ -119,7 +130,7 @@
                 },
                 "password": {
                     "label": "Password",
-                    "placeholder": "Enter your password"
+                    "placeholder": "************"
                 },
                 "srPassword": {
                     "show": "Show password",
@@ -128,7 +139,7 @@
                 "signUp": "Sign up"
             }
         },
-        "reset": {
+        "forgot_password": {
             "page": {
                 "title": "Reset password",
                 "description": "Enter your email address and we will send you a link"
@@ -147,7 +158,7 @@
                 "reset": "Continue"
             }
         },
-        "newPassword": {
+        "new_password": {
             "page": {
                 "title": "Reset password",
                 "description": "Enter your new password"
@@ -166,6 +177,52 @@
             }
         }
     },
+    "root": {
+        "image": {
+            "alt": "Image",
+            "enlarged_alt": "Enlarged Image",
+            "close": "Close"
+        },
+        "posts": {
+            "empty": "No posts yet.",
+            "no_more": "There is no more posts.",
+            "error": "Something went wrong. Please try again later.",
+            "card": {
+                "more_menu": {
+                    "delete": "Delete",
+                    "edit": "Edit",
+                    "report": "Report"
+                },
+                "share": {
+                    "text": "Link to {name}'s post at {siteName}",
+                    "share": "Share post",
+                    "copy": "Copy Link",
+                    "copied": "Link copied to clipboard!",
+                    "share_via": "Share Via..."
+                },
+                "like": {
+                    "like": "Like Post",
+                    "unlike": "Unlike Post"
+                }
+            }
+        },
+        "comments": {
+            "heading": "Reply",
+            "validation": {
+                "content_min": "Comment must be at least 1 characters long",
+                "content_max": "Comment cannot be longer than 250 characters"
+            },
+            "form": {
+                "me": "Me",
+                "textarea": {
+                    "label": "Reply To Post",
+                    "placeholder": "Reply to {author}..."
+                },
+                "attach": "Attach Images",
+                "post": "Post"
+            }
+        }
+    },
     "verification": {
         "success": {
             "title": "Success! Redirecting to login page in {count}s",
@@ -175,15 +232,10 @@
             "title": "Something went wrong"
         }
     },
-    "error": {
-        "heading": {
-            "404": "Page not found",
-            "500": "Something went wrong"
-        },
-        "subheading": {
-            "404": "The page you are looking for does not exist.",
-            "500": "Internal Server Error",
-            "common": "Oops! An error occurred. Please try again later."
+    "toast": {
+        "401": {
+            "heading": "Something went wrong",
+            "unauthorized": "You are not authorized to perform this action."
         },
         "404": {
             "heading": "Page not found",
@@ -192,37 +244,108 @@
         },
         "500": {
             "heading": "Something went wrong",
-            "subheading": "We are working on fixing this issue. Please try again later.",
+            "subheading": "Oops! An error occurred. Please try again later.",
+            "alt_subheading": "We are working on fixing this issue. Please try again later.",
+            "internal_error": "Internal server error. Please try again later.",
             "cta": "Go back home"
         },
-        "successRegister": {
-            "title": "Registration successful",
-            "description": "You have successfully registered. Please check your email to verify your account."
+        "login": {
+            "failed": {
+                "invalid": "Invalid credentials, please check your username and password.",
+                "unverified": "Your account is not verified. Please check your email to verify your account.",
+                "empty": "Please enter your credentials."
+            }
         },
-        "failedRegister": {
-            "title": "Something went wrong",
-            "emailExist": "Email already exists. Please try again with a different email.",
-            "usernameExist": "Username already exists. Please try again with a different username."
+        "register": {
+            "success": {
+                "title": "Registration successful",
+                "description": "You have successfully registered. Please check your email to verify your account."
+            },
+            "failed": {
+                "title": "Something went wrong",
+                "email_exist": "Email already exists. Please try again with a different email.",
+                "username_exist": "Username already exists. Please try again with a different username."
+            }
         },
         "reset": {
-            "title_success": "Success",
-            "description_success": "An email has been sent to your email address. Please check your email to reset your password.",
-            "reset_success": "Your password has been reset successfully. You can now login with your new password.",
-            "title_failed": "Something went wrong",
-            "emailNotExist": "Email does not exist. Please check your email.",
-            "params_empty": "Params cannot be empty. Please contact support.",
-            "user_not_found": "User not found.",
-            "invalid_token": "Invalid token. Please try again later."
+            "success": {
+                "title": "Success",
+                "description": "An email has been sent to your email address. Please check your email to reset your password.",
+                "updated": "Your password has been reset successfully. You can now login with your new password."
+            },
+            "failed": {
+                "title": "Something went wrong",
+                "email_not_exist": "Email does not exist. Please check your email.",
+                "params_empty": "Params cannot be empty. Please contact support.",
+                "user_not_found": "User not found.",
+                "invalid_token": "Invalid token. Please try again later."
+            }
         },
         "resend": {
-            "title_success": "Success",
-            "description_success": "An email has been sent to your email address. Please check your email to verify your account.",
-            "title_failed": "Something went wrong",
-            "not_found": "User not found. Please check your credentials.",
-            "verified": "Your account is already verified."
+            "text": "Resend verification",
+            "alt_text": "Resend verification email",
+            "success": {
+                "title": "Success",
+                "description": "An email has been sent to your email address. Please check your email to verify your account."
+            },
+            "failed": {
+                "title": "Something went wrong",
+                "not_found": "User not found. Please check your credentials.",
+                "verified": "Your account is already verified."
+            }
         },
-        "invalidCredentials": "Invalid credentials, Please check your username and password.",
-        "emptyCredentials": "Please enter your credentials.",
-        "notVerified": "Your account is not verified. Please check your email to verify your account."
+        "post": {
+            "success": {
+                "delete": {
+                    "title": "Post deleted successfully",
+                    "description": "Your post has been deleted. You can no longer view it."
+                },
+                "create": {
+                    "title": "Post created successfully",
+                    "description": "Your post has been created. You can now view it."
+                },
+                "update": {
+                    "title": "Post updated successfully",
+                    "description": "Your post has been updated. You can now view it."
+                },
+                "like": {
+                    "title": "Post liked successfully",
+                    "description": "You have liked this post."
+                },
+                "unlike": {
+                    "title": "Post unlike successfully",
+                    "description": "You have unlike this post."
+                },
+                "report": {
+                    "title": "Post reported successfully",
+                    "description": "Your report has been submitted. We will review it and take action if necessary."
+                },
+                "reply": {
+                    "title": "Replied successfully",
+                    "description": "You have replied to the post. You can now view it."
+                }
+            },
+            "failed": {
+                "reply": {
+                    "description": "Your reply was not published. Please try again."
+                },
+                "not_found": "Post not found",
+                "missing_id": "Post not found",
+                "reported": "You have already reported this post.",
+                "liked": "You have already liked this post.",
+                "unlike": "You have not liked the post."
+            }
+        },
+
+        "upload": {
+            "file_size": {
+                "title": "File exceeded the size limit of 8MB",
+                "description": "Please select files that are 8MB or less."
+            },
+            "file_limit": {
+                "title": "Files exceeded the limit of 4 files",
+                "description": "Please select 4 files or less."
+            }
+        }
     }
 }
