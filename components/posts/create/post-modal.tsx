@@ -33,12 +33,11 @@ export function PostModal({}: PostModal) {
     const { isOpen, onClose, type, data } = useModal();
     const isModalOpen = isOpen && type === "createPost";
     const { user } = data;
-    const [open, setOpen] = useState<boolean>(isModalOpen);
 
     const t = useTranslations("root.posts.create.modal");
 
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog open={isModalOpen} onOpenChange={onClose}>
             {/* <DialogTrigger asChild>
                 <div>
                     <Edit className="h-6 w-6 cursor-pointer text-neutral-600 hover:text-current md:hidden" />
@@ -58,7 +57,7 @@ export function PostModal({}: PostModal) {
                     <DialogTitle className="mb-3">{t("title")}</DialogTitle>
                 </DialogHeader>
 
-                <CreatePost user={user!} setOpen={setOpen} />
+                <CreatePost user={user!} setOpen={onClose} />
             </DialogContent>
         </Dialog>
     );

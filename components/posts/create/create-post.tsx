@@ -44,9 +44,9 @@ export function CreatePost({ setOpen, user }: CreatePostProps) {
     const session = useSession();
     const [files, setFiles] = useState<TFile[]>([]);
 
-    const tValidation = useTranslations("root.posts.validation");
+    const tValidation = useTranslations("root.posts.create.validation");
     const tToast = useTranslations("toast");
-    const tForm = useTranslations("root.comments.form");
+    const tForm = useTranslations("root.posts.create.form");
 
     const validationMessages: Parameters<typeof PostValidation> = [
         tValidation("content_min"),
