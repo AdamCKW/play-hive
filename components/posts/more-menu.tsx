@@ -32,7 +32,7 @@ export default function MoreMenu({
     mainPage,
 }: MoreMenuProps) {
     const tToast = useTranslations("toast");
-    const tPost = useTranslations("root.posts.card.more-menu");
+    const tPost = useTranslations("root.posts.card.more_menu");
 
     const { data: session } = useSession();
     const pathname = usePathname();
@@ -94,7 +94,7 @@ export default function MoreMenu({
     };
 
     return (
-        <DropdownMenu open={open}>
+        <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger
                 onClick={(e) => {
                     e.stopPropagation();

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Prisma } from "@prisma/client";
 
 import { IPost } from "@/types/db";
-import { nFormatter } from "@/lib/utils";
+import { cn, nFormatter } from "@/lib/utils";
 import { UserAvatar } from "../user-avatar";
 import NameLink from "./name-link";
 import Others from "./others";
@@ -39,6 +39,23 @@ export default function PostCard({
 
     const likesCount = nFormatter(data.likesCount, 1);
     const childrenCount = nFormatter(data.childrenCount, 1);
+
+    if (data.deleted === true) {
+        return (
+            <div className="flex space-x-2 border-b px-3 py-4 dark:border-neutral-900">
+                <div className="w-full space-y-1 ">
+                    <div
+                        className={`text-muted-foreground text-left text-base/relaxed ${
+                            comment && "pb-3"
+                        }`}
+                    >
+                        Deleted Post
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <>
             <Link href={`/p/${data.id}`} className={mainClass}>
