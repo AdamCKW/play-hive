@@ -31,14 +31,14 @@ export async function POST(req: NextRequest) {
         });
 
         if (dbUsername) {
-            return new NextResponse("failedRegister.usernameExist", {
+            return new NextResponse("register.failed.username_exist", {
                 status: 409,
             });
         }
 
         const dbEmail = await db.user.findUnique({ where: { email } });
         if (dbEmail) {
-            return new NextResponse("failedRegister.emailExist", {
+            return new NextResponse("register.failed.email_exist", {
                 status: 409,
             });
         }
@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
 
         console.log("POST /api/auth/register/", error);
 
-        return new NextResponse("subheading.500", { status: 500 });
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }
 
@@ -148,6 +148,6 @@ export async function PATCH(req: NextRequest) {
 
         console.log("PATCH /api/auth/register", error);
 
-        return new NextResponse("subheading.500", { status: 500 });
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }

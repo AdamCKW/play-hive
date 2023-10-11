@@ -38,7 +38,7 @@ export function UserRegisterForm({
 
     const tForm = useTranslations("auth.register.form");
     const tValidation = useTranslations("auth.register.validation");
-    const tError = useTranslations("error");
+    const tToast = useTranslations("toast");
 
     const validationMessages: Parameters<typeof RegisterValidation> = [
         tValidation("username_required"),
@@ -65,9 +65,6 @@ export function UserRegisterForm({
 
     async function onSubmit(values: RegisterRequest) {
         setIsLoading(true);
-
-        /* The commented code block is an asynchronous function that handles the form submission. It
-        makes a POST request to the "/api/auth/register" endpoint with the form values. */
         try {
             axios
                 .post("/api/auth/register", values)
@@ -77,22 +74,23 @@ export function UserRegisterForm({
                     });
                     setIsLoading(false);
                     toast({
-                        title: tError("successRegister.title"),
-                        description: tError("successRegister.description"),
+                        title: tToast("register.success.title"),
+                        description: tToast("register.success.description"),
                     });
                 })
                 .catch((error) => {
+                    setIsLoading(false);
                     toast({
-                        title: tError("failedRegister.title"),
-                        description: tError(error.response.data),
+                        title: tToast("register.failed.title"),
+                        description: tToast(error.response.data),
                         variant: "destructive",
                     });
                 });
         } catch (error) {
             setIsLoading(false);
             toast({
-                title: tError("heading.500"),
-                description: tError("subheading.common"),
+                title: tToast("500.heading"),
+                description: tToast("500.subheading"),
                 variant: "destructive",
             });
         }

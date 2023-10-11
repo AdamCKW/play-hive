@@ -18,11 +18,19 @@ import { UserRegisterForm } from "@/components/auth/user-register-form";
 import { Icons } from "@/components/icons";
 import { useTranslations } from "next-intl";
 import { link } from "fs";
+import { ExtendedMetadata } from "@/types";
+import { getTranslator } from "next-intl/server";
 
-export const metadata: Metadata = {
-    title: "Sign Up",
-    description: "Sign Up Page",
-};
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.register");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
 
 export default function RegisterPage() {
     const translate = useTranslations("auth.register.page");
@@ -48,7 +56,7 @@ export default function RegisterPage() {
                             </div>
                             <div className="relative flex justify-center text-xs uppercase">
                                 <span className="bg-background text-muted-foreground px-2">
-                                    {translate("continueWith")}
+                                    {translate("continue_with")}
                                 </span>
                             </div>
                         </div>
@@ -61,12 +69,15 @@ export default function RegisterPage() {
                                     ? "#"
                                     : linksConfig.signIn.href
                             }
-                            className="text-primary text-sm underline-offset-4 transition-colors hover:underline"
+                            className="text-muted-foreground hover:text-primary group text-sm"
                         >
-                            {translate("signIn")}
+                            {translate("already_have")}{" "}
+                            <span className="text-primary underline-offset-4 group-hover:underline">
+                                {translate("sign_in")}
+                            </span>
                         </Link>
 
-                        <p className="text-muted-foreground px-8 text-center text-sm">
+                        <p className="text-muted-foreground mt-4 px-8 text-center text-sm">
                             {translate("agreeing")}{" "}
                             <Link
                                 href={
