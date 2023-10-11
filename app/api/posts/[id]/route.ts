@@ -11,11 +11,11 @@ export async function DELETE(
         const { id } = params;
 
         if (!session) {
-            return new NextResponse("subheading.unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
         if (!id) {
-            return new NextResponse("post.missingId", { status: 400 });
+            return new NextResponse("post.failed.missing_id", { status: 400 });
         }
 
         const post = await db.post.findUnique({
@@ -24,11 +24,11 @@ export async function DELETE(
         });
 
         if (!post) {
-            return new NextResponse("postNotFound", { status: 404 });
+            return new NextResponse("post.failed.not_found", { status: 404 });
         }
 
         if (post.authorId !== session.user.id) {
-            return new NextResponse("subheading.unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
         await db.post.update({
@@ -43,7 +43,8 @@ export async function DELETE(
 
         return new NextResponse("Success", { status: 200 });
     } catch (error) {
-        console.log("Error in DELETE /api/posts/[id]", error);
-        return new NextResponse("subheading.500", { status: 500 });
+        console.log("Error in DELETE /api/posts/[id]: ", error);
+
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }
