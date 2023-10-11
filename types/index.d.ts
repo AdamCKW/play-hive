@@ -18,6 +18,8 @@ export type NavItem = {
     icon?: keyof typeof Icons;
 };
 
+export type ExtendedMetadata = Metadata & { params: { locale: string } };
+
 // export type FeedConfig = {
 //     navLinks: NavItem[];
 //     userNav: NavItem[];
