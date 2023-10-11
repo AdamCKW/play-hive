@@ -4,6 +4,15 @@ import { twMerge } from "tailwind-merge";
 import locale from "date-fns/locale/en-US";
 import crypto, { randomBytes } from "crypto";
 
+import {
+    RegExpMatcher,
+    TextCensor,
+    englishDataset,
+    englishRecommendedTransformers,
+    CensorContext,
+    //@ts-ignore
+} from "obscenity";
+
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
@@ -186,4 +195,23 @@ export const rgbDataURL = (r: number, g: number, b: number) => {
     return `data:image/gif;base64,R0lGODlhAQABAPAA${
         triplet(0, r, g) + triplet(b, 255, 255)
     }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
+};
+
+const matcher = new RegExpMatcher({
+    ...englishDataset.build(),
+    ...englishRecommendedTransformers,
+});
+
+export const cleanUp = (text: string | JSON) => {
+    const asteriskStrategy = (ctx: CensorContext) =>
+        "*".repeat(ctx.matchLength);
+
+    const censor = new TextCensor().setStrategy(asteriskStrategy);
+    const matches = matcher.getAllMatches(text);
+
+    try {
+        return censor.applyTo(text, matches);
+    } catch {
+        return text;
+    }
 };
