@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { formatDistanceToNowStrict } from "date-fns";
 import { twMerge } from "tailwind-merge";
 import locale from "date-fns/locale/en-US";
-import { randomBytes } from "crypto";
+import crypto, { randomBytes } from "crypto";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -104,6 +104,32 @@ export const removeHtmlTags = (input: string) => {
     return input.replace(/<[^>]*>/g, "");
 };
 
+export const encryptId = (id: string) => {
+    const cipher = crypto.createCipheriv(
+        process.env.ENCRYPTION_ALGORITHM!,
+        process.env.ENCRYPTION_KEY!,
+        process.env.ENCRYPTION_IV!,
+    );
+
+    const encryptedId = cipher.update(id, "utf-8", "hex");
+
+    return encryptedId;
+};
+
+export const decryptId = (encryptedId: string) => {
+    const decipher = crypto.createDecipheriv(
+        process.env.ENCRYPTION_ALGORITHM!,
+        process.env.ENCRYPTION_KEY!,
+        process.env.ENCRYPTION_IV!,
+    );
+
+    let decryptedId = decipher.update(encryptedId, "utf-8", "hex");
+
+    decryptedId += decipher.final("utf8");
+
+    return decryptedId;
+};
+
 export const splitDate = (date: string) => {
     const dateObject = new Date(date);
 
@@ -123,6 +149,28 @@ export const splitDate = (date: string) => {
     const year = dateComponents[2];
 
     return { monthDay, year };
+};
+
+export const nFormatter = (num: number, digits: number) => {
+    const lookup = [
+        { value: 1, symbol: "" },
+        { value: 1e3, symbol: "k" },
+        { value: 1e6, symbol: "M" },
+        { value: 1e9, symbol: "G" },
+        { value: 1e12, symbol: "T" },
+        { value: 1e15, symbol: "P" },
+        { value: 1e18, symbol: "E" },
+    ];
+    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    var item = lookup
+        .slice()
+        .reverse()
+        .find(function (item) {
+            return num >= item.value;
+        });
+    return item
+        ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
+        : "0";
 };
 
 export const rgbDataURL = (r: number, g: number, b: number) => {
