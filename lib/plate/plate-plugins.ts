@@ -131,7 +131,7 @@ import { withPlaceholders } from "@/components/plate-ui/placeholder";
 import { withDraggables } from "@/components/plate-ui/with-draggables";
 import { EmojiCombobox } from "@/components/plate-ui/emoji-combobox";
 
-const plugins = createPlugins(
+export const plugins = createPlugins(
     [
         createParagraphPlugin(),
         createHeadingPlugin(),
