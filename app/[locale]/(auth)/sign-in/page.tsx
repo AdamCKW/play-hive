@@ -35,7 +35,7 @@ export default async function LoginPage({
     const session = await getAuthSession();
     const translate = await getTranslator(locale, "auth.login.page");
 
-    if (session?.user) redirect("/");
+    // if (session?.user) redirect("/");
 
     return (
         <section className="container grid max-w-lg items-center gap-8 pb-8 pt-6 md:py-8">
