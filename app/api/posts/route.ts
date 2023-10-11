@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { transformObject } from "@/lib/utils";
+import { PostValidation } from "@/lib/validators/create-post";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
 
@@ -9,7 +10,7 @@ export async function GET(req: NextRequest) {
         const url = new URL(req.url);
         const session = await getAuthSession();
         if (!session) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
         const user = await db.user.findUnique({
@@ -20,7 +21,7 @@ export async function GET(req: NextRequest) {
         });
 
         if (!user) {
-            return new NextResponse("User not found", { status: 404 });
+            return new NextResponse("404.user_not_found", { status: 404 });
         }
 
         const followedUserIds: string[] = user.following.map((user) => user.id);
@@ -98,14 +99,80 @@ export async function GET(req: NextRequest) {
 
         const posts = response.map(transformObject);
 
-        return NextResponse.json(posts);
+        return NextResponse.json(posts, { status: 200 });
     } catch (error) {
         if (error instanceof z.ZodError) {
             return new NextResponse(error.message, { status: 400 });
         }
 
-        console.log("Error in GET /api/posts", error);
+        console.log("Error in GET /api/posts:", error);
 
-        return new NextResponse("Internal Server Error", { status: 500 });
+        return new NextResponse("500.internal_error", { status: 500 });
+    }
+}
+
+export async function POST(req: NextRequest) {
+    try {
+        const session = await getAuthSession();
+
+        if (!session?.user)
+            return new NextResponse("401.unauthorized", { status: 401 });
+
+        const body = await req.json();
+
+        const { content, files } = PostValidation().parse(body);
+
+        const createdPost = await db.post.create({
+            data: {
+                text: content,
+                author: {
+                    connect: {
+                        id: session.user.id,
+                    },
+                },
+            },
+        });
+
+        if (files && createdPost) {
+            const imageRecords = await Promise.all(
+                files.map(async (url: string) => {
+                    const createdImage = await db.images.create({
+                        data: {
+                            url,
+                            post: {
+                                connect: {
+                                    id: createdPost.id,
+                                },
+                            },
+                        },
+                    });
+
+                    return createdImage.id; // return the id of the created image
+                }),
+            );
+
+            const updatePost = await db.post.update({
+                where: {
+                    id: createdPost.id,
+                },
+                data: {
+                    images: {
+                        connect: imageRecords.map((record) => ({
+                            id: record,
+                        })),
+                    },
+                },
+            });
+        }
+
+        return new NextResponse("Success", { status: 201 });
+    } catch (error: any) {
+        if (error instanceof z.ZodError) {
+            return new NextResponse(error.message, { status: 400 });
+        }
+
+        console.log("ERROR in POST /api/posts:", error);
+
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }
