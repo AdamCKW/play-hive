@@ -95,14 +95,9 @@ export default async function RootLayout({
                         "purple",
                     ]}
                 >
-                    <Providers>
-                        <NextIntlClientProvider
-                            locale={locale}
-                            messages={messages}
-                        >
-                            {children}
-                        </NextIntlClientProvider>
-                    </Providers>
+                    <NextIntlClientProvider locale={locale} messages={messages}>
+                        <Providers>{children}</Providers>
+                    </NextIntlClientProvider>
                     <Toaster />
                 </ThemeProvider>
             </body>
