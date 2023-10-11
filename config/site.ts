@@ -119,3 +119,13 @@ export const linksConfig: LinkConfig = {
         disabled: true,
     },
 };
+
+export const themeOptions = [
+    "light",
+    "dark",
+    "blue",
+    "yellow",
+    "neon-green",
+    "purple",
+    "system",
+];
