@@ -40,9 +40,6 @@ export async function GET(req: NextRequest) {
             skip: (parseInt(page) - 1) * parseInt(limit),
             orderBy: {
                 createdAt: "desc",
-                // likes: {
-                //     _count: "desc",
-                // },
             },
             where: {
                 parent: null,
