@@ -5,6 +5,7 @@ import { AspectRatio } from "../ui/aspect-ratio";
 import Image from "next/image";
 import { rgbDataURL } from "@/lib/utils";
 import { useModal } from "@/hooks/use-modal-store";
+import { useTranslations } from "next-intl";
 
 interface ImageComponentProps {
     images: Prisma.ImagesGetPayload<{}>[];
@@ -12,6 +13,8 @@ interface ImageComponentProps {
 
 export default function ImageComponent({ images }: ImageComponentProps) {
     const { onOpen } = useModal();
+
+    const tImage = useTranslations("root.image");
     return (
         <>
             {images.map((image: Prisma.ImagesGetPayload<{}>, index: number) => (
@@ -33,7 +36,7 @@ export default function ImageComponent({ images }: ImageComponentProps) {
                 >
                     <AspectRatio ratio={16 / 9}>
                         <Image
-                            alt="image"
+                            alt={tImage("alt")}
                             fill
                             loading="lazy"
                             placeholder="blur"
