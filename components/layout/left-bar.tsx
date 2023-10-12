@@ -35,7 +35,7 @@ function LeftbarContent({ className, user }: LeftbarContentProps) {
                     </div>
                 </div>
 
-                <footer className="mt-64 space-x-2 px-8">
+                <footer className="space-x-2 px-8">
                     {RightBarItems.map((item, index) => (
                         <Link
                             key={`${item.title}-${index}`}
