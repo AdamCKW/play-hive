@@ -30,6 +30,7 @@ export async function GET(
 
         const response = await db.post.findMany({
             take: parseInt(limit),
+            skip: (parseInt(page) - 1) * parseInt(limit),
             where: {
                 authorId: id,
                 NOT: {
