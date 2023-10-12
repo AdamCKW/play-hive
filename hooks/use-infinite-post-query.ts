@@ -45,6 +45,10 @@ export const useInfinitePostQuery = ({
                 return pages.length + 1;
             },
             initialData,
+            refetchOnMount: true,
+            refetchOnReconnect: true,
+            refetchOnWindowFocus: true,
+            
         },
     );
 };
