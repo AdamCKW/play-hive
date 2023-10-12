@@ -3,15 +3,12 @@ import { db } from "@/lib/db";
 import { NewPasswordValidation } from "@/lib/validators/reset-password";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
-import { decryptId } from "@/lib/utils";
 
 export async function PATCH(
     req: NextRequest,
     { params }: { params: { id: string } },
 ) {
     try {
-        const { id } = params;
-
         const body = await req.json();
 
         if (!id) {
@@ -20,7 +17,7 @@ export async function PATCH(
             });
         }
 
-        const userId = decryptId(id);
+        const userId = params.id;
 
         const user = await db.user.findUnique({
             where: {

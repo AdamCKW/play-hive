@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { FullEditValidation } from "@/lib/validators/edit-profile";
 import z from "zod";
-import { decryptId } from "@/lib/utils";
+
 import { User as UserData } from "@prisma/client";
 
 export async function PATCH(
@@ -18,9 +18,8 @@ export async function PATCH(
         if (!session)
             return new NextResponse("401.unauthorized", { status: 401 });
 
-        const { id } = params;
         const body = await req.json();
-        const userId = decryptId(id);
+        const userId = params.id;
 
         if (session.user.id !== userId)
             return new NextResponse("401.unauthorized", { status: 401 });

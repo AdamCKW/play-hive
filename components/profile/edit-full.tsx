@@ -37,7 +37,6 @@ import {
     FullEditValidation,
 } from "@/lib/validators/edit-profile";
 import { useTranslations } from "next-intl";
-import { encryptId } from "@/lib/utils";
 
 interface EditFullProps {
     user: User;
@@ -86,10 +85,8 @@ export function EditFull({ user }: EditFullProps) {
         setIsLoading(true);
 
         try {
-            const encryptedId = encryptId(user.id);
-
             await axios
-                .patch(`/api/users/${encryptedId}`, values)
+                .patch(`/api/users/${user.id}`, values)
                 .then((response) => {
                     form.reset();
                     setIsLoading(false);

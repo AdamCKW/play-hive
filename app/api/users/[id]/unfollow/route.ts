@@ -5,16 +5,14 @@ import { z } from "zod";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { FollowValidation } from "@/lib/validators/follow";
-import { decryptId } from "@/lib/utils";
 
 export async function PATCH(
     req: NextRequest,
     { params }: { params: { id: string } },
 ) {
     try {
-        const { id } = FollowValidation.parse(params);
+        const { id: followingId } = FollowValidation.parse(params);
         const session = await getAuthSession();
-        const followingId = decryptId(id);
 
         if (!session?.user) {
             return new NextResponse("401.unauthorized", { status: 401 });
@@ -36,7 +34,7 @@ export async function PATCH(
         });
 
         if (!currentUser || !followUserExist) {
-            return new Response("404.user_not_found", { status: 404 });
+            return new NextResponse("404.user_not_found", { status: 404 });
         }
 
         const isFollowing = followUserExist.followedBy.some(
@@ -61,6 +59,11 @@ export async function PATCH(
                 },
             },
         });
+
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
 
         return new NextResponse("Success", { status: 200 });
     } catch (error) {

@@ -31,7 +31,7 @@ import { UploadDropzone } from "@/lib/uploadthing";
 import { AspectRatio } from "../ui/aspect-ratio";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { encryptId } from "@/lib/utils";
+
 import { useTranslations } from "next-intl";
 
 interface EditLimitedProps {
@@ -79,10 +79,8 @@ export default function EditLimited({ user }: EditLimitedProps) {
         setIsLoading(true);
 
         try {
-            const encryptedId = encryptId(user.id);
-
             await axios
-                .patch(`/api/users/${encryptedId}`, values)
+                .patch(`/api/users/${user.id}`, values)
                 .then((response) => {
                     form.reset();
                     setIsLoading(false);

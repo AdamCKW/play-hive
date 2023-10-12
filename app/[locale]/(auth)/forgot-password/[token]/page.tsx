@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { db } from "@/lib/db";
-import { encryptId } from "@/lib/utils";
+
 import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
@@ -61,8 +61,6 @@ export default async function ChangeNewPassword({
         notFound();
     }
 
-    const userId = encryptId(user.id);
-
     return (
         <section className="container grid max-w-lg items-center gap-8 pb-8 pt-6 md:py-8">
             <Card>
@@ -71,7 +69,7 @@ export default async function ChangeNewPassword({
                     <CardDescription>{tPage("description")}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <NewPasswordForm userId={userId} />
+                    <NewPasswordForm userId={user.id} />
                 </CardContent>
             </Card>
         </section>

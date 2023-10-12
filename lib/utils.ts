@@ -3,7 +3,6 @@ import { formatDistanceToNowStrict, format } from "date-fns";
 import { twMerge } from "tailwind-merge";
 import locale from "date-fns/locale/en-US";
 import { randomBytes } from "crypto";
-import Cryptr from "cryptr";
 
 import {
     RegExpMatcher,
@@ -23,10 +22,6 @@ export const getBaseUrl = () => {
     if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
     return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
 };
-
-const cryptr = new Cryptr(process.env.NEXT_PUBLIC_ENCRYPTION_KEY!, {
-    saltLength: 10,
-});
 
 const formatDistanceLocale = {
     lessThanXSeconds: "just now",
@@ -125,18 +120,6 @@ export const transformObject = (obj: any) => {
 
 export const removeHtmlTags = (input: string) => {
     return input.replace(/<[^>]*>/g, "");
-};
-
-export const encryptId = (id: string) => {
-    const encryptedId = cryptr.encrypt(id);
-
-    return encryptedId;
-};
-
-export const decryptId = (encryptedId: string) => {
-    let decryptedId = cryptr.decrypt(encryptedId);
-
-    return decryptedId;
 };
 
 export const splitDate = (date: string) => {
