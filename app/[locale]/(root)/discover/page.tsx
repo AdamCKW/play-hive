@@ -6,8 +6,13 @@ import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { transformObject } from "@/lib/utils";
 import { IPost } from "@/types/db";
 import { getTranslator } from "next-intl/server";
-import DiscoverFeed from "@/components/posts/feeds/discover-feed";
+import { Suspense, lazy } from "react";
+// import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 // import ExploreFeed from "@/components/post/feeds/explore";
+
+const DiscoverFeed = lazy(
+    () => import("@/components/posts/feeds/discover-feed"),
+);
 
 interface DiscoverPageProps {
     params: {
@@ -71,18 +76,20 @@ export default async function DiscoverPage({
 
     return (
         <>
-            {posts.length === 0 ? (
-                <div className="text-muted-foreground mt-4 text-center leading-loose">
-                    {t("empty")}
-                </div>
-            ) : (
-                <div className="2xl:mx-4">
-                    <DiscoverFeed
-                        userId={session?.user.id!}
-                        initialPosts={posts}
-                    />
-                </div>
-            )}
+            <Suspense fallback={<p>Loading...</p>}>
+                {posts.length === 0 ? (
+                    <div className="text-muted-foreground mt-4 text-center leading-loose">
+                        {t("empty")}
+                    </div>
+                ) : (
+                    <div className="2xl:mx-4">
+                        <DiscoverFeed
+                            userId={session?.user.id!}
+                            initialPosts={posts}
+                        />
+                    </div>
+                )}
+            </Suspense>
         </>
     );
 }

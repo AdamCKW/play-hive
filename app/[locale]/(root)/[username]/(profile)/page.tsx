@@ -97,21 +97,20 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
                     {tProfile("replies")}
                 </Link>
             </div>
-
-            {posts.length === 0 ? (
-                <div className="text-muted-foreground mt-4 text-center leading-loose">
-                    {tPost("empty")}
-                </div>
-            ) : (
-                <div className="2xl:mx-4">
-                    <Suspense fallback={<PostLoading />}>
+            <Suspense fallback={<PostLoading />}>
+                {posts.length === 0 ? (
+                    <div className="text-muted-foreground mt-4 text-center leading-loose">
+                        {tPost("empty")}
+                    </div>
+                ) : (
+                    <div className="2xl:mx-4">
                         <ProfileFeed
                             initialPosts={initialPosts}
                             userId={getUser.id}
                         />
-                    </Suspense>
-                </div>
-            )}
+                    </div>
+                )}
+            </Suspense>
         </>
     );
 }
