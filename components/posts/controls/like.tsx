@@ -88,9 +88,9 @@ export default function Like({
     });
 
     const handleLike = () => {
-        setIsLiking((prev) => !prev);
+        setIsLiking(!liked);
         like(!liked);
-        setLiked((prev) => !prev);
+        setLiked(!liked);
     };
 
     return (
