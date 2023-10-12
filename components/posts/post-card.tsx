@@ -40,6 +40,11 @@ export default function PostCard({
     const likesCount = nFormatter(data.likesCount, 1);
     const childrenCount = nFormatter(data.childrenCount, 1);
 
+    console.log(data.childrenCount, data.likesCount);
+    if (data.childrenCount > 0 && data.likesCount > 0) {
+        console.log("both");
+    } else console.log("one");
+
     if (data.deleted === true) {
         return (
             <div className="flex space-x-2 border-b px-3 py-4 dark:border-neutral-900">
@@ -140,7 +145,7 @@ export default function PostCard({
 
                                 {data.childrenCount > 0 &&
                                     data.likesCount > 0 && (
-                                        <div className="text-muted-foreground h-1 w-1 rounded-full " />
+                                        <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                     )}
 
                                 {data.likesCount > 0 && (
@@ -156,7 +161,7 @@ export default function PostCard({
                                 (data.likesCount > 0 &&
                                     data.communityId &&
                                     data.community?.name) ? (
-                                    <div className="text-muted-foreground h-1 w-1 rounded-full" />
+                                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                 ) : null}
 
                                 {!data.text &&
