@@ -44,6 +44,7 @@ export function UserRegisterForm({
         tValidation("username_required"),
         tValidation("username_type_error"),
         tValidation("username_min"),
+        tValidation("username_max"),
         tValidation("username_refine"),
         tValidation("email_required"),
         tValidation("email_type_error"),
