@@ -11,6 +11,7 @@ import ImageComponent from "./image";
 import Controls from "./controls";
 import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
+import Viewer from "./viewer";
 
 interface PostCardProps {
     data: IPost;
@@ -39,11 +40,6 @@ export default function PostCard({
 
     const likesCount = nFormatter(data.likesCount, 1);
     const childrenCount = nFormatter(data.childrenCount, 1);
-
-    console.log(data.childrenCount, data.likesCount);
-    if (data.childrenCount > 0 && data.likesCount > 0) {
-        console.log("both");
-    } else console.log("one");
 
     if (data.deleted === true) {
         return (
@@ -98,7 +94,7 @@ export default function PostCard({
                                 comment ? "w-80" : "w-full"
                             }`}
                         >
-                            {/* <Viewer content={data.content} /> */}
+                            <Viewer content={data.content} />
 
                             <div className="from-background absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t to-transparent" />
                         </div>
@@ -157,10 +153,10 @@ export default function PostCard({
                                     </div>
                                 )}
 
-                                {data.childrenCount > 0 ||
-                                (data.likesCount > 0 &&
-                                    data.communityId &&
-                                    data.community?.name) ? (
+                                {(data.childrenCount > 0 ||
+                                    data.likesCount > 0) &&
+                                data.communityId &&
+                                data.community?.name ? (
                                     <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                 ) : null}
 
