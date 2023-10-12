@@ -19,6 +19,7 @@ export default function ImageComponent({ images }: ImageComponentProps) {
         <>
             {images.map((image: Prisma.ImagesGetPayload<{}>, index: number) => (
                 <div
+                    key={image.id}
                     className={`flex max-w-[35.938rem] ${
                         images.length === 3
                             ? index === 0
