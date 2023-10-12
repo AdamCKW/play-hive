@@ -59,7 +59,7 @@ export default function PostCard({
 
     return (
         <>
-            <Link href={`/p/${data.id}`} className={mainClass}>
+            <Link href={`/p/${data.id}`} className={mainClass} prefetch={true}>
                 <div className="flex flex-col items-center justify-between">
                     <UserAvatar
                         user={{
