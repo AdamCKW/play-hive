@@ -10,6 +10,7 @@ import { User as NextAuthUser } from "next-auth";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import NSFWFilter from "nsfw-filter";
 
 import { PostRequest, PostValidation } from "@/lib/validators/create-post";
 import { Button } from "@/components/ui/button";
@@ -61,7 +62,32 @@ export function CreatePost({ setOpen, user }: CreatePostProps) {
             },
             maxFiles: 4,
             maxSize: 8 * 1024 * 1024,
-            onDrop: (acceptedFiles, rejectedFiles) => {
+            onDrop: async (acceptedFiles, rejectedFiles) => {
+                let isNSFW;
+
+                for (const file of acceptedFiles) {
+                    try {
+                        const isSafe = await NSFWFilter.isSafe(file);
+
+                        if (!isSafe) {
+                            isNSFW = true;
+                            break; // Exit the loop if NSFW content is found
+                        }
+                    } catch (error) {
+                        return toast({
+                            title: tToast("upload.error.title"),
+                            description: tToast("upload.error.description"),
+                        });
+                    }
+                }
+
+                if (isNSFW) {
+                    return toast({
+                        title: tToast("upload.nsfw.title"),
+                        description: tToast("upload.nsfw.description"),
+                    });
+                }
+
                 setFiles(
                     acceptedFiles.map((file) =>
                         Object.assign(file, {

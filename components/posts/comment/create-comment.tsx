@@ -35,6 +35,7 @@ import { TFile } from "@/types";
 import { useTranslations } from "next-intl";
 import { updateInfiniteQueryReply } from "@/hooks/use-update-infinite-post-query";
 import { updateQueryReply } from "@/hooks/use-update-post-query";
+import NSFWFilter from "nsfw-filter";
 
 interface CreateCommentProps {
     itemData: IPost;
@@ -69,7 +70,32 @@ export function CreateComment({
             },
             maxFiles: 4,
             maxSize: 8 * 1024 * 1024,
-            onDrop: (acceptedFiles, rejectedFiles) => {
+            onDrop: async (acceptedFiles, rejectedFiles) => {
+                let isNSFW;
+
+                for (const file of acceptedFiles) {
+                    try {
+                        const isSafe = await NSFWFilter.isSafe(file);
+
+                        if (!isSafe) {
+                            isNSFW = true;
+                            break; // Exit the loop if NSFW content is found
+                        }
+                    } catch (error) {
+                        return toast({
+                            title: tToast("upload.error.title"),
+                            description: tToast("upload.error.description"),
+                        });
+                    }
+                }
+
+                if (isNSFW) {
+                    return toast({
+                        title: tToast("upload.nsfw.title"),
+                        description: tToast("upload.nsfw.description"),
+                    });
+                }
+
                 setFiles(
                     acceptedFiles.map((file) =>
                         Object.assign(file, {
