@@ -38,7 +38,14 @@ export default async function SettingsPage({ params }: SettingsPageProps) {
 
     if (getAccounts) {
         return (
-            <div>
+            <div className="space-y-6 px-3 py-4">
+                <div>
+                    <h3 className="text-lg font-medium">{t("heading")}</h3>
+                    <p className="text-muted-foreground text-sm">
+                        {t("subheading")}
+                    </p>
+                </div>
+                <Separator />
                 <EditLimited user={getUser} />
             </div>
         );
