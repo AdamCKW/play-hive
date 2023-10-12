@@ -66,13 +66,13 @@ export default function MainFeed({ initialPosts }: PostFeedProps) {
 
             <div className="flex w-full justify-center py-4">
                 {!isFetchingNextPage && noMore && (
-                    <div className="mt-4 text-center leading-loose text-neutral-600">
+                    <div className="text-muted-foreground mt-4 text-center leading-loose">
                         {t("no_more")}
                     </div>
                 )}
 
                 {isFetchingNextPage && (
-                    <Loader2 className="h-4 w-4 animate-spin text-neutral-600" />
+                    <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
                 )}
             </div>
         </>
