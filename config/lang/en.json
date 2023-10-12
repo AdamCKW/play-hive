@@ -110,6 +110,7 @@
                 "username_required": "Username is required",
                 "username_type_error": "Username must be a string",
                 "username_min": "Username must be at least 8 characters long",
+                "username_max": "Username cannot be longer than 20 characters",
                 "username_refine": "Username can only contain alphanumeric characters, underscores, and hyphens",
                 "email_required": "Email is required",
                 "email_type_error": "Email must be a string",
@@ -185,7 +186,10 @@
         },
         "posts": {
             "empty": "No posts yet.",
+            "empty_replies": "No replies yet.",
             "no_more": "There is no more posts.",
+            "no_more_replies": "There is no more replies.",
+            "see_earlier": "See earlier posts",
             "error": "Something went wrong. Please try again later.",
             "card": {
                 "more_menu": {
@@ -239,6 +243,73 @@
                 },
                 "attach": "Attach Images",
                 "post": "Reply"
+            }
+        },
+        "profile": {
+            "page": {
+                "posts": "Posts",
+                "replies": "Replies"
+            },
+            "layout": {
+                "following": "following",
+                "followers": "followers",
+                "follower": "follower",
+                "cover_alt": "{name}'s cover image",
+                "BANNED": "Banned",
+                "edit_profile": "Edit Profile"
+            },
+            "follow_button": {
+                "following": "Following",
+                "follow": "Follow"
+            },
+            "self_share": {
+                "text": "Link to {name}'s profile at {siteName}",
+                "share": "Share Profile",
+                "copy": "Copy Link",
+                "copied": "Link copied to clipboard!",
+                "share_via": "Share Via..."
+            },
+            "settings": {
+                "heading": "Edit Profile",
+                "subheading": "This is how others will see you on the site.",
+                "form": {
+                    "image_label": "Profile Image",
+                    "image_alt": "Current Profile image",
+                    "image_remove": "Remove Profile Image",
+                    "cover_label": "Cover Image",
+                    "cover_alt": "Current Cover image",
+                    "cover_remove": "Remove Cover Image",
+                    "name_label": "Name",
+                    "name_placeholder": "ex: John Doe",
+                    "name_description": "This is your public display name. It can be your real name or a pseudonym.",
+                    "username_label": "Username",
+                    "username_placeholder": "ex: johndoe, john_doe, john-doe",
+                    "username_description": "Your username will be used to identify you on the site.",
+                    "email_label": "Email",
+                    "email_placeholder": "ex: john_doe@domain.com",
+                    "password_label": "New Password",
+                    "password_placeholder": "Enter your new password (optional)",
+                    "bio_label": "Profile Bio",
+                    "bio_placeholder": "Tell us about yourself",
+                    "update_button": "Update"
+                },
+                "validation": {
+                    "name_required": "Name is required",
+                    "name_type_error": "Name must be a string",
+                    "name_min": "Name must be at least 2 characters long",
+                    "name_max": "Name cannot be longer than 30 characters",
+                    "username_required": "Username is required",
+                    "username_type_error": "Username must be a string",
+                    "username_min": "Username must be at least 8 characters long",
+                    "username_max": "Username cannot be longer than 20 characters",
+                    "username_refine": "Username can only contain alphanumeric characters, underscores, and hyphens",
+                    "email_required": "Email is required",
+                    "email_type_error": "Email must be a string",
+                    "email_invalid": "Invalid email address",
+                    "email_refine": "Email cannot contain spaces",
+                    "password_refine": "Password must be at least 8 characters long and no more than 20 characters, and contain at least one uppercase letter, one lowercase letter, one number, and one special character (no space).",
+                    "bio_max": "Bio cannot be longer than 160 characters"
+                }
             }
         }
     },
@@ -367,6 +438,47 @@
             "file_limit": {
                 "title": "Files exceeded the limit of 4 files",
                 "description": "Please select 4 files or less."
+            },
+            "nsfw": {
+                "title": "Inappropriate Content Detected",
+                "description": "The attached file contains content that violates our community guidelines. Please ensure your files are safe and respectful."
+            },
+            "error": {
+                "title": "Something went wrong",
+                "description": "An error occurred while checking your files. Please try again later."
+            }
+        },
+        "following": {
+            "success": {
+                "following": {
+                    "title": "Followed successfully",
+                    "description": "You are now following {name}."
+                },
+                "unfollow": {
+                    "title": "Unfollowed successfully",
+                    "description": "You have unfollowed {name}."
+                }
+            },
+            "failed": {
+                "already_followed": "You are already following this user.",
+                "not_followed": "You have not followed this user."
+            }
+        },
+        "settings": {
+            "success": {
+                "title": "Profile updated successfully",
+                "description": "Your profile have been updated."
+            },
+            "failed": {
+                "image": {
+                    "title": "Something went wrong",
+                    "description": "An error occurred while uploading your profile image. Please try again later."
+                },
+                "cover": {
+                    "title": "Something went wrong",
+                    "description": "An error occurred while uploading your cover image. Please try again later."
+                },
+                "username_exist": "Username already exists. Please try again with a different username."
             }
         }
     }
