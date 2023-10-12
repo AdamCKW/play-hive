@@ -12,15 +12,10 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import {
-    Suspense,
-    startTransition,
-    useEffect,
-    useState,
-    useTransition,
-} from "react";
+import { startTransition, useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { FileUpload } from "../file-upload";
 import { Input } from "../ui/input";
 import { Icons } from "../icons";
 import { Button } from "../ui/button";
@@ -28,22 +23,22 @@ import { useSession } from "next-auth/react";
 import { User } from "@prisma/client";
 import { toast } from "@/hooks/use-toast";
 import { Textarea } from "../ui/textarea";
-import Image from "next/image";
-import { X } from "lucide-react";
-import { UploadDropzone } from "@/lib/uploadthing";
-import { AspectRatio } from "../ui/aspect-ratio";
 import {
     FullEditRequest,
     FullEditValidation,
 } from "@/lib/validators/edit-profile";
-import { useTranslations } from "next-intl";
+import { UploadDropzone } from "@/lib/uploadthing";
+import { AspectRatio } from "../ui/aspect-ratio";
+import Image from "next/image";
+import { X } from "lucide-react";
 import { encryptId } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
-interface EditFullProps {
+interface EditLimitedProps {
     user: User;
 }
 
-export function EditFull({ user }: EditFullProps) {
+export default function EditLimited({ user }: EditLimitedProps) {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
@@ -74,9 +69,7 @@ export function EditFull({ user }: EditFullProps) {
         defaultValues: {
             name: user.name!,
             username: user.username!,
-            email: user.email!,
             bio: user.bio || "",
-            password: "",
             imageUrl: user.image || "",
             imageBanner: user.cover || "",
         },
@@ -290,54 +283,7 @@ export function EditFull({ user }: EditFullProps) {
                         </FormItem>
                     )}
                 />
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel htmlFor="email">
-                                {tForm("email_label")}
-                            </FormLabel>
-                            <FormControl>
-                                <Input
-                                    id="email"
-                                    placeholder={
-                                        user.email || tForm("email_placeholder")
-                                    }
-                                    autoCapitalize="none"
-                                    autoComplete="email"
-                                    type="email"
-                                    autoCorrect="off"
-                                    disabled={isLoading}
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel htmlFor="password">
-                                {tForm("password_label")}
-                            </FormLabel>
-                            <FormControl>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    placeholder={tForm("password_placeholder")}
-                                    autoCorrect="off"
-                                    disabled={isLoading}
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+
                 <FormField
                     control={form.control}
                     name="bio"
