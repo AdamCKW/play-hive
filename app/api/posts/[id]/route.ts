@@ -25,6 +25,7 @@ export async function GET(
                         name: true,
                         username: true,
                         image: true,
+                        bio: true,
                     },
                 },
                 children: {
@@ -35,6 +36,7 @@ export async function GET(
                                 name: true,
                                 username: true,
                                 image: true,
+                                bio: true,
                             },
                         },
                     },
@@ -47,6 +49,7 @@ export async function GET(
                                 name: true,
                                 username: true,
                                 image: true,
+                                bio: true,
                             },
                         },
                     },

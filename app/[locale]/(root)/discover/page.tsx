@@ -30,6 +30,7 @@ export default async function DiscoverPage({
                     name: true,
                     username: true,
                     image: true,
+                    bio: true,
                 },
             },
             children: {
@@ -40,6 +41,7 @@ export default async function DiscoverPage({
                             name: true,
                             username: true,
                             image: true,
+                            bio: true,
                         },
                     },
                 },

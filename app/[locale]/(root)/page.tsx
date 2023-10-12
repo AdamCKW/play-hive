@@ -5,8 +5,8 @@ import { transformObject } from "@/lib/utils";
 import { IPost } from "@/types/db";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
-import { Fragment, Suspense } from "react";
-import MainFeed from "@/components/posts/feeds/main-feed";
+import { Fragment, Suspense, lazy } from "react";
+// import MainFeed from "@/components/posts/feeds/main-feed";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
 import { Loader2 } from "lucide-react";
@@ -16,6 +16,8 @@ interface HomePageProps {
         locale: string;
     };
 }
+
+const MainFeed = lazy(() => import("@/components/posts/feeds/main-feed"));
 
 export default async function Home({ params }: HomePageProps) {
     const session = await getAuthSession();

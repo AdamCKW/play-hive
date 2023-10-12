@@ -52,6 +52,7 @@ export async function GET(req: NextRequest) {
                         name: true,
                         username: true,
                         image: true,
+                        bio: true,
                     },
                 },
                 children: {
@@ -62,6 +63,7 @@ export async function GET(req: NextRequest) {
                                 name: true,
                                 username: true,
                                 image: true,
+                                bio: true,
                             },
                         },
                     },
