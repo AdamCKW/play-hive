@@ -10,7 +10,7 @@ export async function PATCH(
 ) {
     try {
         const body = await req.json();
-
+        const { id } = params;
         if (!id) {
             return new NextResponse("reset.failed.params_empty", {
                 status: 404,
