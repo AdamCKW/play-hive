@@ -15,7 +15,7 @@ export default function MainLayout({ children }: RootLayoutProps) {
                     <div className="flex h-full">
                         <LeftBar className="hidden w-[30rem] md:block" />
 
-                        <main className="scrollbar-hide mb-14 flex w-full flex-col overflow-y-auto overflow-x-hidden">
+                        <main className="scrollbar-none mb-16 flex w-full flex-col overflow-y-auto overflow-x-hidden">
                             <div className="mx-auto w-full max-w-[800px] pb-8 ">
                                 {children}
                             </div>
