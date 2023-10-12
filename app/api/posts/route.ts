@@ -1,6 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { transformObject } from "@/lib/utils";
+import { cleanUp, transformObject } from "@/lib/utils";
 import { PostValidation } from "@/lib/validators/create-post";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
 
         const createdPost = await db.post.create({
             data: {
-                text: content,
+                text: cleanUp(content),
                 author: {
                     connect: {
                         id: session.user.id,

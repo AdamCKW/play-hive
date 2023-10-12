@@ -22,7 +22,6 @@ export async function POST(
         const postId = params.id;
 
         const { content, files } = PostValidation().parse(body);
-        // const { files } = body;
 
         const parentPost = await db.post.findUnique({
             where: {
