@@ -7,6 +7,7 @@ import { transformObject } from "@/lib/utils";
 import { IPost } from "@/types/db";
 import { getTranslator } from "next-intl/server";
 import { Suspense, lazy } from "react";
+import { PostLoading } from "@/components/posts/loading";
 // import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 // import ExploreFeed from "@/components/post/feeds/explore";
 
@@ -76,7 +77,7 @@ export default async function DiscoverPage({
 
     return (
         <>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<PostLoading />}>
                 {posts.length === 0 ? (
                     <div className="text-muted-foreground mt-4 text-center leading-loose">
                         {t("empty")}

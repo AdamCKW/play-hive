@@ -10,6 +10,7 @@ import { Fragment, Suspense, lazy } from "react";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
 import { Loader2 } from "lucide-react";
+import { PostLoading } from "@/components/posts/loading";
 
 interface HomePageProps {
     params: {
@@ -100,11 +101,7 @@ export default async function Home({ params }: HomePageProps) {
 
     return (
         <>
-            <Suspense
-                fallback={
-                    <Loader2 className="h-4 w-4 animate-spin text-neutral-600" />
-                }
-            >
+            <Suspense fallback={<PostLoading />}>
                 {posts.length === 0 ? (
                     <div className="mt-4 text-center leading-loose text-neutral-600">
                         {t("empty")}
