@@ -68,7 +68,7 @@ export function formatTimeToNow(date: Date): string {
     );
 
     if (differenceInDays > 3) {
-        return format(date, 'dd/MM/yyyy');
+        return format(date, "dd/MM/yyyy");
     } else {
         return formatDistanceToNowStrict(date, {
             addSuffix: true,
@@ -124,24 +124,25 @@ export const removeHtmlTags = (input: string) => {
 
 export const encryptId = (id: string) => {
     const cipher = crypto.createCipheriv(
-        process.env.ENCRYPTION_ALGORITHM!,
-        process.env.ENCRYPTION_KEY!,
-        process.env.ENCRYPTION_IV!,
+        process.env.NEXT_PUBLIC_ENCRYPTION_ALGORITHM!,
+        process.env.NEXT_PUBLIC_ENCRYPTION_KEY!,
+        process.env.NEXT_PUBLIC_ENCRYPTION_IV!,
     );
 
-    const encryptedId = cipher.update(id, "utf-8", "hex");
+    let encryptedId = cipher.update(id, "utf-8", "hex");
+    encryptedId += cipher.final("hex");
 
     return encryptedId;
 };
 
 export const decryptId = (encryptedId: string) => {
     const decipher = crypto.createDecipheriv(
-        process.env.ENCRYPTION_ALGORITHM!,
-        process.env.ENCRYPTION_KEY!,
-        process.env.ENCRYPTION_IV!,
+        process.env.NEXT_PUBLIC_ENCRYPTION_ALGORITHM!,
+        process.env.NEXT_PUBLIC_ENCRYPTION_KEY!,
+        process.env.NEXT_PUBLIC_ENCRYPTION_IV!,
     );
 
-    let decryptedId = decipher.update(encryptedId, "utf-8", "hex");
+    let decryptedId = decipher.update(encryptedId, "hex", "utf8");
 
     decryptedId += decipher.final("utf8");
 
