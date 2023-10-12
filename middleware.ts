@@ -7,8 +7,8 @@ const publicPages = [
     "/sign-up",
     "/sign-in",
     "/verify",
-    "/reset-password",
-    "/reset-password/(.*)",
+    "/forgot-password",
+    "/forgot-password/(.*)",
 ];
 
 const intlMiddleware = createIntlMiddleware({
