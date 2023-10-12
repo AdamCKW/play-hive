@@ -4,6 +4,7 @@ export const RegisterValidation = (
     username_required?: string,
     username_type_error?: string,
     username_min?: string,
+    username_max?: string,
     username_refine?: string,
     email_required?: string,
     email_type_error?: string,
@@ -25,6 +26,10 @@ export const RegisterValidation = (
                     username_min ||
                     "Username must be at least 8 characters long",
             })
+            .max(
+                20,
+                username_max || "Username must be less than 20 characters long",
+            )
             .refine((value) => /^[a-zA-Z0-9_-]+$/.test(value), {
                 message:
                     username_refine ||
