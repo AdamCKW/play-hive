@@ -24,6 +24,16 @@ export const siteConfig = {
     copyright: "©2023 PlayHive",
 };
 
+export const themeOptions = [
+    "light",
+    "dark",
+    "blue",
+    "yellow",
+    "neon-green",
+    "purple",
+    "system",
+];
+
 export const linksConfig: LinkConfig = {
     home: {
         title: "home",
@@ -47,6 +57,16 @@ export const linksConfig: LinkConfig = {
         title: "terms",
         href: "/terms",
         disabled: true,
+    },
+    replies: {
+        title: "replies",
+        href: "/replies",
+        disabled: false,
+    },
+    posts: {
+        title: "posts",
+        href: "/",
+        disabled: false,
     },
     privacy: {
         title: "privacy",
@@ -76,7 +96,7 @@ export const linksConfig: LinkConfig = {
     },
     profile: {
         title: "profile",
-        href: "/p",
+        href: "/",
         disabled: false,
         icon: "user",
     },
@@ -119,13 +139,3 @@ export const linksConfig: LinkConfig = {
         disabled: true,
     },
 };
-
-export const themeOptions = [
-    "light",
-    "dark",
-    "blue",
-    "yellow",
-    "neon-green",
-    "purple",
-    "system",
-];
