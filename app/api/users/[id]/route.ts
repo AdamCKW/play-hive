@@ -66,7 +66,7 @@ export async function PATCH(
         if (name !== user.name) {
             userData.name = name;
         }
-        if (email !== user.email) {
+        if (!getAccount && email !== user.email) {
             userData.email = email;
         }
         if (bio !== user.bio) {
