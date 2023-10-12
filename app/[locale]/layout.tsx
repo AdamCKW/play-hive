@@ -1,4 +1,4 @@
-import { LOCALES, siteConfig } from "@/config/site";
+import { LOCALES, siteConfig, themeOptions } from "@/config/site";
 import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
@@ -86,14 +86,7 @@ export default async function RootLayout({
                     attribute="class"
                     defaultTheme="system"
                     enableSystem
-                    themes={[
-                        "light",
-                        "dark",
-                        "blue",
-                        "yellow",
-                        "neon-green",
-                        "purple",
-                    ]}
+                    themes={themeOptions}
                 >
                     <NextIntlClientProvider locale={locale} messages={messages}>
                         <Providers>{children}</Providers>
