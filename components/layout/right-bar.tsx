@@ -7,11 +7,13 @@ import { cn } from "@/lib/utils";
 // import CreateCommunityCard from "@/components/widgets/create-community";
 // import CreatePostCard from "@/components/widgets/create-community-post";
 // import JoinCommunityCard from "../widgets/join-community";
-import { ICommunity } from "@/types/db";
+
 import { RightBarItems } from "@/config/navigation";
 import { getTranslator } from "next-intl/server";
 import { useIntl } from "@/hooks/use-intl";
 import { useTranslations } from "next-intl";
+import CreateCommunityCard from "../community/create-community";
+import { ICommunity } from "@/types/db";
 
 interface RightBarProps extends React.HTMLAttributes<HTMLDivElement> {
     main?: boolean;
@@ -58,7 +60,9 @@ function Items({
             )}
             {...props}
         >
-            <div className="flex flex-1 flex-col justify-start"></div>
+            <div className="flex flex-1 flex-col justify-start">
+                {feed && <CreateCommunityCard />}
+            </div>
         </section>
     );
 }
