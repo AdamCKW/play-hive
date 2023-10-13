@@ -11,6 +11,8 @@ import { useSession } from "next-auth/react";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import NewsCard from "./news-card";
 import { notFound } from "next/navigation";
+import queryString from "query-string";
+import { useTranslations } from "next-intl";
 
 interface NewsFeedProps {
     initialData: any[];
@@ -18,29 +20,43 @@ interface NewsFeedProps {
 
 export default function NewsFeed({ initialData }: NewsFeedProps) {
     const [noMore, setNoMore] = useState<boolean>(false);
+    const t = useTranslations("root.news");
     const lastPostRef = useRef<HTMLElement>(null);
     const { ref, entry } = useIntersection({
         root: lastPostRef.current,
         threshold: 1,
     });
 
-    const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-        ["news"],
-        async ({ pageParam = 1 }) => {
-            const query = `api/gamespot?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}`;
+    const { data, fetchNextPage, isFetchingNextPage, isError } =
+        useInfiniteQuery(
+            ["news"],
+            async ({ pageParam = 1 }) => {
+                const query = queryString.stringifyUrl({
+                    url: "/api/gamespot",
+                    query: {
+                        limit: INFINITE_SCROLL_PAGINATION_RESULTS,
+                        page: pageParam,
+                    },
+                });
 
-            const { data } = await axios.get(query);
+                const { data } = await axios.get(query);
 
-            return data;
-        },
+                if (data.length === 0) {
+                    setNoMore(true);
+                } else {
+                    setNoMore(false);
+                }
 
-        {
-            getNextPageParam: (_, pages) => {
-                return pages.length + 1;
+                return data;
             },
-            initialData: { pages: [initialData], pageParams: [1] },
-        },
-    );
+
+            {
+                getNextPageParam: (_, pages) => {
+                    return pages.length + 1;
+                },
+                initialData: { pages: [initialData], pageParams: [1] },
+            },
+        );
 
     useEffect(() => {
         if (entry?.isIntersecting) {
@@ -67,13 +83,13 @@ export default function NewsFeed({ initialData }: NewsFeedProps) {
             })}
             <div className="flex w-full justify-center py-4">
                 {!isFetchingNextPage && noMore && (
-                    <div className="mt-4 text-center leading-loose text-neutral-600">
-                        There are no more news.
+                    <div className="text-muted-foreground mt-4 text-center leading-loose">
+                        {t("no_more")}
                     </div>
                 )}
 
                 {isFetchingNextPage && (
-                    <Loader2 className="h-4 w-4 animate-spin text-neutral-600" />
+                    <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
                 )}
             </div>
         </>

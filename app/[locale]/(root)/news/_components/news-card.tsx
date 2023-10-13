@@ -1,24 +1,39 @@
 import { removeHtmlTags, rgbDataURL, splitDate } from "@/lib/utils";
+import { ExtendedMetadata } from "@/types";
 import { Article } from "@/types/article";
+import { useTranslations } from "next-intl";
+import { getTranslator } from "next-intl/server";
 import Image from "next/image";
 
 interface NewsCardProps {
     data: Article;
 }
 
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.news");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
+
 export default function NewsCard({ data }: NewsCardProps) {
     const cleanData = removeHtmlTags(data.body);
     const dates = splitDate(data.publish_date);
+    const t = useTranslations("root.news");
 
     return (
-        <article className="flex transition hover:shadow-xl">
+        <article className="flex border-b">
             <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
                 <time
                     dateTime="2022-10-10"
                     className="light:text-gray-900 flex items-center justify-between gap-4 text-xs font-bold uppercase"
                 >
                     <span>{dates.year}</span>
-                    <span className="w-px flex-1 bg-gray-900/10 dark:bg-white"></span>
+                    <span className="bg-muted-foreground w-px flex-1"></span>
                     <span>{dates.monthDay}</span>
                 </time>
             </div>
@@ -57,9 +72,9 @@ export default function NewsCard({ data }: NewsCardProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         href={data.site_detail_url}
-                        className="bg-primary hover:bg-primary/90 block px-5 py-3 text-center text-xs font-bold uppercase text-gray-900 transition"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 block px-5 py-3 text-center text-xs font-bold uppercase transition"
                     >
-                        Read News
+                        {t("read_news")}
                     </a>
                 </div>
             </div>
