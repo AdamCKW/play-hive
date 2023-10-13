@@ -77,7 +77,7 @@ export default async function RootLayout({
         <html lang={locale} suppressHydrationWarning>
             <body
                 className={cn(
-                    "bg-background min-h-screen font-sans antialiased",
+                    "bg-background scrollbar-none min-h-screen font-sans antialiased ",
                     fontSans.variable,
                     fontHeading.variable,
                 )}

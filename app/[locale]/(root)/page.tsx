@@ -5,12 +5,13 @@ import { transformObject } from "@/lib/utils";
 import { IPost } from "@/types/db";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
-import { Fragment, Suspense, lazy } from "react";
+import { Fragment, Suspense } from "react";
 // import MainFeed from "@/components/posts/feeds/main-feed";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
 import { Loader2 } from "lucide-react";
 import { PostLoading } from "@/components/posts/loading";
+import dynamic from "next/dynamic";
 
 interface HomePageProps {
     params: {
@@ -18,7 +19,7 @@ interface HomePageProps {
     };
 }
 
-const MainFeed = lazy(() => import("@/components/posts/feeds/main-feed"));
+const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"));
 
 export default async function Home({ params }: HomePageProps) {
     const session = await getAuthSession();

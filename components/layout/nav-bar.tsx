@@ -19,13 +19,13 @@ export async function NavBar({ className }: NavBarProps) {
     const session = await getAuthSession();
 
     return (
-        <header
+        <nav
             className={cn(
-                "bg-background sticky top-0 z-40 w-full border-b",
+                "bg-background fixed top-0 z-30 w-full border-b px-6 py-3 shadow-sm",
                 className,
             )}
         >
-            <div className="flex h-16 items-center justify-between space-x-4 px-5 sm:space-x-0 md:px-12">
+            <div className="flex items-center justify-between space-x-4 px-5 sm:space-x-0 md:px-6">
                 <Link
                     href={linksConfig.home.href}
                     className="flex items-center space-x-2"
@@ -46,6 +46,6 @@ export async function NavBar({ className }: NavBarProps) {
                     )}
                 </div>
             </div>
-        </header>
+        </nav>
     );
 }

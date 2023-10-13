@@ -25,15 +25,16 @@ function LeftbarContent({ className, user }: LeftbarContentProps) {
     const tNav = useTranslations("nav");
 
     return (
-        <div className={cn("pb-12", className)}>
-            <div className="space-y-4 py-4">
-                <div className="px-4 py-2">
-                    <div className="space-y-1">
-                        <LeftItems />
+        <section
+            className={cn(
+                "sticky left-0 top-0 z-20 flex h-screen flex-col justify-between overflow-auto border-r pb-5 pt-28 max-md:hidden",
+                className,
+            )}
+        >
+            <div className="flex w-full flex-1 flex-col gap-6 px-6">
+                <LeftItems />
 
-                        {user && <CreatePostButton user={user} />}
-                    </div>
-                </div>
+                {user && <CreatePostButton user={user} />}
 
                 <footer className="space-x-2 px-8">
                     {RightBarItems.map((item, index) => (
@@ -53,6 +54,6 @@ function LeftbarContent({ className, user }: LeftbarContentProps) {
                     </span>
                 </footer>
             </div>
-        </div>
+        </section>
     );
 }
