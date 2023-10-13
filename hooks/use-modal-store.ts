@@ -3,11 +3,11 @@ import { User as NextAuthUser } from "next-auth";
 
 export type ModalType =
     | "users"
-    | "editProfile"
     | "messageFile"
     | "deleteMessage"
     | "imageModal"
-    | "createPost";
+    | "createPost"
+    | "createCommunity";
 
 interface User extends NextAuthUser {
     username?: string | null;

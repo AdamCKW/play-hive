@@ -12,7 +12,7 @@ export interface IUser {
 export interface IAuthor extends IUser {}
 
 export interface IPost extends Post {
-    community: ICommunity | null;
+    community: ICommunityPost | null;
     author: IAuthor;
     children: IChildren[] | [];
     parent: Post | null;
@@ -26,7 +26,7 @@ export interface IChildren extends Post {
     author: IAuthor;
 }
 
-export interface ICommunity extends Community {
+export interface ICommunityPost extends Community {
     creator: IAuthor | null;
 }
 

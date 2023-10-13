@@ -25,8 +25,8 @@ export const FullEditValidation = (
                 required_error: name_required || "Name is required",
                 invalid_type_error: name_type_error || "Name must be a string",
             })
-            .min(1, {
-                message: name_min || "Name must be at least 2 characters long",
+            .min(4, {
+                message: name_min || "Name must be at least 4 characters long",
             })
             .max(30, {
                 message: name_max || "Name cannot be longer than 30 characters",

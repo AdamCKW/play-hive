@@ -19,11 +19,18 @@ export const ourFileRouter = {
         .middleware(() => handleAuth())
         .onUploadComplete(() => {}),
 
+    communityImage: f({
+        image: { maxFileSize: "8MB", maxFileCount: 1 },
+    })
+        .middleware(() => handleAuth())
+        .onUploadComplete(() => {}),
+
     userAvatar: f({
         image: { maxFileSize: "8MB", maxFileCount: 1 },
     })
         .middleware(() => handleAuth())
         .onUploadComplete(() => {}),
+
     userBanner: f({
         image: { maxFileSize: "8MB", maxFileCount: 1 },
     })
