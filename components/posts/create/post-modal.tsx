@@ -38,20 +38,6 @@ export function PostModal({}: PostModal) {
 
     return (
         <Dialog open={isModalOpen} onOpenChange={onClose}>
-            {/* <DialogTrigger asChild>
-                <div>
-                    <Edit className="h-6 w-6 cursor-pointer text-neutral-600 hover:text-current md:hidden" />
-                    <div className="hidden md:block">
-                        <Button
-                            size="lg"
-                            className="w-full justify-start text-lg font-bold"
-                        >
-                            <Edit className="mr-2 h-6 w-6" />
-                            {t("button")}
-                        </Button>
-                    </div>
-                </div>
-            </DialogTrigger> */}
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-3">{t("title")}</DialogTitle>

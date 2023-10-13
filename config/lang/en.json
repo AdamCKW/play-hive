@@ -514,6 +514,10 @@
             "error": {
                 "title": "Something went wrong",
                 "description": "An error occurred while checking your files. Please try again later."
+            },
+            "error_upload": {
+                "title": "Something went wrong",
+                "description": "An error occurred while uploading your files. Please try again later."
             }
         },
         "following": {

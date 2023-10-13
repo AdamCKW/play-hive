@@ -33,11 +33,11 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
         } else
             return (
                 <div className="flex items-center justify-center">
-                    <div className="relative h-20 w-20">
+                    <div className="relative h-32 w-32">
                         <Image
                             fill
                             src={value}
-                            alt="Upload"
+                            alt="upload"
                             className="rounded-full"
                         />
                         <button

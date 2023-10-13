@@ -35,6 +35,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { FileUpload } from "../file-upload";
+import { UploadDropzone } from "@/lib/uploadthing";
+import { X } from "lucide-react";
 
 interface CommunityModalProps {}
 
@@ -126,11 +128,58 @@ export function EditCommunityModal({}: CommunityModalProps) {
                                         {tForm("image_label")}
                                     </FormLabel>
                                     <FormControl>
-                                        <FileUpload
-                                            endpoint="communityImage"
-                                            value={field.value}
-                                            onChange={field.onChange}
-                                        />
+                                        {field.value &&
+                                        field.value?.split(".").pop() !==
+                                            "pdf" ? (
+                                            <div className="flex items-center justify-center">
+                                                <div className="relative h-32 w-32">
+                                                    <Image
+                                                        fill
+                                                        src={field.value}
+                                                        alt={tForm("image_alt")}
+                                                        className="rounded-full"
+                                                    />
+                                                    <button
+                                                        onClick={() =>
+                                                            field.onChange("")
+                                                        }
+                                                        className="absolute right-0 top-0 rounded-full bg-rose-500 p-1 text-white shadow-sm"
+                                                        type="button"
+                                                    >
+                                                        <span className="sr-only">
+                                                            {tForm(
+                                                                "image_remove",
+                                                            )}
+                                                        </span>
+                                                        <X className="h-4 w-4" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <UploadDropzone
+                                                className="h-52"
+                                                endpoint="communityImage"
+                                                onClientUploadComplete={(
+                                                    res,
+                                                ) => {
+                                                    field.onChange(
+                                                        res?.[0].url,
+                                                    );
+                                                }}
+                                                onUploadError={(
+                                                    error: Error,
+                                                ) => {
+                                                    toast({
+                                                        title: tToast(
+                                                            "upload.error_upload.title",
+                                                        ),
+                                                        description: tToast(
+                                                            "upload.error_upload.title",
+                                                        ),
+                                                    });
+                                                }}
+                                            />
+                                        )}
                                     </FormControl>
                                 </FormItem>
                             )}
