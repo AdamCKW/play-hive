@@ -1,24 +1,26 @@
-import { Prisma } from '@prisma/client'
+import { Prisma } from "@prisma/client";
 
-import { UserAvatar } from '../user-avatar'
+import { UserAvatar } from "../user-avatar";
+import { IChildren } from "@/types/db";
 
 interface OthersProps {
-    others: Prisma.PostGetPayload<{
-        include: {
-            author: {
-                select: {
-                    id: true
-                    name: true
-                    username: true
-                    image: true
-                }
-            }
-        }
-    }>[]
+    // others: Prisma.PostGetPayload<{
+    //     include: {
+    //         author: {
+    //             select: {
+    //                 id: true
+    //                 name: true
+    //                 username: true
+    //                 image: true
+    //             }
+    //         }
+    //     }
+    // }>[]
+    others: IChildren[];
 }
 export default function Others({ others }: OthersProps) {
     if (others.length === 0) {
-        return null
+        return null;
     }
 
     if (others.length === 1) {
@@ -32,7 +34,7 @@ export default function Others({ others }: OthersProps) {
                     }}
                 />
             </div>
-        )
+        );
     }
 
     if (others.length === 2) {
@@ -53,7 +55,7 @@ export default function Others({ others }: OthersProps) {
                     }}
                 />
             </div>
-        )
+        );
     }
 
     return (
@@ -80,5 +82,5 @@ export default function Others({ others }: OthersProps) {
                 }}
             />
         </div>
-    )
+    );
 }
