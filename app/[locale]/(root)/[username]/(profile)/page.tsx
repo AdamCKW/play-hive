@@ -10,6 +10,7 @@ import { cn, transformObject } from "@/lib/utils";
 import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
 import { PostLoading } from "@/components/posts/loading";
+import { ExtendedMetadata } from "@/types";
 // import { ProfileFeed } from "@/components/posts/feeds/profile-feed";
 
 interface ProfilePageLayoutProps {
@@ -17,6 +18,17 @@ interface ProfilePageLayoutProps {
 }
 
 const ProfileFeed = lazy(() => import("@/components/posts/feeds/profile-feed"));
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.profile");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
 
 export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
     const tProfile = await getTranslator(params.locale, "root.profile.page");

@@ -3,6 +3,7 @@ import EditLimited from "@/components/profile/edit-limited";
 import { Separator } from "@/components/ui/separator";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
@@ -13,6 +14,18 @@ interface SettingsPageProps {
         locale: string;
     };
 }
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.settings");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
+
 export default async function SettingsPage({ params }: SettingsPageProps) {
     const session = await getAuthSession();
     if (!session) return redirect("/login");

@@ -1,6 +1,7 @@
 import TimerRedirect from "@/components/timer-redirect";
 import { toast } from "@/hooks/use-toast";
 import { db } from "@/lib/db";
+import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
 import { startTransition } from "react";
@@ -11,6 +12,17 @@ interface VerificationPageProps {
     };
     searchParams: {
         [key: string]: string | undefined;
+    };
+}
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.verify");
+
+    return {
+        title: t("title"),
+        description: t("description"),
     };
 }
 

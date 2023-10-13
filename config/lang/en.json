@@ -15,6 +15,26 @@
         "new_password": {
             "title": "New Password",
             "description": "Enter your new password"
+        },
+        "news": {
+            "title": "News",
+            "description": "Gaming news from around the world"
+        },
+        "verify": {
+            "title": "Verify",
+            "description": "Verifying your email address"
+        },
+        "settings": {
+            "title": "Settings",
+            "description": "Edit your profile"
+        },
+        "profile": {
+            "title": "Profile",
+            "description": "View user profile"
+        },
+        "replies": {
+            "title": "Replies",
+            "description": "View user replies"
         }
     },
     "intl": {
@@ -228,6 +248,10 @@
                     "post": "Post"
                 }
             }
+        },
+        "news": {
+            "read_news": "Read News",
+            "no_more": "There are no more news."
         },
         "comments": {
             "heading": "Reply",

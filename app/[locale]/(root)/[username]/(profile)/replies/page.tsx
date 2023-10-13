@@ -11,10 +11,22 @@ import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
 import { PostLoading } from "@/components/posts/loading";
 import { IReplies } from "@/types/db";
+import { ExtendedMetadata } from "@/types";
 // import { ProfileFeed } from "@/components/posts/feeds/profile-feed";
 
 interface RepliesPageLayoutProps {
     params: { username: string; locale: string };
+}
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.replies");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
 }
 
 const RepliesFeed = lazy(() => import("@/components/posts/feeds/replies-feed"));
