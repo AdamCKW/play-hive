@@ -12,24 +12,28 @@ import { Icons } from "@/components/icons";
 // import PostCard from "@/components/post/post-card";
 import { UserAvatar } from "@/components/user-avatar";
 import { redirect } from "next/navigation";
+import { getTranslator } from "next-intl/server";
+import Parent from "@/components/posts/feeds/parent";
+import Main from "@/components/posts/feeds/main";
+import Children from "@/components/posts/feeds/children";
 
 interface PostPageProps {
     params: {
         id: string;
+        locale: string;
     };
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-    const { id } = params;
+    const { id, locale } = params;
 
     const session = await getAuthSession();
 
-    if (!session) return redirect("/sign-in");
+    const t = await getTranslator(locale, "root.posts");
 
     const data = await db.post.findUnique({
         where: {
             id,
-            // deleted: false,
         },
         include: {
             author: {
@@ -162,19 +166,19 @@ export default async function PostPage({ params }: PostPageProps) {
                                 image: post.author.image!,
                             }}
                         />
-                        See earlier reply
+                        {t("see_earlier_replies")}
                     </Button>
                 </Link>
             ) : null}
 
-            {/* <div className="mx-3 2xl:mx-4">
+            <div className="mx-3 2xl:mx-4">
                 {post.parent ? (
                     <Parent key={post.parent.id} initialPost={post.parent} />
                 ) : null}
-                <Main initialPost={post} />
 
+                <Main initialPost={post} />
                 <Children parentId={post.id} initialPosts={post.children} />
-            </div> */}
+            </div>
         </>
     );
 }

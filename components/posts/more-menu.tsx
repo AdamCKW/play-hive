@@ -50,7 +50,7 @@ export default function MoreMenu({
             .delete(`/api/posts/${id}`)
             .then((res) => {
                 startTransition(() => {
-                    if (pathname?.includes("/p/")) {
+                    if (pathname?.includes(`/p/${id}`)) {
                         router.push("/");
                     } else {
                         router.refresh();

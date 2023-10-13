@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { UserAvatar } from "@/components/user-avatar";
+import DeletedCard from "../deleted-card";
 
 interface RepliesFeedProps {
     userId: string;
@@ -76,12 +77,20 @@ export default function RepliesFeed({
                     ) : null}
 
                     {post.parent ? (
-                        <PostCard
-                            key={post.parent.id}
-                            parent
-                            data={post.parent}
-                            queryKey={queryKey}
-                        />
+                        post.parent.deleted ? (
+                            <DeletedCard
+                                key={post.parent.id}
+                                parent
+                                data={post.parent}
+                            />
+                        ) : (
+                            <PostCard
+                                key={post.parent.id}
+                                parent
+                                data={post.parent}
+                                queryKey={queryKey}
+                            />
+                        )
                     ) : null}
 
                     {index === posts.length - 1 ? (
