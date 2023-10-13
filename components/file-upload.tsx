@@ -32,20 +32,22 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
             );
         } else
             return (
-                <div className="relative h-20 w-20">
-                    <Image
-                        fill
-                        src={value}
-                        alt="Upload"
-                        className="rounded-full"
-                    />
-                    <button
-                        onClick={() => onChange("")}
-                        className="absolute right-0 top-0 rounded-full bg-rose-500 p-1 text-white shadow-sm"
-                        type="button"
-                    >
-                        <X className="h-4 w-4" />
-                    </button>
+                <div className="flex items-center justify-center">
+                    <div className="relative h-20 w-20">
+                        <Image
+                            fill
+                            src={value}
+                            alt="Upload"
+                            className="rounded-full"
+                        />
+                        <button
+                            onClick={() => onChange("")}
+                            className="absolute right-0 top-0 rounded-full bg-rose-500 p-1 text-white shadow-sm"
+                            type="button"
+                        >
+                            <X className="h-4 w-4" />
+                        </button>
+                    </div>
                 </div>
             );
     }

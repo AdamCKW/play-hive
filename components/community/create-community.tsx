@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -24,10 +26,10 @@ export default function CreateCommunityCard({
     const { onOpen } = useModal();
 
     return (
-        <div className={cn("px-4 py-2", className)}>
+        <div className={cn("py-2", className)}>
             <Card className="shadow-md">
                 <CardHeader>
-                    <CardTitle className="text-muted-foreground">
+                    <CardTitle className="text-muted-foreground text-lg">
                         {t("heading")}
                     </CardTitle>
                 </CardHeader>
@@ -41,7 +43,7 @@ export default function CreateCommunityCard({
                                     onOpen("createCommunity");
                                 }}
                             >
-                                {t("button_create")}
+                                {t("create_button")}
                             </Button>
                         </div>
                     </div>

@@ -164,11 +164,10 @@ export function CreateCommunityModal({}: CommunityModalProps) {
                         />
 
                         <Button
-                            disabled={isLoading}
                             isLoading={isLoading}
-                            className="capitalize"
+                            className="w-full capitalize"
                         >
-                            {tForm("update_button")}
+                            {tForm("submit_button")}
                         </Button>
                     </form>
                 </Form>
