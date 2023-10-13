@@ -43,7 +43,7 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                     <MoreMenu
                         name={data.author.name!}
                         id={data.id}
-                        author={data.author.id}
+                        author={data.author.id!}
                     />
                 </div>
             </div>
