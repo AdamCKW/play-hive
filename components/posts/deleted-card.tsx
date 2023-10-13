@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
 import { useTranslations } from "next-intl";
+import Others from "./others";
 
 interface DeletedCardProps {
     data: IPost;
@@ -38,12 +39,14 @@ export default function DeletedCard({
                     <div className="bg-primary/40 h-10 w-10 rounded-full" />
                 </div>
                 <div className="w-full">
+                    <div className="relative h-[1.125rem]" />
                     <div
                         className={`text-muted-foreground text-left text-base/relaxed italic`}
                     >
                         {t("deleted")}
                     </div>
 
+                    <div className="relative h-[1.125rem]" />
                     <div className="text-muted-foreground flex items-center space-x-2 ">
                         {data.childrenCount > 0 && (
                             <div className="text-muted-foreground ">
@@ -104,16 +107,20 @@ export default function DeletedCard({
             <div className="flex flex-col items-center justify-between">
                 <div className="bg-primary/40 h-10 w-10 rounded-full" />
                 <div className="bg-primary/40 relative w-0.5 grow" />
+                {comment || parent ? null : <Others others={data.children} />}
             </div>
             <div className="w-full space-y-1">
+                <div className="relative h-[1.125rem]" />
+
                 <div
-                    className={`text-muted-foreground text-left text-base/relaxed`}
+                    className={`text-muted-foreground text-left text-base/relaxed italic`}
                 >
-                    Deleted Post
+                    {t("deleted")}
                 </div>
 
                 {comment ? null : (
                     <>
+                        <div className="relative h-[1.125rem]" />
                         <div className="text-muted-foreground flex items-center space-x-2 ">
                             {data.childrenCount > 0 && (
                                 <div className="text-muted-foreground ">
