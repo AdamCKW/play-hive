@@ -64,9 +64,11 @@ export default function Children({ parentId, initialPosts }: PostFeedProps) {
                         );
                 } else {
                     if (post.deleted) {
-                        <div key={post.id}>
-                            <DeletedCard data={post} />
-                        </div>;
+                        return (
+                            <div key={post.id}>
+                                <DeletedCard data={post} />
+                            </div>
+                        );
                     }
 
                     return (

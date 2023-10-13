@@ -228,6 +228,13 @@
                 "like": {
                     "like": "Like Post",
                     "unlike": "Unlike Post"
+                },
+                "display": {
+                    "deleted": "This post has been deleted.",
+                    "like": "like",
+                    "likes": "likes",
+                    "reply": "reply",
+                    "replies": "replies"
                 }
             },
             "create": {

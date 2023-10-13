@@ -5,7 +5,7 @@ import { z } from "zod";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PostValidation } from "@/lib/validators/create-post";
-import { cleanUp } from "@/lib/utils";
+import { cleanUp, transformObject } from "@/lib/utils";
 
 export async function GET(
     req: NextRequest,
@@ -71,21 +71,7 @@ export async function GET(
             },
         });
 
-        const posts = response.map((post) => {
-            return {
-                id: post.id,
-                text: post.text,
-                authorId: post.authorId,
-                createdAt: post.createdAt,
-                parentId: post.parentId,
-                author: post.author,
-                children: post.children,
-                parent: post.parent,
-                likedByUser: post.likes.length > 0,
-                likesCount: post._count.likes,
-                childrenCount: post._count.children,
-            };
-        });
+        const posts = response.map(transformObject);
 
         return NextResponse.json(posts);
     } catch (error) {

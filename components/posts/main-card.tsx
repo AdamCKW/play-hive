@@ -14,6 +14,7 @@ import ImageComponent from "./image";
 import { redirect } from "next/navigation";
 import { nFormatter } from "@/lib/utils";
 import Viewer from "./viewer";
+import { useTranslations } from "next-intl";
 
 interface MainCardProps {
     data: IPost;
@@ -23,6 +24,7 @@ interface MainCardProps {
 export default function MainCard({ data, queryKey }: MainCardProps) {
     const likesCount = nFormatter(data.likesCount, 1);
     const childrenCount = nFormatter(data.childrenCount, 1);
+    const t = useTranslations("root.posts.card.display");
 
     return (
         <div className="flex flex-col space-y-3 border-b px-3 py-4 dark:border-neutral-900">
@@ -73,7 +75,9 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                     {data.childrenCount > 0 && (
                         <div className="text-muted-foreground ">
                             {childrenCount}{" "}
-                            {data.childrenCount === 1 ? "reply" : "replies"}
+                            {data.childrenCount === 1
+                                ? t("reply")
+                                : t("replies")}
                         </div>
                     )}
 
@@ -84,7 +88,7 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                     {data.likesCount > 0 && (
                         <div className=" text-muted-foreground ">
                             {likesCount}{" "}
-                            {data.likesCount === 1 ? "like" : "likes"}
+                            {data.likesCount === 1 ? t("like") : t("likes")}
                         </div>
                     )}
 

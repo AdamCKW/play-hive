@@ -12,6 +12,7 @@ import Controls from "./controls";
 import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
 import Viewer from "./viewer";
+import { useTranslations } from "next-intl";
 
 interface PostCardProps {
     data: IPost;
@@ -40,6 +41,7 @@ export default function PostCard({
 
     const likesCount = nFormatter(data.likesCount, 1);
     const childrenCount = nFormatter(data.childrenCount, 1);
+    const t = useTranslations("root.posts.card.display");
 
     return (
         <>
@@ -118,8 +120,8 @@ export default function PostCard({
                                     <div className="text-muted-foreground ">
                                         {childrenCount}{" "}
                                         {data.childrenCount === 1
-                                            ? "reply"
-                                            : "replies"}
+                                            ? t("reply")
+                                            : t("replies")}
                                     </div>
                                 )}
 
@@ -132,8 +134,8 @@ export default function PostCard({
                                     <div className=" text-muted-foreground ">
                                         {likesCount}{" "}
                                         {data.likesCount === 1
-                                            ? "like"
-                                            : "likes"}
+                                            ? t("like")
+                                            : t("likes")}
                                     </div>
                                 )}
 

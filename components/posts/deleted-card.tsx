@@ -3,6 +3,7 @@ import { IPost } from "@/types/db";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
+import { useTranslations } from "next-intl";
 
 interface DeletedCardProps {
     data: IPost;
@@ -26,7 +27,7 @@ export default function DeletedCard({
         : `flex space-x-2 border-b px-3 py-4 dark:border-neutral-900 ${
               noLink && "pointer-events-none"
           }`;
-
+    const t = useTranslations("root.posts.card.display");
     const likesCount = nFormatter(data.likesCount, 1);
     const childrenCount = nFormatter(data.childrenCount, 1);
 
@@ -38,16 +39,18 @@ export default function DeletedCard({
                 </div>
                 <div className="w-full">
                     <div
-                        className={`text-muted-foreground text-left text-base/relaxed`}
+                        className={`text-muted-foreground text-left text-base/relaxed italic`}
                     >
-                        Deleted Post
+                        {t("deleted")}
                     </div>
 
                     <div className="text-muted-foreground flex items-center space-x-2 ">
                         {data.childrenCount > 0 && (
                             <div className="text-muted-foreground ">
                                 {childrenCount}{" "}
-                                {data.childrenCount === 1 ? "reply" : "replies"}
+                                {data.childrenCount === 1
+                                    ? t("reply")
+                                    : t("replies")}
                             </div>
                         )}
 
@@ -58,7 +61,7 @@ export default function DeletedCard({
                         {data.likesCount > 0 && (
                             <div className=" text-muted-foreground ">
                                 {likesCount}{" "}
-                                {data.likesCount === 1 ? "like" : "likes"}
+                                {data.likesCount === 1 ? t("like") : t("likes")}
                             </div>
                         )}
 
