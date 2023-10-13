@@ -1,6 +1,7 @@
 "use client";
 
 import { CreateCommunityModal } from "@/components/community/community-modal";
+import { EditCommunityModal } from "@/components/community/edit-community-modal";
 import { ImageModal } from "@/components/models/image-modal";
 import { PostModal } from "@/components/posts/create/post-modal";
 import { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ export const ModalProvider = () => {
             <ImageModal />
             <PostModal />
             <CreateCommunityModal />
+            <EditCommunityModal />
         </>
     );
 };

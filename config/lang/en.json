@@ -198,6 +198,42 @@
             }
         }
     },
+    "communication": {
+        "community": {
+            "actions": {
+                "subscribe": "Subscribe",
+                "unsubscribe": "Unsubscribe"
+            },
+            "heading": " Your personal community frontpage. Come here to check in with your favorite communities.",
+            "create_button": "Create Community",
+            "edit_button": "Edit Community",
+            "create_post": "Create Community Post",
+            "form": {
+                "title_create": "Create Community",
+                "title_update": "Update Community",
+                "image_label": "Community Image",
+                "image_alt": "Current Community image",
+                "image_remove": "Remove Community Image",
+                "name_label": "Community Name",
+                "name_placeholder": "ex: interest_name",
+                "submit_button": "Create",
+                "update_button": "Update"
+            },
+            "validation": {
+                "name_required": "Community name is required",
+                "name_type_error": "Community name must be a string",
+                "name_min": "Community name must be at least 4 characters long",
+                "name_max": "Community name cannot be longer than 21 characters",
+                "name_refine": "Community name can only contain alphanumeric characters, underscores, and hyphens"
+            },
+            "card": {
+                "title": "About c/{community_name}",
+                "created_at": "Created At",
+                "creator": "You created this community",
+                "created_by": "Created By"
+            }
+        }
+    },
     "root": {
         "image": {
             "alt": "Image",
@@ -328,7 +364,7 @@
                 "validation": {
                     "name_required": "Name is required",
                     "name_type_error": "Name must be a string",
-                    "name_min": "Name must be at least 2 characters long",
+                    "name_min": "Name must be at least 4 characters long",
                     "name_max": "Name cannot be longer than 30 characters",
                     "username_required": "Username is required",
                     "username_type_error": "Username must be a string",
@@ -511,6 +547,31 @@
                     "description": "An error occurred while uploading your cover image. Please try again later."
                 },
                 "username_exist": "Username already exists. Please try again with a different username."
+            }
+        },
+        "community": {
+            "success": {
+                "create": {
+                    "title": "Community created successfully",
+                    "description": "Your community has been created. You can now view it."
+                },
+                "update": {
+                    "title": "Community updated successfully",
+                    "description": "Your community has been updated. You can now view it."
+                },
+                "subscribe": {
+                    "title": "Subscribed successfully",
+                    "description": "You are now subscribed to c/{name}"
+                },
+                "unsubscribe": {
+                    "title": "Unsubscribed successfully",
+                    "description": "You have unsubscribed to this community."
+                }
+            },
+            "failed": {
+                "name_exist": "Community name already exists. Please try again with a different name.",
+                "subscribe": "You've already subscribed to this community",
+                "unsubscribe": "You've not been subscribed to this community."
             }
         }
     }

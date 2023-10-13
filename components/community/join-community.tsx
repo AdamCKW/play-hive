@@ -16,6 +16,9 @@ import { notFound } from "next/navigation";
 import { getAuthSession } from "@/lib/auth";
 import { ICommunity } from "@/types/db";
 import JoinCommunityToggle from "./join-community-toggle";
+import { Session } from "next-auth";
+import { useTranslations } from "next-intl";
+import { EditCommunityButton } from "./edit-community-button";
 
 interface JoinCommunityCardProps extends React.HTMLAttributes<HTMLDivElement> {
     communityInfo: {
@@ -32,56 +35,84 @@ export default async function JoinCommunityCard({
     const session = await getAuthSession();
     const { community, isSubscribed, memberCount } = communityInfo;
 
-    if (!community) return notFound();
+    if (!community) notFound();
 
     return (
         <div className={cn("px-4 py-2", className)}>
-            <Card className="shadow-md">
-                <CardHeader>
-                    <CardTitle>About /c/{community?.name}</CardTitle>
-                    <CardDescription className="flex justify-between gap-x-4 py-3">
-                        <span className="text-gray-500">Created At</span>
-                        <span className="text-gray-700">
-                            <time dateTime={community.createdAt.toDateString()}>
-                                {format(community.createdAt, "MMMM d, yyyy")}
-                            </time>
-                        </span>
-                    </CardDescription>
-                </CardHeader>
+            <WidgetCard
+                community={community}
+                memberCount={memberCount}
+                session={session!}
+                isSubscribed={isSubscribed}
+            />
+        </div>
+    );
+}
+function WidgetCard({
+    community,
+    memberCount,
+    session,
+    isSubscribed,
+}: {
+    community: ICommunity;
+    memberCount: number;
+    session: Session;
+    isSubscribed: boolean;
+}) {
+    const t = useTranslations("communication.community.card");
 
-                <CardContent>
+    return (
+        <Card className="shadow-md">
+            <CardHeader>
+                <CardTitle>
+                    {t("title", { community_name: community?.name })}
+                </CardTitle>
+                <CardDescription className="flex justify-between gap-x-4 py-3">
+                    <span className="text-gray-500">{t("created_at")}</span>
+                    <span className="text-gray-700">
+                        <time dateTime={community.createdAt.toDateString()}>
+                            {format(community.createdAt, "MMMM d, yyyy")}
+                        </time>
+                    </span>
+                </CardDescription>
+            </CardHeader>
+
+            <CardContent>
+                <div className="flex justify-between gap-x-4">
+                    <dt className="">Members</dt>
+                    <dd className="flex items-start gap-x-2">
+                        <span>{memberCount}</span>
+                    </dd>
+                </div>
+                {community.creatorId === session?.user?.id ? (
+                    <div className="flex justify-between gap-x-4 ">
+                        <dt>{t("creator")}</dt>
+                    </div>
+                ) : (
                     <div className="flex justify-between gap-x-4">
-                        <dt className="">Members</dt>
+                        <dt className="">{t("created_by")}</dt>
                         <dd className="flex items-start gap-x-2">
-                            <span>{memberCount}</span>
+                            <Link href={`/${community.creator?.username}`}>
+                                @{community.creator?.username}
+                            </Link>
                         </dd>
                     </div>
-                    {community.creatorId === session?.user?.id ? (
-                        <div className="flex justify-between gap-x-4 ">
-                            <dt>You created this community</dt>
-                        </div>
-                    ) : (
-                        <div className="flex justify-between gap-x-4">
-                            <dt className="">Created By</dt>
-                            <dd className="flex items-start gap-x-2">
-                                <Link href={`/${community.creator?.username}`}>
-                                    @{community.creator?.username}
-                                </Link>
-                            </dd>
-                        </div>
-                    )}
-                </CardContent>
+                )}
+            </CardContent>
 
-                {community.creatorId !== session?.user?.id ? (
-                    <CardFooter>
-                        <JoinCommunityToggle
-                            isSubscribed={isSubscribed}
-                            communityId={community.id}
-                            communityName={community.name}
-                        />
-                    </CardFooter>
-                ) : null}
-            </Card>
-        </div>
+            {community.creatorId !== session?.user?.id ? (
+                <CardFooter>
+                    <JoinCommunityToggle
+                        isSubscribed={isSubscribed}
+                        communityId={community.id}
+                        communityName={community.name}
+                    />
+                </CardFooter>
+            ) : (
+                <CardFooter>
+                    <EditCommunityButton community={community} />
+                </CardFooter>
+            )}
+        </Card>
     );
 }

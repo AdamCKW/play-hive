@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { User as NextAuthUser } from "next-auth";
+import { Community } from "@prisma/client";
 
 export type ModalType =
     | "users"
@@ -7,7 +8,8 @@ export type ModalType =
     | "deleteMessage"
     | "imageModal"
     | "createPost"
-    | "createCommunity";
+    | "createCommunity"
+    | "editCommunity";
 
 interface User extends NextAuthUser {
     username?: string | null;
@@ -18,6 +20,7 @@ interface ModalData {
     query?: Record<string, any>;
     imageUrl?: string;
     user?: Pick<User, "name" | "image" | "email" | "username" | "id">;
+    community?: Community;
 }
 
 interface ModalStore {

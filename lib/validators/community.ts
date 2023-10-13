@@ -33,7 +33,7 @@ export const CommunityValidator = (
     });
 
 export const CommunitySubscriptionValidator = z.object({
-    communityId: z.string(),
+    id: z.string(),
 });
 
 export type CreateCommunityPayload = z.infer<

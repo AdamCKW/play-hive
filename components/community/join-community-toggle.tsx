@@ -23,7 +23,7 @@ export default function JoinCommunityToggle({
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const tToast = useTranslations("toast");
 
-    const tButton = useTranslations("root.community.actions");
+    const tButton = useTranslations("communication.community.actions");
 
     const subscribe = async () => {
         setIsLoading(true);

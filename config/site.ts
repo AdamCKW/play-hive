@@ -1,3 +1,4 @@
+import { create } from "zustand";
 import { LinkConfig } from "@/types";
 
 export type SiteConfig = typeof siteConfig;
@@ -87,6 +88,10 @@ export const linksConfig: LinkConfig = {
         title: "communities",
         href: "/c",
         icon: "users",
+    },
+    create: {
+        title: "create",
+        href: "/create",
     },
     messages: {
         title: "messages",

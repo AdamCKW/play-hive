@@ -160,6 +160,8 @@ export async function POST(req: NextRequest) {
             return new NextResponse(error.message, { status: 422 });
         }
 
+        console.log("ERROR in POST /api/community/route.ts:", error);
+
         return new NextResponse("500.internal_error", { status: 500 });
     }
 }

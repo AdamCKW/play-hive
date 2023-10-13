@@ -13,7 +13,6 @@ import {
 
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-// import { CreateCommunityPayload } from "@/lib/validators/community";
 import { set } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { Input } from "../ui/input";
@@ -39,10 +38,10 @@ import { FileUpload } from "../file-upload";
 
 interface CommunityModalProps {}
 
-export function CreateCommunityModal({}: CommunityModalProps) {
-    const { isOpen, onClose, type } = useModal();
+export function EditCommunityModal({}: CommunityModalProps) {
+    const { isOpen, onClose, type, data } = useModal();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const isModalOpen = isOpen && type === "createCommunity";
+    const isModalOpen = isOpen && type === "editCommunity";
     const router = useRouter();
     const tForm = useTranslations("communication.community.form");
     const tValidation = useTranslations("communication.community.validation");
@@ -59,8 +58,8 @@ export function CreateCommunityModal({}: CommunityModalProps) {
     const form = useForm<CreateCommunityPayload>({
         resolver: zodResolver(CommunityValidator(...validationMessages)),
         defaultValues: {
-            imageUrl: "",
-            name: "",
+            imageUrl: data?.community?.image || "",
+            name: data?.community?.name || "",
         },
     });
 
@@ -69,7 +68,7 @@ export function CreateCommunityModal({}: CommunityModalProps) {
 
         try {
             await axios
-                .post("/api/community", values)
+                .patch(`/api/community/${data.community?.id}`, values)
                 .then((res) => {
                     form.reset();
                     onClose();
@@ -77,9 +76,9 @@ export function CreateCommunityModal({}: CommunityModalProps) {
                         router.push(`/c/${res.data}`);
                     });
                     toast({
-                        title: tToast("community.success.update.title"),
+                        title: tToast("community.success.edit.title"),
                         description: tToast(
-                            "community.success.update.description",
+                            "community.success.edit.description",
                         ),
                     });
                 })
@@ -109,7 +108,7 @@ export function CreateCommunityModal({}: CommunityModalProps) {
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle className="mb-3">
-                        {tForm("title_create")}
+                        {tForm("title_update")}
                     </DialogTitle>
                 </DialogHeader>
 
@@ -147,9 +146,10 @@ export function CreateCommunityModal({}: CommunityModalProps) {
                                     <FormControl>
                                         <Input
                                             id="name"
-                                            placeholder={tForm(
-                                                "name_placeholder",
-                                            )}
+                                            placeholder={
+                                                data?.community?.name ||
+                                                tForm("name_placeholder")
+                                            }
                                             autoCapitalize="none"
                                             autoComplete="name"
                                             autoCorrect="off"
@@ -167,7 +167,7 @@ export function CreateCommunityModal({}: CommunityModalProps) {
                             isLoading={isLoading}
                             className="w-full capitalize"
                         >
-                            {tForm("submit_button")}
+                            {tForm("update_button")}
                         </Button>
                     </form>
                 </Form>

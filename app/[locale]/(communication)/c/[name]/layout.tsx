@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 
 interface DynamicCommunityLayoutProps {
     params: {
-        id: string;
+        name: string;
     };
     children: React.ReactNode;
 }
@@ -18,9 +18,9 @@ export default async function DynamicCommunityLayout({
 }: DynamicCommunityLayoutProps) {
     const session = await getAuthSession();
 
-    const community = await db.community.findFirst({
+    const community = await db.community.findUnique({
         where: {
-            name: params.id,
+            name: params.name,
         },
         include: {
             creator: {
@@ -39,7 +39,7 @@ export default async function DynamicCommunityLayout({
         : await db.subscription.findFirst({
               where: {
                   community: {
-                      name: params.id,
+                      name: params.name,
                   },
                   user: {
                       id: session.user.id,
@@ -52,7 +52,7 @@ export default async function DynamicCommunityLayout({
     const memberCount = await db.subscription.count({
         where: {
             community: {
-                name: params.id,
+                name: params.name,
             },
         },
     });

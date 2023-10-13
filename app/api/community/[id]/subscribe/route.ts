@@ -15,7 +15,7 @@ export async function POST(
             return new NextResponse("401.unauthorized", { status: 401 });
         }
 
-        const { communityId } = CommunitySubscriptionValidator.parse(params);
+        const { id: communityId } = CommunitySubscriptionValidator.parse(params);
 
         const subscriptionExists = await db.subscription.findFirst({
             where: {

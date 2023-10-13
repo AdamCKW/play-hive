@@ -1,20 +1,13 @@
 import Link from "next/link";
 
-// import { feedConfig } from "@/config/navigations";
 import { siteConfig } from "@/config/site";
 import { getAuthSession } from "@/lib/auth";
 import { cn } from "@/lib/utils";
-// import CreateCommunityCard from "@/components/widgets/create-community";
-// import CreatePostCard from "@/components/widgets/create-community-post";
-// import JoinCommunityCard from "../widgets/join-community";
 
-import { RightBarItems } from "@/config/navigation";
-import { getTranslator } from "next-intl/server";
-import { useIntl } from "@/hooks/use-intl";
-import { useTranslations } from "next-intl";
 import CreateCommunityCard from "../community/create-community";
 import { ICommunity } from "@/types/db";
 import CreatePostCard from "../community/create-card";
+import JoinCommunityCard from "../community/join-community";
 
 interface RightBarProps extends React.HTMLAttributes<HTMLDivElement> {
     main?: boolean;
@@ -47,7 +40,11 @@ export async function RightBar({
                 {feed && <CreateCommunityCard />}
 
                 {individual && (
-                    <>{communityInfo?.isSubscribed && <CreatePostCard />}</>
+                    <>
+                        {communityInfo?.isSubscribed && <CreatePostCard />}
+
+                        <JoinCommunityCard communityInfo={communityInfo!} />
+                    </>
                 )}
             </div>
         </section>

@@ -1,13 +1,6 @@
 import type { Likes, Post, User, Community, Image } from "@prisma/client";
 
-export interface IUser {
-    id: string;
-    name: string;
-    email: string;
-    username: string;
-    image: string | null;
-    bio?: string | null;
-}
+export interface IUser extends Partial<User> {}
 
 export interface IAuthor extends IUser {}
 
