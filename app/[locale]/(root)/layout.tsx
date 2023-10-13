@@ -2,11 +2,11 @@ import { LeftBar } from "@/components/layout/left-bar";
 import { NavBar } from "@/components/layout/nav-bar";
 import { RightBar } from "@/components/layout/right-bar";
 
-interface RootLayoutProps {
+interface MainLayoutProps {
     children: React.ReactNode;
 }
 
-export default function MainLayout({ children }: RootLayoutProps) {
+export default function MainLayout({ children }: MainLayoutProps) {
     return (
         <>
             <NavBar />
