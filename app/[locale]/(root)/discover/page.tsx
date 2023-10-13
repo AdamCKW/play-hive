@@ -7,7 +7,7 @@ import { transformObject } from "@/lib/utils";
 import { IPost } from "@/types/db";
 import { getTranslator } from "next-intl/server";
 import { Suspense, lazy } from "react";
-import { PostLoading } from "@/components/posts/loading";
+import { PostLoading } from "@/components/loading";
 // import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 // import ExploreFeed from "@/components/post/feeds/explore";
 

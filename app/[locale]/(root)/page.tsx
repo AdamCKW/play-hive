@@ -10,7 +10,7 @@ import { Fragment, Suspense } from "react";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
 import { Loader2 } from "lucide-react";
-import { PostLoading } from "@/components/posts/loading";
+import { PostLoading } from "@/components/loading";
 import dynamic from "next/dynamic";
 
 interface HomePageProps {

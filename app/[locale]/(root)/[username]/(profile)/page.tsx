@@ -9,7 +9,7 @@ import { db } from "@/lib/db";
 import { cn, transformObject } from "@/lib/utils";
 import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
-import { PostLoading } from "@/components/posts/loading";
+import { PostLoading } from "@/components/loading";
 import { ExtendedMetadata } from "@/types";
 // import { ProfileFeed } from "@/components/posts/feeds/profile-feed";
 
