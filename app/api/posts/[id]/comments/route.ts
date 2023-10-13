@@ -7,6 +7,96 @@ import { db } from "@/lib/db";
 import { PostValidation } from "@/lib/validators/create-post";
 import { cleanUp } from "@/lib/utils";
 
+export async function GET(
+    req: NextRequest,
+    { params }: { params: { id: string } },
+) {
+    try {
+        const session = await getAuthSession();
+        const url = new URL(req.url);
+        const { id } = params;
+
+        const { limit, page } = z
+            .object({
+                limit: z.string(),
+                page: z.string(),
+            })
+            .parse({
+                limit: url.searchParams.get("limit"),
+                page: url.searchParams.get("page"),
+            });
+
+        const response = await db.post.findMany({
+            take: parseInt(limit),
+            skip: (parseInt(page) - 1) * parseInt(limit),
+            where: { parentId: id },
+            include: {
+                author: {
+                    select: {
+                        id: true,
+                        name: true,
+                        username: true,
+                        image: true,
+                    },
+                },
+                children: {
+                    include: {
+                        author: {
+                            select: {
+                                id: true,
+                                name: true,
+                                username: true,
+                                image: true,
+                            },
+                        },
+                    },
+                },
+                parent: {
+                    include: {
+                        author: {
+                            select: {
+                                id: true,
+                                name: true,
+                                username: true,
+                                image: true,
+                            },
+                        },
+                    },
+                },
+                likes:
+                    session?.user.id == null
+                        ? false
+                        : { where: { userId: session.user.id } },
+                _count: { select: { likes: true, children: true } },
+            },
+        });
+
+        const posts = response.map((post) => {
+            return {
+                id: post.id,
+                text: post.text,
+                authorId: post.authorId,
+                createdAt: post.createdAt,
+                parentId: post.parentId,
+                author: post.author,
+                children: post.children,
+                parent: post.parent,
+                likedByUser: post.likes.length > 0,
+                likesCount: post._count.likes,
+                childrenCount: post._count.children,
+            };
+        });
+
+        return NextResponse.json(posts);
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return new NextResponse(error.message, { status: 400 });
+        }
+        console.log("ERROR in GET /api/posts/[id]/comments:", error);
+        return new NextResponse("500.internal_error", { status: 500 });
+    }
+}
+
 export async function POST(
     req: NextRequest,
     { params }: { params: { id: string } },
