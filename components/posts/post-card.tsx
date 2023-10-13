@@ -68,7 +68,7 @@ export default function PostCard({
                                 <MoreMenu
                                     name={data.author.name!}
                                     id={data.id}
-                                    author={data.author.id}
+                                    author={data.author.id!}
                                 />
                             </div>
                         )}
