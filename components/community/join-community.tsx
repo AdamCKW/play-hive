@@ -15,10 +15,19 @@ import { Prisma } from "@prisma/client";
 import { notFound } from "next/navigation";
 import { getAuthSession } from "@/lib/auth";
 import { ICommunity } from "@/types/db";
-import JoinCommunityToggle from "./join-community-toggle";
+// import JoinCommunityToggle from "./join-community-toggle";
 import { Session } from "next-auth";
 import { useTranslations } from "next-intl";
-import { EditCommunityButton } from "./edit-community-button";
+// import { EditCommunityButton } from "./edit-community-button";
+import dynamic from "next/dynamic";
+import { Skeleton } from "../ui/skeleton";
+const JoinCommunityToggle = dynamic(() => import("./join-community-toggle"), {
+    loading: () => <Skeleton className="h-10 w-full" />,
+});
+
+const EditCommunityButton = dynamic(() => import("./edit-community-button"), {
+    loading: () => <Skeleton className="h-10 w-full" />,
+});
 
 interface JoinCommunityCardProps extends React.HTMLAttributes<HTMLDivElement> {
     communityInfo: {

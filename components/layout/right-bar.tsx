@@ -4,10 +4,14 @@ import { siteConfig } from "@/config/site";
 import { getAuthSession } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
-import CreateCommunityCard from "../community/create-community";
+// import CreateCommunityCard from "@/components/community/create-community";
 import { ICommunity } from "@/types/db";
 import CreatePostCard from "../community/create-card";
 import JoinCommunityCard from "../community/join-community";
+import dynamic from "next/dynamic";
+const CreateCommunityCard = dynamic(
+    () => import("@/components/community/create-community"),
+);
 
 interface RightBarProps extends React.HTMLAttributes<HTMLDivElement> {
     main?: boolean;

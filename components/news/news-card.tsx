@@ -30,10 +30,10 @@ export default function NewsCard({ data }: NewsCardProps) {
             <div className="rotate-180 p-2 [writing-mode:_vertical-lr]">
                 <time
                     dateTime="2022-10-10"
-                    className="light:text-gray-900 flex items-center justify-between gap-4 text-xs font-bold uppercase"
+                    className="flex items-center justify-between gap-4 text-xs font-bold uppercase"
                 >
                     <span>{dates.year}</span>
-                    <span className="bg-muted-foreground w-px flex-1"></span>
+                    <span className="bg-primary/40 w-px flex-1"></span>
                     <span>{dates.monthDay}</span>
                 </time>
             </div>
@@ -52,7 +52,7 @@ export default function NewsCard({ data }: NewsCardProps) {
             </div>
 
             <div className="flex flex-1 flex-col justify-between">
-                <div className="border-s border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
+                <div className="border-primary/10 border-s p-4 sm:border-l-transparent sm:p-6">
                     <a
                         target="_blank"
                         rel="noopener noreferrer"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useIntersection } from "@mantine/hooks";
 import { Loader2 } from "lucide-react";
 
@@ -65,7 +65,7 @@ export default function RepliesFeed({
     return (
         <>
             {posts.map((post, index) => (
-                <>
+                <Fragment key={post.id + index}>
                     {post.parent && post.parent.parent ? (
                         <Link href={"/p/" + post.parent.parentId}>
                             <Button
@@ -112,7 +112,7 @@ export default function RepliesFeed({
                             <PostCard data={post} queryKey={queryKey} />
                         </div>
                     )}
-                </>
+                </Fragment>
             ))}
 
             <div className="flex w-full justify-center py-4">

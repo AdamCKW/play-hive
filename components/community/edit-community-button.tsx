@@ -9,7 +9,9 @@ interface EditCommunityButtonProps {
     community: ICommunity;
 }
 
-export function EditCommunityButton({ community }: EditCommunityButtonProps) {
+export default function EditCommunityButton({
+    community,
+}: EditCommunityButtonProps) {
     const t = useTranslations("communication.community");
     const { onOpen, data } = useModal();
     return (
