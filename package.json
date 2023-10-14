@@ -91,6 +91,7 @@
     "next-auth": "^4.23.2",
     "next-intl": "3.0.0-beta.19",
     "next-themes": "^0.2.1",
+    "nextjs-toploader": "^1.4.2",
     "nodemailer": "^6.9.5",
     "nodemailer-brevo-transport": "^2.1.0",
     "nsfw-filter": "^1.0.3",
