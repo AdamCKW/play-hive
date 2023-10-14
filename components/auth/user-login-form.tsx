@@ -29,7 +29,10 @@ import axios from "axios";
 
 interface UserLoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
+export default function UserLoginForm({
+    className,
+    ...props
+}: UserLoginFormProps) {
     const router = useRouter();
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);

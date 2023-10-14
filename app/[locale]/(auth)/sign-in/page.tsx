@@ -13,11 +13,16 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { OAuthSignIn } from "@/components/auth/oauth-signin";
-import { UserLoginForm } from "@/components/auth/user-login-form";
+// import { UserLoginForm } from "@/components/auth/user-login-form";
 import { Icons } from "@/components/icons";
 import { getTranslator } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { ExtendedMetadata } from "@/types";
+import dynamic from "next/dynamic";
+
+const UserLoginForm = dynamic(
+    () => import("@/components/auth/user-login-form"),
+);
 
 export async function generateMetadata({
     params: { locale },
@@ -41,8 +46,6 @@ export default async function LoginPage({
 }: LoginPageProps) {
     const session = await getAuthSession();
     const translate = await getTranslator(locale, "auth.login.page");
-
-    // if (session?.user) redirect("/");
 
     return (
         <section className="container grid max-w-lg items-center gap-8 pb-8 pt-6 md:py-8">

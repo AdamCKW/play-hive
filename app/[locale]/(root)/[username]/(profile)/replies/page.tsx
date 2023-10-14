@@ -1,18 +1,21 @@
-import { Suspense, lazy } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { cn, transformObject } from "@/lib/utils";
 import { getTranslator } from "next-intl/server";
-import { linksConfig } from "@/config/site";
 import { PostLoading } from "@/components/loading";
 import { IReplies } from "@/types/db";
 import { ExtendedMetadata } from "@/types";
-// import { ProfileFeed } from "@/components/posts/feeds/profile-feed";
+import dynamic from "next/dynamic";
+const RepliesFeed = dynamic(
+    () => import("@/components/posts/feeds/replies-feed"),
+    {
+        loading: () => <PostLoading />,
+    },
+);
 
 interface RepliesPageLayoutProps {
     params: { username: string; locale: string };
@@ -28,8 +31,6 @@ export async function generateMetadata({
         description: t("description"),
     };
 }
-
-const RepliesFeed = lazy(() => import("@/components/posts/feeds/replies-feed"));
 
 export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
     const tProfile = await getTranslator(params.locale, "root.profile.page");
@@ -152,20 +153,19 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
                     {tProfile("replies")}
                 </button>
             </div>
-            <Suspense fallback={<PostLoading />}>
-                {replies.length === 0 ? (
-                    <div className="text-muted-foreground mt-4 text-center leading-loose">
-                        {tPost("empty_replies")}
-                    </div>
-                ) : (
-                    <div className="2xl:mx-4">
-                        <RepliesFeed
-                            initialReplies={initialReplies}
-                            userId={getUser.id}
-                        />
-                    </div>
-                )}
-            </Suspense>
+
+            {replies.length === 0 ? (
+                <div className="text-muted-foreground mt-4 text-center leading-loose">
+                    {tPost("empty_replies")}
+                </div>
+            ) : (
+                <div className="2xl:mx-4">
+                    <RepliesFeed
+                        initialReplies={initialReplies}
+                        userId={getUser.id}
+                    />
+                </div>
+            )}
         </>
     );
 }

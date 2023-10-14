@@ -55,7 +55,7 @@ export function CreateCommunityModal({}: CommunityModalProps) {
         tValidation("name_type_error"),
         tValidation("name_min"),
         tValidation("name_max"),
-        tValidation("username_refine"),
+        tValidation("name_refine"),
     ];
 
     const form = useForm<CreateCommunityPayload>({

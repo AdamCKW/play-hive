@@ -16,10 +16,10 @@ const fontSans = FontSans({
     variable: "--font-sans",
 });
 
-const fontHeading = localFont({
-    src: "../../assets/fonts/CalSans-SemiBold.woff2",
-    variable: "--font-heading",
-});
+// const fontHeading = localFont({
+//     src: "../../assets/fonts/CalSans-SemiBold.woff2",
+//     variable: "--font-heading",
+// });
 
 export const metadata: Metadata = {
     title: {
@@ -78,8 +78,9 @@ export default async function RootLayout({
             <body
                 className={cn(
                     "bg-background scrollbar-none min-h-screen font-sans antialiased ",
-                    fontSans.variable,
-                    fontHeading.variable,
+                    // fontSans.variable,
+                    fontSans.className,
+                    // fontHeading.variable,
                 )}
             >
                 <ThemeProvider

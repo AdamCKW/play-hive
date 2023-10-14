@@ -6,8 +6,14 @@ import { Loader2 } from "lucide-react";
 
 import { IPost } from "@/types/db";
 import { useInfinitePostQuery } from "@/hooks/use-infinite-post-query";
-import PostCard from "@/components/posts/post-card";
+
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "../skeleton-card";
+
+const PostCard = dynamic(() => import("@/components/posts/post-card"), {
+    loading: () => <SkeletonCard />,
+});
 
 interface ProfileFeedProps {
     userId: string;

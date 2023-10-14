@@ -19,7 +19,9 @@ interface HomePageProps {
     };
 }
 
-const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"));
+const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"), {
+    loading: () => <PostLoading />,
+});
 
 export default async function Home({ params }: HomePageProps) {
     const session = await getAuthSession();
@@ -102,17 +104,15 @@ export default async function Home({ params }: HomePageProps) {
 
     return (
         <>
-            <Suspense fallback={<PostLoading />}>
-                {posts.length === 0 ? (
-                    <div className="mt-4 text-center leading-loose text-neutral-600">
-                        {t("empty")}
-                    </div>
-                ) : (
-                    <div className="2xl:mx-4">
-                        <MainFeed initialPosts={posts} />
-                    </div>
-                )}
-            </Suspense>
+            {posts.length === 0 ? (
+                <div className="mt-4 text-center leading-loose text-neutral-600">
+                    {t("empty")}
+                </div>
+            ) : (
+                <div className="2xl:mx-4">
+                    <MainFeed initialPosts={posts} />
+                </div>
+            )}
         </>
     );
 }

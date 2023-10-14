@@ -6,13 +6,23 @@ import { Loader2 } from "lucide-react";
 
 import { IPost, IReplies } from "@/types/db";
 import { useInfinitePostQuery } from "@/hooks/use-infinite-post-query";
-import PostCard from "@/components/posts/post-card";
+
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { UserAvatar } from "@/components/user-avatar";
-import DeletedCard from "../deleted-card";
+
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+
+const PostCard = dynamic(() => import("@/components/posts/post-card"), {
+    loading: () => <SkeletonCard />,
+});
+
+const DeletedCard = dynamic(() => import("@/components/posts/deleted-card"), {
+    loading: () => <SkeletonCard />,
+});
 
 interface RepliesFeedProps {
     userId: string;

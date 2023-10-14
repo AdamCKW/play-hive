@@ -8,11 +8,15 @@ import { IPost } from "@/types/db";
 import { getTranslator } from "next-intl/server";
 import { Suspense, lazy } from "react";
 import { PostLoading } from "@/components/loading";
+import dynamic from "next/dynamic";
 // import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 // import ExploreFeed from "@/components/post/feeds/explore";
 
-const DiscoverFeed = lazy(
+const DiscoverFeed = dynamic(
     () => import("@/components/posts/feeds/discover-feed"),
+    {
+        loading: () => <PostLoading />,
+    },
 );
 
 interface DiscoverPageProps {
@@ -77,20 +81,18 @@ export default async function DiscoverPage({
 
     return (
         <>
-            <Suspense fallback={<PostLoading />}>
-                {posts.length === 0 ? (
-                    <div className="text-muted-foreground mt-4 text-center leading-loose">
-                        {t("empty")}
-                    </div>
-                ) : (
-                    <div className="2xl:mx-4">
-                        <DiscoverFeed
-                            userId={session?.user.id!}
-                            initialPosts={posts}
-                        />
-                    </div>
-                )}
-            </Suspense>
+            {posts.length === 0 ? (
+                <div className="text-muted-foreground mt-4 text-center leading-loose">
+                    {t("empty")}
+                </div>
+            ) : (
+                <div className="2xl:mx-4">
+                    <DiscoverFeed
+                        userId={session?.user.id!}
+                        initialPosts={posts}
+                    />
+                </div>
+            )}
         </>
     );
 }

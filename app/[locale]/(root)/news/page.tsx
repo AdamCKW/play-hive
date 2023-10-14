@@ -1,7 +1,11 @@
+import { PostLoading } from "@/components/loading";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import axios from "axios";
-import NewsFeed from "./_components/news-feed";
+import dynamic from "next/dynamic";
 import queryString from "query-string";
+const NewsFeed = dynamic(() => import("@/components/news/news-feed"), {
+    loading: () => <PostLoading />,
+});
 
 export default async function NewsPage() {
     const query = queryString.stringifyUrl({

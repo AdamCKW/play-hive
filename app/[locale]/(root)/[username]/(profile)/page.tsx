@@ -11,13 +11,18 @@ import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
 import { PostLoading } from "@/components/loading";
 import { ExtendedMetadata } from "@/types";
-// import { ProfileFeed } from "@/components/posts/feeds/profile-feed";
+import dynamic from "next/dynamic";
 
 interface ProfilePageLayoutProps {
     params: { username: string; locale: string };
 }
 
-const ProfileFeed = lazy(() => import("@/components/posts/feeds/profile-feed"));
+const ProfileFeed = dynamic(
+    () => import("@/components/posts/feeds/profile-feed"),
+    {
+        loading: () => <PostLoading />,
+    },
+);
 
 export async function generateMetadata({
     params: { locale },
@@ -109,20 +114,19 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
                     {tProfile("replies")}
                 </Link>
             </div>
-            <Suspense fallback={<PostLoading />}>
-                {posts.length === 0 ? (
-                    <div className="text-muted-foreground mt-4 text-center leading-loose">
-                        {tPost("empty")}
-                    </div>
-                ) : (
-                    <div className="2xl:mx-4">
-                        <ProfileFeed
-                            initialPosts={initialPosts}
-                            userId={getUser.id}
-                        />
-                    </div>
-                )}
-            </Suspense>
+
+            {posts.length === 0 ? (
+                <div className="text-muted-foreground mt-4 text-center leading-loose">
+                    {tPost("empty")}
+                </div>
+            ) : (
+                <div className="2xl:mx-4">
+                    <ProfileFeed
+                        initialPosts={initialPosts}
+                        userId={getUser.id}
+                    />
+                </div>
+            )}
         </>
     );
 }

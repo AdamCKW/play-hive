@@ -4,13 +4,20 @@ import { useEffect, useRef, useState } from "react";
 import { useIntersection } from "@mantine/hooks";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
-
 import { IPost } from "@/types/db";
 
-import PostCard from "@/components/posts/post-card";
 import { useInfinitePostQuery } from "@/hooks/use-infinite-post-query";
 import { useTranslations } from "next-intl";
-import DeletedCard from "../deleted-card";
+
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+
+const PostCard = dynamic(() => import("@/components/posts/post-card"), {
+    loading: () => <SkeletonCard />,
+});
+const DeletedCard = dynamic(() => import("@/components/posts/deleted-card"), {
+    loading: () => <SkeletonCard />,
+});
 
 interface PostFeedProps {
     parentId: string;

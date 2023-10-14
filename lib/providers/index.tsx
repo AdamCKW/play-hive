@@ -13,12 +13,14 @@ const Providers: FC<LayoutProps> = ({ children }) => {
     const queryClient = new QueryClient();
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <SessionProvider>
-                {children}
-                <ModalProvider />
-            </SessionProvider>
-        </QueryClientProvider>
+        <>
+            <QueryClientProvider client={queryClient}>
+                <SessionProvider>
+                    {children}
+                    <ModalProvider />
+                </SessionProvider>
+            </QueryClientProvider>
+        </>
     );
 };
 
