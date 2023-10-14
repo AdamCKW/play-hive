@@ -13,9 +13,22 @@ import { Icons } from "@/components/icons";
 import { UserAvatar } from "@/components/user-avatar";
 import { redirect } from "next/navigation";
 import { getTranslator } from "next-intl/server";
-import Parent from "@/components/posts/feeds/parent";
-import Main from "@/components/posts/feeds/main";
-import Children from "@/components/posts/feeds/children";
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+
+// import Parent from "@/components/posts/feeds/parent";
+// import Main from "@/components/posts/feeds/main";
+// import Children from "@/components/posts/feeds/children";
+
+const Parent = dynamic(() => import("@/components/posts/feeds/parent"), {
+    loading: () => <SkeletonCard />,
+});
+const Main = dynamic(() => import("@/components/posts/feeds/main"), {
+    loading: () => <SkeletonCard main />,
+});
+const Children = dynamic(() => import("@/components/posts/feeds/children"), {
+    loading: () => <SkeletonCard />,
+});
 
 interface PostPageProps {
     params: {
