@@ -10,7 +10,7 @@ import { User as NextAuthUser } from "next-auth";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import NSFWFilter from "nsfw-filter";
+// import NSFWFilter from "nsfw-filter";
 
 import { PostRequest, PostValidation } from "@/lib/validators/create-post";
 import { Button } from "@/components/ui/button";
@@ -67,6 +67,8 @@ export function CreatePost({ setOpen, user }: CreatePostProps) {
 
                 for (const file of acceptedFiles) {
                     try {
+                        const NSFWFilter = (await import("nsfw-filter"))
+                            .default;
                         const isSafe = await NSFWFilter.isSafe(file);
 
                         if (!isSafe) {

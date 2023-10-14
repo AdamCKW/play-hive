@@ -35,7 +35,7 @@ import { TFile } from "@/types";
 import { useTranslations } from "next-intl";
 import { updateInfiniteQueryReply } from "@/hooks/use-update-infinite-post-query";
 import { updateQueryReply } from "@/hooks/use-update-post-query";
-import NSFWFilter from "nsfw-filter";
+// import NSFWFilter from "nsfw-filter";
 
 interface CreateCommentProps {
     itemData: IPost;
@@ -44,7 +44,7 @@ interface CreateCommentProps {
     setOpen: (open: boolean) => void;
 }
 
-export function CreateComment({
+export default function CreateComment({
     itemData,
     queryKey,
     single,
@@ -75,6 +75,8 @@ export function CreateComment({
 
                 for (const file of acceptedFiles) {
                     try {
+                        const NSFWFilter = (await import("nsfw-filter"))
+                            .default;
                         const isSafe = await NSFWFilter.isSafe(file);
 
                         if (!isSafe) {

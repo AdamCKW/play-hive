@@ -1,15 +1,12 @@
-import { Prisma } from '@prisma/client'
-
-import { IPost } from '@/types/db'
-
-import CommentModal from '../comment/comment-modal'
-import Like from './like'
-import ShareButton from './share'
+import { IPost } from "@/types/db";
+import CommentModal from "../comment/comment-modal";
+import Like from "./like";
+import ShareButton from "./share";
 
 interface ControlsProps {
-    data: IPost
-    single?: boolean
-    queryKey?: string[]
+    data: IPost;
+    single?: boolean;
+    queryKey?: string[];
 }
 
 export default function Controls({
@@ -28,8 +25,8 @@ export default function Controls({
                 />
 
                 <CommentModal data={data} single={single} queryKey={queryKey} />
-                <ShareButton name={data.author.name || ''} post={data.id} />
+                <ShareButton name={data.author.name || ""} post={data.id} />
             </div>
         </div>
-    )
+    );
 }

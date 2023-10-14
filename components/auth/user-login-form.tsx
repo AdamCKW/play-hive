@@ -26,6 +26,7 @@ import { useTranslations } from "next-intl";
 import { linksConfig } from "@/config/site";
 import { ToastAction } from "../ui/toast";
 import axios from "axios";
+import { start } from "repl";
 
 interface UserLoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -64,8 +65,6 @@ export default function UserLoginForm({
             redirect: false,
             callbackUrl: linksConfig.home.href,
         });
-
-        setIsLoading(false);
 
         if (signInResponse?.error) {
             if (signInResponse?.error === "login.failed.unverified") {
@@ -115,10 +114,16 @@ export default function UserLoginForm({
                 description: tToast(signInResponse.error),
             });
         }
-
-        //TODO: temporary fix to force hard navigation
-        router.refresh();
-        return router.push(linksConfig.home.href);
+        setIsLoading(false);
+        React.startTransition(() => {
+            router.refresh();
+            //TODO: temporary fix to force hard navigation
+            router.push(linksConfig.home.href);
+        });
+        toast({
+            title: tToast("login.success.title"),
+            description: tToast("login.success.description"),
+        });
     }
 
     return (

@@ -41,7 +41,7 @@ import { X } from "lucide-react";
 
 interface CommunityModalProps {}
 
-export function CreateCommunityModal({}: CommunityModalProps) {
+export default function CreateCommunityModal({}: CommunityModalProps) {
     const { isOpen, onClose, type } = useModal();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const isModalOpen = isOpen && type === "createCommunity";

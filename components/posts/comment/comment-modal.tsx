@@ -16,9 +16,11 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { CreateComment } from "./create-comment";
+// import CreateComment from "./create-comment";
 import PostCard from "../post-card";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+const CreateComment = dynamic(() => import("./create-comment"));
 
 interface CommentModalProps {
     data: IPost;
@@ -61,6 +63,9 @@ export default function CommentModal({
                 }}
             >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full group-hover:bg-blue-600/5 dark:group-hover:bg-blue-300/20">
+                    <span className="sr-only">
+                        {tComments("comment_button")}
+                    </span>
                     <MessageCircle className="h-5 w-5" />
                 </span>
             </button>

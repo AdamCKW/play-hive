@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 
 interface ImageModalProps {}
 
-export function ImageModal({}: ImageModalProps) {
+export default function ImageModal({}: ImageModalProps) {
     const { isOpen, onClose, type, data } = useModal();
     const tImage = useTranslations("root.image");
 

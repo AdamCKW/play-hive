@@ -80,7 +80,7 @@
     },
     "auth": {
         "layout": {
-            "image_src": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80",
+            "image_src": "/room-stock.jpg",
             "image_alt": "Image of building",
             "quote_text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before. Highly recommended!",
             "quote_author": "Sofia Davis"
@@ -299,6 +299,7 @@
         },
         "comments": {
             "heading": "Reply",
+            "comment_button": "Reply to post",
             "validation": {
                 "content_min": "Comment must be at least 1 characters long",
                 "content_max": "Comment cannot be longer than 250 characters"
@@ -409,6 +410,10 @@
             "cta": "Go back home"
         },
         "login": {
+            "success": {
+                "title": "Login successful",
+                "description": "You have successfully logged in. Redirecting to home page..."
+            },
             "failed": {
                 "invalid": "Invalid credentials, please check your username and password.",
                 "unverified": "Your account is not verified. Please check your email to verify your account.",

@@ -29,7 +29,7 @@ interface PostModal {
     // user: Pick<User, "name" | "image" | "email" | "username" | "id">;
 }
 
-export function PostModal({}: PostModal) {
+export default function PostModal({}: PostModal) {
     const { isOpen, onClose, type, data } = useModal();
     const isModalOpen = isOpen && type === "createPost";
     const { user } = data;
