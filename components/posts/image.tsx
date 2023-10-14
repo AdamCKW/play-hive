@@ -20,7 +20,7 @@ export default function ImageComponent({ images }: ImageComponentProps) {
             {images.map((image: Prisma.ImagesGetPayload<{}>, index: number) => (
                 <div
                     key={image.id}
-                    className={`flex max-w-[35.938rem] ${
+                    className={`flex max-w-[35.938rem] hover:cursor-pointer ${
                         images.length === 3
                             ? index === 0
                                 ? "row-span-2"
@@ -28,8 +28,8 @@ export default function ImageComponent({ images }: ImageComponentProps) {
                             : ""
                     }`}
                     onClick={(e) => {
-                        e.stopPropagation();
                         e.preventDefault();
+                        e.stopPropagation();
                         onOpen("imageModal", {
                             imageUrl: image.url,
                         });

@@ -30,8 +30,9 @@ import { useDropzone } from "react-dropzone";
 import { uploadFiles } from "@/lib/uploadthing";
 import { TFile } from "@/types";
 import { useTranslations } from "next-intl";
-import { Post } from "@prisma/client";
+
 import { useRouter } from "next/navigation";
+import NSFWFilter from "nsfw-filter";
 
 interface CreatePostProps {
     setOpen: (open: boolean) => void;
@@ -42,10 +43,9 @@ interface User extends NextAuthUser {
     username?: string | null;
 }
 
-export function CreatePost({ setOpen, user }: CreatePostProps) {
+export default function CreatePost({ setOpen, user }: CreatePostProps) {
     const router = useRouter();
     const [files, setFiles] = useState<TFile[]>([]);
-
     const tValidation = useTranslations("root.posts.create.validation");
     const tToast = useTranslations("toast");
     const tForm = useTranslations("root.posts.create.form");
@@ -62,13 +62,12 @@ export function CreatePost({ setOpen, user }: CreatePostProps) {
             },
             maxFiles: 4,
             maxSize: 8 * 1024 * 1024,
+
             onDrop: async (acceptedFiles, rejectedFiles) => {
                 let isNSFW;
 
                 for (const file of acceptedFiles) {
                     try {
-                        const NSFWFilter = (await import("nsfw-filter"))
-                            .default;
                         const isSafe = await NSFWFilter.isSafe(file);
 
                         if (!isSafe) {
@@ -76,6 +75,7 @@ export function CreatePost({ setOpen, user }: CreatePostProps) {
                             break; // Exit the loop if NSFW content is found
                         }
                     } catch (error) {
+                        console.log(error);
                         return toast({
                             title: tToast("upload.error.title"),
                             description: tToast("upload.error.description"),

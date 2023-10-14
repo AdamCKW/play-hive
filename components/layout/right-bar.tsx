@@ -6,9 +6,17 @@ import { cn } from "@/lib/utils";
 
 // import CreateCommunityCard from "@/components/community/create-community";
 import { ICommunity } from "@/types/db";
-import CreatePostCard from "../community/create-card";
-import JoinCommunityCard from "../community/join-community";
+// import CreatePostCard from "../community/create-card";
+// import JoinCommunityCard from "../community/join-community";
 import dynamic from "next/dynamic";
+
+const CreatePostCard = dynamic(
+    () => import("@/components/community/create-card"),
+);
+const JoinCommunityCard = dynamic(
+    () => import("@/components/community/join-community"),
+);
+
 const CreateCommunityCard = dynamic(
     () => import("@/components/community/create-community"),
 );

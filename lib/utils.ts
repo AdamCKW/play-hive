@@ -12,6 +12,7 @@ import {
     CensorContext,
     //@ts-ignore
 } from "obscenity";
+import { TFile } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));

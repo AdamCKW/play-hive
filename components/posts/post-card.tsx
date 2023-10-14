@@ -7,12 +7,18 @@ import { UserAvatar } from "../user-avatar";
 import NameLink from "./name-link";
 import Others from "./others";
 import MoreMenu from "./more-menu";
-import ImageComponent from "./image";
+// import ImageComponent from "./image";
 import Controls from "./controls";
 import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
 import Viewer from "./viewer";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+import { Skeleton } from "../ui/skeleton";
+
+const ImageComponent = dynamic(() => import("./image"), {
+    loading: () => <Skeleton className="h-full w-full" />,
+});
 
 interface PostCardProps {
     data: IPost;

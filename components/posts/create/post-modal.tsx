@@ -17,16 +17,18 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { CreatePost } from "./create-post";
 import { useTranslations } from "next-intl";
 import { useModal } from "@/hooks/use-modal-store";
+import dynamic from "next/dynamic";
+
+const CreatePost = dynamic(() => import("./create-post"), {});
 
 interface User extends NextAuthUser {
     username?: string | null;
 }
 
 interface PostModal {
-    // user: Pick<User, "name" | "image" | "email" | "username" | "id">;
+    user?: Pick<User, "name" | "image" | "email" | "username" | "id">;
 }
 
 export default function PostModal({}: PostModal) {
@@ -43,7 +45,7 @@ export default function PostModal({}: PostModal) {
                     <DialogTitle className="mb-3">{t("title")}</DialogTitle>
                 </DialogHeader>
 
-                <CreatePost user={user!} setOpen={onClose} />
+                {isModalOpen && <CreatePost user={user!} setOpen={onClose} />}
             </DialogContent>
         </Dialog>
     );

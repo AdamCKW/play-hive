@@ -35,7 +35,7 @@ import { TFile } from "@/types";
 import { useTranslations } from "next-intl";
 import { updateInfiniteQueryReply } from "@/hooks/use-update-infinite-post-query";
 import { updateQueryReply } from "@/hooks/use-update-post-query";
-// import NSFWFilter from "nsfw-filter";
+import NSFWFilter from "nsfw-filter";
 
 interface CreateCommentProps {
     itemData: IPost;
@@ -75,8 +75,6 @@ export default function CreateComment({
 
                 for (const file of acceptedFiles) {
                     try {
-                        const NSFWFilter = (await import("nsfw-filter"))
-                            .default;
                         const isSafe = await NSFWFilter.isSafe(file);
 
                         if (!isSafe) {
@@ -244,7 +242,7 @@ export default function CreateComment({
                                 image: session?.user.image,
                             }}
                         />
-                        <div className="mt-2 w-0.5 grow rounded-full bg-neutral-800" />
+                        <div className="bg-primary/40 mt-2 w-0.5 grow rounded-full" />
                     </div>
                     <div className="w-full">
                         <div className="text-left font-semibold">

@@ -20,6 +20,7 @@ import {
 import PostCard from "../post-card";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+// import CreateComment from "./create-comment";
 const CreateComment = dynamic(() => import("./create-comment"));
 
 interface CommentModalProps {
@@ -77,13 +78,17 @@ export default function CommentModal({
                             {tComments("heading")}
                         </DialogTitle>
                     </DialogHeader>
-                    <PostCard data={data} noLink comment />
-                    <CreateComment
-                        setOpen={setOpen}
-                        itemData={data}
-                        single={single}
-                        queryKey={queryKey}
-                    />
+                    {open && (
+                        <>
+                            <PostCard data={data} noLink comment />
+                            <CreateComment
+                                setOpen={setOpen}
+                                itemData={data}
+                                single={single}
+                                queryKey={queryKey}
+                            />
+                        </>
+                    )}
                 </DialogContent>
             </Dialog>
         </>
