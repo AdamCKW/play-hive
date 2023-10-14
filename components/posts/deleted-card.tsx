@@ -57,7 +57,7 @@ export default function DeletedCard({
                             </div>
                         )}
 
-                        {data._count.likes > 0 && data._count.likes > 0 && (
+                        {data._count.children > 0 && data._count.likes > 0 && (
                             <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                         )}
 
@@ -133,9 +133,10 @@ export default function DeletedCard({
                                 </div>
                             )}
 
-                            {data._count.likes > 0 && data._count.likes > 0 && (
-                                <div className="bg-muted-foreground h-1 w-1 rounded-full" />
-                            )}
+                            {data._count.children > 0 &&
+                                data._count.likes > 0 && (
+                                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                                )}
 
                             {data._count.likes > 0 && (
                                 <div className=" text-muted-foreground ">

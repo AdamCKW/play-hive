@@ -103,10 +103,10 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                             <div
                                 className="text-muted-foreground hover:text-foreground"
                                 onClick={() => {
-                                    redirect(`c/${data.community?.name}`);
+                                    redirect(`/c/${data.community?.name}`);
                                 }}
                             >
-                                /c/{data.community?.name}
+                                c/{data.community?.name}
                             </div>
                         </>
                     ) : null}

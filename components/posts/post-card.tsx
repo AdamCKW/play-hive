@@ -46,7 +46,7 @@ export default function PostCard({
           }`;
 
     const likesCount = nFormatter(data._count.likes, 1);
-    const childrenCount = nFormatter(data._count.likes, 1);
+    const childrenCount = nFormatter(data._count.children, 1);
     const t = useTranslations("root.posts.card.display");
 
     return (
@@ -122,7 +122,7 @@ export default function PostCard({
                             />
 
                             <div className="text-muted-foreground flex items-center space-x-2 ">
-                                {data._count.likes > 0 && (
+                                {data._count.children > 0 && (
                                     <div className="text-muted-foreground ">
                                         {childrenCount}{" "}
                                         {data._count.children === 1
@@ -164,7 +164,7 @@ export default function PostCard({
                                                 );
                                             }}
                                         >
-                                            /c/{data.community?.name}
+                                            c/{data.community?.name}
                                         </div>
                                     </>
                                 ) : null}
