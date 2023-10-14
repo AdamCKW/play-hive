@@ -15,7 +15,7 @@ const Providers: FC<LayoutProps> = ({ children }) => {
 
     return (
         <>
-            <NextTopLoader color="#FF0000" />
+            <NextTopLoader color="#FF0000" showSpinner={false} />
             <QueryClientProvider client={queryClient}>
                 <SessionProvider>
                     {children}

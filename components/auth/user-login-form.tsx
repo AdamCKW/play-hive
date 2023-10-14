@@ -116,7 +116,7 @@ export default function UserLoginForm({
         }
         setIsLoading(false);
         React.startTransition(() => {
-            router.refresh();
+            // router.refresh();
             //TODO: temporary fix to force hard navigation
             router.push(linksConfig.home.href);
         });

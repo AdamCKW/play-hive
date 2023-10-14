@@ -190,7 +190,10 @@ export default async function PostPage({ params }: PostPageProps) {
                 ) : null}
 
                 <Main initialPost={post} />
-                <Children parentId={post.id} initialPosts={post.children} />
+
+                {post.children.length > 0 && (
+                    <Children parentId={post.id} initialPosts={post.children} />
+                )}
             </div>
         </>
     );
