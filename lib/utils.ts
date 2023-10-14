@@ -96,29 +96,6 @@ export const getInitials = (name: string) => {
 export const generateRandomToken = (length: number = 32) =>
     randomBytes(length / 2).toString("hex");
 
-export const transformObject = (obj: any) => {
-    const { likes, _count, ...rest } = obj;
-
-    const transformed = {
-        ...rest,
-        likedByUser: likes?.length > 0,
-        likesCount: _count?.likes,
-        childrenCount: _count?.children,
-    };
-
-    if (obj.children) {
-        transformed.children = obj.children.map((child: any) =>
-            transformObject(child),
-        );
-    }
-
-    if (obj.parent) {
-        transformed.parent = transformObject(obj.parent);
-    }
-
-    return transformed;
-};
-
 export const removeHtmlTags = (input: string) => {
     return input.replace(/<[^>]*>/g, "");
 };

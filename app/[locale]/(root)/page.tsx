@@ -1,27 +1,23 @@
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { transformObject } from "@/lib/utils";
 import { IPost } from "@/types/db";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
 import { Fragment, Suspense } from "react";
-// import MainFeed from "@/components/posts/feeds/main-feed";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
 import { Loader2 } from "lucide-react";
 import { PostLoading } from "@/components/loading";
 import dynamic from "next/dynamic";
+// import MainFeed from "@/components/posts/feeds/main-feed";
+const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"));
 
 interface HomePageProps {
     params: {
         locale: string;
     };
 }
-
-const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"), {
-    loading: () => <PostLoading />,
-});
 
 export default async function Home({ params }: HomePageProps) {
     const session = await getAuthSession();
@@ -60,7 +56,7 @@ export default async function Home({ params }: HomePageProps) {
         ],
     };
 
-    const data = await db.post.findMany({
+    const posts = await db.post.findMany({
         where: whereClause,
         include: {
             community: true,
@@ -99,8 +95,6 @@ export default async function Home({ params }: HomePageProps) {
         },
         take: INFINITE_SCROLL_PAGINATION_RESULTS,
     });
-
-    const posts: IPost[] = data.map(transformObject);
 
     return (
         <>

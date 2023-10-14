@@ -31,8 +31,6 @@ export default function Main({ initialPost }: PostFeedProps) {
 
     const post = data ?? initialPost;
 
-    if (isLoading) return <SkeletonCard />;
-
     if (post.deleted) return <DeletedCard key={post.id} data={post} noLink />;
 
     return <MainCard key={post.id} data={post} queryKey={queryKey} />;

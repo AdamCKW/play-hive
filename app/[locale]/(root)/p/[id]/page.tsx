@@ -2,33 +2,28 @@ import Link from "next/link";
 
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { transformObject } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
-// import Children from "@/components/post/feeds/comments";
-// import Main from "@/components/posts/feeds/main";
-// import Parent from "@/components/post/feeds/parent";
-// import MainCard from "@/components/post/main-card";
-// import PostCard from "@/components/post/post-card";
 import { UserAvatar } from "@/components/user-avatar";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getTranslator } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "@/components/posts/skeleton-card";
 
-// import Parent from "@/components/posts/feeds/parent";
-// import Main from "@/components/posts/feeds/main";
-// import Children from "@/components/posts/feeds/children";
+import Parent from "@/components/posts/feeds/parent";
+import Main from "@/components/posts/feeds/main";
+import Children from "@/components/posts/feeds/children";
 
-const Parent = dynamic(() => import("@/components/posts/feeds/parent"), {
-    loading: () => <SkeletonCard />,
-});
-const Main = dynamic(() => import("@/components/posts/feeds/main"), {
-    loading: () => <SkeletonCard main />,
-});
-const Children = dynamic(() => import("@/components/posts/feeds/children"), {
-    loading: () => <SkeletonCard />,
-});
+// const Parent = dynamic(() => import("@/components/posts/feeds/parent"), {
+//     loading: () => <SkeletonCard />,
+// });
+// const Main = dynamic(() => import("@/components/posts/feeds/main"), {
+//     loading: () => <SkeletonCard main />,
+// });
+// const Children = dynamic(() => import("@/components/posts/feeds/children"), {
+//     loading: () => <SkeletonCard />,
+// });
 
 interface PostPageProps {
     params: {
@@ -44,11 +39,12 @@ export default async function PostPage({ params }: PostPageProps) {
 
     const t = await getTranslator(locale, "root.posts");
 
-    const data = await db.post.findUnique({
+    const post = await db.post.findUnique({
         where: {
             id,
         },
         include: {
+            community: true,
             author: {
                 select: {
                     id: true,
@@ -60,6 +56,7 @@ export default async function PostPage({ params }: PostPageProps) {
             },
             children: {
                 include: {
+                    community: true,
                     author: {
                         select: {
                             id: true,
@@ -105,6 +102,7 @@ export default async function PostPage({ params }: PostPageProps) {
             },
             parent: {
                 include: {
+                    community: true,
                     author: {
                         select: {
                             id: true,
@@ -154,13 +152,9 @@ export default async function PostPage({ params }: PostPageProps) {
         },
     });
 
-    if (!data) {
-        return (
-            <div className="text-center text-neutral-600">Post not found.</div>
-        );
+    if (!post) {
+        notFound();
     }
-
-    const post = transformObject(data);
 
     return (
         <>

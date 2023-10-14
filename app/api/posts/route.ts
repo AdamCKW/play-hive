@@ -1,6 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { cleanUp, transformObject } from "@/lib/utils";
+import { cleanUp } from "@/lib/utils";
 import { PostValidation } from "@/lib/validators/create-post";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
                 page: url.searchParams.get("page"),
             });
 
-        const response = await db.post.findMany({
+        const posts = await db.post.findMany({
             take: parseInt(limit),
             skip: (parseInt(page) - 1) * parseInt(limit),
             orderBy: {
@@ -97,8 +97,6 @@ export async function GET(req: NextRequest) {
                 _count: { select: { likes: true, children: true } },
             },
         });
-
-        const posts = response.map(transformObject);
 
         return NextResponse.json(posts, { status: 200 });
     } catch (error) {

@@ -38,13 +38,12 @@ export default function NewsCard({ data }: NewsCardProps) {
                 </time>
             </div>
 
-            <div className="hidden h-56 w-56 sm:block sm:basis-56">
+            <div className="hidden sm:block sm:basis-56">
                 <Image
                     alt={data.deck}
                     src={data.image.square_small}
-                    // width={500}
-                    // height={500}
-                    fill
+                    width={500}
+                    height={500}
                     loading="lazy"
                     placeholder="blur"
                     blurDataURL={rgbDataURL(220, 220, 220)}

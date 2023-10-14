@@ -20,8 +20,9 @@ import {
 import { useTranslations } from "next-intl";
 import { useModal } from "@/hooks/use-modal-store";
 import dynamic from "next/dynamic";
+import CreatePost from "./create-post";
 
-const CreatePost = dynamic(() => import("./create-post"), {});
+// const CreatePost = dynamic(() => import("./create-post"), {});
 
 interface User extends NextAuthUser {
     username?: string | null;

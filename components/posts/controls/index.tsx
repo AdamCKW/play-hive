@@ -14,12 +14,14 @@ export default function Controls({
     single = false,
     queryKey,
 }: ControlsProps) {
+    const likedByUser = data.likes.length > 0;
+
     return (
         <div className="relative h-9">
             <div className="absolute left-0 top-0 z-10 flex items-center space-x-3.5 py-2">
                 <Like
                     postId={data.id}
-                    likedByUser={data.likedByUser}
+                    likedByUser={likedByUser}
                     single={single}
                     queryKey={queryKey}
                 />

@@ -1,6 +1,6 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { transformObject } from "@/lib/utils";
+
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
 
@@ -16,9 +16,10 @@ export async function GET(
         }
         const { id } = params;
 
-        const response = await db.post.findUnique({
+        const posts = await db.post.findUnique({
             where: { id },
             include: {
+                community: true,
                 author: {
                     select: {
                         id: true,
@@ -30,6 +31,7 @@ export async function GET(
                 },
                 children: {
                     include: {
+                        community: true,
                         author: {
                             select: {
                                 id: true,
@@ -43,6 +45,7 @@ export async function GET(
                 },
                 parent: {
                     include: {
+                        community: true,
                         author: {
                             select: {
                                 id: true,
@@ -63,9 +66,7 @@ export async function GET(
             },
         });
 
-        const post = transformObject(response);
-
-        return NextResponse.json(post);
+        return NextResponse.json(posts, { status: 200 });
     } catch (error) {
         if (error instanceof z.ZodError) {
             return new NextResponse(error.message, { status: 400 });

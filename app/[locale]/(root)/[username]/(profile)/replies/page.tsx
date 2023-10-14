@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { cn, transformObject } from "@/lib/utils";
+
 import { getTranslator } from "next-intl/server";
 import { PostLoading } from "@/components/loading";
 import { IReplies } from "@/types/db";
@@ -54,6 +54,7 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
             deleted: false,
         },
         include: {
+            community: true,
             author: {
                 select: {
                     id: true,
@@ -65,6 +66,7 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
             },
             children: {
                 include: {
+                    community: true,
                     author: {
                         select: {
                             id: true,
@@ -78,6 +80,7 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
             },
             parent: {
                 include: {
+                    community: true,
                     author: {
                         select: {
                             id: true,
@@ -134,8 +137,6 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
         take: INFINITE_SCROLL_PAGINATION_RESULTS,
     });
 
-    const initialReplies: IReplies[] = replies.map(transformObject);
-
     return (
         <>
             <div className="mt-4 flex w-full">
@@ -160,10 +161,7 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
                 </div>
             ) : (
                 <div className="2xl:mx-4">
-                    <RepliesFeed
-                        initialReplies={initialReplies}
-                        userId={getUser.id}
-                    />
+                    <RepliesFeed initialReplies={replies} userId={getUser.id} />
                 </div>
             )}
         </>

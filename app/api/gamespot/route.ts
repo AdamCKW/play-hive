@@ -1,10 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { getAuthSession } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { PostValidation } from "@/lib/validators/create-post";
-import { transformObject } from "@/lib/utils";
 import axios from "axios";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import queryString from "query-string";

@@ -5,7 +5,7 @@ import { z } from "zod";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PostValidation } from "@/lib/validators/create-post";
-import { cleanUp, transformObject } from "@/lib/utils";
+import { cleanUp } from "@/lib/utils";
 
 export async function GET(
     req: NextRequest,
@@ -26,7 +26,7 @@ export async function GET(
                 page: url.searchParams.get("page"),
             });
 
-        const response = await db.post.findMany({
+        const posts = await db.post.findMany({
             take: parseInt(limit),
             skip: (parseInt(page) - 1) * parseInt(limit),
             where: { parentId: id },
@@ -71,9 +71,7 @@ export async function GET(
             },
         });
 
-        const posts = response.map(transformObject);
-
-        return NextResponse.json(posts);
+        return NextResponse.json(posts, { status: 200 });
     } catch (error) {
         if (error instanceof z.ZodError) {
             return new NextResponse(error.message, { status: 400 });

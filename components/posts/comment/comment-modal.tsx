@@ -20,8 +20,8 @@ import {
 import PostCard from "../post-card";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-// import CreateComment from "./create-comment";
-const CreateComment = dynamic(() => import("./create-comment"));
+import CreateComment from "./create-comment";
+// const CreateComment = dynamic(() => import("./create-comment"));
 
 interface CommentModalProps {
     data: IPost;

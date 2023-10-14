@@ -6,7 +6,7 @@ import { notFound, redirect } from "next/navigation";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { cn, transformObject } from "@/lib/utils";
+
 import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
 import { PostLoading } from "@/components/loading";
@@ -55,6 +55,7 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
             deleted: false,
         },
         include: {
+            community: true,
             author: {
                 select: {
                     id: true,
@@ -66,6 +67,7 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
             },
             children: {
                 include: {
+                    community: true,
                     author: {
                         select: {
                             id: true,
@@ -90,8 +92,6 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
         },
         take: INFINITE_SCROLL_PAGINATION_RESULTS,
     });
-
-    const initialPosts = posts.map(transformObject);
 
     return (
         <>
@@ -121,10 +121,7 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
                 </div>
             ) : (
                 <div className="2xl:mx-4">
-                    <ProfileFeed
-                        initialPosts={initialPosts}
-                        userId={getUser.id}
-                    />
+                    <ProfileFeed initialPosts={posts} userId={getUser.id} />
                 </div>
             )}
         </>

@@ -15,7 +15,7 @@ export const updateQueryLike = (
 
             return {
                 ...oldQueryData,
-                likesCount: oldQueryData.likesCount + countModifier,
+                likesCount: oldQueryData._count.likes + countModifier,
                 likedByUser: isLiking,
             };
         },
@@ -33,7 +33,7 @@ export const updateQueryReply = (
 
             return {
                 ...oldQueryData,
-                childrenCount: oldQueryData.childrenCount + 1,
+                childrenCount: oldQueryData._count.children + 1,
             };
         },
     );

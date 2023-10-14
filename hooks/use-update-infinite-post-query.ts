@@ -24,7 +24,7 @@ export const updateInfiniteQueryLike = (
                     if (post.id === postId) {
                         return {
                             ...post,
-                            likesCount: post.likesCount + countModifier,
+                            likesCount: post._count.likes + countModifier,
                             likedByUser: isLiking,
                         };
                     }
@@ -34,7 +34,7 @@ export const updateInfiniteQueryLike = (
                             ...post,
                             parent: {
                                 ...post.parent,
-                                likesCount: post.likesCount + countModifier,
+                                likesCount: post._count.likes + countModifier,
                                 likedByUser: isLiking,
                             },
                         };
@@ -69,7 +69,7 @@ export const updateInfiniteQueryReply = (
                     if (post.id === postId) {
                         return {
                             ...post,
-                            childrenCount: post.childrenCount + 1,
+                            childrenCount: post._count.children + 1,
                         };
                     }
 
@@ -78,7 +78,7 @@ export const updateInfiniteQueryReply = (
                             ...post,
                             parent: {
                                 ...post.parent,
-                                childrenCount: post.childrenCount + 1,
+                                childrenCount: post._count.children + 1,
                             },
                         };
                     }

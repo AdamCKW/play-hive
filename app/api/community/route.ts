@@ -4,7 +4,7 @@ import { CommunityValidator } from "@/lib/validators/community";
 import { z } from "zod";
 
 import { NextRequest, NextResponse } from "next/server";
-import { transformObject } from "@/lib/utils";
+
 import { Community } from "@prisma/client";
 
 export async function GET(req: NextRequest) {
@@ -64,7 +64,7 @@ export async function GET(req: NextRequest) {
             };
         }
 
-        const response = await db.post.findMany({
+        const posts = await db.post.findMany({
             take: parseInt(limit),
             skip: (parseInt(page) - 1) * parseInt(limit),
             orderBy: {
@@ -101,8 +101,6 @@ export async function GET(req: NextRequest) {
                 _count: { select: { likes: true, children: true } },
             },
         });
-
-        const posts = response.map(transformObject);
 
         return NextResponse.json(posts);
     } catch (error) {

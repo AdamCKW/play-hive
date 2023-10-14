@@ -22,8 +22,8 @@ interface MainCardProps {
 }
 
 export default function MainCard({ data, queryKey }: MainCardProps) {
-    const likesCount = nFormatter(data.likesCount, 1);
-    const childrenCount = nFormatter(data.childrenCount, 1);
+    const likesCount = nFormatter(data._count.likes, 1);
+    const childrenCount = nFormatter(data._count.children, 1);
     const t = useTranslations("root.posts.card.display");
 
     return (
@@ -72,27 +72,27 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                 <Controls data={data} single={true} queryKey={queryKey} />
 
                 <div className="text-muted-foreground flex items-center space-x-2 ">
-                    {data.childrenCount > 0 && (
+                    {data._count.children > 0 && (
                         <div className="text-muted-foreground ">
                             {childrenCount}{" "}
-                            {data.childrenCount === 1
+                            {data._count.children === 1
                                 ? t("reply")
                                 : t("replies")}
                         </div>
                     )}
 
-                    {data.childrenCount > 0 && data.likesCount > 0 && (
+                    {data._count.children > 0 && data._count.likes > 0 && (
                         <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                     )}
 
-                    {data.likesCount > 0 && (
+                    {data._count.likes > 0 && (
                         <div className=" text-muted-foreground ">
                             {likesCount}{" "}
-                            {data.likesCount === 1 ? t("like") : t("likes")}
+                            {data._count.likes === 1 ? t("like") : t("likes")}
                         </div>
                     )}
 
-                    {(data.childrenCount > 0 || data.likesCount > 0) &&
+                    {(data._count.children > 0 || data._count.likes > 0) &&
                     data.communityId &&
                     data.community?.name ? (
                         <div className="bg-muted-foreground h-1 w-1 rounded-full" />
@@ -103,7 +103,7 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                             <div
                                 className="text-muted-foreground hover:text-foreground"
                                 onClick={() => {
-                                    redirect(`/c/${data.community?.name}`);
+                                    redirect(`c/${data.community?.name}`);
                                 }}
                             >
                                 /c/{data.community?.name}
@@ -111,8 +111,8 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                         </>
                     ) : null}
 
-                    {data.childrenCount > 0 ||
-                    data.likesCount > 0 ||
+                    {data._count.children > 0 ||
+                    data._count.likes > 0 ||
                     (data.communityId && data.community?.name) ? (
                         <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                     ) : null}

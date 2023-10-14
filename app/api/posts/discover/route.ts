@@ -3,8 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { PostValidation } from "@/lib/validators/create-post";
-import { transformObject } from "@/lib/utils";
+
 
 export async function GET(req: NextRequest) {
     try {
@@ -30,7 +29,7 @@ export async function GET(req: NextRequest) {
             deleted: false,
         };
 
-        const response = await db.post.findMany({
+        const posts = await db.post.findMany({
             take: parseInt(limit),
             skip: (parseInt(page) - 1) * parseInt(limit),
             orderBy: [
@@ -77,8 +76,6 @@ export async function GET(req: NextRequest) {
                 _count: { select: { likes: true, children: true } },
             },
         });
-
-        const posts = response.map(transformObject);
 
         return NextResponse.json(posts);
     } catch (error) {

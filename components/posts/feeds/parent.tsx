@@ -31,8 +31,6 @@ export default function Parent({ initialPost }: PostFeedProps) {
 
     const post = data ?? initialPost;
 
-    if (isLoading) return <SkeletonCard />;
-
     if (post.deleted)
         return <DeletedCard key={post.id} parent data={post} single />;
 

@@ -2,9 +2,6 @@ import Link from "next/link";
 
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { notFound } from "next/navigation";
-import { transformObject } from "@/lib/utils";
 
 import { IPost } from "@/types/db";
 

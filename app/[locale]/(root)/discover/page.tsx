@@ -3,21 +3,17 @@ import Link from "next/link";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
-import { transformObject } from "@/lib/utils";
-import { IPost } from "@/types/db";
 import { getTranslator } from "next-intl/server";
-import { Suspense, lazy } from "react";
-import { PostLoading } from "@/components/loading";
-import dynamic from "next/dynamic";
-// import DiscoverFeed from "@/components/posts/feeds/discover-feed";
-// import ExploreFeed from "@/components/post/feeds/explore";
 
-const DiscoverFeed = dynamic(
-    () => import("@/components/posts/feeds/discover-feed"),
-    {
-        loading: () => <PostLoading />,
-    },
-);
+import dynamic from "next/dynamic";
+import DiscoverFeed from "@/components/posts/feeds/discover-feed";
+
+// const DiscoverFeed = dynamic(
+//     () => import("@/components/posts/feeds/discover-feed"),
+//     {
+//         loading: () => <PostLoading />,
+//     },
+// );
 
 interface DiscoverPageProps {
     params: {
@@ -31,9 +27,10 @@ export default async function DiscoverPage({
     const session = await getAuthSession();
     const t = await getTranslator(locale, "root.posts");
 
-    const data = await db.post.findMany({
+    const posts = await db.post.findMany({
         where: { parent: null, deleted: false },
         include: {
+            community: true,
             author: {
                 select: {
                     id: true,
@@ -45,6 +42,7 @@ export default async function DiscoverPage({
             },
             children: {
                 include: {
+                    community: true,
                     author: {
                         select: {
                             id: true,
@@ -76,8 +74,6 @@ export default async function DiscoverPage({
         ],
         take: INFINITE_SCROLL_PAGINATION_RESULTS,
     });
-
-    const posts: IPost[] = data.map(transformObject);
 
     return (
         <>

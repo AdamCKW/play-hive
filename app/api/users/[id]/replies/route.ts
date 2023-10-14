@@ -4,7 +4,6 @@ import { z } from "zod";
 
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { transformObject } from "@/lib/utils";
 
 export async function GET(
     req: NextRequest,
@@ -28,7 +27,7 @@ export async function GET(
                 page: url.searchParams.get("page"),
             });
 
-        const response = await db.post.findMany({
+        const replies = await db.post.findMany({
             take: parseInt(limit),
             skip: (parseInt(page) - 1) * parseInt(limit),
             where: {
@@ -117,8 +116,6 @@ export async function GET(
                 createdAt: "desc",
             },
         });
-
-        const replies = response.map(transformObject);
 
         return NextResponse.json(replies, { status: 200 });
     } catch (error) {
