@@ -42,6 +42,7 @@ import {
     TElement,
     TNodeEntry,
     TReactEditor,
+    TText,
     useEditorRef,
     useEditorState,
     usePlateActions,
@@ -79,7 +80,6 @@ import {
     ELEMENT_TR,
     TTableElement,
 } from "@udecode/plate-table";
-import { TText } from "@udecode/slate";
 
 /**
  * Text
