@@ -4,6 +4,7 @@ import { CommunityValidator } from "@/lib/validators/community";
 import { z } from "zod";
 
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: NextRequest) {
     try {
@@ -143,6 +144,11 @@ export async function POST(req: NextRequest) {
                 communityId: community.id,
             },
         });
+
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
 
         return new NextResponse(community.name, { status: 201 });
     } catch (error) {

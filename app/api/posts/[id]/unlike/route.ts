@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 export async function POST(
     req: NextRequest,
@@ -48,6 +49,12 @@ export async function POST(
                 },
             },
         });
+
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
+
         return new NextResponse("Success", { status: 200 });
     } catch (error) {
         if (error instanceof z.ZodError) {

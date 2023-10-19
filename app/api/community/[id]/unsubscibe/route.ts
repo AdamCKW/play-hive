@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { CommunitySubscriptionValidator } from "@/lib/validators/community";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 import { z } from "zod";
@@ -41,6 +42,11 @@ export async function POST(
                 },
             },
         });
+
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
 
         return new NextResponse(communityId);
     } catch (error) {

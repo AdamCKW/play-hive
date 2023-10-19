@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { getAuthSession } from "@/lib/auth";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { pusherServer } from "@/lib/pusher";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: NextRequest) {
     try {
@@ -190,6 +191,11 @@ export async function POST(req: NextRequest) {
             message: `${user.name} sent you a message`,
             pathName: `/messages/${user.username}`,
         });
+
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
 
         return NextResponse.json(message);
     } catch (error) {

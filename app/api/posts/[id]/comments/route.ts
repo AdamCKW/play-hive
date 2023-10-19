@@ -154,6 +154,11 @@ export async function POST(
             });
         }
 
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
+
         return new NextResponse("Success", { status: 201 });
     } catch (error) {
         if (error instanceof z.ZodError) {

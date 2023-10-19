@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { dir } from "console";
 import { pusherServer } from "@/lib/pusher";
+import { revalidatePath } from "next/cache";
 
 export async function DELETE(
     req: NextRequest,
@@ -126,6 +127,11 @@ export async function DELETE(
             "messages:update",
             newDirectMessage,
         );
+
+        const path = req.nextUrl.searchParams.get("path");
+        if (path) {
+            await revalidatePath(path);
+        }
 
         return new NextResponse("OK", { status: 200 });
     } catch (error) {
