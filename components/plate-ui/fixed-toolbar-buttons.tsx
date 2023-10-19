@@ -6,10 +6,10 @@ import {
     MARK_STRIKETHROUGH,
     MARK_UNDERLINE,
 } from "@udecode/plate-basic-marks";
-import { useEditorReadOnly } from "@udecode/plate-common";
+import { Value, useEditorReadOnly } from "@udecode/plate-common";
 import { MARK_BG_COLOR, MARK_COLOR } from "@udecode/plate-font";
 import { ListStyleType } from "@udecode/plate-indent-list";
-import { ELEMENT_IMAGE } from "@udecode/plate-media";
+import { ELEMENT_IMAGE, ELEMENT_MEDIA_EMBED } from "@udecode/plate-media";
 
 import { Icons, iconVariants } from "@/components/icons";
 import { AlignDropdownMenu } from "@/components/plate-ui/align-dropdown-menu";
@@ -29,8 +29,17 @@ import { MarkToolbarButton } from "./mark-toolbar-button";
 import { ModeDropdownMenu } from "./mode-dropdown-menu";
 import { ToolbarGroup } from "./toolbar";
 import { TurnIntoDropdownMenu } from "./turn-into-dropdown-menu";
+import { EmbedToolbarButton } from "./embed-toolbar-button";
+import SubmitPlate from "../community/create/submit-plate";
 
-export function FixedToolbarButtons() {
+interface FixedToolbarButtonsProps {
+    output: {
+        communityId: string;
+        content: Value;
+    };
+}
+
+export function FixedToolbarButtons({ output }: FixedToolbarButtonsProps) {
     const readOnly = useEditorReadOnly();
 
     return (
@@ -126,6 +135,10 @@ export function FixedToolbarButtons() {
 
                             <MediaToolbarButton nodeType={ELEMENT_IMAGE} />
 
+                            <EmbedToolbarButton
+                                nodeType={ELEMENT_MEDIA_EMBED}
+                            />
+
                             <TableDropdownMenu />
 
                             <EmojiDropdownMenu />
@@ -138,7 +151,7 @@ export function FixedToolbarButtons() {
                 <div className="grow" />
 
                 <ToolbarGroup noSeparator>
-                    <ModeDropdownMenu />
+                    <SubmitPlate output={output} />
                 </ToolbarGroup>
             </div>
         </div>

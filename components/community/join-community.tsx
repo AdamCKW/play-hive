@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
+import { cn, getInitials } from "@/lib/utils";
 import { format } from "date-fns";
 import {
     Card,
@@ -21,6 +21,8 @@ import { useTranslations } from "next-intl";
 // import { EditCommunityButton } from "./edit-community-button";
 import dynamic from "next/dynamic";
 import { Skeleton } from "../ui/skeleton";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+
 const JoinCommunityToggle = dynamic(() => import("./join-community-toggle"), {
     loading: () => <Skeleton className="h-10 w-full" />,
 });
@@ -74,7 +76,23 @@ function WidgetCard({
         <Card className="shadow-md">
             <CardHeader>
                 <CardTitle>
-                    {t("title", { community_name: community?.name })}
+                    <div className="flex items-center space-x-4">
+                        <Avatar>
+                            {community.image ? (
+                                <AvatarImage
+                                    src={community.image}
+                                    alt={`${community?.name}'s picture`}
+                                />
+                            ) : (
+                                <AvatarFallback className="bg-indigo-500 font-medium text-white">
+                                    {getInitials(community?.name!)}
+                                </AvatarFallback>
+                            )}
+                        </Avatar>
+                        <div className="">
+                            {t("title", { community_name: community?.name })}
+                        </div>
+                    </div>
                 </CardTitle>
                 <CardDescription className="flex justify-between gap-x-4 py-3">
                     <span className="text-gray-500">{t("created_at")}</span>

@@ -1,0 +1,47 @@
+import { PostEditor } from "@/components/community/create/post-editor";
+import { db } from "@/lib/db";
+import { getTranslator } from "next-intl/server";
+import { notFound } from "next/navigation";
+
+interface CreatePostProps {
+    params: {
+        locale: string;
+        name: string;
+    };
+}
+
+export default async function CreatePost({ params }: CreatePostProps) {
+    const t = await getTranslator(
+        params.locale,
+        "communication.community.create_page",
+    );
+
+    const community = await db.community.findUnique({
+        where: {
+            name: params.name,
+        },
+    });
+
+    if (!community) notFound();
+
+    return (
+        <div className="flex flex-col items-start gap-6">
+            {/* heading */}
+            <div className="w-full border-b border-gray-200 pb-5">
+                <div className="-ml-2 -mt-2 flex flex-wrap items-baseline">
+                    <h3 className="ml-2 mt-2 text-xl font-semibold leading-6">
+                        {t("heading")}
+                    </h3>
+                    <p className="ml-2 mt-1 truncate text-lg text-gray-500">
+                        {t("in", { community_name: community.name })}
+                    </p>
+                </div>
+            </div>
+
+            {/* form */}
+            <div className="bg-background w-full max-w-[1336px] rounded-lg border shadow">
+                <PostEditor communityId={community.id} />
+            </div>
+        </div>
+    );
+}

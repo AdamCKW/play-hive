@@ -78,6 +78,11 @@
         "system": "System",
         "toggle": "Toggle theme"
     },
+    "not_found": {
+        "heading": "Sorry, this page isn't available",
+        "subheading": "The link you followed may be broken, or the page may have been removed.",
+        "redirect": "Go back to Home"
+    },
     "auth": {
         "layout": {
             "image_src": "/room-stock.jpg",
@@ -231,6 +236,13 @@
                 "created_at": "Created At",
                 "creator": "You created this community",
                 "created_by": "Created By"
+            },
+            "create_page": {
+                "heading": "Create Post",
+                "in": "in c/{community_name}"
+            },
+            "post_editor": {
+                "create_button": "Create Post"
             }
         }
     },
@@ -578,9 +590,13 @@
                 }
             },
             "failed": {
+                "create": {
+                    "description": "Your post was not published. Please try again."
+                },
                 "name_exist": "Community name already exists. Please try again with a different name.",
                 "subscribe": "You've already subscribed to this community",
-                "unsubscribe": "You've not been subscribed to this community."
+                "unsubscribe": "You've not been subscribed to this community.",
+                "not_subscribed": "You are not subscribed to this community. You can only post in communities you are subscribed to."
             }
         }
     }

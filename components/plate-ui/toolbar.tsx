@@ -122,7 +122,7 @@ const ToolbarButton = React.forwardRef<
             <div className="flex flex-1">{children}</div>
             <div>
               {isDropdown && (
-                <Icons.arrowDown className="ml-0.5 h-4 w-4" data-icon />
+                <Icons.chevronDown className="ml-0.5 h-4 w-4" data-icon />
               )}
             </div>
           </ToolbarToggleItem>
