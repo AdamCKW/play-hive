@@ -12,7 +12,7 @@ import {
     CensorContext,
     //@ts-ignore
 } from "obscenity";
-import { TFile } from "@/types";
+
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -163,7 +163,7 @@ const matcher = new RegExpMatcher({
     ...englishRecommendedTransformers,
 });
 
-export const cleanUp = (text: string | JSON) => {
+export const cleanUp = (text: string) => {
     const asteriskStrategy = (ctx: CensorContext) =>
         "*".repeat(ctx.matchLength);
 
