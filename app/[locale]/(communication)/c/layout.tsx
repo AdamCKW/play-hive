@@ -1,3 +1,4 @@
+import { Bottombar } from "@/components/layout/bottom-bar";
 import { LeftBar } from "@/components/layout/left-bar";
 import { NavBar } from "@/components/layout/nav-bar";
 import { RightBar } from "@/components/layout/right-bar";
@@ -15,6 +16,7 @@ export default function CommunityLayout({ children }: CommunityLayoutProps) {
 
                 {children}
             </main>
+            <Bottombar />
         </>
     );
 }
