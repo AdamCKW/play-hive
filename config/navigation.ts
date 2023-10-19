@@ -42,4 +42,13 @@ export const RightBarItems: NavItem[] = [
     { ...about },
 ];
 
+export const BottomBarItems: NavItem[] = [
+    { ...home },
+    { ...discover },
+    { ...news },
+    { ...communities },
+    { ...messages },
+    { ...profile },
+];
+
 export const UserNavItems: NavItem[] = [];
