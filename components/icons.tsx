@@ -261,6 +261,7 @@ export const Icons = {
     h4: Heading4,
     h5: Heading5,
     h6: Heading6,
+    hr: Minus,
     heart: Heart,
     help: HelpCircle,
     kbd: Keyboard,
