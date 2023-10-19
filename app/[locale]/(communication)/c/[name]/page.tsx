@@ -73,6 +73,7 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
                         },
                     },
                     parent: true,
+                    images: true,
                     likes:
                         session?.user.id == null
                             ? false
