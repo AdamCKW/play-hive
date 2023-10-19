@@ -1,0 +1,69 @@
+"use client";
+
+import { IUser } from "@/types/db";
+
+interface UsersListProps {
+    users: IUser[];
+}
+
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+    CommandSeparator,
+    CommandShortcut,
+} from "@/components/ui/command";
+import { UserAvatar } from "../user-avatar";
+import { useRouter } from "next/navigation";
+import { linksConfig } from "@/config/site";
+import { useTranslations } from "next-intl";
+
+export default function MessagesList({ users }: UsersListProps) {
+    const router = useRouter();
+    const t = useTranslations("communication.messages");
+
+    return (
+        <Command className="max-h-[calc(100%-11rem)]">
+            <CommandInput placeholder="Search..." />
+            <CommandList>
+                <CommandEmpty>{t("no_results")}</CommandEmpty>
+                <CommandGroup>
+                    {users?.map((user) => (
+                        <CommandItem
+                            onSelect={() => {
+                                console.log("clicked");
+                                router.push(
+                                    `${linksConfig.messages.href}/${user.username}`,
+                                );
+                            }}
+                            className="aria-selected:bg-background"
+                        >
+                            <div className="relative flex w-full cursor-pointer select-none items-center space-x-3">
+                                <div className="relative">
+                                    <UserAvatar user={user} />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                    <div className="flex flex-col items-start focus:outline-none">
+                                        <div className="flex w-full items-center justify-between">
+                                            <p className="font-medium capitalize">
+                                                {user.name}
+                                            </p>
+                                        </div>
+                                        <div className="flex w-full items-center justify-start">
+                                            <p className="text-muted-foreground truncate text-xs font-medium">
+                                                @{user.username}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </CommandItem>
+                    ))}
+                </CommandGroup>
+            </CommandList>
+        </Command>
+    );
+}

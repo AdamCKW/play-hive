@@ -15,6 +15,8 @@
     "email": "email dev -p 3001"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@hookform/resolvers": "^3.3.1",
     "@mantine/hooks": "^7.1.2",
     "@next-auth/prisma-adapter": "^1.0.7",

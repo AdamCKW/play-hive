@@ -9,7 +9,7 @@ export interface IPost extends Post {
     author: IAuthor;
     children: IChildren[] | [];
     parent: IPost | Post | null;
-    images: Image[];
+    images?: Image[];
     // likedByUser: boolean;
     // likesCount: number;
     // childrenCount: number;

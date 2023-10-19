@@ -22,6 +22,7 @@ const PostModal = dynamic(
     },
 );
 
+import { MessageFileModal } from "@/components/messages/MessageFileModal";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
@@ -42,6 +43,7 @@ export const ModalProvider = () => {
             <PostModal />
             <CreateCommunityModal />
             <EditCommunityModal />
+            <MessageFileModal />
         </>
     );
 };

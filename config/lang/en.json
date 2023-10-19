@@ -39,6 +39,22 @@
         "communities": {
             "title": "Communities Feed",
             "description": "View user subscribed communities posts"
+        },
+        "community": {
+            "title": "c/{name}",
+            "description": "View {name} community page"
+        },
+        "following": {
+            "title": "Following",
+            "description": "View user following"
+        },
+        "messages": {
+            "title": "Messages",
+            "description": "View user messages"
+        },
+        "conversation": {
+            "title": "Conversation",
+            "description": "Start conversation with {username}"
         }
     },
     "intl": {
@@ -208,8 +224,27 @@
         }
     },
     "communication": {
+        "state": {
+            "heading": "Connect and Chat with Friends",
+            "subheading": "Select a chat or start a new conversation."
+        },
+        "following": {
+            "heading": "Following",
+            "sr_link": "Link to messages",
+            "no_users": "No users found.",
+            "no_results": "No results found."
+        },
+        "messages": {
+            "heading": "Messages",
+            "sr_link": "Link to users list",
+            "no_results": "No results found."
+        },
+        "conversation": {},
         "community": {
             "main_feed": {
+                "empty": "No posts yet."
+            },
+            "individual_feed": {
                 "empty": "No posts yet."
             },
             "actions": {

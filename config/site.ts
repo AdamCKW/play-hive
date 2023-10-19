@@ -143,4 +143,9 @@ export const linksConfig: LinkConfig = {
         href: "/about",
         disabled: true,
     },
+    following: {
+        title: "following",
+        href: "/following",
+        disabled: false,
+    },
 };
