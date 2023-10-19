@@ -12,9 +12,9 @@ export default function ConversationLayout({
 }: ConversationLayoutProps) {
     return (
         <>
-            <UserMessagesBar className="bg-background hidden w-80 border-r md:block" />
-            <section className="min-h-screen flex-1 flex-col items-center px-6 pb-10 pt-28 max-md:pb-6 sm:px-10">
-                <div className="h-full w-full max-w-4xl">{children}</div>
+            <UserMessagesBar className="bg-background hidden w-80 border-r lg:block" />
+            <section className="min-h-screen flex-1 flex-col items-center px-6 pb-10 pt-28 sm:px-10 lg:pb-6">
+                <div className="h-full w-full">{children}</div>
             </section>
         </>
     );

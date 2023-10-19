@@ -110,14 +110,14 @@ export default async function ConversationPage({
     const otherUser = userOne.id === currentUser.id ? userTwo : userOne;
 
     return (
-        <div className="flex h-full flex-col">
+        <div className="flex h-full flex-col pb-5 lg:pb-0">
             <ChatHeader user={otherUser} />
             <ChatBody
                 user={otherUser}
                 currentUser={currentUser}
                 chatId={conversation.id}
                 paramValue={conversation.id}
-                socketUrl="/api/socket/direct-messages"
+                socketUrl="/api/direct-messages"
                 socketQuery={{
                     conversationId: conversation.id,
                 }}

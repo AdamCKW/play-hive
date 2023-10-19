@@ -16,7 +16,6 @@ export default function MessagesLayout({ children }: MessagesLayoutProps) {
             <main className="flex flex-row">
                 <LeftBar className="w-[20rem]" />
                 {children}
-                
             </main>
             <Bottombar />
         </>

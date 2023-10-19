@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useModal } from "@/hooks/use-modal-store";
-import { MessageFileModal } from "./MessageFileModal";
+import { MessageFileModal } from "./message-file-modal";
 import { toast } from "@/hooks/use-toast";
 import { useSession } from "next-auth/react";
 import { EmojiPicker } from "./emoji-picker";
@@ -87,7 +87,7 @@ export const ChatInput = ({ id, name, query }: ChatInputProps) => {
 
                                     <Input
                                         disabled={isLoading}
-                                        className="border-0 border-none bg-zinc-200/90 px-14 py-6 text-zinc-600 focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-zinc-700/75 dark:text-zinc-200"
+                                        className=" bg-background px-14 py-6 shadow-md focus-visible:ring-0 focus-visible:ring-offset-0 "
                                         placeholder={`Message ${name}`}
                                         {...field}
                                     />

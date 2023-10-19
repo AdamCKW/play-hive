@@ -15,11 +15,13 @@ export async function GET(req: NextRequest) {
         const conversationId = searchParams.get("conversationId");
 
         if (!session) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
         if (!conversationId) {
-            return new NextResponse("Conversation ID missing", { status: 400 });
+            return new NextResponse("messages.failed.conversation_id", {
+                status: 400,
+            });
         }
 
         let messages: DirectMessage[] = [];
@@ -81,14 +83,13 @@ export async function GET(req: NextRequest) {
             nextCursor,
         });
     } catch (error) {
-        console.log("[MESSAGES_GET]", error);
-        return new NextResponse("Internal Error", { status: 500 });
+        console.log("ERROR in GET /api/messages/route.ts:", error);
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }
 
 export async function POST(req: NextRequest) {
     try {
-        // const session = await getAuthSession();
         const session = await getAuthSession();
 
         const body = await req.json();
@@ -98,15 +99,17 @@ export async function POST(req: NextRequest) {
         const conversationId = searchParams.get("conversationId");
 
         if (!session) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
         if (!conversationId) {
-            return new NextResponse("Conversation ID missing", { status: 400 });
+            return new NextResponse("messages.failed.conversation_id", {
+                status: 400,
+            });
         }
 
         if (!content) {
-            return new NextResponse("Content missing", { status: 400 });
+            return new NextResponse("messages.failed.content", { status: 400 });
         }
 
         const conversation = await db.conversation.findFirst({
@@ -146,7 +149,7 @@ export async function POST(req: NextRequest) {
         });
 
         if (!conversation) {
-            return new NextResponse("Conversation not found", { status: 404 });
+            return new NextResponse("404.not_found", { status: 404 });
         }
 
         const user =
@@ -160,7 +163,7 @@ export async function POST(req: NextRequest) {
                 : conversation.userOne;
 
         if (!user) {
-            return new NextResponse("User not found", { status: 404 });
+            return new NextResponse("404.not_found", { status: 404 });
         }
 
         const message = await db.directMessage.create({
@@ -190,7 +193,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json(message);
     } catch (error) {
-        console.log("[DIRECT_MESSAGES_POST]", error);
-        return new NextResponse("Internal Server Error", { status: 500 });
+        console.log("ERROR in POST /api/messages/route.ts:", error);
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }

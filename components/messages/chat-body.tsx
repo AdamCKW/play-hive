@@ -10,6 +10,7 @@ import { DirectMessage } from "@prisma/client";
 import { useChatPusher } from "./use-chat-pusher";
 import { useChatScroll } from "@/hooks/use-chat-scroll";
 import { ChatItem } from "./chat-item";
+import { useTranslations } from "next-intl";
 
 interface ChatBodyProps {
     user: IUser;
@@ -31,13 +32,12 @@ export default function ChatBody({
     currentUser,
     chatId,
     paramValue,
-    socketUrl,
-    socketQuery,
 }: ChatBodyProps) {
     const chatRef = useRef<ElementRef<"div">>(null);
     const bottomRef = useRef<ElementRef<"div">>(null);
 
     const queryKey = `chat:${chatId}`;
+    const t = useTranslations("communication.messages");
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
         useChatQuery({
@@ -61,7 +61,7 @@ export default function ChatBody({
             <div className="flex flex-1 flex-col items-center justify-center">
                 <Icons.loader2 className="my-4 h-7 w-7 animate-spin text-zinc-500" />
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    Loading messages...
+                    {t("loading")}
                 </p>
             </div>
         );
@@ -72,7 +72,7 @@ export default function ChatBody({
             <div className="flex flex-1 flex-col items-center justify-center">
                 <Icons.serverCrash className="my-4 h-7 w-7 text-zinc-500" />
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    Something went wrong!
+                    {t("something_wrong")}
                 </p>
             </div>
         );
@@ -81,14 +81,14 @@ export default function ChatBody({
     return (
         <div
             ref={chatRef}
-            className="flex h-full max-h-[calc(100dvh-18rem)] flex-1 flex-col overflow-y-auto py-4"
+            className="flex h-full max-h-[calc(100dvh-20rem)] flex-1 flex-col overflow-y-auto py-4 md:max-h-[calc(100dvh-18rem)]"
         >
             {!hasNextPage && <div className="flex-1" />}
             {!hasNextPage && (
                 <div className="mb-4 space-y-2 px-4">
                     <p className="text-xl font-bold md:text-3xl">{user.name}</p>
                     <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                        This is the start of your conversation with {user.name}
+                        {t("description", { name: user.name })}
                     </p>
                 </div>
             )}
@@ -101,7 +101,7 @@ export default function ChatBody({
                             onClick={() => fetchNextPage()}
                             className="my-4 text-xs text-zinc-500 transition hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300"
                         >
-                            Load previous messages
+                            {t("load_previous")}
                         </button>
                     )}
                 </div>
@@ -113,7 +113,7 @@ export default function ChatBody({
                             <ChatItem
                                 key={message.id}
                                 id={message.id}
-                                currentUser={user}
+                                currentUser={currentUser}
                                 user={message.user}
                                 content={message.content}
                                 fileUrl={message.fileUrl}
@@ -125,8 +125,6 @@ export default function ChatBody({
                                 isUpdated={
                                     message.updatedAt !== message.createdAt
                                 }
-                                socketUrl={socketUrl}
-                                socketQuery={socketQuery}
                             />
                         ))}
                     </Fragment>

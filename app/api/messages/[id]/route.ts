@@ -5,27 +5,47 @@ import { NextRequest, NextResponse } from "next/server";
 import { dir } from "console";
 import { pusherServer } from "@/lib/pusher";
 
-export async function PATCH(req: NextRequest) {
+export async function DELETE(
+    req: NextRequest,
+    { params }: { params: { id: string } },
+) {
     try {
         const session = await getAuthSession();
-        const { searchParams } = new URL(req.url);
-
-        const directMessageId = searchParams.get("directMessageId");
-        const conversationId = searchParams.get("conversationId");
-        const body = await req.json();
-        const { content } = body;
+        const messageId = params.id;
 
         if (!session) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
-        if (!conversationId) {
-            return new NextResponse("Conversation ID missing", { status: 400 });
+        if (!messageId) {
+            return new NextResponse("messages.failed.missing_id", {
+                status: 400,
+            });
+        }
+
+        const directMessage = await db.directMessage.findFirst({
+            where: {
+                id: messageId,
+            },
+            include: {
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        name: true,
+                        image: true,
+                    },
+                },
+            },
+        });
+
+        if (!directMessage || directMessage.deleted) {
+            return new NextResponse("404.not_found", { status: 404 });
         }
 
         const conversation = await db.conversation.findFirst({
             where: {
-                id: conversationId as string,
+                id: directMessage.conversationId,
                 OR: [
                     {
                         userOne: {
@@ -59,173 +79,30 @@ export async function PATCH(req: NextRequest) {
             },
         });
 
-        if (!conversation)
-            return new NextResponse("Conversation not found", { status: 404 });
+        if (!conversation) {
+            return new NextResponse("404.not_found", { status: 404 });
+        }
 
         const user =
             conversation.userOne.id === session.user.id
                 ? conversation.userOne
                 : conversation.userTwo;
 
-        let directMessage = await db.directMessage.findFirst({
-            where: {
-                id: directMessageId as string,
-                conversationId: conversationId as string,
-            },
-            include: {
-                user: {
-                    select: {
-                        id: true,
-                        username: true,
-                        name: true,
-                        image: true,
-                    },
-                },
-            },
-        });
-
-        if (!directMessage || directMessage.deleted) {
-            return new NextResponse("Message not found", { status: 404 });
-        }
-
         const isMessageOwner = directMessage.userId === user.id;
 
         const canModify = isMessageOwner;
 
         if (!canModify) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
         if (!isMessageOwner) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("401.unauthorized", { status: 401 });
         }
 
-        directMessage = await db.directMessage.update({
+        const newDirectMessage = await db.directMessage.update({
             where: {
-                id: directMessageId as string,
-            },
-            data: {
-                content,
-            },
-            include: {
-                user: {
-                    select: {
-                        id: true,
-                        username: true,
-                        name: true,
-                        image: true,
-                    },
-                },
-            },
-        });
-
-        const updateKey = `chat:${conversation.id}:messages:update`;
-
-        return NextResponse.json(directMessage);
-    } catch (error) {
-        console.log("[MESSAGE_ID]", error);
-        return new NextResponse("Internal Server Error", { status: 500 });
-    }
-}
-
-export async function DELETE(req: NextRequest) {
-    try {
-        const session = await getAuthSession();
-        const { searchParams } = new URL(req.url);
-
-        const directMessageId = searchParams.get("directMessageId");
-        const conversationId = searchParams.get("conversationId");
-        const body = await req.json();
-        const { content } = body;
-
-        if (!session) {
-            return new NextResponse("Unauthorized", { status: 401 });
-        }
-
-        if (!conversationId) {
-            return new NextResponse("Conversation ID missing", { status: 400 });
-        }
-
-        const conversation = await db.conversation.findFirst({
-            where: {
-                id: conversationId as string,
-                OR: [
-                    {
-                        userOne: {
-                            id: session.user.id,
-                        },
-                    },
-                    {
-                        userTwo: {
-                            id: session.user.id,
-                        },
-                    },
-                ],
-            },
-            include: {
-                userOne: {
-                    select: {
-                        id: true,
-                        username: true,
-                        name: true,
-                        image: true,
-                    },
-                },
-                userTwo: {
-                    select: {
-                        id: true,
-                        username: true,
-                        name: true,
-                        image: true,
-                    },
-                },
-            },
-        });
-
-        if (!conversation)
-            return new NextResponse("Conversation not found", { status: 404 });
-
-        const user =
-            conversation.userOne.id === session.user.id
-                ? conversation.userOne
-                : conversation.userTwo;
-
-        let directMessage = await db.directMessage.findFirst({
-            where: {
-                id: directMessageId as string,
-                conversationId: conversationId as string,
-            },
-            include: {
-                user: {
-                    select: {
-                        id: true,
-                        username: true,
-                        name: true,
-                        image: true,
-                    },
-                },
-            },
-        });
-
-        if (!directMessage || directMessage.deleted) {
-            return new NextResponse("Message not found", { status: 404 });
-        }
-
-        const isMessageOwner = directMessage.userId === user.id;
-
-        const canModify = isMessageOwner;
-
-        if (!canModify) {
-            return new NextResponse("Unauthorized", { status: 401 });
-        }
-
-        if (!isMessageOwner) {
-            return new NextResponse("Unauthorized", { status: 401 });
-        }
-
-        directMessage = await db.directMessage.update({
-            where: {
-                id: directMessageId as string,
+                id: directMessage.id,
             },
             data: {
                 fileUrl: null,
@@ -245,14 +122,14 @@ export async function DELETE(req: NextRequest) {
         });
 
         await pusherServer.trigger(
-            conversationId,
+            conversation.id,
             "messages:update",
-            directMessage,
+            newDirectMessage,
         );
 
-        return NextResponse.json(directMessage);
+        return new NextResponse("OK", { status: 200 });
     } catch (error) {
-        console.log("[MESSAGE_ID]", error);
-        return new NextResponse("Internal Server Error", { status: 500 });
+        console.log("ERROR in /api/messages/[id]/route.ts: ", error);
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }

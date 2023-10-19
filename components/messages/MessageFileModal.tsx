@@ -17,14 +17,22 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import { UploadDropzone } from "@/lib/uploadthing";
-import { formSchema } from "./message-file-modal";
+import { FileUpload } from "../file-upload";
+import { useTranslations } from "next-intl";
 
 export const MessageFileModal = () => {
     const { isOpen, onClose, type, data } = useModal();
+    const t = useTranslations("communication.messages.modal");
     const router = useRouter();
 
     const isModalOpen = isOpen && type === "messageFile";
     const { apiUrl, query } = data;
+
+    const formSchema = z.object({
+        fileUrl: z.string().min(1, {
+            message: t("message"),
+        }),
+    });
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -65,10 +73,10 @@ export const MessageFileModal = () => {
             <DialogContent className="overflow-hidden bg-white p-0 text-black">
                 <DialogHeader className="px-6 pt-8">
                     <DialogTitle className="text-center text-2xl font-bold">
-                        Add an attachment
+                        {t("title")}
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
-                        Send a file as a message
+                        {t("description")}
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
@@ -84,25 +92,10 @@ export const MessageFileModal = () => {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                {/* <FileUpload
-                            endpoint="messageFile"
-                            value={field.value}
-                            onChange={field.onChange}
-                        /> */}
-                                                <UploadDropzone
-                                                    endpoint={"messageFile"}
-                                                    onClientUploadComplete={(
-                                                        res,
-                                                    ) => {
-                                                        field.onChange(
-                                                            res?.[0].url,
-                                                        );
-                                                    }}
-                                                    onUploadError={(
-                                                        error: Error,
-                                                    ) => {
-                                                        console.log(error);
-                                                    }}
+                                                <FileUpload
+                                                    endpoint="messageFile"
+                                                    value={field.value}
+                                                    onChange={field.onChange}
                                                 />
                                             </FormControl>
                                         </FormItem>
@@ -110,9 +103,9 @@ export const MessageFileModal = () => {
                                 />
                             </div>
                         </div>
-                        <DialogFooter className="bg-gray-100 px-6 py-4">
+                        <DialogFooter className="px-6 py-4">
                             <Button variant="default" disabled={isLoading}>
-                                Send
+                                {t("send_button")}
                             </Button>
                         </DialogFooter>
                     </form>
