@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-
+import map from "lodash/map";
 import { IPost, IReplies } from "@/types/db";
 
 type oldQueryData = {
@@ -19,8 +19,8 @@ export const updateInfiniteQueryLike = (
         (oldQueryData: oldQueryData | undefined) => {
             if (oldQueryData == null) return;
 
-            const updatedPages = oldQueryData.pages.map((page) => {
-                const updatedPosts = page.map((post) => {
+            const updatedPages = map(oldQueryData.pages, (page) => {
+                return map(page, (post) => {
                     if (post.id === postId) {
                         return {
                             ...post,
@@ -42,8 +42,6 @@ export const updateInfiniteQueryLike = (
 
                     return post;
                 });
-
-                return updatedPosts;
             });
 
             return {
@@ -64,8 +62,8 @@ export const updateInfiniteQueryReply = (
         (oldQueryData: oldQueryData | undefined) => {
             if (oldQueryData == null) return;
 
-            const updatedPages = oldQueryData.pages.map((page) => {
-                const updatedPosts = page.map((post: IPost) => {
+            const updatedPages = map(oldQueryData.pages, (page) => {
+                const updatedPosts = map(page, (post) => {
                     if (post.id === postId) {
                         return {
                             ...post,
