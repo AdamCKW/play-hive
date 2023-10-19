@@ -20,7 +20,8 @@ interface EditorProps {
 
 export function PostEditor({ communityId }: EditorProps) {
     const [isMounted, setIsMounted] = useState<boolean>(false);
-    const [currentValue, setCurrentValue] = useDebouncedState<Value>([], 200);
+    // const [currentValue, setCurrentValue] = useDebouncedState<Value>([], 200);
+    const [currentValue, setCurrentValue] = useState<Value>([]);
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -48,7 +49,7 @@ export function PostEditor({ communityId }: EditorProps) {
                 <div
                     ref={containerRef}
                     className={cn(
-                        "[&_.slate-start-area-left]:!w-[64px] [&_.slate-start-area-right]:!w-[64px] [&_.slate-start-area-top]:!h-4",
+                        "[&_.slate-start-area-left]:!w-16 [&_.slate-start-area-right]:!w-16 [&_.slate-start-area-top]:!h-4",
                     )}
                 >
                     <FixedToolbar>

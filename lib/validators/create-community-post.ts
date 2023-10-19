@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const PostValidator = z.object({
-    content: z.array(z.object({ type: z.any() })),
+    content: z.any(),
 });
 
 export type PostCreationRequest = z.infer<typeof PostValidator>;

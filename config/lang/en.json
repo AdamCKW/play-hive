@@ -35,6 +35,10 @@
         "replies": {
             "title": "Replies",
             "description": "View user replies"
+        },
+        "communities": {
+            "title": "Communities Feed",
+            "description": "View user subscribed communities posts"
         }
     },
     "intl": {
@@ -205,6 +209,9 @@
     },
     "communication": {
         "community": {
+            "main_feed": {
+                "empty": "No posts yet."
+            },
             "actions": {
                 "subscribe": "Subscribe",
                 "unsubscribe": "Unsubscribe"

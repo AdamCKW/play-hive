@@ -1,16 +1,17 @@
+"use client";
+
 import Link from "next/link";
-import { headers } from "next/headers";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { linksConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 interface CreatePostCardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export default function CreatePostCard({ className }: CreatePostCardProps) {
-    const headersList = headers();
     const t = useTranslations("communication.community");
-    const pathname = headersList.get("x-invoke-path");
+    const pathname = usePathname();
 
     return (
         <div className={cn("px-4 py-2", className)}>

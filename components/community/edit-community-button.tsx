@@ -14,9 +14,11 @@ export default function EditCommunityButton({
 }: EditCommunityButtonProps) {
     const t = useTranslations("communication.community");
     const { onOpen, data } = useModal();
+
     return (
         <Button
             onClick={() => {
+                console.log(community);
                 onOpen("editCommunity", { community });
             }}
             className="w-full"

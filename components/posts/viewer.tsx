@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Plate } from "@udecode/plate-common";
+import { Plate, Value } from "@udecode/plate-common";
 import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -22,6 +22,7 @@ interface EditorProps {
 }
 
 export default function Viewer({ content }: EditorProps) {
+    // const value = JSON.parse(content);
     return (
         <>
             <DndProvider backend={HTML5Backend}>

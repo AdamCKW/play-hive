@@ -42,7 +42,7 @@ export default function SubmitPlate({ output }: SubmitPlateProps) {
                         .split("/")
                         .slice(0, -1)
                         .join("/");
-                        
+
                     toast({
                         title: tToast("post.success.create.title"),
                         description: tToast("post.success.create.description"),

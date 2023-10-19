@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, startTransition } from "react";
+import { useState, startTransition, useEffect } from "react";
 import axios, { AxiosError } from "axios";
 import { Button } from "@/components/ui/button";
 import {
@@ -42,6 +42,7 @@ interface CommunityModalProps {}
 
 export default function EditCommunityModal({}: CommunityModalProps) {
     const { isOpen, onClose, type, data } = useModal();
+    const { community } = data;
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const isModalOpen = isOpen && type === "editCommunity";
     const router = useRouter();
@@ -64,6 +65,13 @@ export default function EditCommunityModal({}: CommunityModalProps) {
             name: data?.community?.name || "",
         },
     });
+
+    useEffect(() => {
+        if (community) {
+            form.setValue("name", community.name);
+            form.setValue("imageUrl", community.image || "");
+        }
+    }, [community, form]);
 
     const onSubmit = async (values: CreateCommunityPayload) => {
         setIsLoading(true);

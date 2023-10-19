@@ -5,12 +5,14 @@ import { z } from "zod";
 
 import { NextRequest, NextResponse } from "next/server";
 
-import { Community } from "@prisma/client";
-
 export async function GET(req: NextRequest) {
     try {
         const url = new URL(req.url);
         const session = await getAuthSession();
+        if (!session) {
+            return new NextResponse("401.unauthorized", { status: 401 });
+        }
+
         let followedCommunityList: string[] = [];
 
         if (session) {
@@ -42,9 +44,15 @@ export async function GET(req: NextRequest) {
 
         let whereClause = {};
 
-        if (session?.user) {
-            whereClause = {
+        const posts = await db.post.findMany({
+            take: parseInt(limit),
+            skip: (parseInt(page) - 1) * parseInt(limit),
+            orderBy: {
+                createdAt: "desc",
+            },
+            where: {
                 parent: null,
+                deleted: false,
                 AND: [
                     {
                         community: {
@@ -54,23 +62,7 @@ export async function GET(req: NextRequest) {
                         },
                     },
                 ],
-            };
-        } else {
-            whereClause = {
-                parent: null,
-                community: {
-                    communityId: { not: null },
-                },
-            };
-        }
-
-        const posts = await db.post.findMany({
-            take: parseInt(limit),
-            skip: (parseInt(page) - 1) * parseInt(limit),
-            orderBy: {
-                createdAt: "desc",
             },
-            where: whereClause,
             include: {
                 community: true,
                 author: {
@@ -107,8 +99,8 @@ export async function GET(req: NextRequest) {
         if (error instanceof z.ZodError) {
             return new NextResponse(error.message, { status: 400 });
         }
-
-        return new NextResponse("Failed to load posts", { status: 500 });
+        console.log("ERROR in GET /api/community/route.ts:", error);
+        return new NextResponse("500.internal_error", { status: 500 });
     }
 }
 
