@@ -1,8 +1,60 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { CommunityValidator } from "@/lib/validators/community";
+import { PostValidator } from "@/lib/validators/create-community-post";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
+
+export async function POST(
+    req: NextRequest,
+    { params }: { params: { id: string } },
+) {
+    try {
+        const session = await getAuthSession();
+
+        const body = await req.json();
+        const { content } = PostValidator.parse(body);
+
+        if (!session?.user) {
+            return new NextResponse("401.unauthorized", { status: 401 });
+        }
+
+        const subscription = await db.subscription.findFirst({
+            where: {
+                userId: session.user.id,
+                communityId: params.id,
+            },
+        });
+
+        if (!subscription) {
+            return new NextResponse("community.failed.not_subscribed", {
+                status: 403,
+            });
+        }
+
+        await db.post.create({
+            data: {
+                content: content,
+                author: {
+                    connect: {
+                        id: session.user.id,
+                    },
+                },
+                community: { connect: { id: params.id } },
+            },
+        });
+
+        return new NextResponse("Success", { status: 200 });
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return new NextResponse(error.message, { status: 422 });
+        }
+
+        console.log("ERROR in POST /api/community/[id]/route.ts:", error);
+
+        return new NextResponse("500.internal_error", { status: 500 });
+    }
+}
 
 export async function PATCH(
     req: NextRequest,

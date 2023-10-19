@@ -105,10 +105,10 @@ export async function GET(req: NextRequest) {
         return NextResponse.json(posts);
     } catch (error) {
         if (error instanceof z.ZodError) {
-            return new Response(error.message, { status: 400 });
+            return new NextResponse(error.message, { status: 400 });
         }
 
-        return new Response("Failed to load posts", { status: 500 });
+        return new NextResponse("Failed to load posts", { status: 500 });
     }
 }
 
@@ -159,7 +159,6 @@ export async function POST(req: NextRequest) {
         }
 
         console.log("ERROR in POST /api/community/route.ts:", error);
-
         return new NextResponse("500.internal_error", { status: 500 });
     }
 }
