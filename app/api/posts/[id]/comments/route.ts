@@ -63,6 +63,7 @@ export async function GET(
                         },
                     },
                 },
+                images: true,
                 likes:
                     session?.user.id == null
                         ? false
