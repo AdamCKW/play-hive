@@ -30,7 +30,7 @@ export function NavbarItems({ user }: MainNavProps) {
     return (
         <div>
             <nav className="flex items-center space-x-1">
-                {NavBarItems.map((item, index) => {
+                {/* {NavBarItems.map((item, index) => {
                     const IconComponent = Icons[item.icon as IconName];
                     if (item.title === "profile") {
                         return (
@@ -80,7 +80,7 @@ export function NavbarItems({ user }: MainNavProps) {
                             </div>
                         </Link>
                     );
-                })}
+                })} */}
 
                 <LocaleSwitch />
                 <ThemeToggle />

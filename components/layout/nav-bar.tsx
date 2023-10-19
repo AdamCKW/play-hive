@@ -31,7 +31,7 @@ export async function NavBar({ className }: NavBarProps) {
                     className="flex items-center space-x-2"
                 >
                     <Icons.logo className="h-8 w-8" />
-                    <span className="inline-block text-base font-bold md:text-xl">
+                    <span className="hidden text-base font-bold md:inline-block md:text-xl">
                         {siteConfig.name}
                     </span>
                 </Link>
