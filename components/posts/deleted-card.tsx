@@ -47,7 +47,7 @@ export default function DeletedCard({
                     </div>
 
                     <div className="relative h-[1.125rem]" />
-                    <div className="text-muted-foreground flex items-center space-x-2 ">
+                    <div className="text-muted-foreground flex items-center space-x-2 text-sm md:text-base">
                         {data._count.children > 0 && (
                             <div className="text-muted-foreground ">
                                 {childrenCount}{" "}
@@ -123,7 +123,7 @@ export default function DeletedCard({
                 {comment ? null : (
                     <>
                         <div className="relative h-[1.125rem]" />
-                        <div className="text-muted-foreground flex items-center space-x-2 ">
+                        <div className="text-muted-foreground flex items-center space-x-2 text-sm md:text-base">
                             {data._count.children > 0 && (
                                 <div className="text-muted-foreground ">
                                     {childrenCount}{" "}

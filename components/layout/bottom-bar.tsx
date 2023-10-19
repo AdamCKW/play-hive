@@ -52,8 +52,7 @@ export function Bottombar() {
                             </Link>
 
                             {session?.user && (
-                                <Button
-                                    variant="link"
+                                <button
                                     onClick={() => {
                                         onOpen("createPost", {
                                             user: session.user,
@@ -64,7 +63,7 @@ export function Bottombar() {
                                     <span className="sr-only">
                                         {t("button")}
                                     </span>
-                                </Button>
+                                </button>
                             )}
                         </Fragment>
                     );

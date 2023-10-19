@@ -27,12 +27,12 @@ export default async function CreatePost({ params }: CreatePostProps) {
     return (
         <div className="flex flex-col items-start gap-6">
             {/* heading */}
-            <div className="w-full border-b border-gray-200 pb-5">
+            <div className="w-full border-b pb-5">
                 <div className="-ml-2 -mt-2 flex flex-wrap items-baseline">
                     <h3 className="ml-2 mt-2 text-xl font-semibold leading-6">
                         {t("heading")}
                     </h3>
-                    <p className="ml-2 mt-1 truncate text-lg text-gray-500">
+                    <p className="text-muted-foreground ml-2 mt-1 truncate text-lg">
                         {t("in", { community_name: community.name })}
                     </p>
                 </div>

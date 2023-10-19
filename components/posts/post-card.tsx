@@ -66,7 +66,7 @@ export default function PostCard({
                     )}
                 </div>
 
-                <div className="w-full space-y-1">
+                <div className="w-full space-y-1 text-sm md:text-base">
                     <div className="flex w-full items-center justify-between">
                         <NameLink author={data.author} />
                         {comment ? null : (
@@ -83,7 +83,7 @@ export default function PostCard({
                         <div
                             style={{ overflow: "clip" }}
                             className={`relative max-h-40 text-sm ${
-                                comment ? "w-80" : "w-full"
+                                comment ? "w-80" : "w-64 md:w-full"
                             }`}
                         >
                             <Viewer content={data.content} />
@@ -123,7 +123,7 @@ export default function PostCard({
 
                             <div className="text-muted-foreground flex items-center space-x-2 ">
                                 {data._count.children > 0 && (
-                                    <div className="text-muted-foreground ">
+                                    <div className="text-muted-foreground truncate">
                                         {childrenCount}{" "}
                                         {data._count.children === 1
                                             ? t("reply")
@@ -137,7 +137,7 @@ export default function PostCard({
                                     )}
 
                                 {data._count.likes > 0 && (
-                                    <div className=" text-muted-foreground ">
+                                    <div className="text-muted-foreground truncate">
                                         {likesCount}{" "}
                                         {data._count.likes === 1
                                             ? t("like")
@@ -145,33 +145,8 @@ export default function PostCard({
                                     </div>
                                 )}
 
-                                {(data._count.children > 0 ||
-                                    data._count.likes > 0) &&
-                                data.communityId &&
-                                data.community?.name ? (
-                                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
-                                ) : null}
-
-                                {!data.text &&
-                                data.communityId &&
-                                data.community?.name ? (
-                                    <>
-                                        <div
-                                            className="text-muted-foreground hover:text-foreground"
-                                            onClick={() => {
-                                                redirect(
-                                                    `/c/${data.community?.name}`,
-                                                );
-                                            }}
-                                        >
-                                            c/{data.community?.name}
-                                        </div>
-                                    </>
-                                ) : null}
-
                                 {data._count.children > 0 ||
-                                data._count.likes > 0 ||
-                                (data.communityId && data.community?.name) ? (
+                                data._count.likes > 0 ? (
                                     <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                 ) : null}
 

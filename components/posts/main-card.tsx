@@ -27,11 +27,11 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
     const t = useTranslations("root.posts.card.display");
 
     return (
-        <div className="flex flex-col space-y-3 border-b px-3 py-4 dark:border-neutral-900">
+        <div className="flex flex-col space-y-3 border-b px-3 py-4">
             <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 text-base">
                     <UserAvatar
-                        className="overflow-hidden"
+                        className="overflow-hidden "
                         user={{
                             name: data.author.name!,
                             image: data.author.image!,
@@ -71,9 +71,9 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
 
                 <Controls data={data} single={true} queryKey={queryKey} />
 
-                <div className="text-muted-foreground flex items-center space-x-2 ">
+                <div className="text-muted-foreground flex items-center space-x-2 text-sm md:text-base">
                     {data._count.children > 0 && (
-                        <div className="text-muted-foreground ">
+                        <div className="text-muted-foreground">
                             {childrenCount}{" "}
                             {data._count.children === 1
                                 ? t("reply")

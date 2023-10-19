@@ -48,6 +48,7 @@ export const BottomBarItems: NavItem[] = [
     { ...news },
     { ...communities },
     { ...messages },
+    { ...profile },
 ];
 
 export const UserNavItems: NavItem[] = [];

@@ -178,7 +178,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 </Link>
             ) : null}
 
-            <div className="mx-3 2xl:mx-4">
+            <div className="2xl:mx-4">
                 {post.parent ? (
                     <Parent key={post.parent.id} initialPost={post.parent} />
                 ) : null}

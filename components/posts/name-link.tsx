@@ -27,11 +27,10 @@ export default function NameLink({ author }: NameLinkProps) {
                         router.push(`/${author.username}`);
                     }}
                 >
-                    <div className="flex items-center gap-2">
-                        <p className="truncate font-semibold hover:underline">
+                    <div className="flex flex-col">
+                        <p className="font-semibold hover:underline">
                             {author.name}
                         </p>
-
                         <p className="text-muted-foreground truncate text-sm hover:underline">
                             @{author.username}
                         </p>

@@ -99,7 +99,7 @@ export default async function Home({ params }: HomePageProps) {
     return (
         <>
             {posts.length === 0 ? (
-                <div className="mt-4 text-center leading-loose text-neutral-600">
+                <div className="text-muted-foreground mt-4 text-center leading-loose">
                     {t("empty")}
                 </div>
             ) : (
