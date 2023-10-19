@@ -12,9 +12,6 @@ import { ExtendedMetadata } from "@/types";
 import dynamic from "next/dynamic";
 const RepliesFeed = dynamic(
     () => import("@/components/posts/feeds/replies-feed"),
-    {
-        loading: () => <PostLoading />,
-    },
 );
 
 interface RepliesPageLayoutProps {

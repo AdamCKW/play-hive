@@ -6,14 +6,11 @@ import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getTranslator } from "next-intl/server";
 
 import dynamic from "next/dynamic";
-import DiscoverFeed from "@/components/posts/feeds/discover-feed";
+// import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 
-// const DiscoverFeed = dynamic(
-//     () => import("@/components/posts/feeds/discover-feed"),
-//     {
-//         loading: () => <PostLoading />,
-//     },
-// );
+const DiscoverFeed = dynamic(
+    () => import("@/components/posts/feeds/discover-feed"),
+);
 
 interface DiscoverPageProps {
     params: {

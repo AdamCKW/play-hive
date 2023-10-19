@@ -10,7 +10,7 @@ import { getTranslator } from "next-intl/server";
 import { Loader2 } from "lucide-react";
 import { PostLoading } from "@/components/loading";
 import dynamic from "next/dynamic";
-// import MainFeed from "@/components/posts/feeds/main-feed";
+
 const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"));
 
 interface HomePageProps {

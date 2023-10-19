@@ -19,9 +19,6 @@ interface ProfilePageLayoutProps {
 
 const ProfileFeed = dynamic(
     () => import("@/components/posts/feeds/profile-feed"),
-    {
-        loading: () => <PostLoading />,
-    },
 );
 
 export async function generateMetadata({
