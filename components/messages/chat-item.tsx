@@ -85,6 +85,7 @@ export const ChatItem = ({
             toast({
                 title: tToast("500.heading"),
                 description: tToast("messages.failed.delete"),
+                variant: "destructive",
             });
         }
     };

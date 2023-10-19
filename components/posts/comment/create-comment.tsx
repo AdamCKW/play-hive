@@ -85,6 +85,7 @@ export default function CreateComment({
                         return toast({
                             title: tToast("upload.error.title"),
                             description: tToast("upload.error.description"),
+                            variant: "destructive"
                         });
                     }
                 }
@@ -93,6 +94,7 @@ export default function CreateComment({
                     return toast({
                         title: tToast("upload.nsfw.title"),
                         description: tToast("upload.nsfw.description"),
+                        variant: "destructive"
                     });
                 }
 

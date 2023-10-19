@@ -69,8 +69,9 @@ export default function UserLoginForm({
         if (signInResponse?.error) {
             if (signInResponse?.error === "login.failed.unverified") {
                 return toast({
-                    title: tToast("heading.500"),
+                    title: tToast("500.heading"),
                     description: tToast(signInResponse.error),
+                    variant: "destructive",
                     action: (
                         <ToastAction
                             onClick={() => {
@@ -99,6 +100,7 @@ export default function UserLoginForm({
                                             description: tToast(
                                                 err.response.data,
                                             ),
+                                            variant: "destructive"
                                         });
                                     });
                             }}
@@ -110,8 +112,9 @@ export default function UserLoginForm({
                 });
             }
             return toast({
-                title: tToast("heading.500"),
+                title: tToast("500.heading"),
                 description: tToast(signInResponse.error),
+                variant: "destructive",
             });
         }
         setIsLoading(false);
