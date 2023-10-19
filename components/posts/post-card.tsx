@@ -66,7 +66,7 @@ export default function PostCard({
                     )}
                 </div>
 
-                <div className="w-full space-y-1 text-sm md:text-base">
+                <div className="w-full space-y-1">
                     <div className="flex w-full items-center justify-between">
                         <NameLink author={data.author} />
                         {comment ? null : (
