@@ -13,7 +13,6 @@ import {
     //@ts-ignore
 } from "obscenity";
 
-
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
