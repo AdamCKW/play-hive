@@ -30,7 +30,7 @@ export async function NavBar({ className }: NavBarProps) {
                     href={linksConfig.home.href}
                     className="flex items-center space-x-2"
                 >
-                    <Icons.logo className="h-8 w-8" />
+                    <Icons.logo className="h-10 w-10" />
                     <span className="hidden text-base font-bold md:inline-block md:text-xl">
                         {siteConfig.name}
                     </span>
