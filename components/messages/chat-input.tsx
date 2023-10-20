@@ -11,10 +11,9 @@ import { useRouter } from "next/navigation";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useModal } from "@/hooks/use-modal-store";
-import { MessageFileModal } from "./message-file-modal";
-import { toast } from "@/hooks/use-toast";
-import { useSession } from "next-auth/react";
 import { EmojiPicker } from "./emoji-picker";
+import { useTranslations } from "next-intl";
+import { toast } from "@/hooks/use-toast";
 
 interface ChatInputProps {
     id: string;
@@ -30,9 +29,8 @@ const formSchema = z.object({
 export const ChatInput = ({ id, name, query }: ChatInputProps) => {
     const { onOpen } = useModal();
     const router = useRouter();
-    const { data: session } = useSession();
-
-    // const apiUrl = "/api/socket/messages";
+    const t = useTranslations("communication.messages");
+    const tToast = useTranslations("toast");
 
     const apiUrl = "/api/messages";
 
@@ -55,10 +53,11 @@ export const ChatInput = ({ id, name, query }: ChatInputProps) => {
             await axios.post(url, values);
 
             form.reset();
-
-            // router.refresh();
         } catch (error) {
-            console.log(error);
+            toast({
+                title: tToast("messages.failed.title"),
+                description: tToast("messages.failed.description"),
+            });
         }
     };
 
@@ -88,7 +87,9 @@ export const ChatInput = ({ id, name, query }: ChatInputProps) => {
                                     <Input
                                         disabled={isLoading}
                                         className=" bg-background px-14 py-6 shadow-md focus-visible:ring-0 focus-visible:ring-offset-0 "
-                                        placeholder={`Message ${name}`}
+                                        placeholder={t("placeholder", {
+                                            user: name,
+                                        })}
                                         {...field}
                                     />
 

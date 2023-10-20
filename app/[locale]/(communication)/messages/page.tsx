@@ -17,7 +17,9 @@ export async function generateMetadata({
 export default function MessagesPage() {
     return (
         <>
-            <UserMessagesBar className={`bg-background border-r md:w-80`} />
+            <UserMessagesBar
+                className={`bg-background w-full border-r md:w-80`}
+            />
             <section className="hidden min-h-screen flex-1 flex-col items-center justify-center pb-10 pt-28 max-md:pb-32 sm:px-10 lg:flex">
                 <div className="hidden w-full max-w-4xl lg:block">
                     <div className="hidden h-full lg:block">

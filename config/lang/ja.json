@@ -41,7 +41,7 @@
             "description": "ユーザーが購読したコミュニティの投稿を表示する"
         },
         "community": {
-            "title": "c/{名前}",
+            "title": "c/{name}",
             "description": "{name} コミュニティ ページを表示する"
         },
         "following": {
@@ -181,10 +181,10 @@
     },
     "auth": {
         "layout": {
-            "image_src": "/ルームストック.jpg",
+            "image_src": "/room-stock.jpg",
             "image_alt": "建物イメージ",
-            "quote_text": "このライブラリのおかげで、数え切れないほどの作業時間を節約でき、これまでよりも早く素晴らしいデザインをクライアントに提供できるようになりました。",
-            "quote_author": "ソフィア・デイビス"
+            "quote_text": "Sometimes, in the world of gaming, the most challenging quest is finding a tranquil moment to unwind and let your worries drift away.",
+            "quote_author": "PlayHive"
         },
         "login": {
             "page": {
@@ -326,7 +326,8 @@
                 "title": "添付ファイルを追加する",
                 "description": "ファイルをメッセージとして送信する",
                 "send_button": "送信"
-            }
+            },
+            "placeholder": "メッセージ {user}"
         },
         "community": {
             "main_feed": {
@@ -450,7 +451,7 @@
                 "me": "自分",
                 "textarea": {
                     "label": "投稿に返信",
-                    "placeholder": "{著者} に返信..."
+                    "placeholder": "{author} に返信..."
                 },
                 "attach": "画像を添付する",
                 "post": "返事"
@@ -741,7 +742,9 @@
                 "message_id": "メッセージIDがありません",
                 "conversation_id": "会話IDがありません",
                 "content": "コンテンツがありません",
-                "delete": "メッセージの削除に失敗しました。"
+                "delete": "メッセージの削除に失敗しました。",
+                "title": "何か問題が発生しました",
+                "description": "メッセージの送信に失敗しました。"
             }
         },
         "manage": {

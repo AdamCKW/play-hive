@@ -183,8 +183,8 @@
         "layout": {
             "image_src": "/room-stock.jpg",
             "image_alt": "Imej bangunan",
-            "quote_text": "Perpustakaan ini telah menjimatkan banyak jam kerja saya dan membantu saya menyampaikan reka bentuk yang menakjubkan kepada pelanggan saya dengan lebih pantas berbanding sebelum ini. ",
-            "quote_author": "Sofia Davis"
+            "quote_text": "Sometimes, in the world of gaming, the most challenging quest is finding a tranquil moment to unwind and let your worries drift away.",
+            "quote_author": "PlayHive"
         },
         "login": {
             "page": {
@@ -326,7 +326,8 @@
                 "title": "Tambah lampiran",
                 "description": "Hantar fail sebagai mesej",
                 "send_button": "Hantar"
-            }
+            },
+            "placeholder": "Mesej {user}"
         },
         "community": {
             "main_feed": {
@@ -741,7 +742,9 @@
                 "message_id": "ID mesej tiada",
                 "conversation_id": "ID Perbualan tiada",
                 "content": "Kandungan tiada",
-                "delete": "Gagal memadamkan mesej. "
+                "delete": "Gagal memadamkan mesej.",
+                "title": "Sesuatu telah berlaku",
+                "description": "Gagal menghantar mesej. "
             }
         },
         "manage": {

@@ -41,7 +41,7 @@
             "description": "查看用户订阅的社区帖子"
         },
         "community": {
-            "title": "c/{名称}",
+            "title": "c/{name}",
             "description": "查看{name}社区页面"
         },
         "following": {
@@ -181,10 +181,10 @@
     },
     "auth": {
         "layout": {
-            "image_src": "/房间库存.jpg",
+            "image_src": "/room-stock.jpg",
             "image_alt": "建筑形象",
-            "quote_text": "这个库为我节省了无数的工作时间，并帮助我比以往更快地向客户交付令人惊叹的设计。",
-            "quote_author": "索菲亚·戴维斯"
+            "quote_text": "Sometimes, in the world of gaming, the most challenging quest is finding a tranquil moment to unwind and let your worries drift away.",
+            "quote_author": "PlayHive"
         },
         "login": {
             "page": {
@@ -326,7 +326,8 @@
                 "title": "添加附件",
                 "description": "将文件作为消息发送",
                 "send_button": "发送"
-            }
+            },
+            "placeholder": "消息{user}"
         },
         "community": {
             "main_feed": {
@@ -450,7 +451,7 @@
                 "me": "我",
                 "textarea": {
                     "label": "回复帖子",
-                    "placeholder": "回复{作者}..."
+                    "placeholder": "回复{author}..."
                 },
                 "attach": "附加图像",
                 "post": "回复"
@@ -741,7 +742,9 @@
                 "message_id": "消息 ID 缺失",
                 "conversation_id": "会话 ID 丢失",
                 "content": "内容缺失",
-                "delete": "删除消息失败。"
+                "delete": "删除消息失败。",
+                "title": "出了些问题",
+                "description": "发送消息失败。"
             }
         },
         "manage": {

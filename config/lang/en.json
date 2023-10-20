@@ -183,8 +183,8 @@
         "layout": {
             "image_src": "/room-stock.jpg",
             "image_alt": "Image of building",
-            "quote_text": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before. Highly recommended!",
-            "quote_author": "Sofia Davis"
+            "quote_text": "Sometimes, in the world of gaming, the most challenging quest is finding a tranquil moment to unwind and let your worries drift away.",
+            "quote_author": "PlayHive"
         },
         "login": {
             "page": {
@@ -326,7 +326,8 @@
                 "title": "Add an attachment",
                 "description": "Send a file as a message",
                 "send_button": "Send"
-            }
+            },
+            "placeholder": "Message {user}"
         },
         "community": {
             "main_feed": {
@@ -741,7 +742,9 @@
                 "message_id": "Message ID missing",
                 "conversation_id": "Conversation ID missing",
                 "content": "Content is missing",
-                "delete": "Failed to delete message. Please try again later."
+                "delete": "Failed to delete message. Please try again later.",
+                "title": "Something went wrong",
+                "description": "Failed to send message. Please try again later."
             }
         },
         "manage": {
