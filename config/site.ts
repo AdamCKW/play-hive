@@ -3,7 +3,7 @@ import { LinkConfig } from "@/types";
 
 export type SiteConfig = typeof siteConfig;
 
-export const LOCALES = ["en", "ms"];
+export const LOCALES = ["en", "ms", "zh", "ja"];
 
 export const siteConfig = {
     name: "Play Hive",

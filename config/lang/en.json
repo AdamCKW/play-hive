@@ -73,6 +73,14 @@
         "ms": {
             "title": "Malay",
             "flag": "🇲🇾"
+        },
+        "zh": {
+            "title": "Chinese",
+            "flag": "🇨🇳"
+        },
+        "ja": {
+            "title": "Japanese",
+            "flag": "🇯🇵"
         }
     },
     "nav": {

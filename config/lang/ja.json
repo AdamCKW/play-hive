@@ -1,0 +1,776 @@
+{
+    "metadata": {
+        "login": {
+            "title": "ログイン",
+            "description": "以下に詳細を入力してアカウントにサインインしてください"
+        },
+        "register": {
+            "title": "登録する",
+            "description": "以下に詳細を入力してアカウントを作成してください"
+        },
+        "forgot_password": {
+            "title": "パスワードをお忘れですか",
+            "description": "メールアドレスを入力してパスワードをリセットしてください"
+        },
+        "new_password": {
+            "title": "新しいパスワード",
+            "description": "新しいパスワードを入力してください"
+        },
+        "news": {
+            "title": "ニュース",
+            "description": "世界中のゲームニュース"
+        },
+        "verify": {
+            "title": "確認する",
+            "description": "メールアドレスの認証"
+        },
+        "settings": {
+            "title": "設定",
+            "description": "プロフィールを編集する"
+        },
+        "profile": {
+            "title": "プロフィール",
+            "description": "ユーザープロフィールを表示"
+        },
+        "replies": {
+            "title": "返信",
+            "description": "ユーザーの返信を表示する"
+        },
+        "communities": {
+            "title": "コミュニティフィード",
+            "description": "ユーザーが購読したコミュニティの投稿を表示する"
+        },
+        "community": {
+            "title": "c/{名前}",
+            "description": "{name} コミュニティ ページを表示する"
+        },
+        "following": {
+            "title": "続く",
+            "description": "フォローしているユーザーを表示する"
+        },
+        "messages": {
+            "title": "メッセージ",
+            "description": "ユーザーメッセージを表示する"
+        },
+        "conversation": {
+            "title": "会話",
+            "description": "{ユーザー名} と会話を開始します"
+        },
+        "reports": {
+            "title": "レポート",
+            "description": "報告された投稿を表示する"
+        },
+        "manage": {
+            "title": "ユーザーの管理",
+            "description": "ユーザーの表示と管理"
+        }
+    },
+    "intl": {
+        "en": {
+            "title": "英語",
+            "flag": "🇺🇸"
+        },
+        "ms": {
+            "title": "マレー語",
+            "flag": "🇲🇾"
+        },
+        "zh": {
+            "title": "中国語",
+            "flag": "🇨🇳"
+        },
+        "ja": {
+            "title": "日本語",
+            "flag": "🇯🇵"
+        }
+    },
+    "nav": {
+        "home": "家",
+        "sign_in": "サインイン",
+        "sign_up": "サインアップ",
+        "forgot_password": "パスワードをお忘れですか",
+        "terms": "利用規約",
+        "privacy": "プライバシーポリシー",
+        "cookie": "クッキーポリシー",
+        "accessibility": "アクセシビリティ情報",
+        "ads": "広告情報",
+        "about": "について",
+        "messages": "メッセージ",
+        "communities": "コミュニティ",
+        "discover": "新しい発見",
+        "news": "ゲームニュース",
+        "profile": "プロフィール",
+        "settings": "設定",
+        "reports": "レポートの管理",
+        "manage": "ユーザーの管理"
+    },
+    "data_table": {
+        "no_results": "結果がありません。",
+        "pagination": {
+            "rows_select": "{total} 行中 {selected} 行が選択されました。",
+            "rows_per_page": "ページあたりの行数",
+            "page_number": "ページ {現在}/{合計}",
+            "go_first": "最初のページに移動",
+            "go_previous": "前のページに戻る",
+            "go_next": "次のページへ",
+            "go_last": "最後のページに移動"
+        },
+        "filter": {
+            "selected": "{値} が選択されました",
+            "no_results": "結果が見つかりません。",
+            "clear": "フィルターをクリアする"
+        },
+        "headers": {
+            "hide": "隠れる"
+        },
+        "toolbar": {
+            "reset": "リセット"
+        },
+        "view_options": {
+            "view": "ビュー",
+            "toggle": "列を切り替えます"
+        }
+    },
+    "dashboard": {
+        "manage": {
+            "page": {
+                "heading": "ユーザーの管理",
+                "subheading": "ユーザー一覧はこちら！"
+            },
+            "actions": {
+                "open_menu": "メニューを開く",
+                "action_label": "行動",
+                "open_profile": "プロフィールを開く",
+                "promote_admin": "管理者に昇格",
+                "demote_to_mod": "モデレーターに降格",
+                "promote_mod": "モデレーターに昇格",
+                "unban_user": "ユーザーの禁止を解除する",
+                "demote_to_user": "ユーザーに降格",
+                "ban_user": "ユーザーを禁止する"
+            }
+        },
+        "reports": {
+            "page": {
+                "heading": "レポートの管理",
+                "subheading": "レポート一覧はこちら！"
+            },
+            "actions": {
+                "open_menu": "メニューを開く",
+                "action_label": "行動",
+                "open_page": "ページを開く",
+                "copy_id": "投稿IDをコピーする",
+                "allow_post": "投稿を許可する",
+                "delete_post": "投稿を削除する"
+            }
+        }
+    },
+    "theme": {
+        "light": "ライト",
+        "dark": "暗い",
+        "blue": "濃紺",
+        "neon-green": "ダーク: ネオングリーン",
+        "yellow": "ダークイエロー",
+        "purple": "ダーク：パープル",
+        "system": "システム",
+        "toggle": "テーマの切り替え"
+    },
+    "not_found": {
+        "heading": "申し訳ありませんが、このページは利用できません",
+        "subheading": "たどったリンクが壊れているか、ページが削除されている可能性があります。",
+        "redirect": "ホームに戻る"
+    },
+    "auth": {
+        "layout": {
+            "image_src": "/ルームストック.jpg",
+            "image_alt": "建物イメージ",
+            "quote_text": "このライブラリのおかげで、数え切れないほどの作業時間を節約でき、これまでよりも早く素晴らしいデザインをクライアントに提供できるようになりました。",
+            "quote_author": "ソフィア・デイビス"
+        },
+        "login": {
+            "page": {
+                "heading": "おかえり",
+                "subheading": "以下に詳細を入力してアカウントにサインインしてください",
+                "continue_with": "または続行してください",
+                "new_to": "{siteName} を初めてご利用ですか?",
+                "forgot_password": "パスワードをお忘れですか？"
+            },
+            "validation": {
+                "username_required": "ユーザー名またはメールアドレスは 2 文字以上にする必要があります",
+                "username_refine": "ユーザー名またはメールアドレスにスペースを含めることはできません",
+                "password_required": "パスワードを空にすることはできません"
+            },
+            "form": {
+                "username": {
+                    "label": "ユーザー名または電子メール",
+                    "placeholder": "ユーザー名または電子メール"
+                },
+                "password": {
+                    "label": "パスワード",
+                    "placeholder": "パスワードを入力してください"
+                },
+                "srPassword": {
+                    "show": "パスワードを表示",
+                    "hide": "パスワードを隠す"
+                },
+                "signIn": "サインイン"
+            }
+        },
+        "register": {
+            "page": {
+                "heading": "アカウントを作成する",
+                "subheading": "以下に詳細を入力してアカウントを作成してください",
+                "continue_with": "または続行してください",
+                "already_have": "すでにアカウントをお持ちですか？",
+                "sign_in": "サインイン",
+                "agreeing": "サインアップすると、次のことに同意したものとみなされます",
+                "terms": "利用規約",
+                "and": "そして",
+                "privacy": "プライバシーポリシー"
+            },
+            "validation": {
+                "username_required": "ユーザー名は必須です",
+                "username_type_error": "ユーザー名は文字列である必要があります",
+                "username_min": "ユーザー名は 8 文字以上である必要があります",
+                "username_max": "ユーザー名は 20 文字を超えることはできません",
+                "username_refine": "ユーザー名には英数字、アンダースコア、ハイフンのみを含めることができます",
+                "email_required": "メールアドレスは必須です",
+                "email_type_error": "電子メールは文字列である必要があります",
+                "email_invalid": "無効なメールアドレス",
+                "email_refine": "メールにスペースを含めることはできません",
+                "password_min": "パスワードは8文字以上である必要があります",
+                "password_max": "パスワードは 20 文字以下にする必要があります",
+                "password_refine": "パスワードには、少なくとも 1 つの大文字、1 つの小文字、1 つの数字、および 1 つの特殊文字 (スペースは含まれません) が含まれている必要があります。"
+            },
+            "form": {
+                "username": {
+                    "label": "ユーザー名",
+                    "placeholder": "ユーザー名_例 "
+                },
+                "email": {
+                    "label": "Eメール",
+                    "placeholder": "メールアドレスを入力"
+                },
+                "password": {
+                    "label": "パスワード",
+                    "placeholder": "************"
+                },
+                "srPassword": {
+                    "show": "パスワードを表示",
+                    "hide": "パスワードを隠す"
+                },
+                "signUp": "サインアップ"
+            }
+        },
+        "forgot_password": {
+            "page": {
+                "title": "パスワードを再設定する",
+                "description": "メールアドレスを入力してください。リンクをお送りします"
+            },
+            "validation": {
+                "email_required": "メールアドレスは必須です",
+                "email_type_error": "電子メールは文字列である必要があります",
+                "email_invalid": "無効なメールアドレス",
+                "email_refine": "メールにスペースを含めることはできません"
+            },
+            "form": {
+                "email": {
+                    "label": "Eメール",
+                    "placeholder": "メールアドレスを入力"
+                },
+                "reset": "続く"
+            }
+        },
+        "new_password": {
+            "page": {
+                "title": "パスワードを再設定する",
+                "description": "新しいパスワードを入力してください"
+            },
+            "validation": {
+                "password_min": "パスワードは8文字以上である必要があります",
+                "password_max": "パスワードは 20 文字以下にする必要があります",
+                "password_refine": "パスワードには、少なくとも 1 つの大文字、1 つの小文字、1 つの数字、および 1 つの特殊文字 (スペースは含まれません) が含まれている必要があります。"
+            },
+            "form": {
+                "email": {
+                    "label": "新しいパスワード",
+                    "placeholder": "新しいパスワードを入力してください"
+                },
+                "reset": "パスワードを再設定する"
+            }
+        }
+    },
+    "communication": {
+        "state": {
+            "heading": "友達と接続してチャットする",
+            "subheading": "チャットを選択するか、新しい会話を開始します。"
+        },
+        "following": {
+            "heading": "続く",
+            "sr_link": "メッセージへのリンク",
+            "no_users": "ユーザが見つかりませんでした。",
+            "no_results": "結果が見つかりません。"
+        },
+        "messages": {
+            "heading": "メッセージ",
+            "sr_link": "ユーザーリストへのリンク",
+            "no_results": "結果が見つかりません。",
+            "deleted": "このメッセージは削除されました。",
+            "pdf": "PDFファイル",
+            "you": "（あなた）",
+            "loading": "メッセージを読み込んでいます...",
+            "something_wrong": "何か問題が発生しました。",
+            "description": "これが {name} との会話の始まりです",
+            "load_previous": "以前のメッセージをロードする",
+            "modal": {
+                "message": "添付が必要です。",
+                "title": "添付ファイルを追加する",
+                "description": "ファイルをメッセージとして送信する",
+                "send_button": "送信"
+            }
+        },
+        "community": {
+            "main_feed": {
+                "empty": "まだ投稿はありません。"
+            },
+            "individual_feed": {
+                "empty": "まだ投稿はありません。"
+            },
+            "actions": {
+                "subscribe": "購読する",
+                "unsubscribe": "購読を解除する"
+            },
+            "heading": " あなた個人のコミュニティのフロントページ。",
+            "create_button": "コミュニティの作成",
+            "edit_button": "コミュニティの編集",
+            "create_post": "コミュニティ投稿を作成する",
+            "form": {
+                "title_create": "コミュニティの作成",
+                "title_update": "コミュニティを更新する",
+                "image_label": "コミュニティイメージ",
+                "image_alt": "現在のコミュニティイメージ",
+                "image_remove": "コミュニティ画像の削除",
+                "name_label": "コミュニティ名",
+                "name_placeholder": "例: 興味のある名前",
+                "submit_button": "作成する",
+                "update_button": "アップデート"
+            },
+            "validation": {
+                "name_required": "コミュニティ名は必須です",
+                "name_type_error": "コミュニティ名は文字列である必要があります",
+                "name_min": "コミュニティ名は 4 文字以上である必要があります",
+                "name_max": "コミュニティ名は 21 文字以下にする必要があります",
+                "name_refine": "コミュニティ名には英数字、アンダースコア、ハイフンのみを使用できます"
+            },
+            "card": {
+                "title": "c/{community_name} について",
+                "created_at": "作成日",
+                "creator": "このコミュニティを作成したのはあなたです",
+                "created_by": "によって作成された"
+            },
+            "create_page": {
+                "heading": "投稿の作成",
+                "in": "c/{community_name} 内"
+            },
+            "post_editor": {
+                "create_button": "投稿の作成"
+            }
+        }
+    },
+    "root": {
+        "image": {
+            "alt": "画像",
+            "enlarged_alt": "拡大画像",
+            "close": "近い"
+        },
+        "posts": {
+            "see_earlier_replies": "以前の返信を参照",
+            "empty": "まだ投稿はありません。",
+            "empty_replies": "まだ返信はありません。",
+            "no_more": "これ以上の投稿はありません。",
+            "no_more_replies": "これ以上の返信はありません。",
+            "see_earlier": "以前の投稿を参照",
+            "error": "何か問題が発生しました。",
+            "card": {
+                "more_menu": {
+                    "delete": "消去",
+                    "edit": "編集",
+                    "report": "報告"
+                },
+                "share": {
+                    "text": "{siteName} の {name} の投稿へのリンク",
+                    "share": "投稿をシェアする",
+                    "copy": "リンクをコピーする",
+                    "copied": "リンクがクリップボードにコピーされました!",
+                    "share_via": "共有経由..."
+                },
+                "like": {
+                    "like": "投稿にいいね！",
+                    "unlike": "ポストとは異なります"
+                },
+                "display": {
+                    "deleted": "この投稿は削除されました。",
+                    "like": "のように",
+                    "likes": "好き",
+                    "reply": "返事",
+                    "replies": "返信する"
+                }
+            },
+            "create": {
+                "modal": {
+                    "button": "投稿の作成",
+                    "title": "新しい投稿"
+                },
+                "validation": {
+                    "content_min": "コメントは少なくとも 1 文字の長さである必要があります",
+                    "content_max": "コメントは 250 文字を超えることはできません"
+                },
+                "form": {
+                    "me": "自分",
+                    "textarea": {
+                        "label": "投稿コンテンツ",
+                        "placeholder": "投稿を開始します..."
+                    },
+                    "attach": "画像を添付する",
+                    "post": "役職"
+                }
+            }
+        },
+        "news": {
+            "read_news": "ニュースを読む",
+            "no_more": "これ以上のニュースはありません。"
+        },
+        "comments": {
+            "heading": "返事",
+            "comment_button": "投稿に返信する",
+            "validation": {
+                "content_min": "コメントは少なくとも 1 文字の長さである必要があります",
+                "content_max": "コメントは 250 文字を超えることはできません"
+            },
+            "form": {
+                "me": "自分",
+                "textarea": {
+                    "label": "投稿に返信",
+                    "placeholder": "{著者} に返信..."
+                },
+                "attach": "画像を添付する",
+                "post": "返事"
+            }
+        },
+        "profile": {
+            "page": {
+                "posts": "投稿",
+                "replies": "返信"
+            },
+            "layout": {
+                "following": "続く",
+                "followers": "フォロワー",
+                "follower": "フォロワー",
+                "cover_alt": "{name} のカバー画像",
+                "BANNED": "禁止された",
+                "edit_profile": "プロファイル編集"
+            },
+            "follow_button": {
+                "following": "続く",
+                "follow": "フォローする"
+            },
+            "self_share": {
+                "text": "{siteName} にある {name} のプロフィールへのリンク",
+                "share": "プロフィールを共有する",
+                "copy": "リンクをコピーする",
+                "copied": "リンクがクリップボードにコピーされました!",
+                "share_via": "共有経由..."
+            },
+            "settings": {
+                "heading": "プロファイル編集",
+                "subheading": "これは、他の人がサイト上であなたをどのように見るかです。",
+                "form": {
+                    "image_label": "プロフィール画像",
+                    "image_alt": "現在のプロフィール画像",
+                    "image_remove": "プロフィール画像を削除する",
+                    "cover_label": "表紙画像",
+                    "cover_alt": "現在のカバー画像",
+                    "cover_remove": "カバー画像を削除する",
+                    "name_label": "名前",
+                    "name_placeholder": "例: ジョン・ドゥ",
+                    "name_description": "これはあなたの公開表示名です。",
+                    "username_label": "ユーザー名",
+                    "username_placeholder": "例: ジョンドー、ジョンドー、ジョンドー",
+                    "username_description": "あなたのユーザー名は、サイト上であなたを識別するために使用されます。",
+                    "email_label": "Eメール",
+                    "email_placeholder": "例: john_doe@domain.com",
+                    "password_label": "新しいパスワード",
+                    "password_placeholder": "新しいパスワードを入力してください (オプション)",
+                    "bio_label": "プロフィール 略歴",
+                    "bio_placeholder": "あなた自身について教えてください",
+                    "update_button": "アップデート"
+                },
+                "validation": {
+                    "name_required": "名前は必須です",
+                    "name_type_error": "名前は文字列である必要があります",
+                    "name_min": "名前は 4 文字以上である必要があります",
+                    "name_max": "名前は 30 文字を超えることはできません",
+                    "username_required": "ユーザー名は必須です",
+                    "username_type_error": "ユーザー名は文字列である必要があります",
+                    "username_min": "ユーザー名は 8 文字以上である必要があります",
+                    "username_max": "ユーザー名は 20 文字を超えることはできません",
+                    "username_refine": "ユーザー名には英数字、アンダースコア、ハイフンのみを含めることができます",
+                    "email_required": "メールアドレスは必須です",
+                    "email_type_error": "電子メールは文字列である必要があります",
+                    "email_invalid": "無効なメールアドレス",
+                    "email_refine": "メールにスペースを含めることはできません",
+                    "password_refine": "パスワードは 8 文字以上 20 文字以下で、少なくとも 1 つの大文字、1 つの小文字、1 つの数字、および 1 つの特殊文字 (スペースは含まれません) を含む必要があります。",
+                    "bio_max": "自己紹介は 160 文字を超えることはできません"
+                }
+            }
+        }
+    },
+    "verification": {
+        "success": {
+            "title": "成功！ ",
+            "loading": "メールアドレスを確認しています..."
+        },
+        "error": {
+            "title": "何か問題が発生しました"
+        }
+    },
+    "toast": {
+        "401": {
+            "heading": "何か問題が発生しました",
+            "unauthorized": "このアクションを実行する権限がありません。"
+        },
+        "404": {
+            "heading": "ページが見つかりません",
+            "subheading": "お探しのページは存在しません。",
+            "user_not_found": "ユーザーが見つかりません。",
+            "cta": "家に帰ります",
+            "not_found": "見つかりません"
+        },
+        "500": {
+            "heading": "何か問題が発生しました",
+            "subheading": "おっとっと！",
+            "alt_subheading": "この問題の修正に取り組んでいます。",
+            "internal_error": "内部サーバーエラー。",
+            "cta": "家に帰ります"
+        },
+        "login": {
+            "success": {
+                "title": "ログイン成功",
+                "description": "ログインに成功しました。ホームページにリダイレクトしています..."
+            },
+            "failed": {
+                "invalid": "資格情報が無効です。ユーザー名とパスワードを確認してください。",
+                "unverified": "あなたのアカウントは認証されていません。",
+                "empty": "資格情報を入力してください。"
+            }
+        },
+        "register": {
+            "success": {
+                "title": "登録に成功",
+                "description": "正常に登録されました。"
+            },
+            "failed": {
+                "title": "何か問題が発生しました",
+                "email_exist": "メールは既に存在します。",
+                "username_exist": "ユーザー名は既に存在します。"
+            }
+        },
+        "reset": {
+            "success": {
+                "title": "成功",
+                "description": "あなたのメールアドレスにメールが送信されました。",
+                "updated": "パスワードは正常にリセットされました。"
+            },
+            "failed": {
+                "title": "何か問題が発生しました",
+                "email_not_exist": "電子メールが存在しません。",
+                "params_empty": "パラメータを空にすることはできません。",
+                "user_not_found": "ユーザーが見つかりません。",
+                "invalid_token": "無効なトークン。"
+            }
+        },
+        "resend": {
+            "text": "確認を再送信する",
+            "alt_text": "確認メールを再送",
+            "success": {
+                "title": "成功",
+                "description": "あなたのメールアドレスにメールが送信されました。"
+            },
+            "failed": {
+                "title": "何か問題が発生しました",
+                "not_found": "ユーザーが見つかりません。",
+                "verified": "あなたのアカウントはすでに認証されています。"
+            }
+        },
+        "post": {
+            "success": {
+                "delete": {
+                    "title": "投稿は正常に削除されました",
+                    "description": "あなたの投稿は削除されました。"
+                },
+                "create": {
+                    "title": "投稿が正常に作成されました",
+                    "description": "投稿が作成されました。"
+                },
+                "update": {
+                    "title": "投稿が正常に更新されました",
+                    "description": "投稿が更新されました。"
+                },
+                "like": {
+                    "title": "投稿に「いいね！」が成功しました",
+                    "description": "この投稿が気に入っています。"
+                },
+                "unlike": {
+                    "title": "正常とは異なる投稿",
+                    "description": "この投稿とは異なります。"
+                },
+                "report": {
+                    "title": "投稿は正常に報告されました",
+                    "description": "レポートは提出されました。"
+                },
+                "reply": {
+                    "title": "正常に返信されました",
+                    "description": "投稿に返信しました。"
+                }
+            },
+            "failed": {
+                "reply": {
+                    "description": "あなたの返信は公開されませんでした。"
+                },
+                "create": {
+                    "description": "あなたの投稿は公開されませんでした。"
+                },
+                "not_found": "投稿が見つかりません",
+                "missing_id": "投稿が見つかりません",
+                "reported": "この投稿はすでに報告済みです。",
+                "liked": "あなたはすでにこの投稿を気に入っています。",
+                "unlike": "あなたはその投稿を「いいね！」していません。"
+            }
+        },
+        "upload": {
+            "file_size": {
+                "title": "ファイルがサイズ制限の 8MB を超えました",
+                "description": "8MB以下のファイルを選択してください。"
+            },
+            "file_limit": {
+                "title": "ファイルが 4 ファイルの制限を超えました",
+                "description": "4 ファイル以下を選択してください。"
+            },
+            "nsfw": {
+                "title": "不適切なコンテンツが検出されました",
+                "description": "添付ファイルには、コミュニティ ガイドラインに違反するコンテンツが含まれています。"
+            },
+            "error": {
+                "title": "何か問題が発生しました",
+                "description": "ファイルのチェック中にエラーが発生しました。"
+            },
+            "error_upload": {
+                "title": "何か問題が発生しました",
+                "description": "ファイルのアップロード中にエラーが発生しました。"
+            }
+        },
+        "following": {
+            "success": {
+                "following": {
+                    "title": "正常にフォローされました",
+                    "description": "あなたは現在 {name} をフォローしています。"
+                },
+                "unfollow": {
+                    "title": "フォローを解除しました",
+                    "description": "{name} のフォローを解除しました。"
+                }
+            },
+            "failed": {
+                "already_followed": "あなたはすでにこのユーザーをフォローしています。",
+                "not_followed": "このユーザーをフォローしていません。"
+            }
+        },
+        "settings": {
+            "success": {
+                "title": "プロファイルが正常に更新されました",
+                "description": "プロフィールが更新されました。"
+            },
+            "failed": {
+                "image": {
+                    "title": "何か問題が発生しました",
+                    "description": "プロフィール画像のアップロード中にエラーが発生しました。"
+                },
+                "cover": {
+                    "title": "何か問題が発生しました",
+                    "description": "カバー画像のアップロード中にエラーが発生しました。"
+                },
+                "username_exist": "ユーザー名は既に存在します。"
+            }
+        },
+        "community": {
+            "success": {
+                "create": {
+                    "title": "コミュニティが正常に作成されました",
+                    "description": "コミュニティが作成されました。"
+                },
+                "update": {
+                    "title": "コミュニティが正常に更新されました",
+                    "description": "コミュニティが更新されました。"
+                },
+                "subscribe": {
+                    "title": "正常に購読されました",
+                    "description": "あなたは現在 c/{name} に登録しています"
+                },
+                "unsubscribe": {
+                    "title": "正常に購読解除されました",
+                    "description": "このコミュニティの購読を解除しました。"
+                }
+            },
+            "failed": {
+                "create": {
+                    "description": "あなたの投稿は公開されませんでした。"
+                },
+                "name_exist": "コミュニティ名はすでに存在します。",
+                "subscribe": "あなたはすでにこのコミュニティに登録しています",
+                "unsubscribe": "このコミュニティに登録されていません。",
+                "not_subscribed": "あなたはこのコミュニティに登録していません。"
+            }
+        },
+        "messages": {
+            "failed": {
+                "message_id": "メッセージIDがありません",
+                "conversation_id": "会話IDがありません",
+                "content": "コンテンツがありません",
+                "delete": "メッセージの削除に失敗しました。"
+            }
+        },
+        "manage": {
+            "success": {
+                "role_admin": {
+                    "title": "役割変更の成功",
+                    "description": "ユーザーの役割が管理者に変更されました。"
+                },
+                "role_mod": {
+                    "title": "役割変更の成功",
+                    "description": "ユーザーの役割がモデレーターに変更されました。"
+                },
+                "role_user": {
+                    "title": "役割変更の成功",
+                    "description": "ユーザーの役割が user に変更されました。"
+                },
+                "role_ban": {
+                    "title": "役割変更の成功",
+                    "description": "ユーザーは禁止されました。"
+                }
+            },
+            "failed": {
+                "invalid_action": "無効なアクション"
+            }
+        },
+        "reports": {
+            "success": {
+                "allow": {
+                    "title": "解決済みレポート",
+                    "description": "報告された投稿は許可されました。"
+                },
+                "delete": {
+                    "title": "解決済みレポート",
+                    "description": "報告された投稿は削除されました。"
+                }
+            }
+        }
+    }
+}

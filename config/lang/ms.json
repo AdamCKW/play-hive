@@ -1,8 +1,68 @@
 {
     "metadata": {
-        "reset-password": {
+        "login": {
+            "title": "Log masuk",
+            "description": "Masukkan butiran anda di bawah untuk log masuk ke akaun anda"
+        },
+        "register": {
+            "title": "Daftar",
+            "description": "Masukkan butiran anda di bawah untuk membuat akaun anda"
+        },
+        "forgot_password": {
             "title": "Lupa kata laluan",
             "description": "Masukkan e-mel anda untuk menetapkan semula kata laluan anda"
+        },
+        "new_password": {
+            "title": "Kata laluan baharu",
+            "description": "Masukkan kata laluan baharu anda"
+        },
+        "news": {
+            "title": "Berita",
+            "description": "Berita permainan dari seluruh dunia"
+        },
+        "verify": {
+            "title": "Sahkan",
+            "description": "Mengesahkan alamat e-mel anda"
+        },
+        "settings": {
+            "title": "tetapan",
+            "description": "Ubah profil anda"
+        },
+        "profile": {
+            "title": "Profil",
+            "description": "Lihat profil pengguna"
+        },
+        "replies": {
+            "title": "Balasan",
+            "description": "Lihat balasan pengguna"
+        },
+        "communities": {
+            "title": "Suapan Komuniti",
+            "description": "Lihat siaran komuniti yang dilanggan pengguna"
+        },
+        "community": {
+            "title": "c/{nama}",
+            "description": "Lihat halaman komuniti {name}."
+        },
+        "following": {
+            "title": "Mengikuti",
+            "description": "Lihat pengguna mengikuti"
+        },
+        "messages": {
+            "title": "Mesej",
+            "description": "Lihat mesej pengguna"
+        },
+        "conversation": {
+            "title": "Perbualan",
+            "description": "Mulakan perbualan dengan {username}"
+        },
+        "reports": {
+            "title": "Laporan",
+            "description": "Lihat siaran yang dilaporkan"
+        },
+        "manage": {
+            "title": "Urus Pengguna",
+            "description": "Lihat dan urus pengguna"
         }
     },
     "intl": {
@@ -11,8 +71,16 @@
             "flag": "🇺🇸"
         },
         "ms": {
-            "title": "Bahasa Melayu",
+            "title": "Melayu",
             "flag": "🇲🇾"
+        },
+        "zh": {
+            "title": "Cina",
+            "flag": "🇨🇳"
+        },
+        "ja": {
+            "title": "Jepun",
+            "flag": "🇯🇵"
         }
     },
     "nav": {
@@ -35,30 +103,95 @@
         "reports": "Urus Laporan",
         "manage": "Urus Pengguna"
     },
+    "data_table": {
+        "no_results": "Tiada keputusan.",
+        "pagination": {
+            "rows_select": "{selected} daripada {total} row(s) dipilih.",
+            "rows_per_page": "Baris setiap halaman",
+            "page_number": "Halaman {current} daripada {total}",
+            "go_first": "Pergi ke halaman pertama",
+            "go_previous": "Pergi ke halaman sebelumnya",
+            "go_next": "Pergi ke halaman seterusnya",
+            "go_last": "Pergi ke halaman terakhir"
+        },
+        "filter": {
+            "selected": "{value} dipilih",
+            "no_results": "Tiada keputusan dijumpai.",
+            "clear": "Kosongkan penapis"
+        },
+        "headers": {
+            "hide": "Sembunyi"
+        },
+        "toolbar": {
+            "reset": "Tetapkan semula"
+        },
+        "view_options": {
+            "view": "Lihat",
+            "toggle": "Togol lajur"
+        }
+    },
+    "dashboard": {
+        "manage": {
+            "page": {
+                "heading": "Urus Pengguna",
+                "subheading": "Berikut adalah senarai pengguna!"
+            },
+            "actions": {
+                "open_menu": "Buka menu",
+                "action_label": "Tindakan",
+                "open_profile": "Buka profil",
+                "promote_admin": "Naikkan pangkat kepada Admin",
+                "demote_to_mod": "Turun pangkat kepada Moderator",
+                "promote_mod": "Naik pangkat kepada Moderator",
+                "unban_user": "Nyahlarang Pengguna",
+                "demote_to_user": "Turun kepada Pengguna",
+                "ban_user": "Larang Pengguna"
+            }
+        },
+        "reports": {
+            "page": {
+                "heading": "Urus Laporan",
+                "subheading": "Berikut adalah senarai laporan!"
+            },
+            "actions": {
+                "open_menu": "Buka menu",
+                "action_label": "Tindakan",
+                "open_page": "Buka halaman",
+                "copy_id": "Salin id siaran",
+                "allow_post": "Benarkan siaran",
+                "delete_post": "Alih keluar siaran"
+            }
+        }
+    },
     "theme": {
         "light": "Cahaya",
         "dark": "Gelap",
-        "blue": "Biru",
-        "green": "Hijau neon",
-        "yellow": "Kuning",
-        "purple": "Ungu",
+        "blue": "Biru gelap",
+        "neon-green": "Gelap: Hijau Neon",
+        "yellow": "Gelap: Kuning",
+        "purple": "Ungu gelap",
         "system": "Sistem",
         "toggle": "Togol tema"
     },
+    "not_found": {
+        "heading": "Maaf, halaman ini tidak tersedia",
+        "subheading": "Pautan yang anda ikuti mungkin rosak, atau halaman itu mungkin telah dialih keluar.",
+        "redirect": "Kembali ke Rumah"
+    },
     "auth": {
         "layout": {
-            "imageSrc": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3",
-            "imageAlt": "Imej bangunan",
-            "quoteText": "Perpustakaan ini telah menjimatkan banyak jam kerja saya dan membantu saya menyampaikan reka bentuk yang menakjubkan kepada pelanggan saya dengan lebih pantas berbanding sebelum ini. ",
-            "quoteAuthor": "Sofia Davis"
+            "image_src": "/room-stock.jpg",
+            "image_alt": "Imej bangunan",
+            "quote_text": "Perpustakaan ini telah menjimatkan banyak jam kerja saya dan membantu saya menyampaikan reka bentuk yang menakjubkan kepada pelanggan saya dengan lebih pantas berbanding sebelum ini. ",
+            "quote_author": "Sofia Davis"
         },
         "login": {
             "page": {
                 "heading": "Selamat kembali",
                 "subheading": "Masukkan butiran anda di bawah untuk log masuk ke akaun anda",
-                "continueWith": "Atau teruskan dengan",
-                "newTo": "Baru kepada {siteName}?",
-                "forgotPassword": "lupa kata laluan?"
+                "continue_with": "Atau teruskan dengan",
+                "new_to": "Baru kepada {siteName}?",
+                "forgot_password": "lupa kata laluan?"
             },
             "validation": {
                 "username_required": "Nama pengguna atau e-mel mestilah sekurang-kurangnya 2 aksara lebih panjang",
@@ -85,8 +218,9 @@
             "page": {
                 "heading": "Buat akaun",
                 "subheading": "Masukkan butiran anda di bawah untuk membuat akaun anda",
-                "continueWith": "Atau teruskan dengan",
-                "signIn": "Sudah mempunyai akaun? ",
+                "continue_with": "Atau teruskan dengan",
+                "already_have": "Sudah mempunyai akaun?",
+                "sign_in": "Log masuk",
                 "agreeing": "Dengan mendaftar, anda bersetuju dengan kami",
                 "terms": "Syarat Perkhidmatan",
                 "and": "dan",
@@ -96,6 +230,7 @@
                 "username_required": "Nama pengguna diperlukan",
                 "username_type_error": "Nama pengguna mestilah rentetan",
                 "username_min": "Nama pengguna mestilah sekurang-kurangnya 8 aksara",
+                "username_max": "Nama pengguna tidak boleh lebih daripada 20 aksara",
                 "username_refine": "Nama pengguna hanya boleh mengandungi aksara abjad angka, garis bawah dan sempang",
                 "email_required": "E-mel diperlukan",
                 "email_type_error": "E-mel mestilah rentetan",
@@ -108,7 +243,7 @@
             "form": {
                 "username": {
                     "label": "Nama pengguna",
-                    "placeholder": "nama_pengguna_contoh"
+                    "placeholder": "nama pengguna_contoh "
                 },
                 "email": {
                     "label": "E-mel",
@@ -116,7 +251,7 @@
                 },
                 "password": {
                     "label": "Kata laluan",
-                    "placeholder": "Masukkan kata laluan anda"
+                    "placeholder": "************"
                 },
                 "srPassword": {
                     "show": "Tunjukkan kata laluan",
@@ -125,7 +260,7 @@
                 "signUp": "daftar"
             }
         },
-        "reset": {
+        "forgot_password": {
             "page": {
                 "title": "Menetapkan semula kata laluan",
                 "description": "Masukkan alamat e-mel anda dan kami akan menghantar pautan kepada anda"
@@ -144,7 +279,7 @@
                 "reset": "teruskan"
             }
         },
-        "newPassword": {
+        "new_password": {
             "page": {
                 "title": "Menetapkan semula kata laluan",
                 "description": "Masukkan kata laluan baharu anda"
@@ -163,6 +298,231 @@
             }
         }
     },
+    "communication": {
+        "state": {
+            "heading": "Berhubung dan Berbual dengan Rakan",
+            "subheading": "Pilih sembang atau mulakan perbualan baharu."
+        },
+        "following": {
+            "heading": "Mengikuti",
+            "sr_link": "Pautan ke mesej",
+            "no_users": "Tiada pengguna ditemui.",
+            "no_results": "Tiada keputusan dijumpai."
+        },
+        "messages": {
+            "heading": "Mesej",
+            "sr_link": "Pautan ke senarai pengguna",
+            "no_results": "Tiada keputusan dijumpai.",
+            "deleted": "Mesej ini telah dipadamkan.",
+            "pdf": "Fail PDF",
+            "you": "(Awak)",
+            "loading": "Memuatkan mesej...",
+            "something_wrong": "Sesuatu telah berlaku. ",
+            "description": "Ini adalah permulaan perbualan anda dengan {name}",
+            "load_previous": "Muatkan mesej sebelumnya",
+            "modal": {
+                "message": "Lampiran diperlukan.",
+                "title": "Tambah lampiran",
+                "description": "Hantar fail sebagai mesej",
+                "send_button": "Hantar"
+            }
+        },
+        "community": {
+            "main_feed": {
+                "empty": "Tiada siaran lagi."
+            },
+            "individual_feed": {
+                "empty": "Tiada siaran lagi."
+            },
+            "actions": {
+                "subscribe": "Langgan",
+                "unsubscribe": "Nyahlanggan"
+            },
+            "heading": " Muka depan komuniti peribadi anda. ",
+            "create_button": "Cipta Komuniti",
+            "edit_button": "Edit Komuniti",
+            "create_post": "Buat Siaran Komuniti",
+            "form": {
+                "title_create": "Cipta Komuniti",
+                "title_update": "Kemas kini Komuniti",
+                "image_label": "Imej Komuniti",
+                "image_alt": "Imej Komuniti semasa",
+                "image_remove": "Alih Keluar Imej Komuniti",
+                "name_label": "Nama komuniti",
+                "name_placeholder": "cth: minat_nama",
+                "submit_button": "Buat",
+                "update_button": "Kemas kini"
+            },
+            "validation": {
+                "name_required": "Nama komuniti diperlukan",
+                "name_type_error": "Nama komuniti mestilah rentetan",
+                "name_min": "Panjang nama komuniti mestilah sekurang-kurangnya 4 aksara",
+                "name_max": "Nama komuniti tidak boleh melebihi 21 aksara",
+                "name_refine": "Nama komuniti hanya boleh mengandungi aksara abjad angka, garis bawah dan sempang"
+            },
+            "card": {
+                "title": "Perihal c/{community_name}",
+                "created_at": "Dicipta Pada",
+                "creator": "Anda mencipta komuniti ini",
+                "created_by": "Dicipta oleh"
+            },
+            "create_page": {
+                "heading": "Buat Siaran",
+                "in": "dalam c/{community_name}"
+            },
+            "post_editor": {
+                "create_button": "Buat Siaran"
+            }
+        }
+    },
+    "root": {
+        "image": {
+            "alt": "Gambar",
+            "enlarged_alt": "Imej Dibesarkan",
+            "close": "tutup"
+        },
+        "posts": {
+            "see_earlier_replies": "Lihat balasan terdahulu",
+            "empty": "Tiada siaran lagi.",
+            "empty_replies": "Tiada balasan lagi.",
+            "no_more": "Tiada lagi siaran.",
+            "no_more_replies": "Tiada balasan lagi.",
+            "see_earlier": "Lihat catatan sebelum ini",
+            "error": "Sesuatu telah berlaku. ",
+            "card": {
+                "more_menu": {
+                    "delete": "Padam",
+                    "edit": "Sunting",
+                    "report": "Laporan"
+                },
+                "share": {
+                    "text": "Pautan ke siaran {name} di {siteName}",
+                    "share": "Kongsi siaran",
+                    "copy": "Salin pautan",
+                    "copied": "Pautan disalin ke papan keratan!",
+                    "share_via": "Kongsi Melalui..."
+                },
+                "like": {
+                    "like": "Suka Post",
+                    "unlike": "Tidak seperti Post"
+                },
+                "display": {
+                    "deleted": "Catatan ini telah dipadamkan.",
+                    "like": "suka",
+                    "likes": "suka",
+                    "reply": "balas",
+                    "replies": "balasan"
+                }
+            },
+            "create": {
+                "modal": {
+                    "button": "Buat Siaran",
+                    "title": "Jawatan baru"
+                },
+                "validation": {
+                    "content_min": "Panjang ulasan mestilah sekurang-kurangnya 1 aksara",
+                    "content_max": "Komen tidak boleh melebihi 250 aksara"
+                },
+                "form": {
+                    "me": "saya",
+                    "textarea": {
+                        "label": "Isi Kandungan",
+                        "placeholder": "Mulakan siaran..."
+                    },
+                    "attach": "Lampirkan Imej",
+                    "post": "Pos"
+                }
+            }
+        },
+        "news": {
+            "read_news": "Baca Berita",
+            "no_more": "Tiada berita lagi."
+        },
+        "comments": {
+            "heading": "Balas",
+            "comment_button": "Balas kepada siaran",
+            "validation": {
+                "content_min": "Panjang ulasan mestilah sekurang-kurangnya 1 aksara",
+                "content_max": "Komen tidak boleh melebihi 250 aksara"
+            },
+            "form": {
+                "me": "saya",
+                "textarea": {
+                    "label": "Balas Kepada Siaran",
+                    "placeholder": "Balas kepada {author}..."
+                },
+                "attach": "Lampirkan Imej",
+                "post": "Balas"
+            }
+        },
+        "profile": {
+            "page": {
+                "posts": "Catatan",
+                "replies": "Balasan"
+            },
+            "layout": {
+                "following": "mengikuti",
+                "followers": "pengikut",
+                "follower": "pengikut",
+                "cover_alt": "Imej muka depan {name}.",
+                "BANNED": "diharamkan",
+                "edit_profile": "Sunting profil"
+            },
+            "follow_button": {
+                "following": "Mengikuti",
+                "follow": "Ikut"
+            },
+            "self_share": {
+                "text": "Pautan ke profil {name} di {siteName}",
+                "share": "Kongsi Profil",
+                "copy": "Salin pautan",
+                "copied": "Pautan disalin ke papan keratan!",
+                "share_via": "Kongsi Melalui..."
+            },
+            "settings": {
+                "heading": "Sunting profil",
+                "subheading": "Beginilah cara orang lain akan melihat anda di tapak.",
+                "form": {
+                    "image_label": "Imej Profil",
+                    "image_alt": "Imej Profil semasa",
+                    "image_remove": "Alih Keluar Imej Profil",
+                    "cover_label": "Imej Muka Depan",
+                    "cover_alt": "Imej Muka Depan semasa",
+                    "cover_remove": "Alih Keluar Imej Muka Depan",
+                    "name_label": "Nama",
+                    "name_placeholder": "cth: John Doe",
+                    "name_description": "Ini ialah nama paparan awam anda. ",
+                    "username_label": "Nama pengguna",
+                    "username_placeholder": "cth: johndoe, john_doe, john-doe",
+                    "username_description": "Nama pengguna anda akan digunakan untuk mengenal pasti anda di tapak.",
+                    "email_label": "E-mel",
+                    "email_placeholder": "cth: john_doe@domain.com",
+                    "password_label": "Kata laluan baharu",
+                    "password_placeholder": "Masukkan kata laluan baharu anda (pilihan)",
+                    "bio_label": "Bio Profil",
+                    "bio_placeholder": "Beritahu kami tentang diri anda",
+                    "update_button": "Kemas kini"
+                },
+                "validation": {
+                    "name_required": "Nama diperlukan",
+                    "name_type_error": "Nama mestilah rentetan",
+                    "name_min": "Panjang nama mestilah sekurang-kurangnya 4 aksara",
+                    "name_max": "Nama tidak boleh lebih daripada 30 aksara",
+                    "username_required": "Nama pengguna diperlukan",
+                    "username_type_error": "Nama pengguna mestilah rentetan",
+                    "username_min": "Nama pengguna mestilah sekurang-kurangnya 8 aksara",
+                    "username_max": "Nama pengguna tidak boleh lebih daripada 20 aksara",
+                    "username_refine": "Nama pengguna hanya boleh mengandungi aksara abjad angka, garis bawah dan sempang",
+                    "email_required": "E-mel diperlukan",
+                    "email_type_error": "E-mel mestilah rentetan",
+                    "email_invalid": "alamat email tidak sah",
+                    "email_refine": "E-mel tidak boleh mengandungi ruang",
+                    "password_refine": "Kata laluan mestilah sekurang-kurangnya 8 aksara panjang dan tidak lebih daripada 20 aksara, dan mengandungi sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan satu aksara khas (tiada ruang).",
+                    "bio_max": "Bio tidak boleh lebih daripada 160 aksara"
+                }
+            }
+        }
+    },
     "verification": {
         "success": {
             "title": "Berjaya! ",
@@ -172,54 +532,245 @@
             "title": "Sesuatu telah berlaku"
         }
     },
-    "error": {
+    "toast": {
+        "401": {
+            "heading": "Sesuatu telah berlaku",
+            "unauthorized": "Anda tidak dibenarkan melakukan tindakan ini."
+        },
         "404": {
             "heading": "Laman tidak dijumpai",
             "subheading": "Halaman yang anda cari tidak wujud.",
-            "cta": "Balik rumah"
+            "user_not_found": "Pengguna tidak dijumpai.",
+            "cta": "Balik rumah",
+            "not_found": "Tidak ditemui"
         },
         "500": {
             "heading": "Sesuatu telah berlaku",
-            "subheading": "Kami sedang berusaha untuk membetulkan isu ini. ",
+            "subheading": "Aduh! ",
+            "alt_subheading": "Kami sedang berusaha untuk membetulkan isu ini. ",
+            "internal_error": "Ralat pelayan dalaman. ",
             "cta": "Balik rumah"
         },
-        "heading": {
-            "404": "Laman tidak dijumpai",
-            "500": "Sesuatu telah berlaku"
+        "login": {
+            "success": {
+                "title": "Log masuk berjaya",
+                "description": "Anda telah berjaya melog masuk. Mengubah hala ke halaman utama..."
+            },
+            "failed": {
+                "invalid": "Bukti kelayakan tidak sah, sila semak nama pengguna dan kata laluan anda.",
+                "unverified": "Akaun anda tidak disahkan. ",
+                "empty": "Sila masukkan kelayakan anda."
+            }
         },
-        "subheading": {
-            "404": "Halaman yang anda cari tidak wujud.",
-            "500": "Ralat Pelayan Dalaman",
-            "common": "Aduh! "
-        },
-        "successRegister": {
-            "title": "pendaftaran berjaya",
-            "description": "Anda telah berjaya mendaftar. "
-        },
-        "failedRegister": {
-            "title": "Sesuatu telah berlaku",
-            "emailExist": "E-mel sudah wujud. ",
-            "usernameExist": "Nama pengguna sudah wujud. "
+        "register": {
+            "success": {
+                "title": "pendaftaran berjaya",
+                "description": "Anda telah berjaya mendaftar. "
+            },
+            "failed": {
+                "title": "Sesuatu telah berlaku",
+                "email_exist": "E-mel sudah wujud. ",
+                "username_exist": "Nama pengguna sudah wujud. "
+            }
         },
         "reset": {
-            "title_success": "Kejayaan",
-            "description_success": "E-mel telah dihantar ke alamat e-mel anda. ",
-            "reset_success": "Kata laluan anda telah berjaya ditetapkan semula. ",
-            "title_failed": "Sesuatu telah berlaku",
-            "emailNotExist": "E-mel tidak wujud. ",
-            "params_empty": "Params tidak boleh kosong. ",
-            "user_not_found": "Pengguna tidak dijumpai.",
-            "invalid_token": "Token tidak sah. "
+            "success": {
+                "title": "Kejayaan",
+                "description": "E-mel telah dihantar ke alamat e-mel anda. ",
+                "updated": "Kata laluan anda telah berjaya ditetapkan semula. "
+            },
+            "failed": {
+                "title": "Sesuatu telah berlaku",
+                "email_not_exist": "E-mel tidak wujud. ",
+                "params_empty": "Params tidak boleh kosong. ",
+                "user_not_found": "Pengguna tidak dijumpai.",
+                "invalid_token": "Token tidak sah. "
+            }
         },
         "resend": {
-            "title_success": "Kejayaan",
-            "description_success": "E-mel telah dihantar ke alamat e-mel anda. ",
-            "title_failed": "Sesuatu telah berlaku",
-            "not_found": "Pengguna tidak dijumpai. ",
-            "verified": "Akaun anda telah pun disahkan."
+            "text": "Menghantar semula pengesahan",
+            "alt_text": "Menghantar semula e-mel pengesahan",
+            "success": {
+                "title": "Kejayaan",
+                "description": "E-mel telah dihantar ke alamat e-mel anda. "
+            },
+            "failed": {
+                "title": "Sesuatu telah berlaku",
+                "not_found": "Pengguna tidak dijumpai. ",
+                "verified": "Akaun anda telah pun disahkan."
+            }
         },
-        "invalidCredentials": "Bukti kelayakan tidak sah, Sila semak nama pengguna dan kata laluan anda.",
-        "emptyCredentials": "Sila masukkan kelayakan anda.",
-        "notVerified": "Akaun anda tidak disahkan. "
+        "post": {
+            "success": {
+                "delete": {
+                    "title": "Catatan berjaya dipadamkan",
+                    "description": "Catatan anda telah dipadamkan. "
+                },
+                "create": {
+                    "title": "Catatan berjaya dibuat",
+                    "description": "Catatan anda telah dibuat. "
+                },
+                "update": {
+                    "title": "Catatan berjaya dikemas kini",
+                    "description": "Catatan anda telah dikemas kini. "
+                },
+                "like": {
+                    "title": "Siaran berjaya disukai",
+                    "description": "Anda telah menyukai siaran ini."
+                },
+                "unlike": {
+                    "title": "Siaran tidak seperti berjaya",
+                    "description": "Anda mempunyai unlike post ini."
+                },
+                "report": {
+                    "title": "Catatan berjaya dilaporkan",
+                    "description": "Laporan anda telah diserahkan. "
+                },
+                "reply": {
+                    "title": "Berjaya membalas",
+                    "description": "Anda telah membalas siaran tersebut. "
+                }
+            },
+            "failed": {
+                "reply": {
+                    "description": "Balasan anda tidak diterbitkan. "
+                },
+                "create": {
+                    "description": "Catatan anda tidak diterbitkan. "
+                },
+                "not_found": "Catatan tidak ditemui",
+                "missing_id": "Catatan tidak ditemui",
+                "reported": "Anda telah pun melaporkan siaran ini.",
+                "liked": "Anda telah pun menyukai siaran ini.",
+                "unlike": "Anda tidak menyukai siaran itu."
+            }
+        },
+        "upload": {
+            "file_size": {
+                "title": "Fail melebihi had saiz 8MB",
+                "description": "Sila pilih fail yang berukuran 8MB atau kurang."
+            },
+            "file_limit": {
+                "title": "Fail melebihi had 4 fail",
+                "description": "Sila pilih 4 fail atau kurang."
+            },
+            "nsfw": {
+                "title": "Kandungan Tidak Sesuai Dikesan",
+                "description": "Fail yang dilampirkan mengandungi kandungan yang melanggar garis panduan komuniti kami. "
+            },
+            "error": {
+                "title": "Sesuatu telah berlaku",
+                "description": "Ralat berlaku semasa menyemak fail anda. "
+            },
+            "error_upload": {
+                "title": "Sesuatu telah berlaku",
+                "description": "Ralat berlaku semasa memuat naik fail anda. "
+            }
+        },
+        "following": {
+            "success": {
+                "following": {
+                    "title": "Diikuti dengan jayanya",
+                    "description": "Anda kini mengikuti {name}."
+                },
+                "unfollow": {
+                    "title": "Berjaya dihentikan",
+                    "description": "Anda telah berhenti mengikuti {name}."
+                }
+            },
+            "failed": {
+                "already_followed": "Anda sudah pun mengikuti pengguna ini.",
+                "not_followed": "Anda belum mengikuti pengguna ini."
+            }
+        },
+        "settings": {
+            "success": {
+                "title": "Profil berjaya dikemas kini",
+                "description": "Profil anda telah dikemas kini."
+            },
+            "failed": {
+                "image": {
+                    "title": "Sesuatu telah berlaku",
+                    "description": "Ralat berlaku semasa memuat naik imej profil anda. "
+                },
+                "cover": {
+                    "title": "Sesuatu telah berlaku",
+                    "description": "Ralat berlaku semasa memuat naik imej muka depan anda. "
+                },
+                "username_exist": "Nama pengguna sudah wujud. "
+            }
+        },
+        "community": {
+            "success": {
+                "create": {
+                    "title": "Komuniti berjaya dibuat",
+                    "description": "Komuniti anda telah dibuat. "
+                },
+                "update": {
+                    "title": "Komuniti berjaya dikemas kini",
+                    "description": "Komuniti anda telah dikemas kini. "
+                },
+                "subscribe": {
+                    "title": "Berjaya melanggan",
+                    "description": "Anda kini melanggan c/{name}"
+                },
+                "unsubscribe": {
+                    "title": "Berjaya menyahlanggan",
+                    "description": "Anda telah menyahlanggan komuniti ini."
+                }
+            },
+            "failed": {
+                "create": {
+                    "description": "Catatan anda tidak diterbitkan. "
+                },
+                "name_exist": "Nama komuniti sudah wujud. ",
+                "subscribe": "Anda telah pun melanggan komuniti ini",
+                "unsubscribe": "Anda belum melanggan komuniti ini.",
+                "not_subscribed": "Anda tidak melanggan komuniti ini. "
+            }
+        },
+        "messages": {
+            "failed": {
+                "message_id": "ID mesej tiada",
+                "conversation_id": "ID Perbualan tiada",
+                "content": "Kandungan tiada",
+                "delete": "Gagal memadamkan mesej. "
+            }
+        },
+        "manage": {
+            "success": {
+                "role_admin": {
+                    "title": "Perubahan Peranan Kejayaan",
+                    "description": "Peranan pengguna telah ditukar kepada pentadbir."
+                },
+                "role_mod": {
+                    "title": "Perubahan Peranan Kejayaan",
+                    "description": "Peranan pengguna telah ditukar kepada penyederhana."
+                },
+                "role_user": {
+                    "title": "Perubahan Peranan Kejayaan",
+                    "description": "Peranan pengguna telah ditukar kepada pengguna."
+                },
+                "role_ban": {
+                    "title": "Perubahan Peranan Kejayaan",
+                    "description": "Pengguna telah diharamkan."
+                }
+            },
+            "failed": {
+                "invalid_action": "Tindakan tidak sah"
+            }
+        },
+        "reports": {
+            "success": {
+                "allow": {
+                    "title": "Laporan Selesai",
+                    "description": "Siaran yang dilaporkan telah dibenarkan."
+                },
+                "delete": {
+                    "title": "Laporan Selesai",
+                    "description": "Catatan yang dilaporkan telah dipadamkan."
+                }
+            }
+        }
     }
 }
