@@ -19,7 +19,6 @@ export function ThemeToggle() {
     const { setTheme, theme } = useTheme();
 
     const tTheme = useTranslations("theme");
-
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -45,28 +44,6 @@ export function ThemeToggle() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-                {/* <DropdownMenuItem onClick={() => setTheme("light")}>
-                    {tTheme("light")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    {tTheme("dark")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("blue")}>
-                    {tTheme("blue")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("yellow")}>
-                    {tTheme("yellow")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("neon-green")}>
-                    {tTheme("neon-green")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("purple")}>
-                    {tTheme("purple")}
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                    {tTheme("system")}
-                </DropdownMenuItem> */}
-
                 {themeOptions.map((theme) => (
                     <DropdownMenuItem
                         key={theme}

@@ -28,10 +28,14 @@ export const siteConfig = {
 export const themeOptions = [
     "light",
     "dark",
-    "blue",
-    "yellow",
-    "neon-green",
-    "purple",
+    "navy-blue",
+    "cerulean",
+    "cyan",
+    "malachite",
+    "grape",
+    "kingfisher-daisy",
+    "electric-lime",
+    "rum-swizzle",
     "system",
 ];
 
