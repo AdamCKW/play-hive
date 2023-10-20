@@ -114,7 +114,7 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
         <>
             <div className="border-b pb-4">
                 <div className="flex items-center space-x-4 ">
-                    <Avatar className="h-32 w-32">
+                    <Avatar className="h-10 w-10 md:h-32 md:w-32">
                         {community.image ? (
                             <AvatarImage
                                 src={community.image}
