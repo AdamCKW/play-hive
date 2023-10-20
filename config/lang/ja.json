@@ -63,6 +63,18 @@
         "manage": {
             "title": "ユーザーの管理",
             "description": "ユーザーの表示と管理"
+        },
+        "discover": {
+            "title": "発見する",
+            "description": "新しいユーザーやコミュニティを発見する"
+        },
+        "home": {
+            "title": "家",
+            "description": "ホームページ"
+        },
+        "post": {
+            "title": "役職",
+            "description": "投稿を見る"
         }
     },
     "intl": {

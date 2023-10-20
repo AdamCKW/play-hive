@@ -10,6 +10,7 @@ import { notFound, redirect } from "next/navigation";
 import { getTranslator } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "@/components/posts/skeleton-card";
+import { ExtendedMetadata } from "@/types";
 
 // import Parent from "@/components/posts/feeds/parent";
 // import Main from "@/components/posts/feeds/main";
@@ -29,6 +30,17 @@ interface PostPageProps {
     params: {
         id: string;
         locale: string;
+    };
+}
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.post");
+
+    return {
+        title: t("title"),
+        description: t("description"),
     };
 }
 

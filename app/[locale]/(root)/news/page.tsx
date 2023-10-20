@@ -1,9 +1,22 @@
 import { PostLoading } from "@/components/loading";
 import NewsFeed from "@/components/news/news-feed";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
+import { ExtendedMetadata } from "@/types";
 import axios from "axios";
+import { getTranslator } from "next-intl/server";
 import dynamic from "next/dynamic";
 import queryString from "query-string";
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.news");
+
+    return {
+        title: t("title"),
+        description: t("description"),
+    };
+}
 
 export default async function NewsPage() {
     const query = queryString.stringifyUrl({

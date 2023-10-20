@@ -63,6 +63,18 @@
         "manage": {
             "title": "Urus Pengguna",
             "description": "Lihat dan urus pengguna"
+        },
+        "discover": {
+            "title": "Temui",
+            "description": "Temui pengguna dan komuniti baharu"
+        },
+        "home": {
+            "title": "Rumah",
+            "description": "Laman utama"
+        },
+        "post": {
+            "title": "Pos",
+            "description": "Lihat siaran"
         }
     },
     "intl": {

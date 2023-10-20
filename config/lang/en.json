@@ -63,6 +63,18 @@
         "manage": {
             "title": "Manage Users",
             "description": "View and manage users"
+        },
+        "discover": {
+            "title": "Discover",
+            "description": "Discover new users and communities"
+        },
+        "home": {
+            "title": "Home",
+            "description": "Home page"
+        },
+        "post": {
+            "title": "Post",
+            "description": "View post"
         }
     },
     "intl": {

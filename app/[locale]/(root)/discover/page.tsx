@@ -6,6 +6,7 @@ import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getTranslator } from "next-intl/server";
 
 import dynamic from "next/dynamic";
+import { ExtendedMetadata } from "@/types";
 // import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 
 const DiscoverFeed = dynamic(
@@ -15,6 +16,17 @@ const DiscoverFeed = dynamic(
 interface DiscoverPageProps {
     params: {
         locale: string;
+    };
+}
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.discover");
+
+    return {
+        title: t("title"),
+        description: t("description"),
     };
 }
 

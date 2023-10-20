@@ -63,6 +63,18 @@
         "manage": {
             "title": "管理用户",
             "description": "查看和管理用户"
+        },
+        "discover": {
+            "title": "发现",
+            "description": "发现新用户和社区"
+        },
+        "home": {
+            "title": "家",
+            "description": "主页"
+        },
+        "post": {
+            "title": "邮政",
+            "description": "查看帖子"
         }
     },
     "intl": {

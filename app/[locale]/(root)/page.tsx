@@ -11,12 +11,24 @@ import { Loader2 } from "lucide-react";
 import { PostLoading } from "@/components/loading";
 import dynamic from "next/dynamic";
 import MainFeed from "@/components/posts/feeds/main-feed";
+import { ExtendedMetadata } from "@/types";
 
 // const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"));
 
 interface HomePageProps {
     params: {
         locale: string;
+    };
+}
+
+export async function generateMetadata({
+    params: { locale },
+}: ExtendedMetadata) {
+    const t = await getTranslator(locale, "metadata.home");
+
+    return {
+        title: t("title"),
+        description: t("description"),
     };
 }
 
