@@ -55,6 +55,14 @@
         "conversation": {
             "title": "Conversation",
             "description": "Start conversation with {username}"
+        },
+        "reports": {
+            "title": "Reports",
+            "description": "View reported posts"
+        },
+        "manage": {
+            "title": "Manage Users",
+            "description": "View and manage users"
         }
     },
     "intl": {
@@ -87,7 +95,66 @@
         "reports": "Manage Reports",
         "manage": "Manage Users"
     },
-
+    "data_table": {
+        "no_results": "No results.",
+        "pagination": {
+            "rows_select": "{selected} of {total} row(s) selected.",
+            "rows_per_page": "Rows per page",
+            "page_number": "Page {current} of {total}",
+            "go_first": "Go to first page",
+            "go_previous": "Go to previous page",
+            "go_next": "Go to next page",
+            "go_last": "Go to last page"
+        },
+        "filter": {
+            "selected": "{value} selected",
+            "no_results": "No results found.",
+            "clear": "Clear filters"
+        },
+        "headers": {
+            "hide": "Hide"
+        },
+        "toolbar": {
+            "reset": "Reset"
+        },
+        "view_options": {
+            "view": "View",
+            "toggle": "Toggle columns"
+        }
+    },
+    "dashboard": {
+        "manage": {
+            "page": {
+                "heading": "Manage Users",
+                "subheading": "Here's a list of users!"
+            },
+            "actions": {
+                "open_menu": "Open menu",
+                "action_label": "Actions",
+                "open_profile": "Open profile",
+                "promote_admin": "Promote to Admin",
+                "demote_to_mod": "Demote to Moderator",
+                "promote_mod": "Promote to Moderator",
+                "unban_user": "Unban User",
+                "demote_to_user": "Demote to User",
+                "ban_user": "Ban User"
+            }
+        },
+        "reports": {
+            "page": {
+                "heading": "Manage Reports",
+                "subheading": "Here's a list of reports!"
+            },
+            "actions": {
+                "open_menu": "Open menu",
+                "action_label": "Actions",
+                "open_page": "Open page",
+                "copy_id": "Copy post Id",
+                "allow_post": "Allow post",
+                "delete_post": "Remove post"
+            }
+        }
+    },
     "theme": {
         "light": "Light",
         "dark": "Dark",
@@ -660,6 +727,41 @@
                 "conversation_id": "Conversation ID missing",
                 "content": "Content is missing",
                 "delete": "Failed to delete message. Please try again later."
+            }
+        },
+        "manage": {
+            "success": {
+                "role_admin": {
+                    "title": "Success Role Change",
+                    "description": "User role has been changed to admin."
+                },
+                "role_mod": {
+                    "title": "Success Role Change",
+                    "description": "User role has been changed to moderator."
+                },
+                "role_user": {
+                    "title": "Success Role Change",
+                    "description": "User role has been changed to user."
+                },
+                "role_ban": {
+                    "title": "Success Role Change",
+                    "description": "User have been banned."
+                }
+            },
+            "failed": {
+                "invalid_action": "Invalid action"
+            }
+        },
+        "reports": {
+            "success": {
+                "allow": {
+                    "title": "Resolved Report",
+                    "description": "Reported post has been allowed."
+                },
+                "delete": {
+                    "title": "Resolved Report",
+                    "description": "Reported post has been deleted."
+                }
             }
         }
     }
