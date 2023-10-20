@@ -49,6 +49,9 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
         where: { name },
         include: {
             Post: {
+                where: {
+                    deleted: false,
+                },
                 include: {
                     community: true,
                     author: {

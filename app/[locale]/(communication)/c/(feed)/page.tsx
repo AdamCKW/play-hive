@@ -30,7 +30,7 @@ export default async function CommunitiesPage({
     const session = await getAuthSession();
     const t = await getTranslator(
         params.locale,
-        "communication.communities.main_feed",
+        "communication.community.main_feed",
     );
 
     const followedCommunities = await db.subscription.findMany({
