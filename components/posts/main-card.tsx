@@ -15,6 +15,7 @@ import { redirect } from "next/navigation";
 import { nFormatter } from "@/lib/utils";
 import Viewer from "./viewer";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface MainCardProps {
     data: IPost;
@@ -99,16 +100,12 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                     ) : null}
 
                     {!data.text && data.communityId && data.community?.name ? (
-                        <>
-                            <div
-                                className="text-muted-foreground hover:text-foreground"
-                                onClick={() => {
-                                    redirect(`/c/${data.community?.name}`);
-                                }}
-                            >
-                                c/{data.community?.name}
-                            </div>
-                        </>
+                        <Link
+                            className="text-muted-foreground hover:text-foreground"
+                            href={`/c/${data.community?.name}`}
+                        >
+                            c/{data.community?.name}
+                        </Link>
                     ) : null}
 
                     {data._count.children > 0 ||
