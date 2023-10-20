@@ -26,6 +26,7 @@ const TimerRedirect = () => {
 
         // Clear the timeout when the component unmounts
         return () => clearTimeout(timer);
+        // eslint-disable-next-line
     }, []);
 
     return (

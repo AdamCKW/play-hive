@@ -1,9 +1,5 @@
 "use client";
 
-// import CreateCommunityModal from "@/components/community/community-modal";
-// import EditCommunityModal from "@/components/community/edit-community-modal";
-// import ImageModal from "@/components/models/image-modal";
-// import PostModal from "@/components/posts/create/post-modal";
 const CreateCommunityModal = dynamic(
     () => import("@/components/community/community-modal"),
     { ssr: false },
@@ -21,8 +17,11 @@ const PostModal = dynamic(
         ssr: false,
     },
 );
+const MessageFileModal = dynamic(
+    () => import("@/components/messages/message-file-modal"),
+    { ssr: false },
+);
 
-import { MessageFileModal } from "@/components/messages/MessageFileModal";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 

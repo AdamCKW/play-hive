@@ -46,19 +46,11 @@ export default function NameLink({ author }: NameLinkProps) {
                         }}
                     />
                     <div className="w-full space-y-1 px-2">
-                        {/* <div className="flex items-center space-x-2">
-                            <h4 className="truncate text-sm font-semibold">
-                                {author.name}
-                            </h4>
-                            <p className="text-muted-foreground truncate text-sm">
-                                @{author.username}
-                            </p>
-                        </div> */}
                         <div className="flex flex-col">
                             <p className="font-semibold hover:underline">
                                 {author.name}
                             </p>
-                            <p className="text-muted-foreground truncate text-xs hover:underline font-light">
+                            <p className="text-muted-foreground truncate text-xs font-light hover:underline">
                                 @{author.username}
                             </p>
                         </div>
@@ -66,15 +58,6 @@ export default function NameLink({ author }: NameLinkProps) {
                         <p className="text-sm">{author.bio}</p>
                     </div>
                 </div>
-                {/* <div className="flex justify-between space-x-4">
-                    <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                            <p className="truncate font-semibold hover:underline"></p>
-                        </div>
-
-                        <p className="text-sm">{author.bio}</p>
-                    </div>
-                </div> */}
             </HoverCardContent>
         </HoverCard>
     );

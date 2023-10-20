@@ -42,6 +42,7 @@ export function OAuthSignIn({}: OAuthSignInProps) {
 
     return (
         <div
+            //eslint-disable-next-line
             className={`grid grid-cols-1 gap-2 sm:grid-cols-${numColumns} sm:gap-4`}
         >
             {oauthProviders.map((provider) => {

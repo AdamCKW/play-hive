@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { DirectMessage } from "@prisma/client";
 import { IUser } from "@/types/db";
 import { pusherClient } from "@/lib/pusher";
+import { get, isEmpty, set } from "lodash";
 
 type ChatSocketProps = {
     chatId: string;
@@ -19,36 +20,19 @@ export const useChatPusher = ({ chatId, queryKey }: ChatSocketProps) => {
 
         const addMessageHandler = (message: MessageWithUser) => {
             queryClient.setQueryData([queryKey], (oldData: any) => {
-                if (!oldData || !oldData.pages || oldData.pages.length === 0) {
-                    return {
-                        pages: [
-                            {
-                                items: [message],
-                            },
-                        ],
-                    };
-                }
-
-                const newData = [...oldData.pages];
-
-                newData[0] = {
-                    ...newData[0],
-                    items: [message, ...newData[0].items],
-                };
-
-                return {
-                    ...oldData,
-                    pages: newData,
-                };
+                return set(
+                    //object that we want to update
+                    oldData,
+                    //path to the property that we want to update
+                    ["pages", 0, "items"], //pages[0].items
+                    //value that we want to set
+                    [message, ...get(oldData, ["pages", 0, "items"], [])], //message, ...oldData.pages[0].items
+                );
             });
         };
 
         const updateMessageHandler = (message: MessageWithUser) => {
             queryClient.setQueryData([queryKey], (oldData: any) => {
-                if (!oldData || !oldData.pages || oldData.pages.length === 0) {
-                    return oldData;
-                }
-
                 const newData = oldData.pages.map((page: any) => {
                     return {
                         ...page,
@@ -60,7 +44,6 @@ export const useChatPusher = ({ chatId, queryKey }: ChatSocketProps) => {
                         }),
                     };
                 });
-
                 return {
                     ...oldData,
                     pages: newData,

@@ -4,18 +4,6 @@ import { UserAvatar } from "../user-avatar";
 import { IChildren } from "@/types/db";
 
 interface OthersProps {
-    // others: Prisma.PostGetPayload<{
-    //     include: {
-    //         author: {
-    //             select: {
-    //                 id: true
-    //                 name: true
-    //                 username: true
-    //                 image: true
-    //             }
-    //         }
-    //     }
-    // }>[]
     others: IChildren[];
 }
 export default function Others({ others }: OthersProps) {

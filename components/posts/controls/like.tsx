@@ -98,7 +98,7 @@ export default function Like({
             disabled={isLoading}
             className={`group duration-200 ${
                 liked && "text-red-600"
-            } rounded-full hover:text-destructive focus-visible:text-red-500 hover:dark:text-red-500`}
+            } hover:text-destructive rounded-full focus-visible:text-red-500 hover:dark:text-red-500`}
             onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();

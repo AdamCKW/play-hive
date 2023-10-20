@@ -33,7 +33,7 @@ export default function Controls({
                 />
 
                 <CommentModal data={data} single={single} queryKey={queryKey} />
-                <ShareButton name={data.author.name || ""} post={data.id} />
+                <ShareButton name={data.author.name!} post={data.id} />
             </div>
         </div>
     );

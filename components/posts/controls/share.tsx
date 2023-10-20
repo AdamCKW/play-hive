@@ -54,7 +54,7 @@ export default function ShareButton({
                 >
                     {" "}
                     <Icons.link className="mr-2 h-4 w-4" />
-                    Copy Link
+                    {tShare("copy")}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                     onClick={(e) => {

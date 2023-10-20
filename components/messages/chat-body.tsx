@@ -7,7 +7,7 @@ import { format } from "date-fns";
 import { useChatQuery } from "@/hooks/use-chat-query";
 import { Icons } from "../icons";
 import { DirectMessage } from "@prisma/client";
-import { useChatPusher } from "./use-chat-pusher";
+import { useChatPusher } from "../../hooks/use-chat-pusher";
 import { useChatScroll } from "@/hooks/use-chat-scroll";
 import { ChatItem } from "./chat-item";
 import { useTranslations } from "next-intl";

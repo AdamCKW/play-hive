@@ -1,11 +1,9 @@
 "use client";
-
 import axios from "axios";
 import qs from "query-string";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import {
     Dialog,
     DialogContent,
@@ -16,24 +14,25 @@ import {
 } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import { UploadDropzone } from "@/lib/uploadthing";
-import TestUpload from "./test-upload";
+import { FileUpload } from "../file-upload";
+import { useTranslations } from "next-intl";
 
-const formSchema = z.object({
-    fileUrl: z.string().min(1, {
-        message: "Attachment is required.",
-    }),
-});
-
-export const MessageFileModal = () => {
+export default function MessageFileModal() {
     const { isOpen, onClose, type, data } = useModal();
+    const t = useTranslations("communication.messages.modal");
     const router = useRouter();
 
     const isModalOpen = isOpen && type === "messageFile";
     const { apiUrl, query } = data;
+
+    const formSchema = z.object({
+        fileUrl: z.string().min(1, {
+            message: t("message"),
+        }),
+    });
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -74,10 +73,10 @@ export const MessageFileModal = () => {
             <DialogContent className="overflow-hidden bg-white p-0 text-black">
                 <DialogHeader className="px-6 pt-8">
                     <DialogTitle className="text-center text-2xl font-bold">
-                        Add an attachment
+                        {t("title")}
                     </DialogTitle>
                     <DialogDescription className="text-center text-zinc-500">
-                        Send a file as a message
+                        {t("description")}
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
@@ -104,9 +103,9 @@ export const MessageFileModal = () => {
                                 />
                             </div>
                         </div>
-                        <DialogFooter className="bg-gray-100 px-6 py-4">
+                        <DialogFooter className="px-6 py-4">
                             <Button variant="default" disabled={isLoading}>
-                                Send
+                                {t("send_button")}
                             </Button>
                         </DialogFooter>
                     </form>
@@ -114,4 +113,4 @@ export const MessageFileModal = () => {
             </DialogContent>
         </Dialog>
     );
-};
+}

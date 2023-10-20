@@ -1,13 +1,10 @@
 import Link from "next/link";
-import { Prisma } from "@prisma/client";
-
 import { IPost } from "@/types/db";
 import { cn, nFormatter } from "@/lib/utils";
 import { UserAvatar } from "../user-avatar";
 import NameLink from "./name-link";
 import Others from "./others";
 import MoreMenu from "./more-menu";
-// import ImageComponent from "./image";
 import Controls from "./controls";
 import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
@@ -83,7 +80,7 @@ export default function PostCard({
                         <div
                             style={{ overflow: "clip" }}
                             className={`relative max-h-40 text-sm ${
-                                comment ? "w-80" : "w-64 md:w-full"
+                                comment ? "w-64 md:w-80" : "w-64 md:w-full"
                             }`}
                         >
                             <Viewer content={data.content} />
