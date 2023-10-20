@@ -10,8 +10,8 @@ import { ICommunity } from "@/types/db";
 // import JoinCommunityCard from "../community/join-community";
 import dynamic from "next/dynamic";
 
-const CreatePostCard = dynamic(
-    () => import("@/components/community/create-card"),
+const CreatePostButton = dynamic(
+    () => import("@/components/community/create-button"),
 );
 const JoinCommunityCard = dynamic(
     () => import("@/components/community/join-community"),
@@ -53,7 +53,7 @@ export async function RightBar({
 
                 {individual && (
                     <>
-                        {communityInfo?.isSubscribed && <CreatePostCard />}
+                        {communityInfo?.isSubscribed && <CreatePostButton />}
 
                         <JoinCommunityCard communityInfo={communityInfo!} />
                     </>

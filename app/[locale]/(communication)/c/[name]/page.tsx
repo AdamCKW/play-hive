@@ -11,6 +11,8 @@ import { notFound } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
 import MainCommunityFeed from "@/components/community/feeds/community-feed";
+import JoinCommunityToggle from "@/components/community/join-community-toggle";
+import CreatePostButton from "@/components/community/create-button";
 
 interface CommunityPageProps {
     params: {
@@ -93,6 +95,21 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
 
     if (!community) notFound();
 
+    const subscription = !session?.user
+        ? undefined
+        : await db.subscription.findFirst({
+              where: {
+                  community: {
+                      name: params.name,
+                  },
+                  user: {
+                      id: session.user.id,
+                  },
+              },
+          });
+
+    const isSubscribed = !!subscription;
+
     return (
         <>
             <div className="border-b pb-4">
@@ -112,6 +129,17 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
                     <h1 className="text-2xl font-bold md:text-4xl">
                         c/{community.name}
                     </h1>
+
+                    <div className="md:hidden">
+                        <JoinCommunityToggle
+                            isSubscribed={isSubscribed}
+                            communityId={community.id}
+                            communityName={community.name}
+                        />
+                    </div>
+                </div>
+                <div className="pt-4 md:hidden">
+                    <CreatePostButton />
                 </div>
             </div>
 

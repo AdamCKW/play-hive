@@ -7,9 +7,9 @@ import { linksConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
-interface CreatePostCardProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface CreatePostButtonProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export default function CreatePostCard({ className }: CreatePostCardProps) {
+export default function CreatePostButton({ className }: CreatePostButtonProps) {
     const t = useTranslations("communication.community");
     const pathname = usePathname();
 
