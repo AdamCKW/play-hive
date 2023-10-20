@@ -121,7 +121,7 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
                                 alt={`${community?.name}'s picture`}
                             />
                         ) : (
-                            <AvatarFallback className="bg-indigo-500 font-medium text-white">
+                            <AvatarFallback className="bg-indigo-500 text-5xl font-medium text-white">
                                 {getInitials(community?.name!)}
                             </AvatarFallback>
                         )}

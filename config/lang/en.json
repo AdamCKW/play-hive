@@ -310,6 +310,17 @@
             }
         }
     },
+    "widgets": {
+        "community_list": {
+            "title": "Joined Communities"
+        },
+        "user_suggestions": {
+            "title": "User Suggestions For You"
+        },
+        "community_suggestions": {
+            "title": "Community Suggestions For You"
+        }
+    },
     "communication": {
         "state": {
             "heading": "Connect and Chat with Friends",

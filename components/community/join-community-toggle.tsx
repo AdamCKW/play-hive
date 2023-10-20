@@ -36,9 +36,9 @@ export default function JoinCommunityToggle({
                         setIsLoading(false);
                     });
                     toast({
-                        title: tToast("following.success.subscribe.title"),
+                        title: tToast("community.success.subscribe.title"),
                         description: tToast(
-                            "following.success.subscribe.description",
+                            "community.success.subscribe.description",
                             {
                                 name: communityName,
                             },
@@ -74,9 +74,9 @@ export default function JoinCommunityToggle({
                         setIsLoading(false);
                     });
                     toast({
-                        title: tToast("following.success.unsubscribe.title"),
+                        title: tToast("community.success.unsubscribe.title"),
                         description: tToast(
-                            "following.success.unsubscribe.description",
+                            "community.success.unsubscribe.description",
                             {
                                 name: communityName,
                             },

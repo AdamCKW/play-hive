@@ -4,11 +4,11 @@ import { siteConfig } from "@/config/site";
 import { getAuthSession } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
-// import CreateCommunityCard from "@/components/community/create-community";
 import { ICommunity } from "@/types/db";
-// import CreatePostCard from "../community/create-card";
-// import JoinCommunityCard from "../community/join-community";
 import dynamic from "next/dynamic";
+import { UserSuggestionsCard } from "../widgets/user-suggestions-card";
+import { JoinedCommunitiesCard } from "../community/joined-communities";
+import { CommunitySuggestionsCard } from "../widgets/communities-suggestions-card";
 
 const CreatePostButton = dynamic(
     () => import("@/components/community/create-button"),
@@ -58,6 +58,12 @@ export async function RightBar({
                         <JoinCommunityCard communityInfo={communityInfo!} />
                     </>
                 )}
+
+                {feed || individual ? <JoinedCommunitiesCard /> : null}
+
+                {feed && <CommunitySuggestionsCard />}
+
+                {main && <UserSuggestionsCard />}
             </div>
         </section>
     );

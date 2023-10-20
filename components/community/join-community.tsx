@@ -47,7 +47,7 @@ export default async function JoinCommunityCard({
     if (!community) notFound();
 
     return (
-        <div className={cn("px-4 py-2", className)}>
+        <div className={cn("py-2", className)}>
             <WidgetCard
                 community={community}
                 memberCount={memberCount}
