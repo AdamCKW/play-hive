@@ -45,6 +45,11 @@ export default async function LoginPage({
     params: { locale },
 }: LoginPageProps) {
     const session = await getAuthSession();
+
+    if (session) {
+        redirect("/");
+    }
+    
     const translate = await getTranslator(locale, "auth.login.page");
 
     return (

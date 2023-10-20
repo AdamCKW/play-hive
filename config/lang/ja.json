@@ -275,7 +275,8 @@
         "forgot_password": {
             "page": {
                 "title": "パスワードを再設定する",
-                "description": "メールアドレスを入力してください。リンクをお送りします"
+                "description": "メールアドレスを入力してください。リンクをお送りします",
+                "made_a_mistake": "まちがえた？"
             },
             "validation": {
                 "email_required": "メールアドレスは必須です",

@@ -275,7 +275,8 @@
         "forgot_password": {
             "page": {
                 "title": "重设密码",
-                "description": "输入您的电子邮件地址，我们将向您发送链接"
+                "description": "输入您的电子邮件地址，我们将向您发送链接",
+                "made_a_mistake": "犯了一个错误？"
             },
             "validation": {
                 "email_required": "电子邮件为必填项",

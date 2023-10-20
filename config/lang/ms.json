@@ -275,7 +275,8 @@
         "forgot_password": {
             "page": {
                 "title": "Menetapkan semula kata laluan",
-                "description": "Masukkan alamat e-mel anda dan kami akan menghantar pautan kepada anda"
+                "description": "Masukkan alamat e-mel anda dan kami akan menghantar pautan kepada anda",
+                "made_a_mistake": "Melakukan kesilapan?"
             },
             "validation": {
                 "email_required": "E-mel diperlukan",

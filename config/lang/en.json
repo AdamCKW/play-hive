@@ -275,7 +275,8 @@
         "forgot_password": {
             "page": {
                 "title": "Reset password",
-                "description": "Enter your email address and we will send you a link"
+                "description": "Enter your email address and we will send you a link",
+                "made_a_mistake": "Made a mistake? Sign in instead"
             },
             "validation": {
                 "email_required": "Email is required",
