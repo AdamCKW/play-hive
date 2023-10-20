@@ -106,9 +106,9 @@
     "data_table": {
         "no_results": "結果がありません。",
         "pagination": {
-            "rows_select": "{total} 行中 {selected} 行が選択されました。",
+            "rows_selected": "{total} 行中 {selected} 行が選択されました。",
             "rows_per_page": "ページあたりの行数",
-            "page_number": "ページ {現在}/{合計}",
+            "page_number": "ページ {current}/{total}",
             "go_first": "最初のページに移動",
             "go_previous": "前のページに戻る",
             "go_next": "次のページへ",
@@ -123,6 +123,7 @@
             "hide": "隠れる"
         },
         "toolbar": {
+            "placeholder": "ユーザー名をフィルタリング...",
             "reset": "リセット"
         },
         "view_options": {

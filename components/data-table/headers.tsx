@@ -29,7 +29,7 @@ export function DataTableColumnHeader<TData, TValue>({
     title,
     className,
 }: DataTableColumnHeaderProps<TData, TValue>) {
-    const t = useTranslations("data_table.header");
+    const t = useTranslations("data_table.headers");
 
     if (!column.getCanSort()) {
         return <div className={cn(className)}>{title}</div>;

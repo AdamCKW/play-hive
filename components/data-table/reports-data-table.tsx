@@ -47,7 +47,7 @@ export function ReportsDataTable<TData, TValue>({
     const [columnFilters, setColumnFilters] =
         React.useState<ColumnFiltersState>([]);
     const [sorting, setSorting] = React.useState<SortingState>([]);
-    const t = useTranslations("data_table.");
+    const t = useTranslations("data_table");
 
     const [{ pageIndex, pageSize }, setPagination] =
         React.useState<PaginationState>({

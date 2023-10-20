@@ -106,7 +106,7 @@
     "data_table": {
         "no_results": "No results.",
         "pagination": {
-            "rows_select": "{selected} of {total} row(s) selected.",
+            "rows_selected": "{selected} of {total} row(s) selected.",
             "rows_per_page": "Rows per page",
             "page_number": "Page {current} of {total}",
             "go_first": "Go to first page",
@@ -123,6 +123,7 @@
             "hide": "Hide"
         },
         "toolbar": {
+            "placeholder": "Filter username...",
             "reset": "Reset"
         },
         "view_options": {

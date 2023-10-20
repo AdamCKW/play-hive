@@ -106,9 +106,9 @@
     "data_table": {
         "no_results": "Tiada keputusan.",
         "pagination": {
-            "rows_select": "{selected} daripada {total} row(s) dipilih.",
+            "rows_selected": "{selected} daripada {total} row(s) dipilih.",
             "rows_per_page": "Baris setiap halaman",
-            "page_number": "Halaman {current} daripada {total}",
+            "page_number": "Halaman {current}/{total}",
             "go_first": "Pergi ke halaman pertama",
             "go_previous": "Pergi ke halaman sebelumnya",
             "go_next": "Pergi ke halaman seterusnya",
@@ -123,6 +123,7 @@
             "hide": "Sembunyi"
         },
         "toolbar": {
+            "placeholder": "Tapis nama pengguna...",
             "reset": "Tetapkan semula"
         },
         "view_options": {

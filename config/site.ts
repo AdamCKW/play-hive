@@ -119,7 +119,7 @@ export const linksConfig: LinkConfig = {
     },
     manage: {
         title: "manage",
-        href: "/d/users",
+        href: "/d/manage",
         disabled: false,
         // icon: "manage",
     },
