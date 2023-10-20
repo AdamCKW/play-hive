@@ -533,6 +533,12 @@
         }
     },
     "toast": {
+        "oauth": {
+            "error": {
+                "title": "Something went wrong",
+                "description": "There was an error logging in with {provider}. Please try again later."
+            }
+        },
         "401": {
             "heading": "Something went wrong",
             "unauthorized": "You are not authorized to perform this action."

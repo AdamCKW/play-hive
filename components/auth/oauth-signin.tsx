@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 
 import { toast } from "../../hooks/use-toast";
+import { useTranslations } from "next-intl";
 
 const oauthProviders = [
     { name: "Google", strategy: "google", icon: "google" },
@@ -22,6 +23,7 @@ interface OAuthSignInProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function OAuthSignIn({}: OAuthSignInProps) {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const t = useTranslations("toast.provider");
 
     async function oauthSignIn(provider: string) {
         setIsLoading(true);
@@ -30,19 +32,16 @@ export function OAuthSignIn({}: OAuthSignInProps) {
             await signIn(provider);
         } catch (error) {
             toast({
-                title: "There is a problem.",
-                description: `There was an error logging in with ${
-                    provider.charAt(0).toUpperCase() + provider.slice(1)
-                }. Please try again later.`,
+                title: t("title"),
+                description: t("title", {
+                    provider:
+                        provider.charAt(0).toUpperCase() + provider.slice(1),
+                }),
                 variant: "destructive",
             });
         } finally {
             setIsLoading(false);
         }
-    }
-
-    async function test() {
-        await signIn("");
     }
 
     return (

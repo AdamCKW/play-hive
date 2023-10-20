@@ -533,6 +533,12 @@
         }
     },
     "toast": {
+        "oauth": {
+            "error": {
+                "title": "Sesuatu telah berlaku",
+                "description": "Terdapat ralat log masuk dengan {provider}. "
+            }
+        },
         "401": {
             "heading": "Sesuatu telah berlaku",
             "unauthorized": "Anda tidak dibenarkan melakukan tindakan ini."

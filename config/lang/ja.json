@@ -533,6 +533,12 @@
         }
     },
     "toast": {
+        "oauth": {
+            "error": {
+                "title": "何か問題が発生しました",
+                "description": "{provider} でのログイン中にエラーが発生しました。"
+            }
+        },
         "401": {
             "heading": "何か問題が発生しました",
             "unauthorized": "このアクションを実行する権限がありません。"

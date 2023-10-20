@@ -533,6 +533,12 @@
         }
     },
     "toast": {
+        "oauth": {
+            "error": {
+                "title": "出了些问题",
+                "description": "使用 {provider} 登录时出错。"
+            }
+        },
         "401": {
             "heading": "出了些问题",
             "unauthorized": "您无权执行此操作。"

@@ -113,13 +113,13 @@ export const linksConfig: LinkConfig = {
     },
     reports: {
         title: "reports",
-        href: "/dashboard/reports",
+        href: "/d/reports",
         disabled: false,
         // icon: "report",
     },
     manage: {
         title: "manage",
-        href: "/dashboard/users",
+        href: "/d/users",
         disabled: false,
         // icon: "manage",
     },
