@@ -18,8 +18,8 @@ export default function MessagesPage() {
     return (
         <>
             <UserMessagesBar className={`bg-background border-r md:w-80`} />
-            <section className="hidden min-h-screen flex-1 flex-col items-center justify-center px-6 pb-10 pt-28 max-md:pb-32 sm:px-10 md:flex">
-                <div className="w-full max-w-4xl">
+            <section className="hidden min-h-screen flex-1 flex-col items-center justify-center pb-10 pt-28 max-md:pb-32 sm:px-10 lg:flex">
+                <div className="hidden w-full max-w-4xl lg:block">
                     <div className="hidden h-full lg:block">
                         <EmptyState />
                     </div>
