@@ -103,6 +103,12 @@
         "reports": "Urus Laporan",
         "manage": "Urus Pengguna"
     },
+    "search": {
+        "label": "Cari...",
+        "sr_label": "Cari",
+        "placeholder": "Cari....",
+        "no_results": "Tiada keputusan dijumpai."
+    },
     "data_table": {
         "no_results": "Tiada keputusan.",
         "pagination": {

@@ -103,6 +103,12 @@
         "reports": "管理报告",
         "manage": "管理用户"
     },
+    "search": {
+        "label": "搜索...",
+        "sr_label": "搜索",
+        "placeholder": "搜索....",
+        "no_results": "未找到结果。"
+    },
     "data_table": {
         "no_results": "没有结果。",
         "pagination": {

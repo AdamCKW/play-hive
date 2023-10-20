@@ -103,6 +103,12 @@
         "reports": "レポートの管理",
         "manage": "ユーザーの管理"
     },
+    "search": {
+        "label": "検索...",
+        "sr_label": "検索",
+        "placeholder": "検索....",
+        "no_results": "結果が見つかりません。"
+    },
     "data_table": {
         "no_results": "結果がありません。",
         "pagination": {

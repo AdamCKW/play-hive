@@ -12,6 +12,7 @@ import { NavBarItems } from "@/config/navigation";
 import { useTranslations } from "next-intl";
 import { LocaleSwitch } from "./locale-switch";
 import { User as NextAuthUser } from "next-auth";
+import { Search } from "./search";
 
 interface User extends NextAuthUser {
     username?: string | null;
@@ -81,7 +82,7 @@ export function NavbarItems({ user }: MainNavProps) {
                         </Link>
                     );
                 })} */}
-
+                <Search />
                 <LocaleSwitch />
                 <ThemeToggle />
             </nav>

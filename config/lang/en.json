@@ -103,6 +103,12 @@
         "reports": "Manage Reports",
         "manage": "Manage Users"
     },
+    "search": {
+        "label": "Search...",
+        "sr_label": "Search",
+        "placeholder": "Search....",
+        "no_results": "No results found."
+    },
     "data_table": {
         "no_results": "No results.",
         "pagination": {
