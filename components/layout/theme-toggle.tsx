@@ -13,7 +13,19 @@ import {
 } from "../ui/dropdown-menu";
 import { CircleIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { themeOptions } from "@/config/site";
+const themeOptions = [
+    "light",
+    "dark",
+    "navy-blue",
+    "cerulean",
+    "cyan",
+    "malachite",
+    "grape",
+    "kingfisher-daisy",
+    "electric-lime",
+    "rum-swizzle",
+    "system",
+];
 
 export function ThemeToggle() {
     const { setTheme, theme } = useTheme();

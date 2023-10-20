@@ -23,7 +23,7 @@ interface OAuthSignInProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function OAuthSignIn({}: OAuthSignInProps) {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
-    const t = useTranslations("toast.provider");
+    const t = useTranslations("toast.oauth");
 
     async function oauthSignIn(provider: string) {
         setIsLoading(true);
@@ -33,7 +33,7 @@ export function OAuthSignIn({}: OAuthSignInProps) {
         } catch (error) {
             toast({
                 title: t("title"),
-                description: t("title", {
+                description: t("description", {
                     provider:
                         provider.charAt(0).toUpperCase() + provider.slice(1),
                 }),
