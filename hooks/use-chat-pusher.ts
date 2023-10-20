@@ -3,7 +3,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { DirectMessage } from "@prisma/client";
 import { IUser } from "@/types/db";
 import { pusherClient } from "@/lib/pusher";
-import { get, isEmpty, set } from "lodash";
 
 type ChatSocketProps = {
     chatId: string;
