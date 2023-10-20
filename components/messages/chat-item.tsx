@@ -13,6 +13,7 @@ import { IUser } from "@/types/db";
 import { ActionTooltip } from "../action-tooltip";
 import { toast } from "@/hooks/use-toast";
 import { useTranslations } from "next-intl";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface ChatItemProps {
     id: string;
@@ -39,6 +40,7 @@ export const ChatItem = ({
     const router = useRouter();
     const tMessage = useTranslations("communication.messages");
     const tToast = useTranslations("toast");
+    const { onOpen } = useModal();
 
     useEffect(() => {
         const handleKeyDown = (event: any) => {
@@ -114,10 +116,12 @@ export const ChatItem = ({
                         </span>
                     </div>
                     {isImage && (
-                        <a
-                            href={fileUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <div
+                            onClick={(e) => {
+                                onOpen("imageModal", {
+                                    imageUrl: fileUrl,
+                                });
+                            }}
                             className="bg-secondary relative mt-2 flex aspect-square h-48 w-48 items-center overflow-hidden rounded-md border"
                         >
                             <Image
@@ -126,7 +130,7 @@ export const ChatItem = ({
                                 fill
                                 className="object-cover"
                             />
-                        </a>
+                        </div>
                     )}
                     {isPDF && (
                         <div className="bg-background/10 relative mt-2 flex items-center rounded-md p-2">
