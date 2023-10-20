@@ -31,6 +31,7 @@ import { DataTableToolbar } from "@/components/data-table/toolbar";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useTranslations } from "next-intl";
+import queryString from "query-string";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -65,28 +66,55 @@ export function ReportsDataTable<TData, TValue>({
     const dataQuery = useQuery(
         ["report-data", fetchDataOptions],
         async () => {
-            const query = `api/reports?limit=${
-                fetchDataOptions.pageSize
-            }&page=${fetchDataOptions.pageIndex + 1}&sort=${
-                fetchDataOptions.sorting.length === 0
-                    ? "createdAt,asc" // Default sorting when 'sorting' is empty
-                    : fetchDataOptions.sorting
-                          .map(
-                              (data) =>
-                                  `${data.id},${data.desc ? "desc" : "asc"}`,
-                          )
-                          .join("&")
-            }${
-                fetchDataOptions.columnFilters.length === 0
-                    ? `` // Default filter when 'filters' is empty
-                    : fetchDataOptions.columnFilters
-                          .map(
-                              (filter) =>
-                                  `&filter=${filter.id},${filter.value}`,
-                          )
-                          .join("&")
-            }`;
-            console.log(query);
+            // const query = `api/reports?limit=${
+            //     fetchDataOptions.pageSize
+            // }&page=${fetchDataOptions.pageIndex + 1}&sort=${
+            //     fetchDataOptions.sorting.length === 0
+            //         ? "createdAt,asc" // Default sorting when 'sorting' is empty
+            //         : fetchDataOptions.sorting
+            //               .map(
+            //                   (data) =>
+            //                       `${data.id},${data.desc ? "desc" : "asc"}`,
+            //               )
+            //               .join("&")
+            // }${
+            //     fetchDataOptions.columnFilters.length === 0
+            //         ? `` // Default filter when 'filters' is empty
+            //         : fetchDataOptions.columnFilters
+            //               .map(
+            //                   (filter) =>
+            //                       `&filter=${filter.id},${filter.value}`,
+            //               )
+            //               .join("&")
+            // }`;
+
+            const query = queryString.stringifyUrl({
+                url: "/api/d/reports",
+                query: {
+                    page: fetchDataOptions.pageIndex + 1,
+                    sort:
+                        fetchDataOptions.sorting.length === 0
+                            ? "name,asc"
+                            : fetchDataOptions.sorting
+                                  .map(
+                                      (data) =>
+                                          `${data.id},${
+                                              data.desc ? "desc" : "asc"
+                                          }`,
+                                  )
+                                  .join("&"),
+                    filter:
+                        fetchDataOptions.columnFilters.length === 0
+                            ? ``
+                            : fetchDataOptions.columnFilters
+                                  .map(
+                                      (filter) =>
+                                          `${filter.id},${filter.value}`,
+                                  )
+                                  .join("&"),
+                },
+            });
+
             const { data } = await axios.get(query);
 
             return data;
