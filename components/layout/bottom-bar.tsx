@@ -69,32 +69,6 @@ export function Bottombar() {
                     );
                 }
 
-                if (item.title === "profile") {
-                    return (
-                        <Link
-                            key={`${item.title}-${index}`}
-                            href={
-                                item.disabled
-                                    ? "#"
-                                    : `/${session?.user.username}`
-                            }
-                            className={cn(
-                                item.disabled &&
-                                    "cursor-not-allowed opacity-80",
-                            )}
-                        >
-                            <UserAvatar
-                                className="h-6 w-6 text-xs"
-                                user={{
-                                    name: session?.user.name!,
-                                    image: session?.user.image!,
-                                }}
-                            />
-                            <span className="sr-only">{tNav(item.title)}</span>
-                        </Link>
-                    );
-                }
-
                 return (
                     <Link
                         key={`${item.title}-${index}`}
