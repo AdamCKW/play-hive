@@ -22,6 +22,7 @@ model Account {
   expires_at        Int?
   token_type        String?
   scope             String?
+  sub               String?
   id_token          String?  @db.Text
   session_state     String?
   createdAt         DateTime @default(now()) @map("created_at")

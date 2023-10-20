@@ -10,6 +10,8 @@ import { toast } from "../../hooks/use-toast";
 
 const oauthProviders = [
     { name: "Google", strategy: "google", icon: "google" },
+    { name: "Discord", strategy: "discord", icon: "discord" },
+    { name: "BattleNet", strategy: "battlenet", icon: "battlenet" },
 ] satisfies {
     name: string;
     strategy: string;
@@ -20,7 +22,6 @@ interface OAuthSignInProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function OAuthSignIn({}: OAuthSignInProps) {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
-    const numColumns = Math.min(oauthProviders.length, 3);
 
     async function oauthSignIn(provider: string) {
         setIsLoading(true);
@@ -40,10 +41,14 @@ export function OAuthSignIn({}: OAuthSignInProps) {
         }
     }
 
+    async function test() {
+        await signIn("");
+    }
+
     return (
         <div
             //eslint-disable-next-line
-            className={`grid grid-cols-1 gap-2 sm:grid-cols-${numColumns} sm:gap-4`}
+            className={`grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-4`}
         >
             {oauthProviders.map((provider) => {
                 const Icon = Icons[provider.icon];

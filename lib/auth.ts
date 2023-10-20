@@ -5,6 +5,9 @@ import { nanoid } from "nanoid";
 import { getServerSession, NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import BattleNetProvider from "next-auth/providers/battlenet";
+import DiscordProvider from "next-auth/providers/discord";
+
 import { z } from "zod";
 
 import { db } from "@/lib/db";
@@ -20,6 +23,15 @@ export const authOptions: NextAuthOptions = {
         signIn: linksConfig.signIn.href,
     },
     providers: [
+        BattleNetProvider({
+            clientId: process.env.BATTLENET_CLIENT_ID!,
+            clientSecret: process.env.BATTLENET_CLIENT_SECRET!,
+            issuer: "https://us.battle.net/oauth",
+        }),
+        DiscordProvider({
+            clientId: process.env.DISCORD_CLIENT_ID!,
+            clientSecret: process.env.DISCORD_CLIENT_SECRET!,
+        }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
