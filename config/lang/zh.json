@@ -310,6 +310,17 @@
             }
         }
     },
+    "widgets": {
+        "community_list": {
+            "title": "加入社区"
+        },
+        "user_suggestions": {
+            "title": "用户给您的建议"
+        },
+        "community_suggestions": {
+            "title": "为您提供的社区建议"
+        }
+    },
     "communication": {
         "state": {
             "heading": "与朋友联系并聊天",

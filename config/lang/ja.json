@@ -310,6 +310,17 @@
             }
         }
     },
+    "widgets": {
+        "community_list": {
+            "title": "参加しているコミュニティ"
+        },
+        "user_suggestions": {
+            "title": "ユーザーからの提案"
+        },
+        "community_suggestions": {
+            "title": "あなたへのコミュニティの提案"
+        }
+    },
     "communication": {
         "state": {
             "heading": "友達と接続してチャットする",

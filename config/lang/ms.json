@@ -310,6 +310,17 @@
             }
         }
     },
+    "widgets": {
+        "community_list": {
+            "title": "Menyertai Komuniti"
+        },
+        "user_suggestions": {
+            "title": "Cadangan Pengguna Untuk Anda"
+        },
+        "community_suggestions": {
+            "title": "Cadangan Komuniti Untuk Anda"
+        }
+    },
     "communication": {
         "state": {
             "heading": "Berhubung dan Berbual dengan Rakan",
