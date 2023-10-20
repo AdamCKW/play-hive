@@ -32,6 +32,7 @@ export default function UsersList({ users }: UsersListProps) {
                 <CommandGroup>
                     {users?.map((user) => (
                         <CommandItem
+                            key={user.id}
                             onSelect={() => {
                                 router.push(
                                     `${linksConfig.messages.href}/${user.username}`,

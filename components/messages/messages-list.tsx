@@ -33,6 +33,7 @@ export default function MessagesList({ users }: UsersListProps) {
                 <CommandGroup>
                     {users?.map((user) => (
                         <CommandItem
+                            key={user.id}
                             onSelect={() => {
                                 console.log("clicked");
                                 router.push(
