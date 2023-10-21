@@ -53,9 +53,7 @@ function formatDistance(token: string, count: number, options?: any): string {
         if (options.comparison > 0) {
             return "in " + result;
         } else {
-            if (result === "just now") return result;
-
-            return result + " ago";
+            return result;
         }
     }
 
@@ -67,7 +65,7 @@ export function formatTimeToNow(date: Date): string {
         (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24),
     );
 
-    if (differenceInDays > 3) {
+    if (differenceInDays > 6) {
         return format(date, "dd/MM/yyyy");
     } else {
         return formatDistanceToNowStrict(date, {
