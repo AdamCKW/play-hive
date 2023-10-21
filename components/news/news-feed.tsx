@@ -91,6 +91,7 @@ export default function NewsFeed({ initialData }: NewsFeedProps) {
                     );
                 }
             })}
+
             <div className="flex w-full justify-center py-4">
                 {!isFetchingNextPage && noMore && (
                     <div className="text-muted-foreground mt-4 text-center leading-loose">

@@ -62,7 +62,7 @@ export default function NewsCard({ data }: NewsCardProps) {
                             {data.title}
                         </h3>
                     </a>
-                    <p className="light:text-gray-700 mt-2 line-clamp-3 text-sm/relaxed">
+                    <p className="light:text-gray-700 mt-2 line-clamp-3 break-all text-sm/relaxed md:line-clamp-3">
                         {cleanData}
                     </p>
                 </div>
