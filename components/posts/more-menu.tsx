@@ -17,6 +17,7 @@ import {
 import { toast } from "@/hooks/use-toast";
 import axios from "axios";
 import { useTranslations } from "next-intl";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface MoreMenuProps {
     id: string;
@@ -33,7 +34,7 @@ export default function MoreMenu({
 }: MoreMenuProps) {
     const tToast = useTranslations("toast");
     const tPost = useTranslations("root.posts.card.more_menu");
-
+    const queryClient = useQueryClient();
     const { data: session } = useSession();
     const pathname = usePathname();
     const router = useRouter();
@@ -49,6 +50,7 @@ export default function MoreMenu({
         await axios
             .delete(`/api/posts/${id}`)
             .then((res) => {
+                queryClient.invalidateQueries();
                 startTransition(() => {
                     if (pathname?.includes(`/p/${id}`)) {
                         router.push("/");

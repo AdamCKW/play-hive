@@ -39,7 +39,7 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                         }}
                     />
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                         <NameLink author={data.author} />
 
                         <div className="bg-muted-foreground h-1 w-1 rounded-full" />

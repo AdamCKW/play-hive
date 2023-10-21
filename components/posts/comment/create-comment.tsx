@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { startTransition, useEffect, useState, useTransition } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Prisma } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { Loader2, Paperclip } from "lucide-react";
+import { Loader2, Paperclip, Router } from "lucide-react";
 import { User as NextAuthUser } from "next-auth";
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -57,6 +57,7 @@ export default function CreateComment({
     const tValidation = useTranslations("root.comments.validation");
     const tToast = useTranslations("toast");
     const tForm = useTranslations("root.comments.form");
+    const router = useRouter();
 
     const validationMessages: Parameters<typeof PostValidation> = [
         tValidation("content_min"),
@@ -85,7 +86,7 @@ export default function CreateComment({
                         return toast({
                             title: tToast("upload.error.title"),
                             description: tToast("upload.error.description"),
-                            variant: "destructive"
+                            variant: "destructive",
                         });
                     }
                 }
@@ -94,7 +95,7 @@ export default function CreateComment({
                     return toast({
                         title: tToast("upload.nsfw.title"),
                         description: tToast("upload.nsfw.description"),
-                        variant: "destructive"
+                        variant: "destructive",
                     });
                 }
 
@@ -217,7 +218,12 @@ export default function CreateComment({
             });
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(["comments"]);
+            queryClient.invalidateQueries({ queryKey: ["comments"] });
+            queryClient.invalidateQueries({ queryKey: ["post"] });
+            queryClient.invalidateQueries(queryKey);
+            startTransition(() => {
+                router.refresh();
+            });
             setOpen(false);
             return toast({
                 title: tToast("post.success.reply.title"),
