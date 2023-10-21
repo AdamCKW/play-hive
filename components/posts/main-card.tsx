@@ -38,7 +38,13 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                             image: data.author.image!,
                         }}
                     />
-                    <NameLink author={data.author} />
+
+                    <div className="flex items-center gap-4">
+                        <NameLink author={data.author} />
+
+                        <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                        <Timestamp time={data.createdAt} />
+                    </div>
                 </div>
                 <div className="flex items-center space-x-2">
                     <MoreMenu
@@ -72,7 +78,7 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
 
                 <Controls data={data} single={true} queryKey={queryKey} />
 
-                <div className="text-muted-foreground flex items-center space-x-2 text-sm md:text-base">
+                <div className="text-muted-foreground flex items-center space-x-2">
                     {data._count.children > 0 && (
                         <div className="text-muted-foreground">
                             {childrenCount}{" "}
@@ -108,13 +114,13 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                         </Link>
                     ) : null}
 
-                    {data._count.children > 0 ||
+                    {/* {data._count.children > 0 ||
                     data._count.likes > 0 ||
                     (data.communityId && data.community?.name) ? (
                         <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                     ) : null}
 
-                    <Timestamp time={data.createdAt} />
+                    <Timestamp time={data.createdAt} />*/}
                 </div>
             </div>
         </div>

@@ -65,7 +65,13 @@ export default function PostCard({
 
                 <div className="w-full space-y-1">
                     <div className="flex w-full items-center justify-between">
-                        <NameLink author={data.author} />
+                        <div className="flex items-center gap-2">
+                            <NameLink author={data.author} />
+
+                            <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                            <Timestamp time={data.createdAt} />
+                        </div>
+
                         {comment ? null : (
                             <div className="flex items-center space-x-2">
                                 <MoreMenu
@@ -142,12 +148,30 @@ export default function PostCard({
                                     </div>
                                 )}
 
-                                {data._count.children > 0 ||
+                                {(data._count.children > 0 ||
+                                    data._count.likes > 0) &&
+                                data.communityId &&
+                                data.community?.name ? (
+                                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                                ) : null}
+
+                                {!data.text &&
+                                data.communityId &&
+                                data.community?.name ? (
+                                    <Link
+                                        className="text-muted-foreground hover:text-foreground"
+                                        href={`/c/${data.community?.name}`}
+                                    >
+                                        c/{data.community?.name}
+                                    </Link>
+                                ) : null}
+
+                                {/* {data._count.children > 0 ||
                                 data._count.likes > 0 ? (
                                     <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                 ) : null}
 
-                                <Timestamp time={data.createdAt} />
+                                <Timestamp time={data.createdAt} /> */}
                             </div>
                         </>
                     )}

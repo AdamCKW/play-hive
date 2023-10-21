@@ -57,8 +57,8 @@ export const columns: ColumnDef<Users>[] = [
         ),
         cell: ({ row }) => {
             return (
-                <div className="flex w-[100px] items-center">
-                    <span>{row.getValue("name")}</span>
+                <div className="flex w-full max-w-[100px] items-center">
+                    <span className="truncate">{row.getValue("name")}</span>
                 </div>
             );
         },
@@ -73,8 +73,8 @@ export const columns: ColumnDef<Users>[] = [
         ),
         cell: ({ row }) => {
             return (
-                <div className="flex w-[100px] items-center ">
-                    <span>{row.getValue("username")}</span>
+                <div className="flex w-full max-w-[100px] items-center ">
+                    <span className="truncate">{row.getValue("username")}</span>
                 </div>
             );
         },
@@ -86,8 +86,8 @@ export const columns: ColumnDef<Users>[] = [
         ),
         cell: ({ row }) => {
             return (
-                <div className="flex max-w-[500px] truncate">
-                    <span>{row.getValue("email")}</span>
+                <div className="flex w-full max-w-[500px] truncate">
+                    <span className="turncate">{row.getValue("email")}</span>
                 </div>
             );
         },
@@ -100,7 +100,7 @@ export const columns: ColumnDef<Users>[] = [
         cell: ({ row }) => {
             const role: string = row.getValue("role");
             return (
-                <div className="flex w-[75px] items-center ">
+                <div className="flex w-full max-w-[75px] items-center ">
                     <Badge
                         variant={
                             role === "ADMIN"

@@ -35,11 +35,13 @@ export default function DeletedCard({
     if (noLink) {
         return (
             <div className="flex flex-col space-y-3 border-b px-3 py-4 dark:border-neutral-900">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
                     <div className="bg-primary/40 h-10 w-10 rounded-full" />
+                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                    <Timestamp time={data.createdAt} />
                 </div>
+
                 <div className="w-full">
-                    <div className="relative h-[1.125rem]" />
                     <div
                         className={`text-muted-foreground text-left text-base/relaxed italic`}
                     >
@@ -91,13 +93,13 @@ export default function DeletedCard({
                             </>
                         ) : null}
 
-                        {data._count.children > 0 ||
+                        {/* {data._count.children > 0 ||
                         data._count.likes > 0 ||
                         (data.communityId && data.community?.name) ? (
                             <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                         ) : null}
 
-                        <Timestamp time={data.createdAt} />
+                        <Timestamp time={data.createdAt} /> */}
                     </div>
                 </div>
             </div>
@@ -112,7 +114,17 @@ export default function DeletedCard({
                 {comment || parent ? null : <Others others={data.children} />}
             </div>
             <div className="w-full space-y-1">
-                <div className="relative h-[1.125rem]" />
+                <div className="flex w-full items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <div className="flex flex-col">
+                            <div className="h-6 w-0.5" />
+                            <div className="h-4 w-0.5" />
+                        </div>
+
+                        <div className="bg-muted-foreground h-1 w-1 rounded-full" />
+                        <Timestamp time={data.createdAt} />
+                    </div>
+                </div>
 
                 <div
                     className={`text-muted-foreground text-left text-base/relaxed italic`}
@@ -171,13 +183,13 @@ export default function DeletedCard({
                                 </>
                             ) : null}
 
-                            {data._count.children > 0 ||
+                            {/* {data._count.children > 0 ||
                             data._count.likes > 0 ||
                             (data.communityId && data.community?.name) ? (
                                 <div className="bg-muted-foreground h-1 w-1 rounded-full" />
-                            ) : null}
+                            ) : null} */}
 
-                            <Timestamp time={data.createdAt} />
+                            {/* <Timestamp time={data.createdAt} /> */}
                         </div>
                     </>
                 )}
