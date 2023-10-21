@@ -21,7 +21,7 @@ export async function NavBar({ className }: NavBarProps) {
     return (
         <nav
             className={cn(
-                "bg-background fixed top-0 z-30 w-full border-b px-6 py-3 shadow-sm",
+                "bg-background fixed top-0 z-30 w-full border-b p-3 shadow-sm md:px-6",
                 className,
             )}
         >
