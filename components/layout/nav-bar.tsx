@@ -25,7 +25,7 @@ export async function NavBar({ className }: NavBarProps) {
                 className,
             )}
         >
-            <div className="flex items-center justify-between space-x-4 px-5 sm:space-x-0 md:px-6">
+            <div className="flex items-center justify-between space-x-4 px-3 sm:space-x-0 sm:px-5 md:px-6">
                 <Link
                     href={linksConfig.home.href}
                     className="flex items-center space-x-2"
