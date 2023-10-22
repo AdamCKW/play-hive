@@ -100,7 +100,7 @@ export default function UserLoginForm({
                                             description: tToast(
                                                 err.response.data,
                                             ),
-                                            variant: "destructive"
+                                            variant: "destructive",
                                         });
                                     });
                             }}

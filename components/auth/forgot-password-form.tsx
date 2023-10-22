@@ -67,7 +67,7 @@ export function ForgotPasswordForm({
                     toast({
                         title: tError("reset.success.title"),
                         description: tError("reset.success.description"),
-                        variant: "destructive"
+                        variant: "destructive",
                     });
                 })
                 .catch((error) => {

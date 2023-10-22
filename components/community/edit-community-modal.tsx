@@ -97,7 +97,7 @@ export default function EditCommunityModal({}: CommunityModalProps) {
                     toast({
                         title: tToast("500.heading"),
                         description: tToast(err.response?.data),
-                        variant: "destructive"
+                        variant: "destructive",
                     });
                 });
         } catch (error) {
@@ -105,7 +105,7 @@ export default function EditCommunityModal({}: CommunityModalProps) {
             toast({
                 title: tToast("500.heading"),
                 description: tToast("500.subheading"),
-                variant: "destructive"
+                variant: "destructive",
             });
         }
     };

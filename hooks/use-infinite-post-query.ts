@@ -48,7 +48,6 @@ export const useInfinitePostQuery = ({
             refetchOnMount: true,
             refetchOnReconnect: true,
             refetchOnWindowFocus: true,
-            
         },
     );
 };

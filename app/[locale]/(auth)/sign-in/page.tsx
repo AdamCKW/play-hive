@@ -49,7 +49,7 @@ export default async function LoginPage({
     if (session) {
         redirect("/");
     }
-    
+
     const translate = await getTranslator(locale, "auth.login.page");
 
     return (

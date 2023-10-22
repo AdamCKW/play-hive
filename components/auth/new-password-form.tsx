@@ -64,7 +64,6 @@ export function NewPasswordForm({
     async function onSubmit(values: NewPasswordRequest) {
         setIsLoading(true);
 
-        
         try {
             console.log(userId);
             axios

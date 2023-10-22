@@ -1,41 +1,41 @@
-import React from 'react';
-import { ComboboxItemProps } from '@udecode/plate-combobox';
+import React from "react";
+import { ComboboxItemProps } from "@udecode/plate-combobox";
 import {
-  EmojiItemData,
-  KEY_EMOJI,
-  TEmojiCombobox,
-  useEmojiComboboxState,
-} from '@udecode/plate-emoji';
+    EmojiItemData,
+    KEY_EMOJI,
+    TEmojiCombobox,
+    useEmojiComboboxState,
+} from "@udecode/plate-emoji";
 
-import { Combobox } from './combobox';
+import { Combobox } from "./combobox";
 
 export function EmojiComboboxItem({ item }: ComboboxItemProps<EmojiItemData>) {
-  const {
-    data: { id, emoji },
-  } = item;
+    const {
+        data: { id, emoji },
+    } = item;
 
-  return (
-    <div>
-      {emoji} :{id}:
-    </div>
-  );
+    return (
+        <div>
+            {emoji} :{id}:
+        </div>
+    );
 }
 
 export function EmojiCombobox<TData extends EmojiItemData = EmojiItemData>({
-  pluginKey = KEY_EMOJI,
-  id = pluginKey,
-  ...props
+    pluginKey = KEY_EMOJI,
+    id = pluginKey,
+    ...props
 }: TEmojiCombobox<TData>) {
-  const { trigger, onSelectItem } = useEmojiComboboxState({ pluginKey });
+    const { trigger, onSelectItem } = useEmojiComboboxState({ pluginKey });
 
-  return (
-    <Combobox
-      id={id}
-      trigger={trigger}
-      controlled
-      onSelectItem={onSelectItem}
-      onRenderItem={EmojiComboboxItem}
-      {...props}
-    />
-  );
+    return (
+        <Combobox
+            id={id}
+            trigger={trigger}
+            controlled
+            onSelectItem={onSelectItem}
+            onRenderItem={EmojiComboboxItem}
+            {...props}
+        />
+    );
 }

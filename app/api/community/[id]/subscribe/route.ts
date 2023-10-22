@@ -16,7 +16,8 @@ export async function POST(
             return new NextResponse("401.unauthorized", { status: 401 });
         }
 
-        const { id: communityId } = CommunitySubscriptionValidator.parse(params);
+        const { id: communityId } =
+            CommunitySubscriptionValidator.parse(params);
 
         const subscriptionExists = await db.subscription.findFirst({
             where: {
@@ -48,7 +49,7 @@ export async function POST(
         if (error instanceof z.ZodError) {
             return new NextResponse(error.message, { status: 400 });
         }
-        console.log("Error in POST /api/community/[id]/subscribe", error)
+        console.log("Error in POST /api/community/[id]/subscribe", error);
         return new NextResponse("500.internal_error", { status: 500 });
     }
 }

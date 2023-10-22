@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 import {
-  ELEMENT_IMAGE,
-  ELEMENT_MEDIA_EMBED,
-  useMediaToolbarButton,
-} from '@udecode/plate-media';
+    ELEMENT_IMAGE,
+    ELEMENT_MEDIA_EMBED,
+    useMediaToolbarButton,
+} from "@udecode/plate-media";
 
-import { Icons } from '@/components/icons';
+import { Icons } from "@/components/icons";
 
-import { ToolbarButton } from './toolbar';
+import { ToolbarButton } from "./toolbar";
 
 export function MediaToolbarButton({
-  nodeType,
+    nodeType,
 }: {
-  nodeType?: typeof ELEMENT_IMAGE | typeof ELEMENT_MEDIA_EMBED;
+    nodeType?: typeof ELEMENT_IMAGE | typeof ELEMENT_MEDIA_EMBED;
 }) {
-  const { props } = useMediaToolbarButton({ nodeType });
+    const { props } = useMediaToolbarButton({ nodeType });
 
-  return (
-    <ToolbarButton {...props}>
-      <Icons.image />
-    </ToolbarButton>
-  );
+    return (
+        <ToolbarButton {...props}>
+            <Icons.image />
+        </ToolbarButton>
+    );
 }

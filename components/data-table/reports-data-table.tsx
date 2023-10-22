@@ -88,7 +88,6 @@ export function ReportsDataTable<TData, TValue>({
                           .join("&")
             }`;
 
-           
             const { data } = await axios.get(query);
 
             return data;

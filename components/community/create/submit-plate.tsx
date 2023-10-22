@@ -67,7 +67,7 @@ export default function SubmitPlate({ output }: SubmitPlateProps) {
             toast({
                 title: tToast("500.heading"),
                 description: tToast("500.subheading"),
-                variant: "destructive"
+                variant: "destructive",
             });
         }
     };
