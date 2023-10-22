@@ -111,7 +111,7 @@ async function createCommunities() {
         const rawCommunityName = faker.company.catchPhraseNoun();
 
         const communityName = rawCommunityName.replace(/[^a-zA-Z0-9_-]/g, "");
-        const creatorId = users[i % users.length].id;
+        const creatorId = users[i % (users.length - 1)].id;
 
         const community = await prisma.community.create({
             data: {
@@ -317,6 +317,136 @@ async function generateReplies() {
     }
 }
 
+async function generateLatest20Replies() {
+    let num = 1;
+    const users = await prisma.user.findMany();
+    const posts = await prisma.post.findMany({
+        where: {
+            parent: null,
+        },
+        orderBy: {
+            createdAt: "desc",
+        },
+        take: 20,
+    });
+
+    for (const post of posts) {
+        const numOfReplies = faker.number.int({ min: 1, max: 5 });
+
+        for (let i = 0; i < numOfReplies; i++) {
+            const user =
+                users[faker.number.int({ min: 0, max: users.length - 1 })];
+            const images = [];
+            const userId = user.id;
+            const text = faker.lorem.paragraph();
+
+            const createdComments = await prisma.post.create({
+                data: {
+                    text,
+                    author: {
+                        connect: {
+                            id: userId,
+                        },
+                    },
+                    parent: {
+                        connect: {
+                            id: post.id,
+                        },
+                    },
+                },
+            });
+
+            const numOfImages = faker.number.int(4);
+            for (let k = 0; k < numOfImages; k++) {
+                const image = await prisma.images.create({
+                    data: {
+                        url: faker.image.urlPicsumPhotos(),
+                        post: {
+                            connect: {
+                                id: createdComments.id,
+                            },
+                        },
+                    },
+                });
+
+                images.push(image.id);
+            }
+
+            await prisma.post.update({
+                where: {
+                    id: createdComments.id,
+                },
+                data: {
+                    images: {
+                        connect: images.map((image) => ({
+                            id: image,
+                        })),
+                    },
+                },
+            });
+        }
+
+        console.log(
+            `No ${num++}: Generate ${numOfReplies} Replies for ${post.id}`,
+        );
+    }
+}
+
+async function generateLatest20Likes() {
+    const users = await prisma.user.findMany();
+    const posts = await prisma.post.findMany({
+        where: {
+            parent: null,
+        },
+        orderBy: {
+            createdAt: "desc",
+        },
+        take: 20,
+        skip: 15,
+    });
+
+    for (const post of posts) {
+        let num = 0;
+        const randomLikes = faker.number.int({ min: 1, max: 35 });
+        for (let i = 0; i < randomLikes; i++) {
+            const userId = users[randomLikes + i].id;
+
+            await prisma.likes.create({
+                data: {
+                    post: {
+                        connect: {
+                            id: post.id,
+                        },
+                    },
+                    user: {
+                        connect: {
+                            id: userId,
+                        },
+                    },
+                },
+            });
+
+            await prisma.post.update({
+                where: {
+                    id: post.id,
+                },
+                data: {
+                    likes: {
+                        connect: {
+                            postId_userId: {
+                                postId: post.id,
+                                userId: userId,
+                            },
+                        },
+                    },
+                },
+            });
+
+            num++;
+            console.log(`No ${num}: Generate Likes for ${post.id}`);
+        }
+    }
+}
 async function seedDatabase() {
     // await generateUser();
     // await generateFollowing();
@@ -324,6 +454,8 @@ async function seedDatabase() {
     // await generateSubscriptions();
     // await generatePosts();
     // await generateReplies();
+    // await generateLatest20Replies();
+    // await generateLatest20Likes();
 }
 
 seedDatabase()
