@@ -27,6 +27,7 @@ import { linksConfig } from "@/config/site";
 import { ToastAction } from "../ui/toast";
 import axios from "axios";
 import { start } from "repl";
+import { set } from "lodash";
 
 interface UserLoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -68,6 +69,8 @@ export default function UserLoginForm({
 
         if (signInResponse?.error) {
             if (signInResponse?.error === "login.failed.unverified") {
+                setIsLoading(false);
+
                 return toast({
                     title: tToast("500.heading"),
                     description: tToast(signInResponse.error),
@@ -111,6 +114,7 @@ export default function UserLoginForm({
                     ),
                 });
             }
+            setIsLoading(false);
             return toast({
                 title: tToast("500.heading"),
                 description: tToast(signInResponse.error),

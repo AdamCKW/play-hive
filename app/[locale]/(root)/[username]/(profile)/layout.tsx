@@ -37,7 +37,9 @@ export default async function ProfilePageLayout({
         },
     });
 
-    if (!getSelf) return null;
+    if (!getSelf) {
+        notFound();
+    }
 
     const getUser = await db.user.findUnique({
         where: { username: decodeURI(params.username) },

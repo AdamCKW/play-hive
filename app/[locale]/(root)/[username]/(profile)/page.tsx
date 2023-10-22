@@ -43,7 +43,9 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
         },
     });
 
-    if (!getUser) return notFound();
+    if (!getUser) {
+        notFound();
+    }
 
     const posts = await db.post.findMany({
         where: {
