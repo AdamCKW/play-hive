@@ -112,7 +112,7 @@ const Draggable = forwardRef<HTMLDivElement, DraggableProps>(
             >
               <Tooltip>
                 <TooltipTrigger ref={handleRef}>
-                  <Icons.dragHandle className="h-4 w-4 text-muted-foreground" />
+                  <Icons.dragHandle className="text-muted-foreground h-4 w-4" />
                 </TooltipTrigger>
                 <TooltipContent>Drag to move</TooltipContent>
               </Tooltip>

@@ -11,7 +11,7 @@ export function HighlightLeaf({
   return (
     <PlateLeaf
       asChild
-      className={cn('bg-primary/20 text-inherit dark:bg-primary/40', className)}
+      className={cn('bg-primary/20 dark:bg-primary/40 text-inherit', className)}
       {...props}
     >
       <mark>{children}</mark>
