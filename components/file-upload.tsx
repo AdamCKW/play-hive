@@ -17,8 +17,13 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
     if (value && fileType !== "pdf") {
         if (endpoint === "messageFile" || endpoint === "userBanner") {
             return (
-                <div className="relative h-20 w-40">
-                    <Image fill src={value} alt="Upload" />
+                <div className="relative h-40 w-52">
+                    <Image
+                        fill
+                        src={value}
+                        alt="Upload"
+                        className="object-cover"
+                    />
                     <button
                         onClick={() => onChange("")}
                         className="absolute right-0 top-0 rounded-full bg-rose-500 p-1 text-white shadow-sm"

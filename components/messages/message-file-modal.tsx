@@ -104,7 +104,11 @@ export default function MessageFileModal() {
                             </div>
                         </div>
                         <DialogFooter className="px-6 py-4">
-                            <Button variant="default" disabled={isLoading}>
+                            <Button
+                                className="w-full"
+                                variant="default"
+                                disabled={isLoading}
+                            >
                                 {t("send_button")}
                             </Button>
                         </DialogFooter>
