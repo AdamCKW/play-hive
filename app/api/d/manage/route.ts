@@ -89,9 +89,9 @@ export async function PATCH(req: NextRequest) {
         const session = await getAuthSession();
 
         const headersInstance = headers();
-        const authorization = headersInstance.get("authorization");
 
-        const authorized = authorization === process.env.ADMIN_TOKEN;
+        const authorization = headersInstance.get("authorization");
+        const authorized = authorization === process.env.ADMIN_SECRET;
 
         if (!session) {
             if (!authorized) {
