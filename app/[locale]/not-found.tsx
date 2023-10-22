@@ -1,4 +1,6 @@
+import { buttonVariants } from "@/components/ui/button";
 import { linksConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 import Image from "next/image";
@@ -34,7 +36,9 @@ export default function NotFound({}: NotFoundProps) {
                     <div className="mt-8 text-center">
                         <Link
                             href={linksConfig.home.href}
-                            className="text-primary font-semibold underline-offset-4 hover:underline"
+                            className={cn(
+                                buttonVariants({ variant: "default" }),
+                            )}
                         >
                             {t("redirect")}
                         </Link>
