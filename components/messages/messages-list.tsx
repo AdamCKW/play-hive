@@ -26,9 +26,9 @@ export default function MessagesList({ users }: UsersListProps) {
     const t = useTranslations("communication.messages");
 
     return (
-        <Command className="max-h-[calc(100%-11rem)]">
-            <CommandInput placeholder="Search..." />
-            <CommandList>
+        <Command className="max-h-[calc(100%-7rem)] md:max-h-[calc(100%-3.5rem)]">
+            <CommandInput placeholder={t("label")} />
+            <CommandList className="max-h-none">
                 <CommandEmpty>{t("no_results")}</CommandEmpty>
                 <CommandGroup>
                     {users?.map((user) => (

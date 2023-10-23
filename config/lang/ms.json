@@ -340,12 +340,14 @@
             "subheading": "Pilih sembang atau mulakan perbualan baharu."
         },
         "following": {
+            "label": "Cari...",
             "heading": "Mengikuti",
             "sr_link": "Pautan ke mesej",
             "no_users": "Tiada pengguna ditemui.",
             "no_results": "Tiada keputusan dijumpai."
         },
         "messages": {
+            "label": "Cari...",
             "heading": "Mesej",
             "sr_link": "Pautan ke senarai pengguna",
             "no_results": "Tiada keputusan dijumpai.",

@@ -340,12 +340,14 @@
             "subheading": "选择聊天或开始新对话。"
         },
         "following": {
+            "label": "搜索...",
             "heading": "下列的",
             "sr_link": "消息链接",
             "no_users": "未找到相应的用户。",
             "no_results": "未找到结果。"
         },
         "messages": {
+            "label": "搜索...",
             "heading": "留言",
             "sr_link": "链接到用户列表",
             "no_results": "未找到结果。",

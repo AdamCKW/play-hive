@@ -340,12 +340,14 @@
             "subheading": "チャットを選択するか、新しい会話を開始します。"
         },
         "following": {
+            "label": "検索...",
             "heading": "続く",
             "sr_link": "メッセージへのリンク",
             "no_users": "ユーザが見つかりませんでした。",
             "no_results": "結果が見つかりません。"
         },
         "messages": {
+            "label": "検索...",
             "heading": "メッセージ",
             "sr_link": "ユーザーリストへのリンク",
             "no_results": "結果が見つかりません。",

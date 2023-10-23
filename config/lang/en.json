@@ -343,9 +343,11 @@
             "heading": "Following",
             "sr_link": "Link to messages",
             "no_users": "No users found.",
-            "no_results": "No results found."
+            "no_results": "No results found.",
+            "label": "Search..."
         },
         "messages": {
+            "label": "Search...",
             "heading": "Messages",
             "sr_link": "Link to users list",
             "no_results": "No results found.",
