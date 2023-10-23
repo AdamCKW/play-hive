@@ -80,6 +80,10 @@ interface SuggestedUsers extends Partial<User> {
 export async function UserSuggestionsCard({ className }: SuggestionsCardProps) {
     const session = await getAuthSession();
 
+    if (!session) {
+        return null;
+    }
+
     /* The code is querying the database to find all the users that are being followed by the current
     user. */
     const myFollowing = await db.user.findMany({

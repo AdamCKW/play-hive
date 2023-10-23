@@ -27,10 +27,9 @@ export async function generateMetadata({
 }
 
 export default async function Home({ params }: HomePageProps) {
+    const t = await getTranslator(params.locale, "root.posts");
     const session = await getAuthSession();
     if (!session) redirect(linksConfig.signIn.href);
-
-    const t = await getTranslator(params.locale, "root.posts");
 
     const getUser = await db.user.findUnique({
         where: { id: session.user.id },

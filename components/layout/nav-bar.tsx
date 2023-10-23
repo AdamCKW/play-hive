@@ -7,7 +7,6 @@ import { authOptions, getAuthSession } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 
-import { SignInButton } from "@/components/auth/sign-in-button";
 import { UserAccountNav } from "@/components/layout/user-account-nav";
 import { NavbarItems } from "@/components/layout/nav-bar-items";
 
@@ -41,9 +40,7 @@ export async function NavBar({ className }: NavBarProps) {
 
                     {session?.user ? (
                         <UserAccountNav user={session.user} />
-                    ) : (
-                        <SignInButton />
-                    )}
+                    ) : null}
                 </div>
             </div>
         </nav>

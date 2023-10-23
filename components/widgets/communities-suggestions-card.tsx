@@ -18,6 +18,10 @@ export async function CommunitySuggestionsCard({
 }: SuggestionsCardProps) {
     const session = await getAuthSession();
 
+    if (!session) {
+        return null;
+    }
+
     const user = await db.user.findUnique({
         where: {
             id: session?.user.id,
