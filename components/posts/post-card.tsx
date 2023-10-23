@@ -157,12 +157,14 @@ export default function PostCard({
                                 {!data.text &&
                                 data.communityId &&
                                 data.community?.name ? (
-                                    <Link
-                                        className="text-muted-foreground hover:text-foreground truncate"
-                                        href={`/c/${data.community?.name}`}
-                                    >
-                                        c/{data.community?.name}
-                                    </Link>
+                                    <div className="max-w-[90px] sm:max-w-none">
+                                        <Link
+                                            className="text-muted-foreground hover:text-foreground truncate"
+                                            href={`/c/${data.community?.name}`}
+                                        >
+                                            c/{data.community?.name}
+                                        </Link>
+                                    </div>
                                 ) : null}
                             </div>
                         </>
