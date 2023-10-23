@@ -4,12 +4,8 @@ import { db } from "@/lib/db";
 import { IPost } from "@/types/db";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
-import { Fragment, Suspense } from "react";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
-import { Loader2 } from "lucide-react";
-import { PostLoading } from "@/components/loading";
-import dynamic from "next/dynamic";
 import MainFeed from "@/components/posts/feeds/main-feed";
 import { ExtendedMetadata } from "@/types";
 
@@ -32,9 +28,10 @@ export async function generateMetadata({
 
 export default async function Home({ params }: HomePageProps) {
     const session = await getAuthSession();
+    if (!session) redirect(linksConfig.signIn.href);
+
     const t = await getTranslator(params.locale, "root.posts");
 
-    if (!session) redirect(linksConfig.signIn.href);
     const getUser = await db.user.findUnique({
         where: { id: session.user.id },
         include: {

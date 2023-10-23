@@ -1,5 +1,6 @@
 import TimerRedirect from "@/components/timer-redirect";
 import { toast } from "@/hooks/use-toast";
+import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
@@ -30,6 +31,12 @@ export default async function VerificationPage({
     params: { locale },
     searchParams: { token },
 }: VerificationPageProps) {
+    const session = await getAuthSession();
+
+    if (session) {
+        redirect("/");
+    }
+
     if (!token) {
         notFound();
     }

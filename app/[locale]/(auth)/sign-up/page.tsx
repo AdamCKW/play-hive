@@ -20,6 +20,8 @@ import { useTranslations } from "next-intl";
 import { link } from "fs";
 import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
+import { getAuthSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({
     params: { locale },
@@ -32,8 +34,17 @@ export async function generateMetadata({
     };
 }
 
-export default function RegisterPage() {
-    const translate = useTranslations("auth.register.page");
+export default async function RegisterPage({
+    params: { locale },
+}: {
+    params: { locale: string };
+}) {
+    const session = await getAuthSession();
+
+    if (session) {
+        redirect("/");
+    }
+    const translate = await getTranslator(locale, "auth.register.page");
 
     return (
         <>
