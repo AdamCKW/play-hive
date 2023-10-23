@@ -154,18 +154,20 @@ export default function PostCard({
                                     <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                 ) : null}
 
-                                {!data.text &&
-                                data.communityId &&
-                                data.community?.name ? (
-                                    <div className="max-w-[90px] sm:max-w-none">
+                                <div className="max-w-[90px] sm:max-w-none">
+                                    {!data.text &&
+                                    data.communityId &&
+                                    data.community?.name ? (
                                         <Link
-                                            className="text-muted-foreground hover:text-foreground truncate"
+                                            className="text-muted-foreground hover:text-foreground"
                                             href={`/c/${data.community?.name}`}
                                         >
-                                            c/{data.community?.name}
+                                            <div className="text-muted-foreground truncate">
+                                                c/{data.community?.name}
+                                            </div>
                                         </Link>
-                                    </div>
-                                ) : null}
+                                    ) : null}
+                                </div>
                             </div>
                         </>
                     )}

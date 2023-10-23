@@ -6,13 +6,8 @@ import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 
 import { getTranslator } from "next-intl/server";
-import { PostLoading } from "@/components/loading";
-import { IReplies } from "@/types/db";
 import { ExtendedMetadata } from "@/types";
-import dynamic from "next/dynamic";
-const RepliesFeed = dynamic(
-    () => import("@/components/posts/feeds/replies-feed"),
-);
+import RepliesFeed from "@/components/posts/feeds/replies-feed";
 
 interface RepliesPageLayoutProps {
     params: { username: string; locale: string };

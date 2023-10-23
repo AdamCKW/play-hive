@@ -3,16 +3,8 @@
 import { IPost } from "@/types/db";
 
 import { usePostQuery } from "@/hooks/use-post-query";
-import { SkeletonCard } from "../skeleton-card";
-import dynamic from "next/dynamic";
-
-const MainCard = dynamic(() => import("@/components/posts/main-card"), {
-    loading: () => <SkeletonCard />,
-});
-
-const DeletedCard = dynamic(() => import("@/components/posts/deleted-card"), {
-    loading: () => <SkeletonCard />,
-});
+import DeletedCard from "@/components/posts/deleted-card";
+import MainCard from "@/components/posts/main-card";
 
 interface PostFeedProps {
     initialPost: IPost;

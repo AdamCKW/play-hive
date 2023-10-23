@@ -2,24 +2,17 @@ import { Suspense, lazy } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-
 import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
-import { PostLoading } from "@/components/loading";
 import { ExtendedMetadata } from "@/types";
-import dynamic from "next/dynamic";
+import ProfileFeed from "@/components/posts/feeds/profile-feed";
 
 interface ProfilePageLayoutProps {
     params: { username: string; locale: string };
 }
-
-const ProfileFeed = dynamic(
-    () => import("@/components/posts/feeds/profile-feed"),
-);
 
 export async function generateMetadata({
     params: { locale },

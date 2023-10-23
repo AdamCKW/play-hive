@@ -13,8 +13,6 @@ import dynamic from "next/dynamic";
 import MainFeed from "@/components/posts/feeds/main-feed";
 import { ExtendedMetadata } from "@/types";
 
-// const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"));
-
 interface HomePageProps {
     params: {
         locale: string;

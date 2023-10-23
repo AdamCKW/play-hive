@@ -1,30 +1,15 @@
 import Link from "next/link";
-
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { UserAvatar } from "@/components/user-avatar";
 import { notFound, redirect } from "next/navigation";
 import { getTranslator } from "next-intl/server";
-import dynamic from "next/dynamic";
-import { SkeletonCard } from "@/components/posts/skeleton-card";
 import { ExtendedMetadata } from "@/types";
-
-// import Parent from "@/components/posts/feeds/parent";
-// import Main from "@/components/posts/feeds/main";
-// import Children from "@/components/posts/feeds/children";
-
-const Parent = dynamic(() => import("@/components/posts/feeds/parent"), {
-    // loading: () => <SkeletonCard />,
-});
-const Main = dynamic(() => import("@/components/posts/feeds/main"), {
-    // loading: () => <SkeletonCard main />,
-});
-const Children = dynamic(() => import("@/components/posts/feeds/children"), {
-    // loading: () => <SkeletonCard />,
-});
+import Parent from "@/components/posts/feeds/parent";
+import Main from "@/components/posts/feeds/main";
+import Children from "@/components/posts/feeds/children";
 
 interface PostPageProps {
     params: {

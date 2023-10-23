@@ -7,11 +7,7 @@ import { getTranslator } from "next-intl/server";
 
 import dynamic from "next/dynamic";
 import { ExtendedMetadata } from "@/types";
-// import DiscoverFeed from "@/components/posts/feeds/discover-feed";
-
-const DiscoverFeed = dynamic(
-    () => import("@/components/posts/feeds/discover-feed"),
-);
+import DiscoverFeed from "@/components/posts/feeds/discover-feed";
 
 interface DiscoverPageProps {
     params: {

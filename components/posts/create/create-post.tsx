@@ -197,7 +197,7 @@ export default function CreatePost({ setOpen, user }: CreatePostProps) {
             });
         },
         onSuccess: (content) => {
-            queryClient.invalidateQueries(["posts"]);
+            queryClient.invalidateQueries();
             startTransition(() => router.refresh());
             setOpen(false);
             return toast({

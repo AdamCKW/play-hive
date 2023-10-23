@@ -1,24 +1,14 @@
 "use client";
 
 import { IPost } from "@/types/db";
-
-// import PostCard from "@/components/posts/post-card";
 import { usePostQuery } from "@/hooks/use-post-query";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-import { SkeletonCard } from "@/components/posts/skeleton-card";
+import DeletedCard from "@/components/posts/deleted-card";
+import PostCard from "@/components/posts/post-card";
 
 interface PostFeedProps {
     userId?: string;
     initialPost: IPost;
 }
-
-const PostCard = dynamic(() => import("@/components/posts/post-card"), {
-    loading: () => <SkeletonCard />,
-});
-const DeletedCard = dynamic(() => import("@/components/posts/deleted-card"), {
-    loading: () => <SkeletonCard />,
-});
 
 export default function Parent({ initialPost }: PostFeedProps) {
     const query = `/api/posts/${initialPost.id}`;

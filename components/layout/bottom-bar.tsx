@@ -50,21 +50,6 @@ export function Bottombar() {
                                     {tNav(item.title)}
                                 </span>
                             </Link>
-
-                            {session?.user && (
-                                <button
-                                    onClick={() => {
-                                        onOpen("createPost", {
-                                            user: session.user,
-                                        });
-                                    }}
-                                >
-                                    <Edit className="text-muted-foreground h-6 w-6" />
-                                    <span className="sr-only">
-                                        {t("button")}
-                                    </span>
-                                </button>
-                            )}
                         </Fragment>
                     );
                 }
@@ -88,6 +73,18 @@ export function Bottombar() {
                     </Link>
                 );
             })}
+            {session?.user && (
+                <button
+                    onClick={() => {
+                        onOpen("createPost", {
+                            user: session.user,
+                        });
+                    }}
+                >
+                    <Edit className="text-muted-foreground h-6 w-6" />
+                    <span className="sr-only">{t("button")}</span>
+                </button>
+            )}
         </div>
     );
 }
