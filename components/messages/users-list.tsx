@@ -61,37 +61,6 @@ export default function UsersList({ users }: UsersListProps) {
                             </div>
                         </CommandItem>
                     ))}
-                    {users?.map((user) => (
-                        <CommandItem
-                            key={user.id}
-                            onSelect={() => {
-                                router.push(
-                                    `${linksConfig.messages.href}/${user.username}`,
-                                );
-                            }}
-                            className="aria-selected:bg-background"
-                        >
-                            <div className="relative flex w-full cursor-pointer select-none items-center space-x-3">
-                                <div className="relative">
-                                    <UserAvatar user={user} />
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                    <div className="flex flex-col items-start focus:outline-none">
-                                        <div className="flex w-full items-center justify-between">
-                                            <p className="font-medium capitalize">
-                                                {user.name}
-                                            </p>
-                                        </div>
-                                        <div className="flex w-full items-center justify-start">
-                                            <p className="text-muted-foreground truncate text-xs font-medium">
-                                                @{user.username}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </CommandItem>
-                    ))}
                 </CommandGroup>
             </CommandList>
         </Command>
