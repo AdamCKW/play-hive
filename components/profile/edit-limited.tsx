@@ -24,8 +24,8 @@ import { User } from "@prisma/client";
 import { toast } from "@/hooks/use-toast";
 import { Textarea } from "../ui/textarea";
 import {
-    FullEditRequest,
-    FullEditValidation,
+    EditPartialRequest,
+    EditPartialValidation,
 } from "@/lib/validators/edit-profile";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { AspectRatio } from "../ui/aspect-ratio";
@@ -46,7 +46,7 @@ export default function EditLimited({ user }: EditLimitedProps) {
     const tForm = useTranslations("root.profile.settings.form");
     const tToast = useTranslations("toast");
 
-    const validationMessages: Parameters<typeof FullEditValidation> = [
+    const validationMessages: Parameters<typeof EditPartialValidation> = [
         tValidation("name_required"),
         tValidation("name_type_error"),
         tValidation("name_min"),
@@ -56,16 +56,11 @@ export default function EditLimited({ user }: EditLimitedProps) {
         tValidation("username_min"),
         tValidation("username_max"),
         tValidation("username_refine"),
-        tValidation("email_required"),
-        tValidation("email_type_error"),
-        tValidation("email_invalid"),
-        tValidation("email_refine"),
         tValidation("bio_max"),
-        tValidation("password_refine"),
     ];
 
-    const form = useForm<FullEditRequest>({
-        resolver: zodResolver(FullEditValidation(...validationMessages)),
+    const form = useForm<EditPartialRequest>({
+        resolver: zodResolver(EditPartialValidation(...validationMessages)),
         defaultValues: {
             name: user.name!,
             username: user.username!,
@@ -75,9 +70,8 @@ export default function EditLimited({ user }: EditLimitedProps) {
         },
     });
 
-    const onSubmit = async (values: FullEditRequest) => {
+    const onSubmit = async (values: EditPartialRequest) => {
         setIsLoading(true);
-
         try {
             await axios
                 .patch(`/api/users/${user.id}`, values)

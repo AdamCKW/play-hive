@@ -6,7 +6,6 @@ import NameLink from "./name-link";
 import Others from "./others";
 import MoreMenu from "./more-menu";
 import Controls from "./controls";
-import { redirect } from "next/navigation";
 import Timestamp from "./timestamp";
 import Viewer from "./viewer";
 import { useTranslations } from "next-intl";
@@ -159,19 +158,12 @@ export default function PostCard({
                                 data.communityId &&
                                 data.community?.name ? (
                                     <Link
-                                        className="text-muted-foreground hover:text-foreground"
+                                        className="text-muted-foreground hover:text-foreground truncate"
                                         href={`/c/${data.community?.name}`}
                                     >
                                         c/{data.community?.name}
                                     </Link>
                                 ) : null}
-
-                                {/* {data._count.children > 0 ||
-                                data._count.likes > 0 ? (
-                                    <div className="bg-muted-foreground h-1 w-1 rounded-full" />
-                                ) : null}
-
-                                <Timestamp time={data.createdAt} /> */}
                             </div>
                         </>
                     )}

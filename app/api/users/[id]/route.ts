@@ -25,7 +25,7 @@ export async function PATCH(
             return new NextResponse("401.unauthorized", { status: 401 });
 
         const { username, name, email, bio, imageUrl, imageBanner, password } =
-            FullEditValidation().parse(body);
+            body;
 
         const user = await db.user.findUnique({
             where: { id: userId },
