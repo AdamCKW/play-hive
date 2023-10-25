@@ -83,12 +83,12 @@ export default function EditCommunityModal({}: CommunityModalProps) {
                     form.reset();
                     onClose();
                     startTransition(() => {
-                        router.push(`/c/${res.data}`);
+                        router.push(`/c/${values.name}`);
                     });
                     toast({
-                        title: tToast("community.success.edit.title"),
+                        title: tToast("community.success.create.title"),
                         description: tToast(
-                            "community.success.edit.description",
+                            "community.success.create.description",
                         ),
                     });
                 })
