@@ -3,10 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useIntersection } from "@mantine/hooks";
 import { Loader2 } from "lucide-react";
-
 import { IPost } from "@/types/db";
 import { useInfinitePostQuery } from "@/hooks/use-infinite-post-query";
-
 import { useTranslations } from "next-intl";
 import PostCard from "@/components/posts/post-card";
 

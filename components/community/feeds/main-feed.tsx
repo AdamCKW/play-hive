@@ -8,10 +8,7 @@ import { useInfinitePostQuery } from "@/hooks/use-infinite-post-query";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { SkeletonCard } from "@/components/posts/skeleton-card";
-
-const PostCard = dynamic(() => import("@/components/posts/post-card"), {
-    loading: () => <SkeletonCard />,
-});
+import PostCard from "@/components/posts/post-card";
 
 interface PostFeedProps {
     initialPosts: IPost[];
