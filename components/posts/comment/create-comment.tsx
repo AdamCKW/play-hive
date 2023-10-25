@@ -221,9 +221,7 @@ export default function CreateComment({
             queryClient.invalidateQueries({ queryKey: ["comments"] });
             queryClient.invalidateQueries({ queryKey: ["post"] });
             queryClient.invalidateQueries(queryKey);
-            startTransition(() => {
-                router.refresh();
-            });
+            queryClient.invalidateQueries();
             setOpen(false);
             return toast({
                 title: tToast("post.success.reply.title"),

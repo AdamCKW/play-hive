@@ -3,7 +3,7 @@
 import { Value, usePlateStore } from "@udecode/plate-common";
 import { Button } from "../../plate-ui/button";
 import { usePathname, useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { toast } from "../../../hooks/use-toast";
 import React, { startTransition } from "react";
@@ -28,6 +28,7 @@ export default function SubmitPlate({ output }: SubmitPlateProps) {
     const pathname = usePathname();
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
     const tToast = useTranslations("toast");
+    const queryClient = useQueryClient();
 
     const handleSubmit = async () => {
         setIsLoading(true);
@@ -42,7 +43,7 @@ export default function SubmitPlate({ output }: SubmitPlateProps) {
                         .split("/")
                         .slice(0, -1)
                         .join("/");
-
+                    queryClient.invalidateQueries();
                     toast({
                         title: tToast("post.success.create.title"),
                         description: tToast("post.success.create.description"),

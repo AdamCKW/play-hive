@@ -46,25 +46,8 @@ export default function MoreMenu({
 
     const handleDelete = async () => {
         setIsLoading(true);
-
-        await axios
-            .delete(`/api/posts/${id}`)
-            .then((res) => {
-                queryClient.invalidateQueries();
-                startTransition(() => {
-                    if (pathname?.includes(`/p/${id}`)) {
-                        router.push("/");
-                    } else {
-                        router.refresh();
-                    }
-                });
-                setIsLoading(false);
-                toast({
-                    title: tToast("post.success.delete.title"),
-                    description: tToast("post.success.delete.description"),
-                });
-            })
-            .catch((error) => {
+        try {
+            await axios.delete(`/api/posts/${id}`).catch((error) => {
                 setIsLoading(false);
                 toast({
                     title: tToast("500.heading"),
@@ -72,6 +55,19 @@ export default function MoreMenu({
                     variant: "destructive",
                 });
             });
+
+            queryClient.invalidateQueries();
+            if (pathname?.includes(`/p/${id}`)) {
+                startTransition(() => {
+                    router.push("/");
+                });
+            }
+            setIsLoading(false);
+            toast({
+                title: tToast("post.success.delete.title"),
+                description: tToast("post.success.delete.description"),
+            });
+        } catch (error) {}
     };
 
     const handleReport = async () => {
