@@ -58,10 +58,12 @@ export async function CommunitySuggestionsCard({
         take: 10,
     });
 
+    const suggestedCommunitiesIds = map(suggestedCommunities, "id");
+
     const mostPopularCommunities = await db.community.findMany({
         where: {
             id: {
-                notIn: mySubscribedIds,
+                notIn: [...mySubscribedIds, ...suggestedCommunitiesIds],
             },
         },
         include: {

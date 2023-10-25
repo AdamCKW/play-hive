@@ -84,12 +84,13 @@ export default function JoinCommunityToggle({
                     });
                 })
                 .catch((err) => {
+                    console.log(err);
                     setIsLoading(false);
-                    return toast({
-                        title: tToast("500.heading"),
-                        description: tToast(err.response?.data),
-                        variant: "destructive",
-                    });
+                    // return toast({
+                    //     title: tToast("500.heading"),
+                    //     description: tToast(err.response?.data),
+                    //     variant: "destructive",
+                    // });
                 });
         } catch (error) {
             setIsLoading(false);

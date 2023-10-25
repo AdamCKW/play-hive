@@ -50,7 +50,6 @@ export async function POST(
 
         return new NextResponse(communityId);
     } catch (error) {
-        error;
         if (error instanceof z.ZodError) {
             return new NextResponse(error.message, { status: 400 });
         }
