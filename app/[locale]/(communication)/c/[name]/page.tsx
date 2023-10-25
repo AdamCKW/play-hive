@@ -141,7 +141,7 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
                         c/{community.name}
                     </h1>
 
-                    <div className="md:hidden">
+                    <div className="lg:hidden">
                         <JoinCommunityToggle
                             isSubscribed={isSubscribed}
                             communityId={community.id}
@@ -149,7 +149,7 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
                         />
                     </div>
                 </div>
-                <div className="pt-4 md:hidden">
+                <div className="pt-4 lg:hidden">
                     <CreatePostButton />
                 </div>
             </div>
