@@ -1,13 +1,25 @@
 import Link from "next/link";
-
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getTranslator } from "next-intl/server";
-
 import dynamic from "next/dynamic";
 import { ExtendedMetadata } from "@/types";
-import DiscoverFeed from "@/components/posts/feeds/discover-feed";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+// import DiscoverFeed from "@/components/posts/feeds/discover-feed";
+const DiscoverFeed = dynamic(
+    () => import("@/components/posts/feeds/discover-feed"),
+    {
+        ssr: false,
+        loading: () => (
+            <>
+                {Array.from({ length: 10 }, (_, i) => (
+                    <SkeletonCard key={i} />
+                ))}
+            </>
+        ),
+    },
+);
 
 interface DiscoverPageProps {
     params: {

@@ -7,9 +7,23 @@ import { UserAvatar } from "@/components/user-avatar";
 import { notFound, redirect } from "next/navigation";
 import { getTranslator } from "next-intl/server";
 import { ExtendedMetadata } from "@/types";
-import Parent from "@/components/posts/feeds/parent";
-import Main from "@/components/posts/feeds/main";
-import Children from "@/components/posts/feeds/children";
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+// import Parent from "@/components/posts/feeds/parent";
+// import Main from "@/components/posts/feeds/main";
+// import Children from "@/components/posts/feeds/children";
+const Parent = dynamic(() => import("@/components/posts/feeds/parent"), {
+    ssr: false,
+    loading: () => <SkeletonCard />,
+});
+const Main = dynamic(() => import("@/components/posts/feeds/main"), {
+    ssr: false,
+    loading: () => <SkeletonCard main />,
+});
+const Children = dynamic(() => import("@/components/posts/feeds/children"), {
+    ssr: false,
+    loading: () => <SkeletonCard />,
+});
 
 interface PostPageProps {
     params: {

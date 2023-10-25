@@ -1,13 +1,24 @@
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { IPost } from "@/types/db";
-import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
 import { linksConfig } from "@/config/site";
 import { getTranslator } from "next-intl/server";
-import MainFeed from "@/components/posts/feeds/main-feed";
+// import MainFeed from "@/components/posts/feeds/main-feed";
 import { ExtendedMetadata } from "@/types";
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+
+const MainFeed = dynamic(() => import("@/components/posts/feeds/main-feed"), {
+    ssr: false,
+    loading: () => (
+        <>
+            {Array.from({ length: 10 }, (_, i) => (
+                <SkeletonCard key={i} />
+            ))}
+        </>
+    ),
+});
 
 interface HomePageProps {
     params: {

@@ -113,14 +113,6 @@ export default function MainCard({ data, queryKey }: MainCardProps) {
                             c/{data.community?.name}
                         </Link>
                     ) : null}
-
-                    {/* {data._count.children > 0 ||
-                    data._count.likes > 0 ||
-                    (data.communityId && data.community?.name) ? (
-                        <div className="bg-muted-foreground h-1 w-1 rounded-full" />
-                    ) : null}
-
-                    <Timestamp time={data.createdAt} />*/}
                 </div>
             </div>
         </div>

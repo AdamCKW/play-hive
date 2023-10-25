@@ -9,16 +9,11 @@ import { Loader2 } from "lucide-react";
 import { useSession } from "next-auth/react";
 
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
-// import NewsCard from "./news-card";
+import NewsCard from "./news-card";
 import { notFound } from "next/navigation";
 import queryString from "query-string";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import NewsSkeletonCard from "./news-skeleton-card";
-
-const NewsCard = dynamic(() => import("./news-card"), {
-    loading: () => <NewsSkeletonCard />,
-});
 
 interface NewsFeedProps {
     initialData: any[];

@@ -1,18 +1,29 @@
 import Link from "next/link";
-
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
-
-import { IPost } from "@/types/db";
-import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
-import MainCommunityFeed from "@/components/community/feeds/community-feed";
+import dynamic from "next/dynamic";
 import JoinCommunityToggle from "@/components/community/join-community-toggle";
 import CreatePostButton from "@/components/community/create-button";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+// import MainCommunityFeed from "@/components/community/feeds/community-feed";
+const MainCommunityFeed = dynamic(
+    () => import("@/components/community/feeds/community-feed"),
+    {
+        ssr: false,
+        loading: () => (
+            <>
+                {Array.from({ length: 10 }, (_, i) => (
+                    <SkeletonCard key={i} />
+                ))}
+            </>
+        ),
+    },
+);
 
 interface CommunityPageProps {
     params: {

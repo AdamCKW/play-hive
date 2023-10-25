@@ -1,11 +1,26 @@
-import MainCommunityFeed from "@/components/community/feeds/main-feed";
 import { RightBar } from "@/components/layout/right-bar";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { ExtendedMetadata } from "@/types";
 import { getTranslator } from "next-intl/server";
+import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
+// import MainCommunityFeed from "@/components/community/feeds/main-feed";
+const MainCommunityFeed = dynamic(
+    () => import("@/components/community/feeds/main-feed"),
+    {
+        ssr: false,
+        loading: () => (
+            <>
+                {Array.from({ length: 10 }, (_, i) => (
+                    <SkeletonCard key={i} />
+                ))}
+            </>
+        ),
+    },
+);
 
 export async function generateMetadata({
     params: { locale },

@@ -8,7 +8,22 @@ import { db } from "@/lib/db";
 import { getTranslator } from "next-intl/server";
 import { linksConfig } from "@/config/site";
 import { ExtendedMetadata } from "@/types";
-import ProfileFeed from "@/components/posts/feeds/profile-feed";
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+// import ProfileFeed from "@/components/posts/feeds/profile-feed";
+const ProfileFeed = dynamic(
+    () => import("@/components/posts/feeds/profile-feed"),
+    {
+        ssr: false,
+        loading: () => (
+            <>
+                {Array.from({ length: 10 }, (_, i) => (
+                    <SkeletonCard key={i} />
+                ))}
+            </>
+        ),
+    },
+);
 
 interface ProfilePageLayoutProps {
     params: { username: string; locale: string };

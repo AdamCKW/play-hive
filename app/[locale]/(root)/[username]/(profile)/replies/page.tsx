@@ -1,13 +1,27 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-
 import { getTranslator } from "next-intl/server";
 import { ExtendedMetadata } from "@/types";
-import RepliesFeed from "@/components/posts/feeds/replies-feed";
+import dynamic from "next/dynamic";
+import { SkeletonCard } from "@/components/posts/skeleton-card";
+// import RepliesFeed from "@/components/posts/feeds/replies-feed";
+
+const RepliesFeed = dynamic(
+    () => import("@/components/posts/feeds/replies-feed"),
+    {
+        ssr: false,
+        loading: () => (
+            <>
+                {Array.from({ length: 10 }, (_, i) => (
+                    <SkeletonCard key={i} />
+                ))}
+            </>
+        ),
+    },
+);
 
 interface RepliesPageLayoutProps {
     params: { username: string; locale: string };
