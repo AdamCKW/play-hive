@@ -18,7 +18,7 @@ export default function Viewer({ content }: EditorProps) {
         <>
             <DndProvider backend={HTML5Backend}>
                 <Plate plugins={plugins} readOnly initialValue={content}>
-                    <Editor className="border-none" />
+                    <Editor className="overflow-x-hidden border-none" />
                 </Plate>
             </DndProvider>
         </>
