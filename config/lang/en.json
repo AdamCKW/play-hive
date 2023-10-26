@@ -403,6 +403,7 @@
             "card": {
                 "title": "About c/{community_name}",
                 "created_at": "Created At",
+                "members": "Members",
                 "creator": "You created this community",
                 "created_by": "Created By"
             },

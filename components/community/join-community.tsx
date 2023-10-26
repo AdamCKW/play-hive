@@ -104,7 +104,7 @@ function WidgetCard({
 
             <CardContent>
                 <div className="flex justify-between gap-x-4">
-                    <dt className="">Members</dt>
+                    <dt className="">{t("members")}</dt>
                     <dd className="flex items-start gap-x-2">
                         <span className="font-bold">{memberCount}</span>
                     </dd>

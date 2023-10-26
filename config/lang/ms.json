@@ -403,6 +403,7 @@
             "card": {
                 "title": "Perihal c/{community_name}",
                 "created_at": "Dicipta Pada",
+                "members": "Ahli",
                 "creator": "Anda mencipta komuniti ini",
                 "created_by": "Dicipta oleh"
             },

@@ -403,6 +403,7 @@
             "card": {
                 "title": "关于 c/{community_name}",
                 "created_at": "创建于",
+                "members": "会员",
                 "creator": "您创建了这个社区",
                 "created_by": "由...制作"
             },
