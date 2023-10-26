@@ -403,6 +403,7 @@
             "card": {
                 "title": "c/{community_name} について",
                 "created_at": "作成日",
+                "members": "メンバー",
                 "creator": "このコミュニティを作成したのはあなたです",
                 "created_by": "によって作成された"
             },
