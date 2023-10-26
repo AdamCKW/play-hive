@@ -127,7 +127,7 @@ export default async function CommunitiesPage({
                     {t("empty")}
                 </div>
             ) : (
-                <div className="2xl:mx-4">
+                <div className="w-full 2xl:mx-4">
                     <MainCommunityFeed initialPosts={posts} />
                 </div>
             )}

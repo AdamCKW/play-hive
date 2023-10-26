@@ -86,9 +86,9 @@ export default function EditCommunityModal({}: CommunityModalProps) {
                         router.push(`/c/${values.name}`);
                     });
                     toast({
-                        title: tToast("community.success.create.title"),
+                        title: tToast("community.success.update.title"),
                         description: tToast(
-                            "community.success.create.description",
+                            "community.success.update.description",
                         ),
                     });
                 })
@@ -205,6 +205,7 @@ export default function EditCommunityModal({}: CommunityModalProps) {
                                     </FormLabel>
                                     <FormControl>
                                         <Input
+                                            maxLength={21}
                                             id="name"
                                             placeholder={
                                                 data?.community?.name ||

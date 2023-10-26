@@ -13,9 +13,9 @@ export default function CommunityLayout({ children }: CommunityLayoutProps) {
             <NavBar />
             <main className="flex flex-row">
                 <LeftBar className="w-[20rem]" />
-
                 {children}
             </main>
+
             <Bottombar />
         </>
     );

@@ -124,8 +124,8 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
     return (
         <>
             <div className="border-b pb-4">
-                <div className="flex items-center space-x-4 px-6">
-                    <Avatar className="h-10 w-10 md:h-32 md:w-32">
+                <div className="flex items-center space-x-4 px-4 sm:px-6">
+                    <Avatar className="h-10 w-10 flex-none md:h-32 md:w-32">
                         {community.image ? (
                             <AvatarImage
                                 src={community.image}
@@ -137,11 +137,10 @@ export default async function CommunityPage({ params }: CommunityPageProps) {
                             </AvatarFallback>
                         )}
                     </Avatar>
-                    <h1 className="text-2xl font-bold md:text-4xl">
+                    <h1 className="flex-1 truncate text-lg font-bold sm:text-2xl md:text-4xl">
                         c/{community.name}
                     </h1>
-
-                    <div className="lg:hidden">
+                    <div className="flex-1 lg:hidden">
                         <JoinCommunityToggle
                             isSubscribed={isSubscribed}
                             communityId={community.id}

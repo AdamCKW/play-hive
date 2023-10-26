@@ -87,7 +87,7 @@ function WidgetCard({
                                 </AvatarFallback>
                             )}
                         </Avatar>
-                        <div className="">
+                        <div className="truncate">
                             {t("title", { community_name: community?.name })}
                         </div>
                     </div>
@@ -106,7 +106,7 @@ function WidgetCard({
                 <div className="flex justify-between gap-x-4">
                     <dt className="">Members</dt>
                     <dd className="flex items-start gap-x-2">
-                        <span>{memberCount}</span>
+                        <span className="font-bold">{memberCount}</span>
                     </dd>
                 </div>
                 {community.creatorId === session?.user?.id ? (

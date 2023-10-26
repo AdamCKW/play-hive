@@ -154,7 +154,14 @@ export default function PostCard({
                                     <div className="bg-muted-foreground h-1 w-1 rounded-full" />
                                 ) : null}
 
-                                <div className="max-w-[90px] sm:max-w-none">
+                                <div
+                                    className={`${
+                                        data._count.children > 0 &&
+                                        data._count.likes
+                                            ? "max-w-[5.625rem]"
+                                            : ""
+                                    } sm:max-w-none`}
+                                >
                                     {!data.text &&
                                     data.communityId &&
                                     data.community?.name ? (
