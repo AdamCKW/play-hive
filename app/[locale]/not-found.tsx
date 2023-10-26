@@ -21,7 +21,7 @@ export default function NotFound({}: NotFoundProps) {
                                 src="/playhive.png"
                                 width={300}
                                 height={300}
-                                alt="Threads logo"
+                                alt="PlayHive Logo"
                                 className="min-h-full min-w-full object-cover"
                             />
                         </div>
