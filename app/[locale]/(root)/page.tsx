@@ -116,6 +116,11 @@ export default async function Home({ params }: HomePageProps) {
 
     return (
         <>
+            <div className="border-b pb-4">
+                <div className="flex items-center space-x-4 px-6">
+                    <h1 className="text-2xl font-bold">{t("heading")}</h1>
+                </div>
+            </div>
             {posts.length === 0 ? (
                 <div className="text-muted-foreground mt-4 text-center leading-loose">
                     {t("empty")}

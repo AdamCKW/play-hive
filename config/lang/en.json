@@ -368,6 +368,7 @@
         },
         "community": {
             "main_feed": {
+                "heading": "Communities Feed",
                 "empty": "No posts yet."
             },
             "individual_feed": {
@@ -421,6 +422,8 @@
             "close": "Close"
         },
         "posts": {
+            "heading": "Home",
+            "discover_heading": "Discover New",
             "see_earlier_replies": "See earlier replies",
             "empty": "No posts yet.",
             "empty_replies": "No replies yet.",
@@ -474,6 +477,7 @@
             }
         },
         "news": {
+            "heading": "Gaming News",
             "read_news": "Read News",
             "no_more": "There are no more news."
         },

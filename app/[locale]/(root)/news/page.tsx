@@ -5,7 +5,7 @@ import axios from "axios";
 import { getTranslator } from "next-intl/server";
 import dynamic from "next/dynamic";
 import queryString from "query-string";
-// import NewsFeed from "@/components/news/news-feed";
+
 const NewsFeed = dynamic(() => import("@/components/news/news-feed"), {
     ssr: false,
     loading: () => (
@@ -28,7 +28,13 @@ export async function generateMetadata({
     };
 }
 
-export default async function NewsPage() {
+export default async function NewsPage({
+    params,
+}: {
+    params: { locale: string };
+}) {
+    const t = await getTranslator(params.locale, "root.news");
+
     const query = queryString.stringifyUrl({
         url: "https://www.gamespot.com/api/articles/",
         query: {
@@ -44,12 +50,11 @@ export default async function NewsPage() {
 
     if (!news) return null;
 
-    // console.log(news.data.results);
     return (
         <>
             <div className="border-b pb-4">
                 <div className="flex items-center space-x-4 px-6">
-                    <h1 className="text-2xl font-bold">Gaming News</h1>
+                    <h1 className="text-2xl font-bold">{t("heading")}</h1>
                 </div>
             </div>
             <div className="2xl:mx-4">

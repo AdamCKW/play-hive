@@ -368,6 +368,7 @@
         },
         "community": {
             "main_feed": {
+                "heading": "社区动态",
                 "empty": "还没有帖子。"
             },
             "individual_feed": {
@@ -421,6 +422,8 @@
             "close": "关闭"
         },
         "posts": {
+            "heading": "家",
+            "discover_heading": "发现新内容",
             "see_earlier_replies": "查看之前的回复",
             "empty": "还没有帖子。",
             "empty_replies": "还没有回复。",
@@ -474,6 +477,7 @@
             }
         },
         "news": {
+            "heading": "游戏新闻",
             "read_news": "阅读新闻",
             "no_more": "没有更多消息了。"
         },

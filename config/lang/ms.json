@@ -368,6 +368,7 @@
         },
         "community": {
             "main_feed": {
+                "heading": "Suapan Komuniti",
                 "empty": "Tiada siaran lagi."
             },
             "individual_feed": {
@@ -421,6 +422,8 @@
             "close": "tutup"
         },
         "posts": {
+            "heading": "Rumah",
+            "discover_heading": "Temui Baharu",
             "see_earlier_replies": "Lihat balasan terdahulu",
             "empty": "Tiada siaran lagi.",
             "empty_replies": "Tiada balasan lagi.",
@@ -474,6 +477,7 @@
             }
         },
         "news": {
+            "heading": "Berita Gaming",
             "read_news": "Baca Berita",
             "no_more": "Tiada berita lagi."
         },

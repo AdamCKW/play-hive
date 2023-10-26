@@ -368,6 +368,7 @@
         },
         "community": {
             "main_feed": {
+                "heading": "コミュニティフィード",
                 "empty": "まだ投稿はありません。"
             },
             "individual_feed": {
@@ -421,6 +422,8 @@
             "close": "近い"
         },
         "posts": {
+            "heading": "家",
+            "discover_heading": "新しい発見",
             "see_earlier_replies": "以前の返信を参照",
             "empty": "まだ投稿はありません。",
             "empty_replies": "まだ返信はありません。",
@@ -474,6 +477,7 @@
             }
         },
         "news": {
+            "heading": "ゲームニュース",
             "read_news": "ニュースを読む",
             "no_more": "これ以上のニュースはありません。"
         },
