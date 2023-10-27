@@ -9,6 +9,9 @@ const publicPages = [
     "/verify",
     "/forgot-password",
     "/forgot-password/(.*)",
+    "/cookies",
+    "/privacy",
+    "/terms",
 ];
 
 const intlMiddleware = createIntlMiddleware({
