@@ -61,7 +61,6 @@ export const linksConfig: LinkConfig = {
     terms: {
         title: "terms",
         href: "/terms",
-        disabled: true,
     },
     replies: {
         title: "replies",
@@ -76,7 +75,6 @@ export const linksConfig: LinkConfig = {
     privacy: {
         title: "privacy",
         href: "/privacy",
-        disabled: true,
     },
     discover: {
         title: "discover",
@@ -130,7 +128,6 @@ export const linksConfig: LinkConfig = {
     cookie: {
         title: "cookie",
         href: "/cookie",
-        disabled: true,
     },
     accessibility: {
         title: "accessibility",

@@ -79,6 +79,14 @@ Play-Hive is a project that utilizes various libraries and tools such as Next.js
 │   │   │       │   └── page.tsx
 │   │   │       ├── layout.tsx
 │   │   │       └── page.tsx
+│   │   ├── (policy)
+│   │   │   ├── cookies
+│   │   │   │   └── page.tsx
+│   │   │   ├── privacy
+│   │   │   │   └── page.tsx
+│   │   │   ├── terms
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
 │   │   ├── (root)
 │   │   │   ├── [username]
 │   │   │   │   ├── (profile)
