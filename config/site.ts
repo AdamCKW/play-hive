@@ -127,7 +127,7 @@ export const linksConfig: LinkConfig = {
     },
     cookie: {
         title: "cookie",
-        href: "/cookie",
+        href: "/cookies",
     },
     accessibility: {
         title: "accessibility",
