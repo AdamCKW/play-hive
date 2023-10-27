@@ -107,14 +107,14 @@ export default async function ProfilePageLayout({
 
                         <div className="flex gap-2 py-4">
                             <div className="text-muted-foreground">
-                                <span className="font-bold">
+                                <span className="text-foreground">
                                     {nFormatter(getUser.following.length, 1)}
                                 </span>{" "}
                                 {t("following")}
                             </div>
 
                             <div className="text-muted-foreground">
-                                <span className="font-bold">
+                                <span className="text-foreground">
                                     {nFormatter(getUser.followedBy.length, 1)}
                                 </span>{" "}
                                 {getUser.followedBy.length === 1
