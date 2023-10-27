@@ -36,6 +36,7 @@ export async function GET(
                 deleted: false,
             },
             include: {
+                community: true,
                 author: {
                     select: {
                         id: true,
