@@ -65,9 +65,8 @@ export function NewPasswordForm({
         setIsLoading(true);
 
         try {
-            console.log(userId);
             axios
-                .patch(`/api/auth/reset-password/${userId}`, values)
+                .patch(`/api/auth/forgot-password/${userId}`, values)
                 .then((response) => {
                     React.startTransition(() => {
                         router.push(linksConfig.signIn.href);
@@ -75,7 +74,7 @@ export function NewPasswordForm({
                     setIsLoading(false);
                     toast({
                         title: tToast("reset.success.title"),
-                        description: tToast("reset.updated"),
+                        description: tToast("reset.success.updated"),
                     });
                 })
                 .catch((error) => {

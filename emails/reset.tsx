@@ -41,7 +41,7 @@ export const ResetPassword = ({ resetUrlLink }: ResetPasswordProps) => (
                         </Link>
                     </Text>
                     <Text style={paragraph}>
-                        This link will only be valid for the next 5 minutes. If
+                        This link will only be valid for 1 hour. If
                         you didn&apos;t request this, please ignore this email.
                     </Text>
                 </Section>

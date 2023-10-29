@@ -31,9 +31,9 @@ export async function POST(req: NextRequest) {
             });
         }
 
-        // Expire in 5 minutes
+        // Expire in 1 hour
         const date = new Date();
-        const expirationTimestamp = date.setMinutes(date.getMinutes() + 5);
+        const expirationTimestamp = date.setHours(date.getHours() + 1);
 
         const resetToken = generateRandomToken();
 
