@@ -315,7 +315,7 @@
                 "password_refine": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character (no space)"
             },
             "form": {
-                "email": {
+                "password": {
                     "label": "New Password",
                     "placeholder": "Enter your new password"
                 },

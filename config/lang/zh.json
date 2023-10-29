@@ -315,7 +315,7 @@
                 "password_refine": "密码必须至少包含1个大写字母、1个小写字母、1个数字和1个特殊字符（无空格）"
             },
             "form": {
-                "email": {
+                "password": {
                     "label": "新密码",
                     "placeholder": "输入您的新密码"
                 },

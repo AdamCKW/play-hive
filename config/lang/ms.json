@@ -315,7 +315,7 @@
                 "password_refine": "Kata laluan mesti mengandungi sekurang-kurangnya satu huruf besar, satu huruf kecil, satu nombor dan satu aksara khas (tiada ruang)"
             },
             "form": {
-                "email": {
+                "password": {
                     "label": "Kata laluan baharu",
                     "placeholder": "Masukkan kata laluan baharu anda"
                 },
