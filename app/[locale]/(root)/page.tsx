@@ -121,7 +121,7 @@ export default async function Home({ params }: HomePageProps) {
                     <h1 className="text-2xl font-bold">{t("heading")}</h1>
                 </div>
             </div>
-            {posts.length === 0 ? (
+            {/* {posts.length === 0 ? (
                 <div className="text-muted-foreground mt-4 text-center leading-loose">
                     {t("empty")}
                 </div>
@@ -129,7 +129,11 @@ export default async function Home({ params }: HomePageProps) {
                 <div className="2xl:mx-4">
                     <MainFeed initialPosts={posts} />
                 </div>
-            )}
+            )} */}
+
+            <div className="2xl:mx-4">
+                <MainFeed initialPosts={posts} />
+            </div>
         </>
     );
 }
