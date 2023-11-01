@@ -6,6 +6,7 @@ import { getAuthSession } from "@/lib/auth";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config/display-config";
 import { pusherServer } from "@/lib/pusher";
 import { revalidatePath } from "next/cache";
+import { cleanUp } from "@/lib/utils";
 
 export async function GET(req: NextRequest) {
     try {
@@ -169,7 +170,7 @@ export async function POST(req: NextRequest) {
 
         const message = await db.directMessage.create({
             data: {
-                content,
+                content: cleanUp(content),
                 fileUrl,
                 conversationId: conversationId as string,
                 userId: user.id,
