@@ -2,8 +2,11 @@
 
 import { FileIcon, X } from "lucide-react";
 import Image from "next/image";
-
+import NSFWFilter from "@/lib/nsfw";
 import { UploadDropzone } from "@/lib/uploadthing";
+import axios from "axios";
+import { toast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 
 interface FileUploadProps {
     onChange: (url?: string) => void;
@@ -13,6 +16,7 @@ interface FileUploadProps {
 
 export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
     const fileType = value?.split(".").pop();
+    const tToast = useTranslations("toast");
 
     if (value && fileType !== "pdf") {
         if (endpoint === "messageFile" || endpoint === "userBanner") {
@@ -81,8 +85,22 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
     return (
         <UploadDropzone
             endpoint={endpoint}
-            onClientUploadComplete={(res) => {
-                onChange(res?.[0].url);
+            onClientUploadComplete={async (res) => {
+                const { data } = await axios.get(res?.[0].url!, {
+                    responseType: "blob",
+                });
+
+                const isSafe = await NSFWFilter.isSafe(data);
+
+                if (isSafe) {
+                    onChange(res?.[0].url);
+                } else {
+                    toast({
+                        title: tToast("upload.nsfw.title"),
+                        description: tToast("upload.nsfw.description"),
+                        variant: "destructive",
+                    });
+                }
             }}
             onUploadError={(error: Error) => {
                 console.log(error);

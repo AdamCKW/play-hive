@@ -31,7 +31,7 @@ import { UploadDropzone } from "@/lib/uploadthing";
 import { AspectRatio } from "../ui/aspect-ratio";
 import Image from "next/image";
 import { X } from "lucide-react";
-
+import NSFWFilter from "@/lib/nsfw";
 import { useTranslations } from "next-intl";
 
 interface EditLimitedProps {
@@ -139,8 +139,30 @@ export default function EditLimited({ user }: EditLimitedProps) {
                                     <UploadDropzone
                                         className="h-52"
                                         endpoint="userAvatar"
-                                        onClientUploadComplete={(res) => {
-                                            field.onChange(res?.[0].url);
+                                        onClientUploadComplete={async (res) => {
+                                            const { data } = await axios.get(
+                                                res?.[0].url!,
+                                                {
+                                                    responseType: "blob",
+                                                },
+                                            );
+
+                                            const isSafe =
+                                                await NSFWFilter.isSafe(data);
+
+                                            if (isSafe) {
+                                                field.onChange(res?.[0].url);
+                                            } else {
+                                                toast({
+                                                    title: tToast(
+                                                        "upload.nsfw.title",
+                                                    ),
+                                                    description: tToast(
+                                                        "upload.nsfw.description",
+                                                    ),
+                                                    variant: "destructive",
+                                                });
+                                            }
                                         }}
                                         onUploadError={(error: Error) => {
                                             toast({

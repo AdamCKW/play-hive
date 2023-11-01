@@ -13,7 +13,7 @@ import {
 
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-// import { CreateCommunityPayload } from "@/lib/validators/community";
+import NSFWFilter from "@/lib/nsfw";
 import { set } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { Input } from "../ui/input";
@@ -162,12 +162,39 @@ export default function CreateCommunityModal({}: CommunityModalProps) {
                                             <UploadDropzone
                                                 className="h-52"
                                                 endpoint="communityImage"
-                                                onClientUploadComplete={(
+                                                onClientUploadComplete={async (
                                                     res,
                                                 ) => {
-                                                    field.onChange(
-                                                        res?.[0].url,
-                                                    );
+                                                    const { data } =
+                                                        await axios.get(
+                                                            res?.[0].url!,
+                                                            {
+                                                                responseType:
+                                                                    "blob",
+                                                            },
+                                                        );
+
+                                                    const isSafe =
+                                                        await NSFWFilter.isSafe(
+                                                            data,
+                                                        );
+
+                                                    if (isSafe) {
+                                                        field.onChange(
+                                                            res?.[0].url,
+                                                        );
+                                                    } else {
+                                                        toast({
+                                                            title: tToast(
+                                                                "upload.nsfw.title",
+                                                            ),
+                                                            description: tToast(
+                                                                "upload.nsfw.description",
+                                                            ),
+                                                            variant:
+                                                                "destructive",
+                                                        });
+                                                    }
                                                 }}
                                                 onUploadError={(
                                                     error: Error,
@@ -177,7 +204,7 @@ export default function CreateCommunityModal({}: CommunityModalProps) {
                                                             "upload.error_upload.title",
                                                         ),
                                                         description: tToast(
-                                                            "upload.error_upload.title",
+                                                            "upload.error_upload.description",
                                                         ),
                                                         variant: "destructive",
                                                     });

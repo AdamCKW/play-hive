@@ -35,7 +35,8 @@ import { TFile } from "@/types";
 import { useTranslations } from "next-intl";
 import { updateInfiniteQueryReply } from "@/hooks/use-update-infinite-post-query";
 import { updateQueryReply } from "@/hooks/use-update-post-query";
-import NSFWFilter from "nsfw-filter";
+// import NSFWFilter from "nsfw-filter";
+import NSFWFilter from "@/lib/nsfw";
 
 interface CreateCommentProps {
     itemData: IPost;

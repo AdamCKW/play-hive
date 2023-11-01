@@ -37,6 +37,7 @@ import Image from "next/image";
 import { FileUpload } from "../file-upload";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { X } from "lucide-react";
+import NSFWFilter from "@/lib/nsfw";
 
 interface CommunityModalProps {}
 
@@ -169,12 +170,39 @@ export default function EditCommunityModal({}: CommunityModalProps) {
                                             <UploadDropzone
                                                 className="h-52"
                                                 endpoint="communityImage"
-                                                onClientUploadComplete={(
+                                                onClientUploadComplete={async (
                                                     res,
                                                 ) => {
-                                                    field.onChange(
-                                                        res?.[0].url,
-                                                    );
+                                                    const { data } =
+                                                        await axios.get(
+                                                            res?.[0].url!,
+                                                            {
+                                                                responseType:
+                                                                    "blob",
+                                                            },
+                                                        );
+
+                                                    const isSafe =
+                                                        await NSFWFilter.isSafe(
+                                                            data,
+                                                        );
+
+                                                    if (isSafe) {
+                                                        field.onChange(
+                                                            res?.[0].url,
+                                                        );
+                                                    } else {
+                                                        toast({
+                                                            title: tToast(
+                                                                "upload.nsfw.title",
+                                                            ),
+                                                            description: tToast(
+                                                                "upload.nsfw.description",
+                                                            ),
+                                                            variant:
+                                                                "destructive",
+                                                        });
+                                                    }
                                                 }}
                                                 onUploadError={(
                                                     error: Error,

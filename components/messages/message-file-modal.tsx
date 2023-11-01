@@ -16,7 +16,6 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
-import { UploadDropzone } from "@/lib/uploadthing";
 import { FileUpload } from "../file-upload";
 import { useTranslations } from "next-intl";
 

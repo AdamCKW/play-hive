@@ -1,7 +1,7 @@
 "use client";
 
 const CreateCommunityModal = dynamic(
-    () => import("@/components/community/community-modal"),
+    () => import("@/components/community/create-community-modal"),
     { ssr: false },
 );
 const EditCommunityModal = dynamic(
