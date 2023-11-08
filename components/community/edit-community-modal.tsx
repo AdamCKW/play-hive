@@ -82,6 +82,7 @@ export default function EditCommunityModal({}: CommunityModalProps) {
                 .patch(`/api/community/${data.community?.id}`, values)
                 .then((res) => {
                     form.reset();
+                    setIsLoading(false);
                     onClose();
                     startTransition(() => {
                         router.push(`/c/${values.name}`);
