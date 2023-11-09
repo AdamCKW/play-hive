@@ -28,13 +28,13 @@ interface RepliesPageLayoutProps {
 }
 
 export async function generateMetadata({
-    params: { locale },
-}: ExtendedMetadata) {
+    params: { locale, username },
+}: RepliesPageLayoutProps) {
     const t = await getTranslator(locale, "metadata.replies");
 
     return {
-        title: t("title"),
-        description: t("description"),
+        title: t("title", { user: username }),
+        description: t("description", { user: username }),
     };
 }
 

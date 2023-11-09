@@ -29,12 +29,12 @@
             "description": "Edit your profile"
         },
         "profile": {
-            "title": "Profile",
-            "description": "View user profile"
+            "title": "{user}'s profile",
+            "description": "View {user}'s profile"
         },
         "replies": {
-            "title": "Replies",
-            "description": "View user replies"
+            "title": "{user}'s replies",
+            "description": "View {user}'s replies"
         },
         "communities": {
             "title": "Communities Feed",

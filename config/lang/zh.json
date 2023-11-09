@@ -29,12 +29,12 @@
             "description": "编辑您的个人资料"
         },
         "profile": {
-            "title": "轮廓",
-            "description": "查看用户个人资料"
+            "title": "{user}的个人资料",
+            "description": "查看{user}的个人资料"
         },
         "replies": {
-            "title": "回复",
-            "description": "查看用户回复"
+            "title": "{user}的回复",
+            "description": "查看{user}的回复"
         },
         "communities": {
             "title": "社区动态",

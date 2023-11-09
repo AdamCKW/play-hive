@@ -29,12 +29,12 @@
             "description": "プロフィールを編集する"
         },
         "profile": {
-            "title": "プロフィール",
-            "description": "ユーザープロフィールを表示"
+            "title": "{ユーザー}のプロフィール",
+            "description": "{user} のプロフィールを表示"
         },
         "replies": {
-            "title": "返信",
-            "description": "ユーザーの返信を表示する"
+            "title": "{user} の返信",
+            "description": "{user} の返信を見る"
         },
         "communities": {
             "title": "コミュニティフィード",

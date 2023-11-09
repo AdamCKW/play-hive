@@ -30,13 +30,13 @@ interface ProfilePageLayoutProps {
 }
 
 export async function generateMetadata({
-    params: { locale },
-}: ExtendedMetadata) {
+    params: { locale, username },
+}: ProfilePageLayoutProps) {
     const t = await getTranslator(locale, "metadata.profile");
 
     return {
-        title: t("title"),
-        description: t("description"),
+        title: t("title", { user: username }),
+        description: t("description", { user: username }),
     };
 }
 
