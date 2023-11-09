@@ -1,4 +1,5 @@
 import { PostEditor } from "@/components/community/create/post-editor";
+import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getTranslator } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -11,6 +12,8 @@ interface CreatePostProps {
 }
 
 export default async function CreatePost({ params }: CreatePostProps) {
+    const session = await getAuthSession();
+
     const t = await getTranslator(
         params.locale,
         "communication.community.create_page",
@@ -23,6 +26,23 @@ export default async function CreatePost({ params }: CreatePostProps) {
     });
 
     if (!community) notFound();
+
+    const subscription = !session?.user
+        ? undefined
+        : await db.subscription.findFirst({
+              where: {
+                  community: {
+                      name: params.name,
+                  },
+                  user: {
+                      id: session.user.id,
+                  },
+              },
+          });
+
+    const isSubscribed = !!subscription;
+
+    if (!isSubscribed) notFound();
 
     return (
         <div className="flex flex-col items-start gap-6">
