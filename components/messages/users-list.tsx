@@ -27,7 +27,7 @@ export default function UsersList({ users }: UsersListProps) {
     return (
         <Command className="max-h-[calc(100%-7rem)] md:max-h-[calc(100%-3.5rem)]">
             <CommandInput placeholder={t("label")} />
-            <CommandList className="max-h-none">
+            <CommandList className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 max-h-none">
                 <CommandEmpty>{t("no_results")}</CommandEmpty>
                 <CommandGroup>
                     {users?.map((user) => (
