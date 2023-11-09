@@ -11,6 +11,24 @@ interface CreatePostProps {
     };
 }
 
+interface DynamicMetadata {
+    params: {
+        locale: string;
+        name: string;
+    };
+}
+
+export async function generateMetadata({
+    params: { locale, name },
+}: DynamicMetadata) {
+    const t = await getTranslator(locale, "metadata.community");
+
+    return {
+        title: t("title", { name }),
+        description: t("description", { name }),
+    };
+}
+
 export default async function CreatePost({ params }: CreatePostProps) {
     const session = await getAuthSession();
 
