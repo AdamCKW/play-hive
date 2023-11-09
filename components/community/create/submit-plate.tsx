@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { toast } from "../../../hooks/use-toast";
-import React, { startTransition } from "react";
+import React, { startTransition, useEffect } from "react";
 import { ToolbarButton } from "@/components/plate-ui/toolbar";
 import { useTranslations } from "next-intl";
 import { PostCreationRequest } from "@/lib/validators/create-community-post";
@@ -27,8 +27,20 @@ export default function SubmitPlate({ output }: SubmitPlateProps) {
     const router = useRouter();
     const pathname = usePathname();
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
     const tToast = useTranslations("toast");
     const queryClient = useQueryClient();
+
+    const isEditorEmpty = (value: Value) => {
+        return value.every((node) =>
+            node.children.every((child) => child.text === ""),
+        );
+    };
+
+    useEffect(() => {
+        const isDisabled = isEditorEmpty(content);
+        setIsDisabled(isDisabled);
+    }, [content]);
 
     const handleSubmit = async () => {
         setIsLoading(true);
@@ -75,7 +87,7 @@ export default function SubmitPlate({ output }: SubmitPlateProps) {
 
     return (
         <ToolbarButton
-            disabled={isLoading}
+            disabled={isDisabled || isLoading}
             className="w-full"
             onClick={() => handleSubmit()}
         >

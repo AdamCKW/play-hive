@@ -20,23 +20,8 @@ interface EditorProps {
 
 export function PostEditor({ communityId }: EditorProps) {
     const [isMounted, setIsMounted] = useState<boolean>(false);
-    // const [currentValue, setCurrentValue] = useDebouncedState<Value>([], 200);
     const [currentValue, setCurrentValue] = useState<Value>([]);
     const containerRef = useRef(null);
-
-    useEffect(() => {
-        // This function will run when the component mounts
-        setIsMounted(true);
-
-        // This is the cleanup function that will run when the component unmounts
-        return () => {
-            setIsMounted(false);
-        };
-    }, []);
-
-    if (!isMounted) {
-        return null;
-    }
 
     return (
         <DndProvider backend={HTML5Backend}>
