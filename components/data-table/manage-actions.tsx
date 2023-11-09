@@ -64,11 +64,8 @@ export default function ManageActions({ user }: ManageActionsProps) {
                                     action: "promote_admin",
                                 })
                                 .then((response) => {
-                                    startTransition(() => {
-                                        router.refresh();
-                                        queryClient.invalidateQueries({
-                                            queryKey: ["manage-data"],
-                                        });
+                                    queryClient.invalidateQueries({
+                                        queryKey: ["manage-data"],
                                     });
                                     toast({
                                         title: tToast(
@@ -108,11 +105,8 @@ export default function ManageActions({ user }: ManageActionsProps) {
                                     action: "promote_moderator",
                                 })
                                 .then((response) => {
-                                    startTransition(() => {
-                                        router.refresh();
-                                        queryClient.invalidateQueries({
-                                            queryKey: ["manage-data"],
-                                        });
+                                    queryClient.invalidateQueries({
+                                        queryKey: ["manage-data"],
                                     });
                                     toast({
                                         title: tToast(
@@ -158,11 +152,8 @@ export default function ManageActions({ user }: ManageActionsProps) {
                                     action: "promote_user",
                                 })
                                 .then((response) => {
-                                    startTransition(() => {
-                                        router.refresh();
-                                        queryClient.invalidateQueries({
-                                            queryKey: ["manage-data"],
-                                        });
+                                    queryClient.invalidateQueries({
+                                        queryKey: ["manage-data"],
                                     });
                                     toast({
                                         title: tToast(
@@ -205,11 +196,8 @@ export default function ManageActions({ user }: ManageActionsProps) {
                                     action: "ban_user",
                                 })
                                 .then((response) => {
-                                    startTransition(() => {
-                                        router.refresh();
-                                        queryClient.invalidateQueries({
-                                            queryKey: ["manage-data"],
-                                        });
+                                    queryClient.invalidateQueries({
+                                        queryKey: ["manage-data"],
                                     });
                                     toast({
                                         title: tToast(

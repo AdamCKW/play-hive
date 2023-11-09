@@ -62,12 +62,8 @@ export default function ReportActions({ post }: ReportActionsProps) {
                                     action: "allow",
                                 })
                                 .then((response) => {
-                                    startTransition(() => {
-                                        router.refresh();
-
-                                        queryClient.invalidateQueries({
-                                            queryKey: ["report-data"],
-                                        });
+                                    queryClient.invalidateQueries({
+                                        queryKey: ["report-data"],
                                     });
 
                                     toast({
@@ -109,11 +105,8 @@ export default function ReportActions({ post }: ReportActionsProps) {
                                     action: "delete",
                                 })
                                 .then((response) => {
-                                    startTransition(() => {
-                                        router.refresh();
-                                        queryClient.invalidateQueries({
-                                            queryKey: ["report-data"],
-                                        });
+                                    queryClient.invalidateQueries({
+                                        queryKey: ["report-data"],
                                     });
                                     toast({
                                         title: tToast(
