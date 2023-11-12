@@ -104,17 +104,23 @@ export default function RepliesFeed({
                 </Fragment>
             ))}
 
-            <div className="flex w-full justify-center py-4">
-                {!isFetchingNextPage && noMore && (
-                    <div className="text-muted-foreground mt-4 text-center leading-loose">
-                        {t("no_more_replies")}
-                    </div>
-                )}
+            {posts.length === 0 ? (
+                <div className="text-muted-foreground mt-4 text-center leading-loose">
+                    {t("empty_replies")}
+                </div>
+            ) : (
+                <div className="flex w-full justify-center py-4">
+                    {!isFetchingNextPage && noMore && (
+                        <div className="text-muted-foreground mt-4 text-center leading-loose">
+                            {t("no_more_replies")}
+                        </div>
+                    )}
 
-                {isFetchingNextPage && (
-                    <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
-                )}
-            </div>
+                    {isFetchingNextPage && (
+                        <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
+                    )}
+                </div>
+            )}
         </>
     );
 }

@@ -46,9 +46,11 @@ export default async function NewsPage({
         },
     });
 
-    const news = await axios.get(query);
+    // const news = await axios.get(query);
 
-    if (!news) return null;
+    const news = await fetch(query, {
+        next: { revalidate: 300 },
+    }).then((res) => res.json());
 
     return (
         <>
@@ -57,9 +59,11 @@ export default async function NewsPage({
                     <h1 className="text-2xl font-bold">{t("heading")}</h1>
                 </div>
             </div>
-            <div className="2xl:mx-4">
-                <NewsFeed initialData={news.data.results} />
-            </div>
+            {!news.results && (
+                <div className="2xl:mx-4">
+                    <NewsFeed initialData={news.results} />
+                </div>
+            )}
         </>
     );
 }

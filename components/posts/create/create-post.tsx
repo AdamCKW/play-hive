@@ -217,10 +217,9 @@ export default function CreatePost({ setOpen, user }: CreatePostProps) {
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className="flex space-x-2">
                     <div className="flex flex-col items-center justify-start">
-                        <div className="h-12 w-12 overflow-hidden rounded-full">
-                            <UserAvatar user={user} className="h-12 w-12" />
-                        </div>
-                        <div className="mt-2 w-0.5 grow rounded-full bg-neutral-800" />
+                        <UserAvatar user={user} />
+
+                        <div className="bg-primary/40 mt-2 w-0.5 grow rounded-full" />
                     </div>
                     <div className="w-full">
                         <div className="text-left font-semibold">

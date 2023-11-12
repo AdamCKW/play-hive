@@ -161,15 +161,7 @@ export default async function RepliesPage({ params }: RepliesPageLayoutProps) {
                 </button>
             </div>
 
-            {replies.length === 0 ? (
-                <div className="text-muted-foreground mt-4 text-center leading-loose">
-                    {tPost("empty_replies")}
-                </div>
-            ) : (
-                <div className="2xl:mx-4">
-                    <RepliesFeed initialReplies={replies} userId={getUser.id} />
-                </div>
-            )}
+            <RepliesFeed initialReplies={replies} userId={getUser.id} />
         </>
     );
 }

@@ -122,15 +122,9 @@ export default async function ProfilePage({ params }: ProfilePageLayoutProps) {
                 </Link>
             </div>
 
-            {posts.length === 0 ? (
-                <div className="text-muted-foreground mt-4 text-center leading-loose">
-                    {tPost("empty")}
-                </div>
-            ) : (
-                <div className="2xl:mx-4">
-                    <ProfileFeed initialPosts={posts} userId={getUser.id} />
-                </div>
-            )}
+            <div className="2xl:mx-4">
+                <ProfileFeed initialPosts={posts} userId={getUser.id} />
+            </div>
         </>
     );
 }

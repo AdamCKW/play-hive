@@ -64,17 +64,23 @@ export default function DiscoverFeed({
                 }
             })}
 
-            <div className="flex w-full justify-center py-4">
-                {!isFetchingNextPage && noMore && (
-                    <div className="text-muted-foreground mt-4 text-center leading-loose">
-                        {t("no_more")}
-                    </div>
-                )}
+            {posts.length === 0 ? (
+                <div className="text-muted-foreground mt-4 text-center leading-loose">
+                    {t("empty")}
+                </div>
+            ) : (
+                <div className="flex w-full justify-center py-4">
+                    {!isFetchingNextPage && noMore && (
+                        <div className="text-muted-foreground mt-4 text-center leading-loose">
+                            {t("no_more")}
+                        </div>
+                    )}
 
-                {isFetchingNextPage && (
-                    <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
-                )}
-            </div>
+                    {isFetchingNextPage && (
+                        <Loader2 className="text-muted-foreground h-4 w-4 animate-spin" />
+                    )}
+                </div>
+            )}
         </>
     );
 }

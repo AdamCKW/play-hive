@@ -44,7 +44,6 @@ export default function NewsCard({ data }: NewsCardProps) {
                     src={data.image.square_small}
                     width={500}
                     height={500}
-                    loading="lazy"
                     placeholder="blur"
                     blurDataURL={rgbDataURL(220, 220, 220)}
                     className="aspect-square h-full w-full object-cover"

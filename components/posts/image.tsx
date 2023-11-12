@@ -39,7 +39,6 @@ export default function ImageComponent({ images }: ImageComponentProps) {
                         <Image
                             alt={tImage("alt")}
                             fill
-                            loading="lazy"
                             placeholder="blur"
                             blurDataURL={rgbDataURL(220, 220, 220)}
                             src={image.url}

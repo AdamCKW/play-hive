@@ -101,18 +101,10 @@ export default async function DiscoverPage({
                     </h1>
                 </div>
             </div>
-            {posts.length === 0 ? (
-                <div className="text-muted-foreground mt-4 text-center leading-loose">
-                    {t("empty")}
-                </div>
-            ) : (
-                <div className="2xl:mx-4">
-                    <DiscoverFeed
-                        userId={session?.user.id!}
-                        initialPosts={posts}
-                    />
-                </div>
-            )}
+
+            <div className="2xl:mx-4">
+                <DiscoverFeed userId={session?.user.id!} initialPosts={posts} />
+            </div>
         </>
     );
 }
