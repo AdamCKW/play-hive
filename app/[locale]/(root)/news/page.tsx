@@ -59,7 +59,7 @@ export default async function NewsPage({
                     <h1 className="text-2xl font-bold">{t("heading")}</h1>
                 </div>
             </div>
-            {!news.results && (
+            {!news.results || (
                 <div className="2xl:mx-4">
                     <NewsFeed initialData={news.results} />
                 </div>
