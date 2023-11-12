@@ -4,7 +4,7 @@ const withNextIntl = require("next-intl/plugin")("./i18n.ts");
 
 const nextConfig = withNextIntl({
     images: {
-        unoptimized: true,
+        // unoptimized: true,
         remotePatterns: [
             {
                 protocol: "https",
