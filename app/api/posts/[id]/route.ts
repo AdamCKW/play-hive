@@ -95,7 +95,7 @@ export async function DELETE(
 
         const post = await db.post.findUnique({
             where: { id },
-            select: { authorId: true },
+            select: { authorId: true, images: true },
         });
 
         if (!post) {
@@ -105,6 +105,24 @@ export async function DELETE(
         if (post.authorId !== session.user.id) {
             return new NextResponse("401.unauthorized", { status: 401 });
         }
+
+        // await db.post.update({
+        //     where: { id },
+        //     data: {
+        //         text: "deleted",
+        //         images: { set: [] },
+        //         content: { set: null },
+        //         deleted: true,
+        //     },
+        // });
+
+        await db.images.deleteMany({
+            where: {
+                id: {
+                    in: post.images.map((image) => image.id),
+                },
+            },
+        });
 
         await db.post.update({
             where: { id },
