@@ -47,48 +47,67 @@ export default function MoreMenu({
     const handleDelete = async () => {
         setIsLoading(true);
         try {
-            await axios.delete(`/api/posts/${id}`).catch((error) => {
-                setIsLoading(false);
-                toast({
-                    title: tToast("500.heading"),
-                    description: error.response.data,
-                    variant: "destructive",
+            await axios
+                .delete(`/api/posts/${id}`)
+                .then((res) => {
+                    queryClient.invalidateQueries();
+                    if (pathname?.includes(`/p/${id}`)) {
+                        startTransition(() => {
+                            router.push("/");
+                        });
+                    }
+                    setIsLoading(false);
+                    toast({
+                        title: tToast("post.success.delete.title"),
+                        description: tToast("post.success.delete.description"),
+                    });
+                })
+                .catch((error) => {
+                    setIsLoading(false);
+                    toast({
+                        title: tToast("500.heading"),
+                        description: tToast(error.response.data),
+                        variant: "destructive",
+                    });
                 });
-            });
-
-            queryClient.invalidateQueries();
-            if (pathname?.includes(`/p/${id}`)) {
-                startTransition(() => {
-                    router.push("/");
-                });
-            }
+        } catch (error) {
             setIsLoading(false);
             toast({
-                title: tToast("post.success.delete.title"),
-                description: tToast("post.success.delete.description"),
+                title: tToast("500.heading"),
+                description: tToast("500.subheading"),
+                variant: "destructive",
             });
-        } catch (error) {}
+        }
     };
 
     const handleReport = async () => {
-        await axios
-            .post(`/api/posts/${id}/report`)
-            .then((response) => {
-                toast({
-                    title: tToast("post.success.report.title"),
-                    description: tToast("post.success.report.description"),
+        try {
+            await axios
+                .post(`/api/posts/${id}/report`)
+                .then((response) => {
+                    toast({
+                        title: tToast("post.success.report.title"),
+                        description: tToast("post.success.report.description"),
+                    });
+                    setIsLoading(false);
+                    setOpen(false);
+                })
+                .catch((error) => {
+                    setIsLoading(false);
+                    toast({
+                        title: tToast("500.heading"),
+                        description: tToast(error.response.data),
+                        variant: "destructive",
+                    });
                 });
-                setIsLoading(false);
-                setOpen(false);
-            })
-            .catch((error) => {
-                setIsLoading(false);
-                toast({
-                    title: tToast("500.heading"),
-                    description: error.response.data,
-                    variant: "destructive",
-                });
+        } catch (error) {
+            setIsLoading(false);
+            toast({
+                title: tToast("500.heading"),
+                description: tToast("500.subheading"),
+                variant: "destructive",
             });
+        }
     };
 
     return (
