@@ -33,7 +33,7 @@ export const LeftBarItems: NavItem[] = [
     { ...messages },
 ];
 
-export const RightBarItems: NavItem[] = [
+export const FooterItems: NavItem[] = [
     { ...terms },
     { ...privacy },
     { ...cookie },
