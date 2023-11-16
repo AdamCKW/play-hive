@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { LeftItems } from "@/components/layout/left-items";
 
 import { CreatePostButton } from "@/components/posts/create/button-client";
-import { RightBarItems } from "@/config/navigation";
+import { FooterItems } from "@/config/navigation";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { useTranslations } from "next-intl";
@@ -27,7 +27,7 @@ function LeftbarContent({ className, user }: LeftbarContentProps) {
     return (
         <section
             className={cn(
-                "sticky left-0 top-0 z-20 flex h-screen flex-col justify-between overflow-auto border-r pb-5 pt-28 max-md:hidden",
+                "sticky left-0 top-0 z-20 hidden h-screen flex-col justify-between border-r pb-5 pt-28 md:flex",
                 className,
             )}
         >
@@ -37,7 +37,7 @@ function LeftbarContent({ className, user }: LeftbarContentProps) {
                 {user && <CreatePostButton user={user} />}
 
                 <footer className="space-x-2 px-8">
-                    {RightBarItems.map((item, index) => (
+                    {FooterItems.map((item, index) => (
                         <Link
                             key={`${item.title}-${index}`}
                             className={cn(
