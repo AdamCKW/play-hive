@@ -632,6 +632,7 @@
             "failed": {
                 "title": "出了些问题",
                 "email_not_exist": "电子邮件不存在。",
+                "account_exist": "请使用其他提供商登录。",
                 "params_empty": "参数不能为空。",
                 "user_not_found": "未找到用户。",
                 "invalid_token": "令牌无效。"

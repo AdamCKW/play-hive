@@ -632,6 +632,7 @@
             "failed": {
                 "title": "Something went wrong",
                 "email_not_exist": "Email does not exist. Please check your email.",
+                "account_exist": "Please sign in using other providers.",
                 "params_empty": "Params cannot be empty. Please contact support.",
                 "user_not_found": "User not found.",
                 "invalid_token": "Invalid token. Please try again later."

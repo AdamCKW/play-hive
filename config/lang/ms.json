@@ -632,6 +632,7 @@
             "failed": {
                 "title": "Sesuatu telah berlaku",
                 "email_not_exist": "E-mel tidak wujud. ",
+                "account_exist": "Sila log masuk menggunakan penyedia lain.",
                 "params_empty": "Params tidak boleh kosong. ",
                 "user_not_found": "Pengguna tidak dijumpai.",
                 "invalid_token": "Token tidak sah. "

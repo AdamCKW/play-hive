@@ -633,6 +633,7 @@
                 "title": "何か問題が発生しました",
                 "email_not_exist": "電子メールが存在しません。",
                 "params_empty": "パラメータを空にすることはできません。",
+                "account_exist": "他のプロバイダーを使用してサインインしてください。",
                 "user_not_found": "ユーザーが見つかりません。",
                 "invalid_token": "無効なトークン。"
             }
