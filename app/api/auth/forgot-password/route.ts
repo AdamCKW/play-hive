@@ -31,6 +31,16 @@ export async function POST(req: NextRequest) {
             });
         }
 
+        const account = await db.account.findFirst({
+            where: { userId: user.id },
+        });
+
+        if (account) {
+            return new NextResponse("reset.failed.account_exist", {
+                status: 400,
+            });
+        }
+
         // Expire in 1 hour
         const date = new Date();
         const expirationTimestamp = date.setHours(date.getHours() + 1);
