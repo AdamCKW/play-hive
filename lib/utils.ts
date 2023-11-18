@@ -3,6 +3,8 @@ import { formatDistanceToNowStrict, format } from "date-fns";
 import { twMerge } from "tailwind-merge";
 import locale from "date-fns/locale/en-US";
 import { randomBytes } from "crypto";
+import BadWordsNext from "bad-words-next";
+import EnglishFilter from "bad-words-next/data/en.json";
 
 import {
     RegExpMatcher,
@@ -161,6 +163,7 @@ const matcher = new RegExpMatcher({
     ...englishDataset.build(),
     ...englishRecommendedTransformers,
 });
+const badwords = new BadWordsNext({ data: EnglishFilter });
 
 export const cleanUp = (text: string) => {
     const asteriskStrategy = (ctx: CensorContext) =>
@@ -170,7 +173,8 @@ export const cleanUp = (text: string) => {
     const matches = matcher.getAllMatches(text);
 
     try {
-        return censor.applyTo(text, matches);
+        const filter1 = censor.applyTo(text, matches);
+        return badwords.filter(filter1);
     } catch {
         return text;
     }
