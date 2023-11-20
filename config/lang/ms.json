@@ -545,7 +545,11 @@
                     "password_placeholder": "Masukkan kata laluan baharu anda (pilihan)",
                     "bio_label": "Bio Profil",
                     "bio_placeholder": "Beritahu kami tentang diri anda",
-                    "update_button": "Kemas kini"
+                    "update_button": "Kemas kini",
+                    "srPassword": {
+                        "show": "Tunjukkan kata laluan",
+                        "hide": "Sembunyikan kata laluan"
+                    }
                 },
                 "validation": {
                     "name_required": "Nama diperlukan",

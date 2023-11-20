@@ -545,7 +545,11 @@
                     "password_placeholder": "新しいパスワードを入力してください (オプション)",
                     "bio_label": "プロフィール 略歴",
                     "bio_placeholder": "あなた自身について教えてください",
-                    "update_button": "アップデート"
+                    "update_button": "アップデート",
+                    "srPassword": {
+                        "show": "パスワードを表示",
+                        "hide": "パスワードを隠す"
+                    }
                 },
                 "validation": {
                     "name_required": "名前は必須です",

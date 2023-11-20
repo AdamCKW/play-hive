@@ -545,7 +545,11 @@
                     "password_placeholder": "Enter your new password (optional)",
                     "bio_label": "Profile Bio",
                     "bio_placeholder": "Tell us about yourself",
-                    "update_button": "Update"
+                    "update_button": "Update",
+                    "srPassword": {
+                        "show": "Show password",
+                        "hide": "Hide password"
+                    }
                 },
                 "validation": {
                     "name_required": "Name is required",

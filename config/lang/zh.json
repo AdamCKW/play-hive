@@ -545,7 +545,11 @@
                     "password_placeholder": "输入您的新密码（可选）",
                     "bio_label": "个人简介",
                     "bio_placeholder": "向我们介绍你自己",
-                    "update_button": "更新"
+                    "update_button": "更新",
+                    "srPassword": {
+                        "show": "显示密码",
+                        "hide": "隐藏密码"
+                    }
                 },
                 "validation": {
                     "name_required": "姓名为必填项",
