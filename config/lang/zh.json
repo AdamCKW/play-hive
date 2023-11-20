@@ -319,7 +319,11 @@
                     "label": "新密码",
                     "placeholder": "输入您的新密码"
                 },
-                "reset": "重设密码"
+                "reset": "重设密码",
+                "srPassword": {
+                    "show": "显示密码",
+                    "hide": "隐藏密码"
+                }
             }
         }
     },

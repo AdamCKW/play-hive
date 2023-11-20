@@ -43,6 +43,7 @@ export function NewPasswordForm({
     const router = useRouter();
 
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const [showPassword, setShowPassword] = React.useState<boolean>(false);
 
     const tValidation = useTranslations("auth.new_password.validation");
     const tForm = useTranslations("auth.new_password.form");
@@ -113,7 +114,7 @@ export function NewPasswordForm({
                                         {tForm("password.label")}
                                     </FormLabel>
                                     <FormControl>
-                                        <Input
+                                        {/* <Input
                                             id="password"
                                             type="password"
                                             placeholder={tForm(
@@ -122,7 +123,57 @@ export function NewPasswordForm({
                                             autoCorrect="off"
                                             disabled={isLoading}
                                             {...field}
-                                        />
+                                        /> */}
+                                        <div className="relative">
+                                            <Input
+                                                id="password"
+                                                type={
+                                                    showPassword
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                placeholder={tForm(
+                                                    "password.placeholder",
+                                                )}
+                                                autoComplete="off"
+                                                autoCorrect="off"
+                                                className="pr-10"
+                                                disabled={isLoading}
+                                                {...field}
+                                            />
+                                            <Button
+                                                type="button"
+                                                variant="link"
+                                                className="text-muted-foreground absolute right-0 top-0 h-full hover:text-current"
+                                                onClick={() =>
+                                                    setShowPassword(
+                                                        (prev) => !prev,
+                                                    )
+                                                }
+                                            >
+                                                {showPassword ? (
+                                                    <Icons.eyeOff
+                                                        className="h-4 w-4"
+                                                        aria-hidden="true"
+                                                    />
+                                                ) : (
+                                                    <Icons.eye
+                                                        className="h-4 w-4"
+                                                        aria-hidden="true"
+                                                    />
+                                                )}
+
+                                                <span className="sr-only">
+                                                    {showPassword
+                                                        ? tForm(
+                                                              "srPassword.hide",
+                                                          )
+                                                        : tForm(
+                                                              "srPassword.show",
+                                                          )}
+                                                </span>
+                                            </Button>
+                                        </div>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

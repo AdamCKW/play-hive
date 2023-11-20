@@ -319,7 +319,11 @@
                     "label": "New Password",
                     "placeholder": "Enter your new password"
                 },
-                "reset": "Reset password"
+                "reset": "Reset password",
+                "srPassword": {
+                    "show": "Show password",
+                    "hide": "Hide password"
+                }
             }
         }
     },

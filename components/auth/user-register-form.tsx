@@ -197,7 +197,7 @@ export function UserRegisterForm({
                                                     placeholder={tForm(
                                                         "password.placeholder",
                                                     )}
-                                                    autoComplete="password"
+                                                    autoComplete="off"
                                                     autoCorrect="off"
                                                     className="pr-10"
                                                     disabled={isLoading}

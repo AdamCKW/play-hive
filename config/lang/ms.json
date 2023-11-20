@@ -319,7 +319,11 @@
                     "label": "Kata laluan baharu",
                     "placeholder": "Masukkan kata laluan baharu anda"
                 },
-                "reset": "Menetapkan semula kata laluan"
+                "reset": "Menetapkan semula kata laluan",
+                "srPassword": {
+                    "show": "Tunjukkan kata laluan",
+                    "hide": "Sembunyikan kata laluan"
+                }
             }
         }
     },
