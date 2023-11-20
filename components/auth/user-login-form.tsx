@@ -193,7 +193,7 @@ export default function UserLoginForm({
                                                     placeholder={tForm(
                                                         "password.placeholder",
                                                     )}
-                                                    autoComplete="current-password"
+                                                    autoComplete="password"
                                                     autoCorrect="off"
                                                     className="pr-10"
                                                     disabled={isLoading}

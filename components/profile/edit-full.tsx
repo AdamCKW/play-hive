@@ -45,6 +45,8 @@ interface EditFullProps {
 
 export function EditFull({ user }: EditFullProps) {
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     const router = useRouter();
 
     const tValidation = useTranslations("root.profile.settings.validation");
@@ -345,14 +347,56 @@ export function EditFull({ user }: EditFullProps) {
                                 {tForm("password_label")}
                             </FormLabel>
                             <FormControl>
-                                <Input
+                                {/* <Input
                                     id="password"
                                     type="password"
                                     placeholder={tForm("password_placeholder")}
                                     autoCorrect="off"
                                     disabled={isLoading}
                                     {...field}
-                                />
+                                /> */}
+                                <div className="relative">
+                                    <Input
+                                        id="password"
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
+                                        placeholder={tForm(
+                                            "password_placeholder",
+                                        )}
+                                        autoComplete="password"
+                                        autoCorrect="off"
+                                        className="pr-10"
+                                        disabled={isLoading}
+                                        {...field}
+                                    />
+                                    <Button
+                                        type="button"
+                                        variant="link"
+                                        className="text-muted-foreground absolute right-0 top-0 h-full hover:text-current"
+                                        onClick={() =>
+                                            setShowPassword((prev) => !prev)
+                                        }
+                                    >
+                                        {showPassword ? (
+                                            <Icons.eyeOff
+                                                className="h-4 w-4"
+                                                aria-hidden="true"
+                                            />
+                                        ) : (
+                                            <Icons.eye
+                                                className="h-4 w-4"
+                                                aria-hidden="true"
+                                            />
+                                        )}
+
+                                        <span className="sr-only">
+                                            {showPassword
+                                                ? tForm("srPassword.hide")
+                                                : tForm("srPassword.show")}
+                                        </span>
+                                    </Button>
+                                </div>
                             </FormControl>
                             <FormMessage />
                         </FormItem>

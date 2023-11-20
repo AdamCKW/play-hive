@@ -35,6 +35,7 @@ export function UserRegisterForm({
 }: UserRegisterFormProps) {
     const router = useRouter();
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
+    const [showPassword, setShowPassword] = React.useState<boolean>(false);
 
     const tForm = useTranslations("auth.register.form");
     const tValidation = useTranslations("auth.register.validation");
@@ -185,16 +186,56 @@ export function UserRegisterForm({
                                             {tForm("password.label")}
                                         </FormLabel>
                                         <FormControl>
-                                            <Input
-                                                id="password"
-                                                type="password"
-                                                placeholder={tForm(
-                                                    "password.placeholder",
-                                                )}
-                                                autoCorrect="off"
-                                                disabled={isLoading}
-                                                {...field}
-                                            />
+                                            <div className="relative">
+                                                <Input
+                                                    id="password"
+                                                    type={
+                                                        showPassword
+                                                            ? "text"
+                                                            : "password"
+                                                    }
+                                                    placeholder={tForm(
+                                                        "password.placeholder",
+                                                    )}
+                                                    autoComplete="password"
+                                                    autoCorrect="off"
+                                                    className="pr-10"
+                                                    disabled={isLoading}
+                                                    {...field}
+                                                />
+                                                <Button
+                                                    type="button"
+                                                    variant="link"
+                                                    className="text-muted-foreground absolute right-0 top-0 h-full hover:text-current"
+                                                    onClick={() =>
+                                                        setShowPassword(
+                                                            (prev) => !prev,
+                                                        )
+                                                    }
+                                                >
+                                                    {showPassword ? (
+                                                        <Icons.eyeOff
+                                                            className="h-4 w-4"
+                                                            aria-hidden="true"
+                                                        />
+                                                    ) : (
+                                                        <Icons.eye
+                                                            className="h-4 w-4"
+                                                            aria-hidden="true"
+                                                        />
+                                                    )}
+
+                                                    <span className="sr-only">
+                                                        {showPassword
+                                                            ? tForm(
+                                                                  "srPassword.hide",
+                                                              )
+                                                            : tForm(
+                                                                  "srPassword.show",
+                                                              )}
+                                                    </span>
+                                                </Button>
+                                            </div>
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
