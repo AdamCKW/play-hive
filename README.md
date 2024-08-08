@@ -4,8 +4,6 @@
 </a>
 </p>
 
-
-
 <p align="center">
 <img src="https://img.shields.io/github/languages/code-size/AdamCKW/play-hive" alt="GitHub code size in bytes" />
 <img src="https://img.shields.io/github/last-commit/AdamCKW/play-hive" alt="GitHub last commit" />
@@ -22,18 +20,18 @@ Play-Hive is a project that utilizes various libraries and tools such as Next.js
 
 ## 🔍 Table of Contents
 
-- [📌 Overview](#-overview)
-  - [🔍 Table of Contents](#-table-of-contents)
-  - [📁 Project Structure](#-project-structure)
-  - [📝 Project Summary](#-project-summary)
-  - [💻 Stack](#-stack)
-  - [⚙️ Setting Up](#️-setting-up)
-      - [Your Environment Variable](#your-environment-variable)
-- [Environment Variables](#environment-variables)
-  - [🚀 Run Locally](#-run-locally)
-  - [🙌 Contributors](#-contributors)
-  - [☁️ Deploy](#️-deploy)
-  - [📄 License](#-license)
+-   [📌 Overview](#-overview)
+    -   [🔍 Table of Contents](#-table-of-contents)
+    -   [📁 Project Structure](#-project-structure)
+    -   [📝 Project Summary](#-project-summary)
+    -   [💻 Stack](#-stack)
+    -   [⚙️ Setting Up](#️-setting-up)
+        -   [Your Environment Variable](#your-environment-variable)
+-   [Environment Variables](#environment-variables)
+    -   [🚀 Run Locally](#-run-locally)
+    -   [🙌 Contributors](#-contributors)
+    -   [☁️ Deploy](#️-deploy)
+    -   [📄 License](#-license)
 
 ## 📁 Project Structure
 
@@ -481,39 +479,39 @@ Play-Hive is a project that utilizes various libraries and tools such as Next.js
 
 ## 📝 Project Summary
 
-- [app](app): Main application directory.
-- [app/:locale](app/[locale]): Localization.
-- [app/:locale/(auth)](app/[locale]/(auth)): Authentication related components.
-- [app/:locale/(auth)/forgot-password](app/[locale]/(auth)/forgot-password): Forgot password functionality.
-- [app/:locale/(auth)/sign-in](app/[locale]/(auth)/sign-in): Sign-in functionality.
-- [app/:locale/auth/sign-up](app/[locale]/(auth)/sign-up): Sign-up functionality.
-- [app/:locale/(communication)/c](app/[locale]/(communication)/c): Communities channels.
-- [app/:locale/(communication)/c/feed](app/[locale]/(communication)/c/feed): Feed functionality for community channels.
-- [app/:locale/(communication)/c/name](app/[locale]/(communication)/c/[name]): Community feed channel with a specific name.
-- [app/:locale/(communication)/c/name/create](app/[locale]/(communication)/c/[name]/create): Create post functionality for community channels.
-- [app/:locale/(communication)/messages](app/[locale]/(communication)/c/[name]/messages): Messaging functionality.
-- [app/:locale/(communication)/following](app/[locale]/(communication)/following): User following list functionality.
-- [app/:locale/(root)](app/[locale]/page): Home Page.
-- [app/:locale/(root)/p](app/[locale]/page/p): Individual post page.
-- [app/:locale/(root)/:username/](app/[locale]/[username]): User profile page.
-- [app/:locale/(root)/:username/replies](app/[locale]/[username]/replies): User replies page.
-- [app/:locale:(root)/news](/app//[locale]/(root)/news): Gaming news page.
+-   [app](app): Main application directory.
+-   [app/:locale](app/[locale]): Localization.
+-   [app/:locale/(auth)](<app/[locale]/(auth)>): Authentication related components.
+-   [app/:locale/(auth)/forgot-password](<app/[locale]/(auth)/forgot-password>): Forgot password functionality.
+-   [app/:locale/(auth)/sign-in](<app/[locale]/(auth)/sign-in>): Sign-in functionality.
+-   [app/:locale/auth/sign-up](<app/[locale]/(auth)/sign-up>): Sign-up functionality.
+-   [app/:locale/(communication)/c](<app/[locale]/(communication)/c>): Communities channels.
+-   [app/:locale/(communication)/c/feed](<app/[locale]/(communication)/c/feed>): Feed functionality for community channels.
+-   [app/:locale/(communication)/c/name](<app/[locale]/(communication)/c/[name]>): Community feed channel with a specific name.
+-   [app/:locale/(communication)/c/name/create](<app/[locale]/(communication)/c/[name]/create>): Create post functionality for community channels.
+-   [app/:locale/(communication)/messages](<app/[locale]/(communication)/c/[name]/messages>): Messaging functionality.
+-   [app/:locale/(communication)/following](<app/[locale]/(communication)/following>): User following list functionality.
+-   [app/:locale/(root)](app/[locale]/page): Home Page.
+-   [app/:locale/(root)/p](app/[locale]/page/p): Individual post page.
+-   [app/:locale/(root)/:username/](app/[locale]/[username]): User profile page.
+-   [app/:locale/(root)/:username/replies](app/[locale]/[username]/replies): User replies page.
+-   [app/:locale:(root)/news](</app//[locale]/(root)/news>): Gaming news page.
 
 ## 💻 Stack
 
-- [next-auth/prisma-adapter](https://github.com/nextauthjs/prisma-adapter): Adapter for NextAuth.js authentication library with Prisma ORM.
-- [tanstack/react-query](https://react-query.tanstack.com/): Data fetching and caching library for React.
-- [udecode/plate-basic-marks](https://github.com/udecode/plate/tree/main/packages/plate-basic-marks): Basic text formatting marks for udecode/plate rich text editor.
-- [axios](https://axios-http.com/): Promise-based HTTP client for the browser and Node.js.
-- [lodash](https://lodash.com/): Utility library that provides helpful functions for manipulating and working with data.
-- [react](https://reactjs.org/): JavaScript library for building user interfaces.
-- [react-dom](https://reactjs.org/docs/react-dom.html): Entry point for working with the DOM in React applications.
-- [tailwindcss](https://tailwindcss.com/): Utility-first CSS framework for rapidly building custom user interfaces.
-- [Next.js](https://nextjs.org/): Popular React framework for building server-rendered applications.
-- [Pusher](https://pusher.com/): Real-time messaging service used to add real-time functionality.
-- [Prisma](https://www.prisma.io/): Modern database toolkit that simplifies database access with type safety.
-- [PlanetScale](https://www.planetscale.com/): Database-as-a-service platform for building and scaling applications.
-- [TypeScript](https://www.typescriptlang.org/): Superset of JavaScript that enhances code quality and maintainability.
+-   [next-auth/prisma-adapter](https://github.com/nextauthjs/prisma-adapter): Adapter for NextAuth.js authentication library with Prisma ORM.
+-   [tanstack/react-query](https://react-query.tanstack.com/): Data fetching and caching library for React.
+-   [udecode/plate-basic-marks](https://github.com/udecode/plate/tree/main/packages/plate-basic-marks): Basic text formatting marks for udecode/plate rich text editor.
+-   [axios](https://axios-http.com/): Promise-based HTTP client for the browser and Node.js.
+-   [lodash](https://lodash.com/): Utility library that provides helpful functions for manipulating and working with data.
+-   [react](https://reactjs.org/): JavaScript library for building user interfaces.
+-   [react-dom](https://reactjs.org/docs/react-dom.html): Entry point for working with the DOM in React applications.
+-   [tailwindcss](https://tailwindcss.com/): Utility-first CSS framework for rapidly building custom user interfaces.
+-   [Next.js](https://nextjs.org/): Popular React framework for building server-rendered applications.
+-   [Pusher](https://pusher.com/): Real-time messaging service used to add real-time functionality.
+-   [Prisma](https://www.prisma.io/): Modern database toolkit that simplifies database access with type safety.
+-   [PlanetScale](https://www.planetscale.com/): Database-as-a-service platform for building and scaling applications.
+-   [TypeScript](https://www.typescriptlang.org/): Superset of JavaScript that enhances code quality and maintainability.
 
 ## ⚙️ Setting Up
 
@@ -523,66 +521,71 @@ Play-Hive is a project that utilizes various libraries and tools such as Next.js
 
 Here are the environment variables used in the project:
 
-- **NEXT_PUBLIC_BASE_URL** - The base URL for your Next.js application. For example: `http://localhost:3000`.
+-   **NEXT_PUBLIC_SITE_URL** - The base URL for your Next.js application. For example: `http://localhost:3000`.
 
-- **DATABASE_URL** - PlanetScale URL for your database.
+-   **DATABASE_URL** - PlanetScale URL for your database.
 
-- **NEXTAUTH_SECRET** - Secret key for Next-Auth. You can generate a secure secret using `openssl rand -base64 64`.
+-   **NEXTAUTH_SECRET** - Secret key for Next-Auth. You can generate a secure secret using `openssl rand -base64 64`.
 
-- **NEXTAUTH_URL** - The URL of your Next.js application, typically set to `${NEXT_PUBLIC_BASE_URL}`.
+-   **NEXTAUTH_URL** - The URL of your Next.js application, typically set to `${NEXT_PUBLIC_BASE_URL}`.
 
-- **GOOGLE_CLIENT_ID** - Client ID for Google OAuth.
+-   **GOOGLE_CLIENT_ID** - Client ID for Google OAuth.
 
-- **GOOGLE_CLIENT_SECRET** - Client Secret for Google OAuth.
+-   **GOOGLE_CLIENT_SECRET** - Client Secret for Google OAuth.
 
-- **BATTLENET_CLIENT_ID** - Client ID for BattleNet OAuth.
+-   **BATTLENET_CLIENT_ID** - Client ID for BattleNet OAuth.
 
-- **BATTLENET_CLIENT_SECRET** - Client Secret for BattleNet OAuth.
+-   **BATTLENET_CLIENT_SECRET** - Client Secret for BattleNet OAuth.
 
-- **BATTLENET_ISSUER** - Issuer URL for BattleNet OAuth, typically set to `https://us.battle.net/oauth`.
+-   **BATTLENET_ISSUER** - Issuer URL for BattleNet OAuth, typically set to `https://us.battle.net/oauth`.
 
-- **DISCORD_CLIENT_ID** - Client ID for Discord OAuth.
+-   **DISCORD_CLIENT_ID** - Client ID for Discord OAuth.
 
-- **DISCORD_CLIENT_SECRET** - Client Secret for Discord OAuth.
+-   **DISCORD_CLIENT_SECRET** - Client Secret for Discord OAuth.
 
-- **GAMESPOT_API_KEY** - API key for GameSpot API.
+-   **GAMESPOT_API_KEY** - API key for GameSpot API.
 
-- **UPLOADTHING_SECRET** - Secret key for the uploadthing service.
+-   **UPLOADTHING_SECRET** - Secret key for the uploadthing service.
 
-- **UPLOADTHING_APP_ID** - Application ID for uploadthing.
+-   **UPLOADTHING_APP_ID** - Application ID for uploadthing.
 
-- **ADMIN_SECRET** - Secret key for administrative purposes. You can generate a secure secret using `openssl rand -base64 64`.
+-   **ADMIN_SECRET** - Secret key for administrative purposes. You can generate a secure secret using `openssl rand -base64 64`.
 
-- **NEXT_PUBLIC_ENCRYPTION_KEY** - Encryption key for Next.js, typically used for encrypting sensitive data.
+-   **NEXT_PUBLIC_ENCRYPTION_KEY** - Encryption key for Next.js, typically used for encrypting sensitive data.
 
-- **BREVO_API_KEY** - API key for Brevo service.
+-   **BREVO_API_KEY** - API key for Brevo service.
 
-- **BREVO_EMAIL** - Email associated with the Brevo service.
+-   **BREVO_EMAIL** - Email associated with the Brevo service.
 
-- **PUSHER_APP_ID** - Pusher application ID.
+-   **PUSHER_APP_ID** - Pusher application ID.
 
-- **NEXT_PUBLIC_PUSHER_APP_KEY** - Pusher app key used in the client-side code.
+-   **NEXT_PUBLIC_PUSHER_APP_KEY** - Pusher app key used in the client-side code.
 
-- **PUSHER_SECRET** - Secret key for Pusher.
+-   **PUSHER_SECRET** - Secret key for Pusher.
 
-- **NEXT_PUBLIC_PUSHER_CLUSTER** - Pusher cluster used in the client-side code.
+-   **NEXT_PUBLIC_PUSHER_CLUSTER** - Pusher cluster used in the client-side code.
 
 Remember to replace the values with your actual environment variable values.
 
-
 ## 🚀 Run Locally
+
 1.Clone the play-hive repository:
+
 ```sh
 git clone https://github.com/AdamCKW/play-hive
 ```
+
 2.Install the dependencies with one of the package managers listed below:
+
 ```bash
 pnpm install
 bun install
 npm install
 yarn install
 ```
+
 3.Start the development mode:
+
 ```bash
 pnpm dev
 bun dev
@@ -591,6 +594,7 @@ yarn dev
 ```
 
 ## 🙌 Contributors
+
 <a href="https://github.com/AdamCKW/play-hive/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=AdamCKW/play-hive" />
 </a>
@@ -602,4 +606,3 @@ yarn dev
 ## 📄 License
 
 This project is licensed under the **MIT License** - see the [**MIT License**](https://github.com/AdamCKW/play-hive/blob/master/LICENSE) file for details.
-
